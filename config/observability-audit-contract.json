@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 4,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_AUDIT_AND_OBSERVABILITY_CONTRACT_CREATED_RUNTIME_REDACTION_AND_RETENTION_TESTS_DEFERRED",
+  "requestCorrelation": {
+    "middleware": "services/backend/src/main.ts",
+    "requestIdHeader": "x-request-id",
+    "behavior": "Accepts an inbound correlation value truncated to 128 characters or generates a UUID; it is not an authentication credential.",
+    "requiredOnErrorResponse": true,
+    "runtimeValidation": "DEFERRED_UNTIL_ALL_FOUR_PACKAGES_IMPLEMENTED"
+  },
+  "telemetry": {
+    "source": "services/backend/src/services/observability.ts",
+    "metrics": [
+      "totalRequests",
+      "totalErrors",
+      "totalSlowRequests",
+      "perRouteCounts",
+      "perRoute5xxCount",
+      "averageDurationMs",
+      "maxDurationMs",
+      "processUptime",
+      "memoryUsage"
+    ],
+    "thresholdConfigurationKeys": [
+      "RIDEX_OBSERVABILITY_ALERT_WINDOW_MS",
+      "RIDEX_OBSERVABILITY_5XX_ALERT_COUNT",
+      "RIDEX_SLOW_REQUEST_MS"
+    ],
+    "defaultsArePolicy": false,
+    "routeLabelPolicy": "Use Express route template plus router mount path; if unavailable use /[unmatched]. Do not log query strings or raw request path parameters in slow-request telemetry.",
+    "observedAlerts": [
+      "RIDEX_5XX_ALERT",
+      "RIDEX_SLOW_REQUEST"
+    ]
+  },
+  "auditData": {
+    "backendModel": "AuditLog",
+    "backendSource": "services/backend/prisma/schema.prisma",
+    "fields": [
+      "actorType",
+      "actorId",
+      "sessionId",
+      "requestId",
+      "purposeCode",
+      "success",
+      "action",
+      "module",
+      "entityType",
+      "entityId",
+      "beforeData",
+      "afterData",
+      "securityData",
+      "changeReason",
+      "bulkOperationId",
+      "ipAddress",
+      "userAgent",
+      "createdAt"
+    ],
+    "sensitiveFieldsRequiringMinimizationOrRedaction": [
+      "beforeData",
+      "afterData",
+      "securityData",
+      "ipAddress",
+      "userAgent"
+    ],
+    "neverLog": [
+      "passwords",
+      "OTP values",
+      "Authorization headers",
+      "access/refresh/session tokens",
+      "protected-action OTP grant tokens",
+      "private keys",
+      "provider credentials",
+      "raw sensitive request bodies",
+      "unmasked recipient contact data"
+    ],
+    "retentionAndDeletionPolicy": "PENDING_FINAL_SECURITY_AND_PRODUCT_REVIEW",
+    "implementedSharedRedactionWriters": [
+      {
+        "file": "services/backend/src/routes/sharedRide.ts",
+        "control": "Shared-route audit snapshot redaction; transaction-scoped audit failures propagate to abort the parent transaction."
+      },
+      {
+        "file": "services/backend/src/routes/configuration.ts",
+        "control": "Configuration audit snapshot redaction, including transaction-required audit helper."
+      },
+      {
+        "file": "services/backend/src/routes/calls.ts",
+        "control": "Masked-call audit snapshots/security metadata redaction."
+      },
+      {
+        "file": "services/backend/src/routes/gps.ts",
+        "control": "Suspicious GPS security audit metadata redaction."
+      },
+      {
+        "file": "services/backend/src/routes/devices.ts",
+        "control": "Device mutation audit snapshot/security metadata redaction."
+      },
+      {
+        "file": "services/backend/src/routes/consent.ts",
+        "control": "Consent audit snapshot/security metadata redaction."
+      },
+      {
+        "file": "services/backend/src/services/driverDocuments.service.ts",
+        "control": "Driver document audit snapshot/security metadata redaction."
+      },
+      {
+        "file": "services/backend/src/services/connectionHandover.ts",
+        "control": "InterCity connection handover audit snapshot/security metadata redaction."
+      },
+      {
+        "file": "services/backend/src/routes/provider.ts",
+        "control": "Provider delivery-result audit snapshots/security metadata redaction."
+      },
+      {
+        "file": "services/backend/src/services/finalizeTrip.ts",
+        "control": "Authoritative trip finalization audit snapshots/security metadata redaction."
+      },
+      {
+        "file": "services/backend/src/routes/admin.ts",
+        "control": "Direct transaction-bound app-link/commission/matching audit snapshots apply shared redaction in addition to existing Admin redaction."
+      },
+      {
+        "file": "services/backend/src/routes/auth.ts",
+        "control": "Password-authentication audit security metadata applies shared recursive redaction."
+      },
+      {
+        "file": "services/backend/src/routes/payments.ts",
+        "control": "Payment and Razorpay reconciliation audit snapshots/security metadata apply shared redaction; audit failures inside supplied transactions are propagated."
+      },
+      {
+        "file": "services/backend/src/routes/payouts.ts",
+        "control": "Payout audit failures propagate if written through a caller transaction."
+      },
+      {
+        "file": "services/backend/src/routes/bookings.ts",
+        "control": "Transaction-bound booking audit failures propagate."
+      },
+      {
+        "file": "services/backend/src/routes/ratings.ts",
+        "control": "Transaction-bound rating audit failures propagate."
+      },
+      {
+        "file": "services/backend/src/routes/trips.ts",
+        "control": "Transaction-bound trip audit failures propagate."
+      },
+      {
+        "file": "services/backend/src/routes/driver.ts",
+        "control": "Driver audit snapshots are redacted and transaction-bound write failures propagate."
+      },
+      {
+        "file": "services/backend/src/routes/events.ts",
+        "control": "Event booking transactional audit snapshots/security metadata are redacted."
+      },
+      {
+        "file": "services/backend/src/routes/configuration.ts",
+        "control": "Bulk OTP configuration transactional audit snapshots/security metadata are redacted."
+      }
+    ]
+  },
+  "providerAudit": {
+    "source": "services/broadcaster-provider/src/services/security-audit.service.ts",
+    "recordFields": [
+      "eventType",
+      "actor",
+      "gatewayId",
+      "deviceId",
+      "requestId",
+      "success",
+      "metadata",
+      "createdAt"
+    ],
+    "currentMemoryCap": 5000,
+    "durabilityAndRetention": "Durable provider state persists records; retention/archive/deletion authority remains pending. At 5000 retained records, audit append fails closed rather than silently evicting history; a dedicated approved archive/purge path is required before production.",
+    "overflowBehavior": "FAIL_CLOSED_NO_HISTORIC_AUDIT_EVICTION"
+  },
+  "alertAndMonitoringRequirements": [
+    "Track elevated 5xx/error rate with bounded alert frequency.",
+    "Track slow route counts and latency by route template, not full requested URL.",
+    "Monitor database readiness and schema/migration state separately from HTTP liveness.",
+    "Track realtime outbox backlog/age/replay gaps and Provider/Gateway queue age/retries/final failures.",
+    "Track authentication failures, OTP attempt-limit events, permission denials and privileged configuration changes without logging secrets.",
+    "Admin observability data access must remain permission-gated."
+  ],
+  "openItems": [
+    "Confirm whether caller-provided x-request-id needs strict character validation or replacement for unsafe values.",
+    "Decide durable audit retention/archive/deletion policy, preserving approved security and legal requirements.",
+    "Add dedicated metric persistence/dashboards/alert delivery only after requirement and infrastructure approval.",
+    "Run final-phase tests for query-secret non-disclosure, redaction, alert thresholds, audit coverage and permissions.",
+    "Complete final source-wide audit producer inventory and field-level allowlisting; shared redaction currently covers the principal route audit helpers but not every inline producer.",
+    "Complete remaining source-wide log and inline audit review; centralized 4xx/5xx payload redaction is defensive coverage, not a replacement for per-route safe error handling.",
+    "Choose/approve a durable Provider audit archive/retention/deletion schedule and an operational response to the fail-closed 5000-record capacity gate before production."
+  ],
+  "privacyRedactionPolicy": "config/privacy-redaction-policy.json",
+  "redactionStatus": "PARTIAL_SHARED_AUDIT_PROVIDER_AUDIT_AND_ERROR_RESPONSE_REDACTION_IMPLEMENTED_FINAL_REVIEW_PENDING",
+  "providerRouteErrorDisclosure": {
+    "status": "STATIC_IMPLEMENTED_RUNTIME_REDACTION_TEST_PENDING",
+    "rule": "Provider Gateway, Provider, Admin and Gateway-auth route errors use safe error codes; some legacy message-based status mapping remains for reviewed migration."
+  },
+  "routeLoggingPrivacy": {
+    "status": "STATIC_IMPLEMENTED_RUNTIME_LOG_REDACTION_TEST_PENDING",
+    "rule": "never raw req.originalUrl/query strings; telemetry uses route templates and bounded mount labels."
+  },
+  "protectedActionOtpGrantAudit": {
+    "transactionalWithGrantConsumption": true,
+    "transactionalWithMutation": true,
+    "issuanceTransactionalWithGrantCreation": true,
+    "neverPersist": [
+      "raw grant token"
+    ],
+    "mutationTransactionSources": [
+      "services/backend/src/routes/bookings.ts",
+      "services/backend/src/routes/driver.ts",
+      "services/backend/src/services/finalizeTrip.ts"
+    ],
+    "evidence": "Grant issuance writes the hashed grant and mandatory audit in one transaction. Grant consumption, mutation and required audit share the caller transaction; runtime concurrency and redaction tests remain deferred."
+  }
+}

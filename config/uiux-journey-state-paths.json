@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "date": "2026-10-12",
+  "project": "RideX-Super_Admin_Controle",
+  "point": "P4-E",
+  "status": "IMPLEMENTED_STATIC_MAIN_JOURNEY_STATE_PATH_MAP; RUNTIME_STATE_COVERAGE_AND_ACCEPTANCE_TESTS_DEFERRED",
+  "sourceScreenInventory": "config/uiux-source-inventory.json",
+  "journeyCount": 9,
+  "requiredPaths": [
+    "success",
+    "denial",
+    "timeout",
+    "reconnect",
+    "cancellation",
+    "retry",
+    "unknownOutcome"
+  ],
+  "policy": [
+    "Unknown mutation outcomes must be reconciled against server state before retrying non-idempotent actions.",
+    "Financial mutations must never be blindly repeated after timeout.",
+    "Trip GPS must remain active until authoritative backend completion is confirmed.",
+    "Client state is not authoritative for permissions, eligibility, booking/payment status, delivery ACK or privileged configuration.",
+    "Physical UI and acceptance tests remain deferred until all four packages are implemented."
+  ],
+  "journeys": [
+    {
+      "journeyId": "J-AUTH",
+      "name": "Customer/Driver/Admin authentication and OTP",
+      "screenIds": [
+        "C-03",
+        "C-04",
+        "D-02",
+        "D-03",
+        "AM-01",
+        "AW-01",
+        "AW-02"
+      ],
+      "success": "Backend verifies actor, OTP and exact purpose; establish only the authorized session and continue to required profile/onboarding state.",
+      "denial": "Keep session unauthenticated; show purpose-safe denial and remaining attempts without leaking secrets.",
+      "timeout": "Keep OTP expiry and request state explicit; do not treat timeout as successful verification.",
+      "reconnect": "Refresh server-owned OTP/session status before allowing another protected action.",
+      "cancellation": "User may leave the flow; do not create a session without server verification.",
+      "retry": "Respect resend interval, request idempotency and attempt carry-forward rules; new OTP replaces the prior OTP.",
+      "unknownOutcome": "Reconcile request/session status with backend before re-submitting or navigating into authenticated screens.",
+      "duplicateProtection": "OTP verification and session creation must not be treated as client-only success."
+    },
+    {
+      "journeyId": "J-BOOKING",
+      "name": "Passenger booking, quote, fare and matching",
+      "screenIds": [
+        "C-07",
+        "C-08",
+        "C-09",
+        "C-10",
+        "C-11",
+        "C-12",
+        "C-13",
+        "C-14",
+        "C-15",
+        "C-16"
+      ],
+      "success": "Display only server-authoritative quote, eligibility and booking/matching state.",
+      "denial": "Show the backend reason and preserve safe draft fields; never imply booking exists.",
+      "timeout": "Show pending/unknown and query booking by authoritative identifier before retry.",
+      "reconnect": "Refresh quote validity, service enablement, eligibility and booking state before resuming.",
+      "cancellation": "Cancellation is a backend state transition with reason and resulting state; do not only remove the local card.",
+      "retry": "Use the same idempotency key for retry of the same logical create; prevent duplicate bookings.",
+      "unknownOutcome": "Do not submit a second create; reconcile by request/idempotency/booking ID and refresh authoritative state.",
+      "duplicateProtection": "No duplicate booking or matching action after timeout/reconnect."
+    },
+    {
+      "journeyId": "J-PAYMENT",
+      "name": "Payment, wallet, fare adjustment and refund",
+      "screenIds": [
+        "C-13",
+        "C-14",
+        "C-19",
+        "C-22",
+        "AW-11",
+        "AW-16"
+      ],
+      "success": "Show completed financial state only after backend/provider confirmation.",
+      "denial": "Keep prior authoritative balance/receipt; present a safe reason without exposing payment secrets.",
+      "timeout": "Mark outcome pending/unknown and reconcile provider/backend transaction status.",
+      "reconnect": "Refresh transaction and wallet ledger before presenting final status.",
+      "cancellation": "Explain whether cancellation happened before or after financial commitment; refund is a distinct state/action.",
+      "retry": "Retry only through idempotent transaction contract; never blindly repeat charge/refund.",
+      "unknownOutcome": "Query transaction reference/status and ledger; do not infer failure from client timeout.",
+      "duplicateProtection": "Financial mutations must be idempotent and backend-ledger authoritative."
+    },
+    {
+      "journeyId": "J-EVENT",
+      "name": "Event discovery/session booking and trip",
+      "screenIds": [
+        "C-12",
+        "C-15",
+        "C-17",
+        "C-18",
+        "D-10",
+        "D-13"
+      ],
+      "success": "Use EVENT service and EVENT_RIDE for eligibility/availability while preserving the approved persisted RIDE/CITY_RIDE plus EVENT_RIDE subtype mapping.",
+      "denial": "Show unavailable/disabled event service or capacity/eligibility denial from backend.",
+      "timeout": "Reconcile event session and booking status before retrying.",
+      "reconnect": "Refresh published event, stop/session and booking state from server; do not invent missing stops.",
+      "cancellation": "Use backend cancellation policy and preserve the event booking state transition.",
+      "retry": "Idempotently retry the same event booking request only after reconciliation.",
+      "unknownOutcome": "Fetch session/booking status by server identifier before any new booking request.",
+      "duplicateProtection": "EVENT toggle is independently enforced even where persisted booking type is RIDE."
+    },
+    {
+      "journeyId": "J-DRIVER-ONBOARD",
+      "name": "Driver registration, KYC, vehicle and geographic eligibility",
+      "screenIds": [
+        "D-04",
+        "D-05",
+        "D-06",
+        "D-07",
+        "D-08",
+        "D-09"
+      ],
+      "success": "Submission accepted only when required profile/KYC/vehicle data and active valid city/state assignment satisfy backend rules.",
+      "denial": "Preserve draft, identify actionable missing/rejected items and keep driver unavailable until eligible.",
+      "timeout": "Check application submission status before submitting again.",
+      "reconnect": "Refresh application review, KYC and service assignment from backend.",
+      "cancellation": "Leaving a draft does not imply submission or approval.",
+      "retry": "Use safe idempotent upload/submit semantics; do not duplicate documents or applications.",
+      "unknownOutcome": "Reconcile application ID and document status before resubmission.",
+      "duplicateProtection": "No driver readiness/dispatch until authoritative onboarding and geographic eligibility permit it."
+    },
+    {
+      "journeyId": "J-TRIP",
+      "name": "Driver trip lifecycle, GPS and completion",
+      "screenIds": [
+        "C-17",
+        "C-18",
+        "C-19",
+        "D-11",
+        "D-12",
+        "D-13",
+        "D-14",
+        "D-19"
+      ],
+      "success": "Render server-authoritative trip transitions; stop trip GPS only after completion is confirmed by authoritative backend state.",
+      "denial": "Keep prior trip state and show action denial; do not advance lifecycle locally.",
+      "timeout": "Retain active tracking while trip completion remains unconfirmed; reconcile before retry.",
+      "reconnect": "Fetch current trip state and location freshness before enabling next transition.",
+      "cancellation": "Cancellation follows allowed backend transition; active-trip GPS is not stopped merely because a request timed out.",
+      "retry": "Retry a lifecycle command idempotently and refresh server state.",
+      "unknownOutcome": "Treat start/finish as unknown until backend confirms; keep required GPS active and reconcile.",
+      "duplicateProtection": "No duplicate start/finish/acceptance; GPS stops only after confirmed completion."
+    },
+    {
+      "journeyId": "J-ADMIN",
+      "name": "Admin scoped operations and privileged configuration",
+      "screenIds": [
+        "AM-04",
+        "AM-05",
+        "AM-06",
+        "AM-07",
+        "SA-01",
+        "SA-05",
+        "SA-07",
+        "AW-10",
+        "AW-12",
+        "AW-13",
+        "AW-14",
+        "AW-20"
+      ],
+      "success": "Backend authorizes role, permission and GLOBAL/STATE/CITY scope; UI refreshes authoritative changed state and audit result.",
+      "denial": "Display access denied without exposing out-of-scope records or sensitive configuration.",
+      "timeout": "Do not report a change as successful; query current config/object state and audit outcome.",
+      "reconnect": "Re-fetch permission/session/scope and object state before enabling privileged actions.",
+      "cancellation": "Confirmation dismissal causes no mutation; destructive action requires explicit confirmation and any required step-up/approval.",
+      "retry": "Use idempotency or read-after-write reconciliation for bulk/config actions; avoid duplicate destructive operations.",
+      "unknownOutcome": "Inspect authoritative state and audit trail before retrying configuration, role, delete or bulk mutation.",
+      "duplicateProtection": "UI hiding is not authorization; server-side scope and permission checks remain mandatory."
+    },
+    {
+      "journeyId": "J-GATEWAY",
+      "name": "Broadcaster/Gateway notification delivery and ACK",
+      "screenIds": [
+        "GW-01",
+        "GW-02",
+        "GW-03",
+        "GW-04",
+        "GW-05",
+        "AW-15"
+      ],
+      "success": "Show delivery success only after authenticated ACK is accepted and correlated to the durable job.",
+      "denial": "Reject unauthorized gateway identity, invalid ACK or revoked device; retain truthful failure status.",
+      "timeout": "Keep job pending/expired according to backend policy; do not fabricate delivered state.",
+      "reconnect": "Replay from durable cursor, detect gaps and refresh server queue/status.",
+      "cancellation": "Cancel only where backend job state permits; preserve audit and delivery outcome.",
+      "retry": "Bounded retry with deduplication and dead-letter behavior; ACK processing is idempotent.",
+      "unknownOutcome": "Query durable job/ACK state before enqueueing a duplicate job.",
+      "duplicateProtection": "No duplicate delivery side effects from repeated ACKs or reconnect replay."
+    },
+    {
+      "journeyId": "J-WEB",
+      "name": "Public website downloads and Admin Web entry",
+      "screenIds": [
+        "WEB-01",
+        "WEB-03",
+        "WEB-04",
+        "AW-01",
+        "AW-19"
+      ],
+      "success": "Use backend/admin-published links and safe default icon when image assets are absent.",
+      "denial": "Do not fall back to stale privileged links or local success when backend save fails.",
+      "timeout": "Show save/link state as unconfirmed and re-fetch before claiming success.",
+      "reconnect": "Refresh published link configuration and session/route permissions.",
+      "cancellation": "Cancel navigation without mutating configuration.",
+      "retry": "Retry save after checking server state; avoid localStorage-only success for privileged/public configuration.",
+      "unknownOutcome": "Reconcile backend-persisted link configuration before another save.",
+      "duplicateProtection": "Never claim backend persistence from a local fallback."
+    }
+  ],
+  "checkpoint": {
+    "completed": [
+      "P4-C static priority/scope reconciliation",
+      "P4-D static/client service-taxonomy alignment",
+      "P4-E main journey state-path map"
+    ],
+    "next": "P4-F align design tokens, responsive layouts and component states across Mobile/Web/Gateway",
+    "resumeRule": "Continue from P4-F; do not repeat completed points unless inputs change."
+  }
+}

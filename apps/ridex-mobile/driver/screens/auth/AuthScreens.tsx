@@ -1,0 +1,30 @@
+import React, { useState } from 'react';
+import { Text } from 'react-native';
+import { Screen, PageScroll, BrandHeader, Logo, PageTitle, Card, PrimaryButton, OutlineButton, Field, StatusPill } from '../../components/NakedUI';
+import type { DriverScreen } from '../../navigation/routes';
+import { useDriverRuntime } from '../../state/DriverRuntime';
+
+export function WelcomeScreen({ go }: { go: (s: DriverScreen) => void }) {
+  return <Screen><PageScroll><BrandHeader title="Driver"/><Card><Logo/><PageTitle title="Drive with RideX" subtitle="Your daily driver workspace, connected to the RideX backend."/><PrimaryButton title="Login as Driver" onPress={() => go('login')}/><OutlineButton title="New Driver? Register" onPress={() => go('registration')}/></Card><Card tone="softGreen"><StatusPill label="Backend-authoritative" kind="success"/><PageTitle title="Connected workspace" subtitle="Rides, earnings, onboarding, safety, messages and account data come from RideX services."/></Card></PageScroll></Screen>;
+}
+
+export function LoginScreen({ go }: { go: (s: DriverScreen) => void }) {
+  const { login, loading, authMessage } = useDriverRuntime();
+  const [userId, setUserId] = useState(''); const [password, setPassword] = useState('');
+  return <Screen><PageScroll><BrandHeader title="Driver Login" onBack={() => go('welcome')}/><PageTitle title="Welcome back" subtitle="Use your Driver User ID, mobile or email and password."/><Card><Field label="Driver User ID" value={userId} onChangeText={setUserId} placeholder="User ID / mobile / email" autoCapitalize="none" autoCorrect={false}/><Field label="Password" value={password} onChangeText={setPassword} placeholder="Password" secureTextEntry autoCapitalize="none" autoCorrect={false}/><PrimaryButton title={loading ? 'Signing in…' : 'Login'} disabled={loading||!userId.trim()||!password} onPress={() => void login(userId, password)}/><OutlineButton title="Register as Driver" onPress={() => go('registration')}/>{authMessage ? <Text accessibilityRole="alert" style={{marginTop:10,color:'#B3121A',fontWeight:'700'}}>{authMessage}</Text> : null}</Card></PageScroll></Screen>;
+}
+
+export function OtpScreen({ go }: { go: (s: DriverScreen) => void }) {
+  const { verifyLoginOtp, resendLoginOtp, loading, authMessage, pendingOtpActorId } = useDriverRuntime();
+  const [otp, setOtp] = useState(''); const actorId = String(pendingOtpActorId || '');
+  return <Screen><PageScroll><BrandHeader title="New Device Verification" onBack={() => go('login')}/><PageTitle title="Verify your device" subtitle="Password was accepted. Enter the backend-issued Driver new-device OTP."/><Card><Field label="Driver Mobile" value={actorId} placeholder="Backend-issued mobile" keyboardType="phone-pad"/><Field label="OTP" value={otp} onChangeText={v => setOtp(v.replace(/\D/g,'').slice(0,4))} placeholder="4-digit OTP" keyboardType="number-pad" maxLength={4}/><PrimaryButton title={loading ? 'Verifying…' : 'Verify & Continue'} disabled={loading||!actorId||otp.length!==4} onPress={() => void verifyLoginOtp(actorId, otp)}/><OutlineButton title="Resend OTP" disabled={loading||!actorId} onPress={() => void resendLoginOtp(actorId)}/><StatusPill label="Purpose: DRIVER.AUTH.NEW_DEVICE"/>{authMessage ? <Text accessibilityRole="alert" style={{marginTop:10,color:'#B3121A',fontWeight:'700'}}>{authMessage}</Text> : null}</Card></PageScroll></Screen>;
+}
+
+export function RegistrationScreen({ go }: { go: (s: DriverScreen) => void }) {
+  const { sendRegistrationOtp, completeRegistration, loading, authMessage, setAuthMessage } = useDriverRuntime();
+  const [mobile,setMobile]=useState(''); const [otp,setOtp]=useState(''); const [name,setName]=useState(''); const [address,setAddress]=useState(''); const [sent,setSent]=useState(false);
+  const mobileDigits=mobile.replace(/\D/g,'');
+  const send = async () => { setAuthMessage('');if(mobileDigits.length<10){setAuthMessage('Enter a valid 10-digit mobile number.');return;}const ok = await sendRegistrationOtp(mobileDigits.slice(-10)); if (ok) setSent(true); };
+  const complete = async () => { setAuthMessage('');if(name.trim().length<2){setAuthMessage('Enter your full name.');return;}if(!address.trim()){setAuthMessage('Enter your current address.');return;}if(otp.replace(/\D/g,'').length!==4){setAuthMessage('Enter the 4-digit registration OTP.');return;}const ok = await completeRegistration(mobileDigits.slice(-10), otp.replace(/\D/g,'').slice(0,4), name.trim(), address.trim()); if (ok) go('onboardingStatus'); };
+  return <Screen><PageScroll><BrandHeader title="Driver Registration" onBack={() => go('welcome')}/><PageTitle title="Create Driver account" subtitle="Mobile verification starts the backend-controlled onboarding sequence."/><Card>{!sent ? <><Field label="Mobile Number" value={mobile} onChangeText={setMobile} placeholder="10-digit mobile number" keyboardType="phone-pad" maxLength={15}/><PrimaryButton title={loading ? 'Sending…' : 'Send Registration OTP'} disabled={loading||mobileDigits.length<10} onPress={() => void send()}/></> : <><StatusPill label="Registration OTP sent" kind="success"/><Field label="Full Name" value={name} onChangeText={setName} placeholder="Full name"/><Field label="Address" value={address} onChangeText={setAddress} placeholder="Current address"/><Field label="OTP" value={otp} onChangeText={v => setOtp(v.replace(/\D/g,'').slice(0,4))} placeholder="4-digit OTP" keyboardType="number-pad" maxLength={4}/><PrimaryButton title={loading ? 'Creating…' : 'Verify Mobile & Create Account'} disabled={loading||name.trim().length<2||!address.trim()||otp.replace(/\D/g,'').length!==4} onPress={() => void complete()}/><OutlineButton title="Resend Registration OTP" disabled={loading} onPress={() => void send()}/></>}{authMessage ? <Text accessibilityRole="alert" style={{marginTop:10,color:'#B3121A',fontWeight:'700'}}>{authMessage}</Text> : null}</Card><Card tone="softBlue"><StatusPill label="Backend-controlled onboarding"/><PageTitle title="Sequence" subtitle="Mobile → Personal information → KYC → Vehicle → Payout → Review → Admin approval → Driver Home"/></Card></PageScroll></Screen>;
+}

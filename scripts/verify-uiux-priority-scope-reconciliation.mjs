@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read = p => JSON.parse(fs.readFileSync(p, 'utf8'));
+const m=read('config/uiux-priority-scope-reconciliation.json');
+const inv=read('config/uiux-source-inventory.json');
+const sec=read('config/security-requirement-register.json');
+const tax=read('config/ride-service-taxonomy.json');
+assert.equal(inv.screens.length,92);
+assert.deepEqual(inv.priorityCounts,{P0:75,P1:16,P2:1});
+assert.equal(sec.requirements.length,67);
+assert.deepEqual(sec.summary.priorityCounts,{P0:43,P1:24});
+assert.equal(m.baseline.screenCount,inv.screens.length);
+assert.deepEqual(m.baseline.priorityCounts,inv.priorityCounts);
+assert.equal(m.baseline.securityRequirementCount,sec.requirements.length);
+assert.deepEqual(m.securityRequirementCoverage.allRequirementIds,sec.requirements.map(x=>x.id));
+assert.equal(m.criticalScreenRationale && Object.keys(m.criticalScreenRationale).length, Object.keys(m.criticalScreenRationale).length);
+for(const [id,why] of Object.entries(m.criticalScreenRationale)){const s=inv.screens.find(x=>x.screenId===id); assert.ok(s,`missing critical screen ${id}`); assert.equal(s.priority,'P0',`${id} (${why}) must remain P0`);}
+assert.deepEqual(m.releaseScope.services.map(x=>x.serviceType).sort(),['EVENT','GOODS','PARCEL','PASSENGER']);
+assert.ok(m.releaseScope.services.every(x=>x.initiallyEnabled && x.mustBeIndependentlySwitchable && x.backendEnforcementRequired));
+assert.equal(m.releaseScope.services.length,tax.serviceEnablementPolicy.independentServices.length);
+assert.equal(inv.screens.find(x=>x.screenId==='C-20').priority,'P2');
+assert.ok(m.priorityPolicy.some(x=>x.includes('P1 screens remain in first-release scope')));
+assert.equal(m.runtimeStatus.physicalUiTests,'NOT_RUN_BY_USER_INSTRUCTION');
+console.log(`P4-C PRIORITY/SCOPE RECONCILIATION: PASS (${Object.keys(m.criticalScreenRationale).length} critical P0 screen rationales, ${sec.requirements.length} security requirements, 4 initial services)`);
+console.log('Static scope reconciliation only; runtime API/permission conformance and physical UI tests remain pending.');

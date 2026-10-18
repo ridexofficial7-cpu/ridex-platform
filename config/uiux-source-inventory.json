@@ -1,0 +1,2208 @@
+{
+  "schemaVersion": 1,
+  "revision": 2,
+  "date": "2026-10-12",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_92_SCREEN_SOURCE_INVENTORY_RECONCILED; ROUTE_API_PERMISSION_MAPPING_AND_PHYSICAL_TESTS_PENDING",
+  "sourceInventory": "config/screen-to-key-map.json",
+  "validator": "scripts/verify-uiux-source-inventory.mjs",
+  "command": "npm run verify:uiux-source-inventory",
+  "screenCount": 92,
+  "uniqueScreenIds": 92,
+  "surfaceCounts": {
+    "Customer App": 27,
+    "Driver App": 20,
+    "Admin Mobile": 8,
+    "Super Admin Mobile / Private Control": 7,
+    "Admin Web": 20,
+    "Public Website / Landing Page": 5,
+    "Android Gateway / Broadcaster Companion": 5
+  },
+  "priorityCounts": {
+    "P0": 75,
+    "P1": 16,
+    "P2": 1
+  },
+  "policy": {
+    "sourcePresenceIsNotImplementationProof": true,
+    "testShellIsNotOperationalSuperAdminControl": true,
+    "candidateTranslationKeysAreNotApprovedCopy": true,
+    "routeApiPermissionAndExitStateMappingsRemainOpen": true,
+    "physicalUiAccessibilityTestsDeferred": true
+  },
+  "screens": [
+    {
+      "screenId": "C-01",
+      "appSurface": "Customer App",
+      "screenName": "Splash / launch and version check",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 5,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-02",
+      "appSurface": "Customer App",
+      "screenName": "Welcome, language and permission education",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 8,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-03",
+      "appSurface": "Customer App",
+      "screenName": "Login - mobile number",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 14,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-04",
+      "appSurface": "Customer App",
+      "screenName": "OTP verification",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 7,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-05",
+      "appSurface": "Customer App",
+      "screenName": "Profile completion",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-06",
+      "appSurface": "Customer App",
+      "screenName": "Customer Home",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-07",
+      "appSurface": "Customer App",
+      "screenName": "Pickup and destination search",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 5,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-08",
+      "appSurface": "Customer App",
+      "screenName": "Service selection",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-09",
+      "appSurface": "Customer App",
+      "screenName": "Passenger vehicle selection",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-10",
+      "appSurface": "Customer App",
+      "screenName": "Parcel booking details",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-11",
+      "appSurface": "Customer App",
+      "screenName": "Goods booking details",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-12",
+      "appSurface": "Customer App",
+      "screenName": "Shared / Connection / Event ride details",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-13",
+      "appSurface": "Customer App",
+      "screenName": "Fare quote and breakdown",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-14",
+      "appSurface": "Customer App",
+      "screenName": "Payment method",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 5,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-15",
+      "appSurface": "Customer App",
+      "screenName": "Booking confirmation and matching",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-16",
+      "appSurface": "Customer App",
+      "screenName": "Driver assigned",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-17",
+      "appSurface": "Customer App",
+      "screenName": "Live trip tracking",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-18",
+      "appSurface": "Customer App",
+      "screenName": "Ride start/finish QR and OTP verification",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-19",
+      "appSurface": "Customer App",
+      "screenName": "Trip completed and receipt",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-20",
+      "appSurface": "Customer App",
+      "screenName": "Rating and feedback",
+      "priority": "P2",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-21",
+      "appSurface": "Customer App",
+      "screenName": "Trip history and details",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-22",
+      "appSurface": "Customer App",
+      "screenName": "Wallet",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 5,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-23",
+      "appSurface": "Customer App",
+      "screenName": "Notifications inbox",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-24",
+      "appSurface": "Customer App",
+      "screenName": "Profile, saved places and settings",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 9,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-25",
+      "appSurface": "Customer App",
+      "screenName": "Help, complaint and safety",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 6,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-26",
+      "appSurface": "Customer App",
+      "screenName": "Cancel booking and reason",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "C-27",
+      "appSurface": "Customer App",
+      "screenName": "Global error/offline recovery",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/customer-mobile/customer/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/customer/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 21,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-01",
+      "appSurface": "Driver App",
+      "screenName": "Launch, permission and readiness",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-02",
+      "appSurface": "Driver App",
+      "screenName": "Driver login",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 11,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-03",
+      "appSurface": "Driver App",
+      "screenName": "Driver OTP verification",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 6,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-04",
+      "appSurface": "Driver App",
+      "screenName": "Driver profile and registration draft",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-05",
+      "appSurface": "Driver App",
+      "screenName": "KYC document upload",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-06",
+      "appSurface": "Driver App",
+      "screenName": "Vehicle information and eligibility",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-07",
+      "appSurface": "Driver App",
+      "screenName": "State/city service assignment",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-08",
+      "appSurface": "Driver App",
+      "screenName": "Application review status",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-09",
+      "appSurface": "Driver App",
+      "screenName": "Driver Home and availability",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-10",
+      "appSurface": "Driver App",
+      "screenName": "Incoming ride request",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-11",
+      "appSurface": "Driver App",
+      "screenName": "Accepted ride and pickup navigation",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-12",
+      "appSurface": "Driver App",
+      "screenName": "Pickup verification",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-13",
+      "appSurface": "Driver App",
+      "screenName": "Active trip and navigation",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-14",
+      "appSurface": "Driver App",
+      "screenName": "Trip completion verification",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-15",
+      "appSurface": "Driver App",
+      "screenName": "Earnings and trip history",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 5,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-16",
+      "appSurface": "Driver App",
+      "screenName": "Cash collection and settlement",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-17",
+      "appSurface": "Driver App",
+      "screenName": "Driver notifications",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-18",
+      "appSurface": "Driver App",
+      "screenName": "Driver profile/documents/settings",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 9,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-19",
+      "appSurface": "Driver App",
+      "screenName": "SOS and emergency status",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "D-20",
+      "appSurface": "Driver App",
+      "screenName": "No requests / offline / readiness blocker",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/driver-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/driver-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/driver/state/DriverRuntime.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 19,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-01",
+      "appSurface": "Admin Mobile",
+      "screenName": "Admin login",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 6,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-02",
+      "appSurface": "Admin Mobile",
+      "screenName": "Operations dashboard",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-03",
+      "appSurface": "Admin Mobile",
+      "screenName": "Alert inbox/detail",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-04",
+      "appSurface": "Admin Mobile",
+      "screenName": "Driver list and detail",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-05",
+      "appSurface": "Admin Mobile",
+      "screenName": "KYC review",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-06",
+      "appSurface": "Admin Mobile",
+      "screenName": "Live ride operations/detail",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-07",
+      "appSurface": "Admin Mobile",
+      "screenName": "Pricing/service settings",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AM-08",
+      "appSurface": "Admin Mobile",
+      "screenName": "Notifications, Admin profile and sessions",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_SCREEN_COMPONENT_MAPPING_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COMPONENT_MAPPING_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-mobile/admin/App.tsx",
+          "exists": true
+        },
+        {
+          "path": "apps/ridex-mobile/admin/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "SA-01",
+      "appSurface": "Super Admin Mobile / Private Control",
+      "screenName": "Private unlock and device trust",
+      "priority": "P0",
+      "sourcePresenceStatus": "TEST_SHELL_PRESENT_PRIVILEGED_FUNCTIONALITY_PENDING",
+      "implementationClassification": "STRUCTURAL_TEST_SHELL_ONLY_PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+      "sourcePaths": [
+        {
+          "path": "apps/super-admin-control/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "SA-02",
+      "appSurface": "Super Admin Mobile / Private Control",
+      "screenName": "System overview",
+      "priority": "P0",
+      "sourcePresenceStatus": "TEST_SHELL_PRESENT_PRIVILEGED_FUNCTIONALITY_PENDING",
+      "implementationClassification": "STRUCTURAL_TEST_SHELL_ONLY_PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+      "sourcePaths": [
+        {
+          "path": "apps/super-admin-control/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "SA-03",
+      "appSurface": "Super Admin Mobile / Private Control",
+      "screenName": "TEST/LIVE mode control",
+      "priority": "P0",
+      "sourcePresenceStatus": "TEST_SHELL_PRESENT_PRIVILEGED_FUNCTIONALITY_PENDING",
+      "implementationClassification": "STRUCTURAL_TEST_SHELL_ONLY_PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+      "sourcePaths": [
+        {
+          "path": "apps/super-admin-control/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "SA-04",
+      "appSurface": "Super Admin Mobile / Private Control",
+      "screenName": "Release/deployment gate",
+      "priority": "P0",
+      "sourcePresenceStatus": "TEST_SHELL_PRESENT_PRIVILEGED_FUNCTIONALITY_PENDING",
+      "implementationClassification": "STRUCTURAL_TEST_SHELL_ONLY_PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+      "sourcePaths": [
+        {
+          "path": "apps/super-admin-control/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "SA-05",
+      "appSurface": "Super Admin Mobile / Private Control",
+      "screenName": "Critical configuration and approvals",
+      "priority": "P0",
+      "sourcePresenceStatus": "TEST_SHELL_PRESENT_PRIVILEGED_FUNCTIONALITY_PENDING",
+      "implementationClassification": "STRUCTURAL_TEST_SHELL_ONLY_PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+      "sourcePaths": [
+        {
+          "path": "apps/super-admin-control/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "SA-06",
+      "appSurface": "Super Admin Mobile / Private Control",
+      "screenName": "Backup, recovery and incident control",
+      "priority": "P0",
+      "sourcePresenceStatus": "TEST_SHELL_PRESENT_PRIVILEGED_FUNCTIONALITY_PENDING",
+      "implementationClassification": "STRUCTURAL_TEST_SHELL_ONLY_PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+      "sourcePaths": [
+        {
+          "path": "apps/super-admin-control/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 0,
+      "mappingStatus": "NO_KEY_LINK_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "SA-07",
+      "appSurface": "Super Admin Mobile / Private Control",
+      "screenName": "Privileged audit and session management",
+      "priority": "P0",
+      "sourcePresenceStatus": "TEST_SHELL_PRESENT_PRIVILEGED_FUNCTIONALITY_PENDING",
+      "implementationClassification": "STRUCTURAL_TEST_SHELL_ONLY_PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+      "sourcePaths": [
+        {
+          "path": "apps/super-admin-control/App.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-01",
+      "appSurface": "Admin Web",
+      "screenName": "Login and Admin Type selector",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/LoginPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 40,
+      "candidateKeyCount": 33,
+      "mappingStatus": "DIRECT_KEY_USAGE_AND_CANDIDATES",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-02",
+      "appSurface": "Admin Web",
+      "screenName": "Web OTP / step-up",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/LoginPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 43,
+      "candidateKeyCount": 18,
+      "mappingStatus": "DIRECT_KEY_USAGE_AND_CANDIDATES",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-03",
+      "appSurface": "Admin Web",
+      "screenName": "Admin shell and navigation",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/layouts/AdminLayout.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 8,
+      "candidateKeyCount": 91,
+      "mappingStatus": "DIRECT_KEY_USAGE_AND_CANDIDATES",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-04",
+      "appSurface": "Admin Web",
+      "screenName": "Dashboard",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/DashboardPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 37,
+      "candidateKeyCount": 6,
+      "mappingStatus": "DIRECT_KEY_USAGE_AND_CANDIDATES",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-05",
+      "appSurface": "Admin Web",
+      "screenName": "Live operations board",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/LiveOperationsPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-06",
+      "appSurface": "Admin Web",
+      "screenName": "Booking/ride detail",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/BookingDetailPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-07",
+      "appSurface": "Admin Web",
+      "screenName": "Driver management",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/DriverManagementPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-08",
+      "appSurface": "Admin Web",
+      "screenName": "Onboarding/KYC review queue",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/KycReviewPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-09",
+      "appSurface": "Admin Web",
+      "screenName": "Customer management",
+      "priority": "P1",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/CustomerManagementPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-10",
+      "appSurface": "Admin Web",
+      "screenName": "Service, vehicle and ride-type configuration",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/ServiceConfigurationPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-11",
+      "appSurface": "Admin Web",
+      "screenName": "Fare and smart pricing rules",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/PricingRulesPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 1,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-12",
+      "appSurface": "Admin Web",
+      "screenName": "Geographic scope and Admin assignment",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/AdminScopeAssignmentPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 5,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-13",
+      "appSurface": "Admin Web",
+      "screenName": "OTP purpose/security configuration",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/OtpConfigurationPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-14",
+      "appSurface": "Admin Web",
+      "screenName": "Security audit and configuration history",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/AuditHistoryPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-15",
+      "appSurface": "Admin Web",
+      "screenName": "Realtime, push and delivery health",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/DeliveryHealthPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 8,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-16",
+      "appSurface": "Admin Web",
+      "screenName": "Reports and exports",
+      "priority": "P1",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/ReportsPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 7,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-17",
+      "appSurface": "Admin Web",
+      "screenName": "System health, backup and recovery",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/SystemHealthRecoveryPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-18",
+      "appSurface": "Admin Web",
+      "screenName": "Support and incident case workspace",
+      "priority": "P1",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/SupportCasesPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 6,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-19",
+      "appSurface": "Admin Web",
+      "screenName": "Public website links and download settings",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/PublicLinksSettingsPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 8,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "AW-20",
+      "appSurface": "Admin Web",
+      "screenName": "Admin account, sessions and permissions",
+      "priority": "P0",
+      "sourcePresenceStatus": "SCREEN_COMPONENT_SOURCE_PRESENT",
+      "implementationClassification": "SOURCE_COMPONENT_PRESENT_ROUTE_AND_STATE_VALIDATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/admin-web/src/pages/AdminAccessManagementPage.tsx",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "WEB-01",
+      "appSurface": "Public Website / Landing Page",
+      "screenName": "Landing page / home",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "implementationClassification": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/public-website/index.html",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/script.js",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/style.css",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "WEB-02",
+      "appSurface": "Public Website / Landing Page",
+      "screenName": "Service detail sections",
+      "priority": "P1",
+      "sourcePresenceStatus": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "implementationClassification": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/public-website/index.html",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/script.js",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/style.css",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "WEB-03",
+      "appSurface": "Public Website / Landing Page",
+      "screenName": "App downloads",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "implementationClassification": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/public-website/index.html",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/script.js",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/style.css",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "WEB-04",
+      "appSurface": "Public Website / Landing Page",
+      "screenName": "Admin Web entry",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "implementationClassification": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/public-website/index.html",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/script.js",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/style.css",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "WEB-05",
+      "appSurface": "Public Website / Landing Page",
+      "screenName": "Privacy, terms, safety and support",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "implementationClassification": "SOURCE_PRESENT_LOCALIZATION_PENDING",
+      "sourcePaths": [
+        {
+          "path": "apps/public-website/index.html",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/script.js",
+          "exists": true
+        },
+        {
+          "path": "apps/public-website/style.css",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "GW-01",
+      "appSurface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Gateway pairing / identity",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_USER_COPY_REVIEW_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COPY_REVIEW_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/gateway-android/app/src/main/java/com/ridex/gateway/",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "GW-02",
+      "appSurface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Readiness and permission diagnostics",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_USER_COPY_REVIEW_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COPY_REVIEW_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/gateway-android/app/src/main/java/com/ridex/gateway/",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 3,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "GW-03",
+      "appSurface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Queue and active job",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_USER_COPY_REVIEW_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COPY_REVIEW_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/gateway-android/app/src/main/java/com/ridex/gateway/",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "GW-04",
+      "appSurface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Delivery result and ACK history",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_USER_COPY_REVIEW_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COPY_REVIEW_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/gateway-android/app/src/main/java/com/ridex/gateway/",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 2,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    },
+    {
+      "screenId": "GW-05",
+      "appSurface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Gateway security settings",
+      "priority": "P0",
+      "sourcePresenceStatus": "SOURCE_PRESENT_USER_COPY_REVIEW_REQUIRED",
+      "implementationClassification": "SOURCE_PRESENT_COPY_REVIEW_REQUIRED",
+      "sourcePaths": [
+        {
+          "path": "apps/gateway-android/app/src/main/java/com/ridex/gateway/",
+          "exists": true
+        }
+      ],
+      "directTranslationKeyCount": 0,
+      "candidateKeyCount": 4,
+      "mappingStatus": "CANDIDATE_KEYS_REVIEW_REQUIRED",
+      "routeApiPermissionMapStatus": "NOT_COMPLETED",
+      "physicalUiStateTests": "NOT_RUN"
+    }
+  ],
+  "routeApiPermissionMap": {
+    "path": "config/screen-route-api-permission-map.json",
+    "validator": "scripts/verify-screen-route-api-permission-map.mjs",
+    "status": "STATIC_CANDIDATE_MAP; EXACT_BACKEND_METHOD_DTO_AND_PERMISSION_MATCH_PENDING"
+  }
+}

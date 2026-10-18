@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "date": "2026-10-12",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "IMPLEMENTED_STATIC; TEST_ONLY_EXPLICIT_OPT_IN; LIVE_SILENT; PHYSICAL_LOGGING_AUDIT_NOT_RUN",
+  "runtimeModule": "packages/localization/src/localizationDiagnostics.mjs",
+  "declaration": "packages/localization/src/localizationDiagnostics.d.mts",
+  "validator": "scripts/verify-localization-diagnostics.mjs",
+  "enablement": {
+    "adminWeb": "VITE_RIDEX_ENVIRONMENT=TEST AND VITE_ENABLE_DEBUG=true",
+    "mobile": "EXPO_PUBLIC_RIDEX_TEST_MODE=true AND EXPO_PUBLIC_RIDEX_I18N_DIAGNOSTICS=true",
+    "default": "disabled",
+    "live": "always disabled"
+  },
+  "loggedFields": ["key", "locale", "build"],
+  "forbiddenFields": ["translatedText", "fallbackText", "interpolationValues", "requestPayload", "actorId", "phoneNumber", "otp", "token", "privateKey", "providerResponse", "personalData"],
+  "limits": {
+    "deduplicatePerBuildAndLocale": true,
+    "maxUniqueReportsPerInstance": 100,
+    "keyIdentifierMaxLength": 100,
+    "buildIdentifierMaxLength": 32,
+    "supportedDiagnosticLocales": ["en-IN", "hi-IN"]
+  },
+  "fallback": "Missing keys continue to use the shared safe UI fallback; diagnostics failures are non-fatal.",
+  "physicalTests": "DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH"
+}

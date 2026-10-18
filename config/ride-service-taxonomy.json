@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 2,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "CANONICAL_BASELINE_AND_BACKEND_SERVICE_CONTROL_AUTHORITY_GUARD_IMPLEMENTED; RUNTIME_AND_PERMISSION_TESTS_PENDING",
+  "authority": "This file maps the already recorded RideX service/vehicle decisions. Backend remains authoritative for service validation, vehicle eligibility, price and booking state. It does not itself alter runtime behavior.",
+  "bookingTypes": [
+    "RIDE",
+    "GOODS"
+  ],
+  "passengerRideTypes": [
+    {
+      "code": "CITY_RIDE",
+      "productName": "Full Ride",
+      "passengerCountRequired": false,
+      "vehicleCategoryCodes": [
+        "PASSENGER_E_RICKSHAW",
+        "PASSENGER_ELECTRIC_AUTO"
+      ]
+    },
+    {
+      "code": "SHARING_RIDE",
+      "productName": "Share Ride",
+      "passengerCountRequired": true,
+      "vehicleCategoryCodes": [
+        "PASSENGER_E_RICKSHAW",
+        "PASSENGER_ELECTRIC_AUTO"
+      ]
+    },
+    {
+      "code": "INTERCITY_RIDE",
+      "productName": "Connection Ride",
+      "passengerCountRequired": true,
+      "vehicleCategoryCodes": [
+        "PASSENGER_E_RICKSHAW",
+        "PASSENGER_ELECTRIC_AUTO"
+      ]
+    }
+  ],
+  "eventRide": {
+    "serviceType": "EVENT",
+    "availabilityRideType": "EVENT_RIDE",
+    "persistedBookingType": "RIDE",
+    "persistedRideType": "CITY_RIDE",
+    "persistedServiceSubtype": "EVENT_RIDE",
+    "passengerCountRequired": true,
+    "vehicleCategoryCodes": [
+      "PASSENGER_E_RICKSHAW",
+      "PASSENGER_ELECTRIC_AUTO"
+    ],
+    "requiredVehicleAttributes": [
+      "operationalVehicleType",
+      "speed",
+      "seating"
+    ],
+    "mappingNote": "EVENT_RIDE is used as the eligibility/availability discriminator; persisted Booking.rideType uses the Prisma RideType enum CITY_RIDE and keeps EVENT_RIDE in serviceSubtype."
+  },
+  "parcel": {
+    "bookingType": "GOODS",
+    "serviceType": "PARCEL",
+    "serviceSubtypes": [
+      "CITY_LOGISTIC_PARCEL",
+      "QUICK_LOGISTIC_PARCEL"
+    ],
+    "vehicleCategoryCodes": [
+      "CARGO_DELIVERY"
+    ],
+    "requiredVehicleAttributes": [
+      "operationalVehicleType",
+      "speed",
+      "range",
+      "payload"
+    ],
+    "passengerCountRequired": false
+  },
+  "goods": {
+    "bookingType": "GOODS",
+    "serviceType": "GOODS",
+    "sizeOptions": [
+      "SMALL",
+      "MEDIUM",
+      "LARGE"
+    ],
+    "vehicleCategoryCodes": [
+      "CARGO_DELIVERY"
+    ],
+    "requiredVehicleAttributes": [
+      "operationalVehicleType",
+      "speed",
+      "range",
+      "payload"
+    ],
+    "passengerCountRequired": false
+  },
+  "vehicleCatalog": {
+    "passengerCategoryCodes": [
+      "PASSENGER_E_RICKSHAW",
+      "PASSENGER_ELECTRIC_AUTO"
+    ],
+    "cargoCategoryCode": "CARGO_DELIVERY",
+    "backendIsAuthoritativeForEligibility": true,
+    "clientFilteringIsAdvisoryOnly": true
+  },
+  "observedSourceMappings": {
+    "bookingRoute": "services/backend/src/routes/bookings.ts accepts RIDE/GOODS and CITY_RIDE/SHARING_RIDE/INTERCITY_RIDE; permits the two logistic parcel variants; checks CARGO_DELIVERY eligibility.",
+    "eventRoute": "services/backend/src/routes/events.ts calls availability with serviceType EVENT and rideType EVENT_RIDE, then persists bookingType RIDE, rideType CITY_RIDE, serviceSubtype EVENT_RIDE and passengerCount.",
+    "mobileCatalog": "apps/ridex-mobile/shared/vehicleCatalog.ts filters passenger vehicles by the two passenger category codes and cargo vehicles by CARGO_DELIVERY; event options are also limited by server-returned availability."
+  },
+  "pendingEndToEndChecks": [
+    "Cross-check all canonical fields through customer mobile request -> Backend validation -> matching -> persisted Booking -> Driver/Admin views.",
+    "Verify category catalogue records in the approved local database and confirm that active vehicle entries carry the expected eligibility attributes.",
+    "Validate Full Ride passenger-count omission, Share/Connection/Event passenger-count requirements, and Parcel/Goods cargo specifications during final physical/E2E phase.",
+    "Review mutation authorization for service enablement toggles: the matching-configuration PUT currently uses the broad operational configuration permission; confirm the intended Admin/Super Admin authority before final runtime sign-off."
+  ],
+  "serviceEnablementPolicy": {
+    "status": "USER_APPROVED_REQUIREMENTS_BACKEND_AND_UI_ENFORCEMENT_UNVERIFIED",
+    "independentServices": [
+      {
+        "serviceType": "PASSENGER",
+        "initiallyEnabled": true
+      },
+      {
+        "serviceType": "PARCEL",
+        "initiallyEnabled": true
+      },
+      {
+        "serviceType": "GOODS",
+        "initiallyEnabled": true
+      },
+      {
+        "serviceType": "EVENT",
+        "initiallyEnabled": true
+      }
+    ],
+    "disableEffects": [
+      "Block new quote, availability, booking, matching and dispatch for the disabled service.",
+      "Do not automatically cancel already-active trips when a service is disabled.",
+      "Enforce service enablement in Backend eligibility and booking handlers; client-side hiding/filtering is advisory only."
+    ],
+    "eventEnforcementRequirement": "EVENT must have an independently enforced service switch; it must not accidentally inherit only passengerEnabled because persisted Event bookings may be represented as RIDE/CITY_RIDE plus EVENT_RIDE subtype.",
+    "runtimeImplementationStatus": "EVENT_TOGGLE_WIRED_TO_MATCHING_AND_EVENT_DISCOVERY_BOOKING; DATABASE_MIGRATION_ADDED_NOT_EXECUTED; RUNTIME_TESTS_DEFERRED",
+    "mutationAuthorityReview": {
+      "status": "CONSERVATIVE_SOURCE_GUARD_IMPLEMENTED_OWNER_APPROVAL_AND_RUNTIME_TEST_PENDING",
+      "source": "services/backend/src/routes/admin.ts::PUT /matching/configuration",
+      "observedGuard": "Super Admin may change Passenger/Shared/Parcel/Goods/Event enablement; operational Admin may tune unrelated matching fields but receives 403 if any service-availability toggle actually changes.",
+      "securityReason": "The previous broad operational configuration permission could change service availability while the role decision was pending; fail-closed default restricts this high-impact toggle to Super Admin.",
+      "runtimeAuthorizationTest": "NOT_RUN_PER_USER_CODE_ONLY_INSTRUCTION"
+    }
+  },
+  "date": "2026-10-13"
+}

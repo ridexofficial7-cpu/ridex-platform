@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_EXTERNAL_INTEGRATION_CATALOGUE_CREATED_RUNTIME_AND_SECRET_VERIFICATION_PENDING",
+  "policy": [
+    "Catalogue stores variable names only; never copy values/secrets into this file.",
+    "Each external provider needs an explicit TEST/local adapter or an approved reason why a sandbox is required.",
+    "Provider timeouts, retries, allowlists, signatures, rate limits, idempotency and redaction must be tested per integration.",
+    "Client-side environment variables are configuration aids, not trust boundaries.",
+    "Local-only project foundation must not silently contact an old/remote database or LIVE provider."
+  ],
+  "integrations": [
+    {
+      "id": "routing-google-routes",
+      "category": "maps/routing",
+      "sourceFiles": [
+        "services/backend/src/services/routing.ts"
+      ],
+      "configurationKeys": [
+        "GOOGLE_ROUTES_API_URL",
+        "GOOGLE_MAPS_API_KEY",
+        "RIDEX_ALLOWED_GOOGLE_ROUTES_HOSTS",
+        "RIDEX_ALLOW_CUSTOM_GOOGLE_ROUTES_ENDPOINT",
+        "ROUTING_TIMEOUT_MS",
+        "ROUTING_RETRY_DELAY_MS",
+        "ROUTING_CACHE_TTL_MS"
+      ],
+      "security": "host allowlist and custom-endpoint opt-in; API key remains server-side",
+      "localTestMode": "route response fixture/mock not confirmed",
+      "status": "IMPLEMENTED_REFERENCE_VERIFY_FALLBACK"
+    },
+    {
+      "id": "routing-osrm",
+      "category": "maps/routing fallback",
+      "sourceFiles": [
+        "services/backend/src/services/routing.ts"
+      ],
+      "configurationKeys": [
+        "OSRM_BASE_URL",
+        "RIDEX_ALLOWED_OSRM_HOSTS",
+        "RIDEX_ALLOW_PUBLIC_OSRM"
+      ],
+      "security": "explicit allowlist and public endpoint opt-in",
+      "localTestMode": "offline deterministic mock not confirmed",
+      "status": "IMPLEMENTED_REFERENCE_VERIFY_FALLBACK"
+    },
+    {
+      "id": "otp-delivery-provider",
+      "category": "authentication/OTP delivery",
+      "sourceFiles": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/src/routes/configuration.ts"
+      ],
+      "configurationKeys": [
+        "OTP_PROVIDER_URL",
+        "OTP_PROVIDER_TIMEOUT_MS"
+      ],
+      "security": "purpose-code delivery mapping controls; do not log OTP or provider credentials",
+      "localTestMode": "approved test-recipient/provider sandbox behavior requires final test review",
+      "status": "SOURCE_PRESENT_POLICY_REVIEW_PENDING"
+    },
+    {
+      "id": "razorpay-payment",
+      "category": "payments",
+      "sourceFiles": [
+        "services/backend/src/integrations/razorpay.ts",
+        "services/backend/src/routes/payments.ts",
+        "services/backend/src/routes/customer.ts"
+      ],
+      "configurationKeys": [
+        "RAZORPAY_LIVE_KEY_ID"
+      ],
+      "security": "server-side signature/amount/currency/order verification; real LIVE credentials forbidden in source ZIP",
+      "localTestMode": "mock/test provider contract and test-mode gating require final verification",
+      "status": "SOURCE_PRESENT_FINANCIAL_PROVIDER_REVIEW_PENDING"
+    },
+    {
+      "id": "razorpayx-payouts",
+      "category": "driver payout/settlement",
+      "sourceFiles": [
+        "services/backend/src/integrations/razorpayX.ts",
+        "services/backend/src/routes/payouts.ts"
+      ],
+      "configurationKeys": [
+        "RAZORPAY_LIVE_KEY_ID"
+      ],
+      "security": "provider payout ID, idempotency, amount and settlement reconciliation",
+      "localTestMode": "test/mock payout behavior requires final verification",
+      "status": "SOURCE_PRESENT_FINANCIAL_PROVIDER_REVIEW_PENDING"
+    },
+    {
+      "id": "firebase-push",
+      "category": "push notifications",
+      "sourceFiles": [
+        "services/backend/src/integrations/firebase.ts",
+        "services/backend/src/services/pushNotifications.ts"
+      ],
+      "configurationKeys": [
+        "FIREBASE_REQUEST_TIMEOUT_MS",
+        "GOOGLE_SERVICES_JSON"
+      ],
+      "security": "server credential and token redaction; push is not authoritative business state",
+      "localTestMode": "local no-op/fake sender policy requires final verification",
+      "status": "SOURCE_PRESENT_PROVIDER_CONFIGURATION_PENDING"
+    },
+    {
+      "id": "masked-calling",
+      "category": "telephony",
+      "sourceFiles": [
+        "services/backend/src/services/maskedCallProvider.ts",
+        "services/backend/src/routes/calls.ts"
+      ],
+      "configurationKeys": [
+        "RIDEX_MASKED_CALL_PROVIDER",
+        "RIDEX_MASKED_CALL_PROVIDER_API_KEY",
+        "RIDEX_MASKED_CALL_PROVIDER_END_URL",
+        "RIDEX_MASKED_CALL_PROVIDER_NAME",
+        "RIDEX_MASKED_CALL_PROVIDER_TIMEOUT_MS",
+        "RIDEX_MASKED_CALL_PROVIDER_URL"
+      ],
+      "security": "provider authentication, request limits and no direct exposure of private numbers",
+      "localTestMode": "mock-call result path needs final verification",
+      "status": "SOURCE_PRESENT_PROVIDER_POLICY_PENDING"
+    },
+    {
+      "id": "private-assets-and-attachments",
+      "category": "private object access",
+      "sourceFiles": [
+        "services/backend/src/routes/support.ts",
+        "services/backend/src/routes/customer.ts"
+      ],
+      "configurationKeys": [
+        "RIDEX_ATTACHMENT_SIGNING_SECRET",
+        "RIDEX_PRIVATE_URL_SIGNING_SECRET"
+      ],
+      "security": "short-lived signed access, owner authorization and secret redaction",
+      "localTestMode": "local storage/URL signing contract needs final verification",
+      "status": "SOURCE_PRESENT_SECRET_POLICY_REVIEW"
+    },
+    {
+      "id": "provider-backend-result-callback",
+      "category": "Broadcaster result/callback",
+      "sourceFiles": [
+        "services/broadcaster-provider/src/services/backend-result-outbox.service.ts"
+      ],
+      "configurationKeys": [
+        "RIDEX_BACKEND_RESULT_URL",
+        "RIDEX_BACKEND_API_KEY",
+        "RIDEX_BACKEND_RESULT_MAX_ATTEMPTS"
+      ],
+      "security": "authenticated callback, durable retry outbox and idempotent result processing",
+      "localTestMode": "provider callback target and local fake result endpoint require final verification",
+      "status": "SOURCE_PRESENT_CALLBACK_CONTRACT_REVIEW"
+    },
+    {
+      "id": "provider-storage-and-tls",
+      "category": "Provider storage and transport",
+      "sourceFiles": [
+        "services/broadcaster-provider/src/server.ts",
+        "services/broadcaster-provider/src/services/provider-storage.service.ts",
+        "services/broadcaster-provider/src/services/provider-postgres.service.ts"
+      ],
+      "configurationKeys": [
+        "PROVIDER_STORAGE_DRIVER",
+        "PROVIDER_SQLITE_PATH",
+        "PROVIDER_DATABASE_URL",
+        "PROVIDER_DATABASE_CA_PATH",
+        "PROVIDER_DATABASE_SSL",
+        "PROVIDER_TLS_PFX_PATH",
+        "PROVIDER_TLS_PFX_PASSWORD",
+        "DATA_ENCRYPTION_KEY"
+      ],
+      "security": "one authoritative persistence driver per environment; TLS key/cert material stays outside source archive",
+      "localTestMode": "JSON/SQLite/PostgreSQL coexist; canonical choice pending",
+      "status": "DECISION_PENDING_STORAGE_AND_TLS"
+    },
+    {
+      "id": "gateway-signing-and-enrolment",
+      "category": "Gateway security/configuration",
+      "sourceFiles": [
+        "services/broadcaster-provider/src/services/gateway-command-signing.service.ts",
+        "services/broadcaster-provider/src/services/gateway-signed-config.service.ts",
+        "services/broadcaster-provider/src/services/gateway-auth.service.ts"
+      ],
+      "configurationKeys": [
+        "GATEWAY_COMMAND_SIGNING_KEY_ID",
+        "GATEWAY_COMMAND_SIGNING_PRIVATE_KEY_PKCS8_BASE64",
+        "GATEWAY_ENROLLMENT_CODE",
+        "GATEWAY_COMMAND_EXPIRY_SECONDS",
+        "GATEWAY_QUEUE_LEASE_SECONDS",
+        "GATEWAY_COMMAND_DELIVERY_LEASE_SECONDS",
+        "GATEWAY_COMMAND_MAX_DELIVERY_ATTEMPTS"
+      ],
+      "security": "private signing key external to source; rotation/revocation + signed config; no secret values in catalogue",
+      "localTestMode": "key generation/provisioning and certificate trust verification deferred",
+      "status": "SOURCE_PRESENT_KEY_LIFECYCLE_REVIEW_PENDING"
+    }
+  ],
+  "openItems": [
+    "Verify all provider code paths against local-only defaults without running external traffic.",
+    "Create/approve local fake adapters where no existing local mock is present.",
+    "Confirm TEST/LIVE credentials are blank or non-production and stay outside archive; do not print values.",
+    "Run provider contract/failure tests only in final physical-test phase."
+  ]
+}

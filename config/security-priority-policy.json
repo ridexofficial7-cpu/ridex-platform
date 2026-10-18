@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "policyRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_SECURITY_PRIORITY_POLICY_CREATED_APPROVAL_AND_RELEASE_EVIDENCE_PENDING",
+  "priorityLevels": [
+    {
+      "level": "P0",
+      "meaning": "Blocking security, data-integrity, financial-correctness, authorization, critical-journey or required recovery control.",
+      "releaseRule": "Must be implemented and have passing evidence before enabling affected critical/LIVE behavior. An accepted-risk note cannot silently waive a mandatory P0.",
+      "exceptionRule": "If an integration/feature is conditional, keep it disabled behind a server-controlled feature gate until required controls pass; this is not the same as marking the control passed.",
+      "examples": [
+        "authentication/session integrity",
+        "server-side authorization/geographic scope",
+        "payment/webhook authenticity where enabled",
+        "TEST/LIVE isolation",
+        "critical state atomicity/idempotency",
+        "secure backup/restore safety"
+      ]
+    },
+    {
+      "level": "P1",
+      "meaning": "Important reliability, monitoring, usability, auditability or secondary hardening requirement.",
+      "releaseRule": "Complete before general rollout or the specific feature’s release gate; if not complete, document impact, owner, compensating controls and target date.",
+      "exceptionRule": "Risk acceptance must be explicit, bounded, owned and reviewed; it must not weaken legal/security obligations or bypass a mandatory P0.",
+      "examples": [
+        "performance and fault baselines",
+        "operational dashboards/alerts",
+        "secondary localization/UX/error recovery",
+        "non-critical integration hardening"
+      ]
+    },
+    {
+      "level": "P2",
+      "meaning": "Optional/future improvement where the approved scope explicitly permits deferral.",
+      "releaseRule": "May be scheduled after P0/P1 according to product scope; never reclassify a security P0 as P2 merely to ship.",
+      "exceptionRule": "Must have a recorded scope decision and owner; no untracked downgrade.",
+      "examples": [
+        "non-blocking visual polish or optional diagnostics not required by an acceptance criterion"
+      ]
+    }
+  ],
+  "conditionalPriorityRules": [
+    {
+      "rule": "P0_IF_ENABLED",
+      "meaning": "For an optional provider/integration, controls are mandatory before the integration can be enabled; until then it must remain disabled and unreachable through client-controlled flags."
+    },
+    {
+      "rule": "P0_BLOCKING",
+      "meaning": "A critical P0 failure blocks the relevant release or feature; the failure cannot be relabelled PASS through a waiver."
+    },
+    {
+      "rule": "P1_RELEASE_TARGETED",
+      "meaning": "P1 may only be deferred through an approved, bounded risk record and must not undermine any P0 guardrail."
+    }
+  ],
+  "statusSemantics": [
+    {
+      "status": "NOT STARTED",
+      "meaning": "No implementation/evidence review recorded."
+    },
+    {
+      "status": "IN PROGRESS",
+      "meaning": "Work has started, not yet accepted."
+    },
+    {
+      "status": "BLOCKED",
+      "meaning": "A dependency/decision prevents the step from completing."
+    },
+    {
+      "status": "SKIPPED — FINAL REVIEW",
+      "meaning": "Per project execution policy, the step is deferred to the consolidated final-review list; this is not acceptance, closure or test pass."
+    },
+    {
+      "status": "PASS — EVIDENCE",
+      "meaning": "Acceptance criteria met with traceable test/build evidence, build/version/environment recorded."
+    },
+    {
+      "status": "FAIL",
+      "meaning": "Acceptance criteria not met; corrective work required."
+    },
+    {
+      "status": "ACCEPTED RISK",
+      "meaning": "Explicit, owned, time-bounded risk record; cannot auto-override mandatory P0 controls."
+    }
+  ],
+  "separationRules": [
+    "Security requirement P0/P1 priority is separate from UI screen P0/P1/P2 priority; one cannot change the other.",
+    "A baseline initial status VERIFY, implementation status UNVERIFIED, NOT_RUN test or static source match is not a PASS.",
+    "Skipped for final review means deferred discussion/testing, not that the requirement is complete.",
+    "Feature flags and client-side labels do not replace server-side authorization or environment gates.",
+    "Any exception requires a risk ID, owner, rationale, compensating controls, approval authority, expiry/review date and verification evidence."
+  ],
+  "approvalsAndEvidence": {
+    "requiredRiskFields": [
+      "riskId",
+      "requirementId",
+      "impact",
+      "owner",
+      "rationale",
+      "compensatingControls",
+      "approvalAuthority",
+      "approvedAt",
+      "expiresAt",
+      "reviewDate",
+      "evidenceReference"
+    ],
+    "mandatoryP0WaiverAllowed": false,
+    "policyApprovalStatus": "PENDING_FORMAL_PROJECT_OWNER_SIGNOFF"
+  },
+  "sourceRegister": "config/security-requirement-register.json",
+  "physicalTestPolicy": "DEFERRED_UNTIL_ALL_FOUR_PACKAGE_A_TO_Z_IMPLEMENTATIONS_COMPLETE",
+  "adminActionRiskClassification": {
+    "status": "USER_APPROVED_POLICY_ACTION_BY_ACTION_MAPPING_AND_RUNTIME_ENFORCEMENT_PENDING",
+    "separateAxisFromPriorityLevels": true,
+    "levels": [
+      {
+        "level": "LOW",
+        "controls": [
+          "normal valid session",
+          "existing permissions",
+          "applicable standard audit"
+        ]
+      },
+      {
+        "level": "MEDIUM",
+        "controls": [
+          "permission validation",
+          "input validation",
+          "audit"
+        ]
+      },
+      {
+        "level": "HIGH",
+        "controls": [
+          "explicit permission",
+          "fresh authentication and purpose-bound OTP when required by action policy",
+          "detailed audit",
+          "risk-based alert"
+        ]
+      },
+      {
+        "level": "CRITICAL",
+        "controls": [
+          "strict server-side authorization",
+          "trusted-device checks where applicable",
+          "fresh authentication",
+          "independent approval when policy requires",
+          "security audit",
+          "immediate alerting"
+        ]
+      }
+    ],
+    "enforcementRules": [
+      "Risk level is enforced by Backend handlers; hiding UI buttons is not a security control.",
+      "Missing required permission, verification or approval blocks the operation.",
+      "Audit should capture actor, target, timestamp, outcome, request ID and applicable before/after values.",
+      "Downgrading risk or weakening controls requires an authorized, audited configuration change.",
+      "The action-by-action risk map must be reconciled against actual Admin screens, endpoint handlers, permissions and the 67 security requirements."
+    ],
+    "implementationStatus": "POLICY_RECORDED_RUNTIME_ENFORCEMENT_UNVERIFIED"
+  }
+}

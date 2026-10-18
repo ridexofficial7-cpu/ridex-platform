@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 3,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_PRIVILEGED_CONFIGURATION_POLICY_MAPPED_RUNTIME_TESTS_DEFERRED",
+  "policy": {
+    "superAdmin": "Allowed; backend confirms role and approval state.",
+    "otpPurposeMutationAdmin": "Requires explicit system-configuration:CONFIGURE, system_configuration:CONFIGURE, security:CONFIGURE, or security:MANAGE_SECURITY permission in addition to authenticated and approved Admin status; Super Admin is allowed.",
+    "broadGenericConfigurationPermission": "Insufficient by itself for OTP purpose create/update/bulk/rollback/delete.",
+    "adminWebVisibility": "OTP Configuration navigation is visible to Super Admin or an Admin whose explicit System Configuration/Security permission matches; visibility does not replace Backend authorization.",
+    "readRoutes": "OTP status/list/history reads continue to use the general System Configuration permission boundary.",
+    "auditDeniedMutation": "A denied OTP mutation emits a denied CONFIG_CHANGE audit attempt without mutating configuration state."
+  },
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/configuration/otp/purposes",
+      "handler": "configuration.ts",
+      "guard": "requireConfigurationAdmin",
+      "kind": "READ"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/configuration/otp/history",
+      "handler": "configuration.ts",
+      "guard": "requireConfigurationAdmin",
+      "kind": "READ"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/admin/configuration/otp/purposes/:purposeCode/history",
+      "handler": "configuration.ts",
+      "guard": "requireConfigurationAdmin",
+      "kind": "READ"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/admin/configuration/otp/purposes/bulk",
+      "handler": "configuration.ts",
+      "guard": "requireOtpPurposeMutationAdmin",
+      "kind": "MUTATION"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/v1/admin/configuration/otp/purposes/:purposeCode",
+      "handler": "configuration.ts",
+      "guard": "requireOtpPurposeMutationAdmin",
+      "kind": "MUTATION"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/admin/configuration/otp/rollback",
+      "handler": "configuration.ts",
+      "guard": "requireOtpPurposeMutationAdmin",
+      "kind": "MUTATION"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/configuration/otp/purposes/:purposeCode",
+      "handler": "configuration.ts",
+      "guard": "requireOtpPurposeMutationAdmin",
+      "kind": "MUTATION"
+    }
+  ],
+  "versionHistoryControls": [
+    "Single OTP purpose write runs under the shared system-config lock and records generation-time configuration for new OTPs.",
+    "Successful bulk writes use one global version and operation ID; currently valid entries can commit while invalid entries are listed in failedChanges.",
+    "Rollback creates a new global version and records sourceVersion/targetVersion rather than rewriting historical versions.",
+    "Deleted OTP purpose current configuration/history and the rows owned by that purpose are deleted under the recorded deletion rule; unrelated bulk-operation audits are preserved.",
+    "Existing active OTPs retain generation-time configuration until normal expiry after a purpose deletion."
+  ],
+  "openDecisions": [
+    {
+      "id": "RX-DEC-044",
+      "topic": "otp-purpose-bulk-atomicity",
+      "status": "VERIFY",
+      "decision": "Approve whether an OTP purpose bulk operation must be all-or-nothing or may partially commit valid entries when other entries fail. Current source partially commits valid entries, records failedChanges and advances one global version if at least one entry succeeds. Do not change this behavior without the explicit decision.",
+      "owner": "Security/Platform/Project owner"
+    },
+    {
+      "id": "RX-DEC-047",
+      "topic": "canonical-otp-configuration-api-and-persistence-owner",
+      "status": "VERIFY",
+      "decision": "Two OTP configuration APIs with different persistence/history paths exist. Admin Web currently uses /admin/security/otp-configurations; the alternative /admin/configuration/otp/purposes API also exists. Approve one canonical API/persistence owner and reconcile clients before removing either path."
+    }
+  ],
+  "finalPhysicalTests": [
+    "Unauthorized Admin with only generic settings:CONFIGURE cannot mutate OTP purpose configuration.",
+    "Admin with explicit system-configuration:CONFIGURE can mutate only within existing session, approval and network boundaries.",
+    "Admin with explicit security:CONFIGURE can mutate OTP purposes.",
+    "Super Admin mutation succeeds under the documented privileged path.",
+    "Direct API calls cannot bypass the Web Admin navigation visibility rule or backend permission guard.",
+    "Bulk validation behavior matches the approved atomicity decision.",
+    "Single update increments global version and field-specific versions only for changed fields.",
+    "Rollback creates a new version with source/target audit provenance; earlier versions remain unchanged.",
+    "Deletion applies the approved purpose-history/audit deletion exception and does not affect active OTP generation-time snapshots."
+  ],
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_ARE_IMPLEMENTED",
+  "legacyOtpConfigurationSurface": {
+    "basePath": "/api/v1/admin/security/otp-configurations",
+    "source": "services/backend/src/routes/admin.ts",
+    "webClientBasePath": "apps/admin-web/src/lib/apiContract.ts",
+    "permissionHelper": "requireOtpSecurityPermission",
+    "acceptedPermission": "Super Admin OR security:MANAGE_SECURITY OR security:CONFIGURE OR system-configuration:CONFIGURE OR system_configuration:CONFIGURE",
+    "persistence": "Dedicated OtpConfiguration/OtpConfigurationHistory Prisma models",
+    "mutations": [
+      "POST /",
+      "PATCH /:purposeCode",
+      "POST /:purposeCode/rollback",
+      "DELETE /:purposeCode",
+      "POST /bulk"
+    ],
+    "readRoutes": [
+      "GET /",
+      "GET /:purposeCode/history"
+    ],
+    "status": "STATIC_PERMISSION_ALIGNED_CANONICAL_PERSISTENCE_DECISION_OPEN"
+  },
+  "recentApprovedDiscussionLocks": {
+    "status": "LOCKED_REQUIREMENTS_SOURCE_ALIGNMENT_AND_RUNTIME_TESTS_PENDING",
+    "otpConfiguration": [
+      "Purpose codes use ROLE.CATEGORY.EXACT_ACTION structure.",
+      "OTP configuration authority is Super Admin or Admin with explicit System Configuration/Security permission.",
+      "Configuration changes affect newly generated OTPs; active OTPs retain generation-time configuration.",
+      "Authorized purpose-code deletion follows the explicitly selected deletion exception; existing active OTPs remain valid until normal expiry.",
+      "Successful rollback creates a new global configuration version from the selected previous version; existing history is retained except the expressly approved purpose-deletion exception.",
+      "Failed configuration save applies no changes and creates a failed security audit record.",
+      "OTP request and resend are distinct; resend interval does not block every authorized new OTP request.",
+      "After resend, the wrong-attempt count carries forward; five wrong attempts invalidate the OTP and trigger the configured Admin alert.",
+      "Trip/protected ride action OTPs use 4 digits; this does not decide login, new-device, or registration OTP length."
+    ],
+    "unresolvedImplementationDecisionsRemainOpen": [
+      "Canonical OTP configuration API and persistence owner (RX-DEC-047).",
+      "Bulk configuration atomicity (RX-DEC-044).",
+      "Login/device/new-device/registration OTP length and client alignment; trip/protected ride action OTP length is separately locked to four digits.",
+      "Admin-configured max resend and cooldown policy must be finalized without treating source defaults as user-approved decisions."
+    ]
+  }
+}

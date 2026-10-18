@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_REALTIME_SAFETY_IMPLEMENTED_RUNTIME_AND_FAULT_TESTS_DEFERRED",
+  "scope": "Package 2 Step O; SSE authorization/lifecycle, replay cursor, bounded buffering, client parsing and reconnect safety.",
+  "backend": {
+    "route": "services/backend/src/routes/realtime.ts",
+    "service": "services/backend/src/services/realtime.ts",
+    "mount": "services/backend/src/main.ts",
+    "authorization": "Authenticated actor type/id must match the requested stream actor; replay and live subscription remain actor-scoped.",
+    "cachePolicy": "private, no-store, no-transform",
+    "cursorHeader": "Last-Event-ID",
+    "cursorPattern": "^[A-Za-z0-9._:-]{1,128}$",
+    "maxReplayEvents": 100,
+    "maxQueuedLiveEvents": 1000,
+    "heartbeatMs": 25000,
+    "backpressure": "One SSE frame per response.write; queue bounded while writeBackpressured; resume on response drain; close with a safe resync control event if queue limits are exceeded.",
+    "lifecycle": "response close, request aborted and response error cleanup listeners are attached before awaiting durable replay."
+  },
+  "clientAdapters": [
+    {
+      "id": "unified-mobile-test",
+      "source": "apps/ridex-mobile/shared/realtime/client.ts",
+      "behavior": "Only parsed non-array JSON objects are delivered; malformed frames are discarded with generic error; valid SSE id updates/persists cursor; seen IDs are dropped before cursor mutation."
+    },
+    {
+      "id": "customer-mobile-test",
+      "source": "apps/customer-mobile/shared/realtime/client.ts",
+      "behavior": "Same safe parsing and cursor rules as unified reference."
+    },
+    {
+      "id": "driver-mobile-test",
+      "source": "apps/driver-mobile/shared/realtime/client.ts",
+      "behavior": "Same safe parsing and cursor rules as unified reference."
+    },
+    {
+      "id": "admin-mobile-test",
+      "source": "apps/admin-mobile/shared/realtime/client.ts",
+      "behavior": "Same safe parsing and cursor rules as unified reference."
+    },
+    {
+      "id": "admin-web",
+      "source": "apps/admin-web/src/lib/realtime.ts",
+      "behavior": "Malformed/non-object JSON frames are discarded; cursor only advances after valid object parse; duplicate SSE IDs are dropped."
+    }
+  ],
+  "controls": [
+    {
+      "id": "RTS-001",
+      "title": "Protected mount",
+      "required": "Realtime router is mounted after appAuth and actorIdentity middleware."
+    },
+    {
+      "id": "RTS-002",
+      "title": "Actor identity binding",
+      "required": "Requested actor type/id must equal the actor bound to the authenticated session."
+    },
+    {
+      "id": "RTS-003",
+      "title": "Actor-scoped event source",
+      "required": "Durable replay and live subscription both receive the same authenticated actor target."
+    },
+    {
+      "id": "RTS-004",
+      "title": "Cursor input validation",
+      "required": "Nonempty Last-Event-ID is restricted to bounded stable identifier characters; invalid values are rejected."
+    },
+    {
+      "id": "RTS-005",
+      "title": "Replay/live race control",
+      "required": "Subscribe before awaiting replay; buffer live events; deduplicate IDs while sending replay then live events."
+    },
+    {
+      "id": "RTS-006",
+      "title": "Replay gap response",
+      "required": "Gap instructs client to perform authoritative state resync and uses no sensitive payload."
+    },
+    {
+      "id": "RTS-007",
+      "title": "SSE response cache/security headers",
+      "required": "Private no-store and nosniff headers are sent before streaming."
+    },
+    {
+      "id": "RTS-008",
+      "title": "Response lifecycle cleanup",
+      "required": "close/aborted/error listeners attach before async replay; timers and subscriptions are cleaned on termination."
+    },
+    {
+      "id": "RTS-009",
+      "title": "Bounded backpressure",
+      "required": "Response writes are single-frame; pending live queue has a limit; drain resumes; overload closes with safe resync control."
+    },
+    {
+      "id": "RTS-010",
+      "title": "Heartbeat under backpressure",
+      "required": "Heartbeats do not add writes while the response is backpressured."
+    },
+    {
+      "id": "RTS-011",
+      "title": "Payload minimization",
+      "required": "Realtime service recursively drops sensitive keys and caps payload depth, key count, arrays, strings and total bytes."
+    },
+    {
+      "id": "RTS-012",
+      "title": "Mobile frame parsing",
+      "required": "All four mobile client copies parse valid non-array JSON objects before cursor mutation and never forward malformed raw frames."
+    },
+    {
+      "id": "RTS-013",
+      "title": "Web frame parsing/dedup",
+      "required": "Admin Web discards malformed/non-object JSON and duplicate event IDs; cursor advances only after parse."
+    },
+    {
+      "id": "RTS-014",
+      "title": "Runtime proof deferred",
+      "required": "Do not claim socket, reconnect, replay ordering, backpressure or authorization runtime tests passed in this static phase."
+    }
+  ],
+  "finalPhysicalTests": [
+    "Authenticated actor receives only its own event audience; forged actorType/actorId is denied.",
+    "Client disconnects while durable replay is pending; listener and heartbeat are cleaned.",
+    "Client disconnects immediately after headers; no long-lived subscription remains.",
+    "Reconnect with a valid Last-Event-ID replays events in order and does not apply duplicates.",
+    "Malformed, oversized and unsupported Last-Event-ID values are rejected safely.",
+    "Replay gap produces an authoritative snapshot-resync path.",
+    "SSE response uses private no-store and nosniff headers.",
+    "Slow consumer crosses writable high-water mark; queue is bounded and drains in order.",
+    "Queue reaches maximum and stream terminates with safe resync behavior.",
+    "Heartbeat timer stops after close/error/abort.",
+    "Malformed and non-object mobile SSE data never reaches app state or persisted cursor.",
+    "Admin Web malformed/non-object and duplicate event frames are discarded.",
+    "Event payloads cannot expose OTPs/tokens/payment or KYC sensitive fields by key.",
+    "Process restart/outbox publication and replay ordering recover without silent gaps."
+  ],
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+  "knownResidualsRequiringFinalReview": [
+    "Set and validate per-actor/per-session concurrent stream caps and idle timeout policy.",
+    "Audit every event schema for sensitive values encoded under non-sensitive field names; key-name redaction alone is not a semantic privacy review.",
+    "Verify durable outbox transaction atomicity, publisher retry/order and retention policy against local PostgreSQL in the final phase."
+  ]
+}

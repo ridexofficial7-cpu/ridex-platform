@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "revision": 6,
+  "date": "2026-10-13",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_BASELINE_AND_SHARED_PREFERENCE_WIRING_IMPLEMENTED; LIVE_RELEASE_BLOCKED_PENDING_NATIVE_SEMANTIC_REVIEW_AND_LQA",
+  "validator": "scripts/verify-localization-ci.mjs",
+  "command": "npm run verify:localization-ci",
+  "supportedLocales": [
+    "en-IN",
+    "hi-IN"
+  ],
+  "checks": [
+    "locale registry has exactly the policy-approved selectable locale set",
+    "English/Hindi key parity within each active catalog pair",
+    "placeholder parity within each active catalog pair",
+    "all candidate keys retain provenance without forcing cross-surface dictionary merging",
+    "no raw translation key fallback in shared runtime or mobile provider",
+    "planned/backlog locale rows remain unselectable",
+    "critical/native review and cross-catalog conflicts remain a hard LIVE release gate"
+  ],
+  "catalogPairs": [
+    {
+      "id": "admin-web",
+      "english": "apps/admin-web/src/locales/en-IN.json",
+      "hindi": "apps/admin-web/src/locales/hi-IN.json",
+      "expectedKeyCount": 266
+    },
+    {
+      "id": "mobile-core",
+      "english": "packages/localization/src/catalogs/mobile/en-IN.json",
+      "hindi": "packages/localization/src/catalogs/mobile/hi-IN.json",
+      "expectedKeyCount": 44
+    },
+    {
+      "id": "mobile-runtime",
+      "english": "packages/localization/src/catalogs/mobile-runtime/en-IN.json",
+      "hindi": "packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "expectedKeyCount": 982
+    }
+  ],
+  "crossCatalogMerge": "PROHIBITED WITHOUT EXPLICIT REVIEW AND ALIASES",
+  "releaseGate": {
+    "criticalNativeReview": "PENDING",
+    "crossCatalogSemanticConflicts": 4,
+    "repairedHindiValuesNativeReview": "PENDING",
+    "all25Lqa": "NOT_RUN",
+    "productionApproved": false,
+    "liveTargetMustFailWhileAnyMandatoryGatePending": true
+  },
+  "physicalTests": "DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+  "rolloutPolicy": "config/localization-rollout-policy.json",
+  "rolloutValidator": "scripts/verify-localization-rollout.mjs"
+}

@@ -1,0 +1,61 @@
+/* Styles for the formerly disconnected EventsPanel; all selectors are scoped to avoid
+   the old global stylesheet overriding the current RideX Admin design system. */
+.ridex-events-panel { display: grid; gap: 14px; min-width: 0; color: var(--ink, #151922); }
+.ridex-events-panel .section-header { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.ridex-events-panel .section-header h2 { margin:3px 0 6px; font-size:20px; line-height:1.2; }
+.ridex-events-panel .section-header p { margin:4px 0 0; color:var(--muted,#667085); font-size:11px; line-height:1.5; max-width:740px; }
+.ridex-events-panel .eyebrow { color:var(--accent,#d9282b); font-size:9px; font-weight:850; letter-spacing:.12em; text-transform:uppercase; margin:0; }
+.ridex-events-panel .button-row { display:flex; align-items:center; flex-wrap:wrap; gap:7px; min-width:0; }
+.ridex-events-panel .button { display:inline-flex; align-items:center; justify-content:center; gap:6px; min-height:32px; padding:7px 10px; border:1px solid #d9dee5; border-radius:9px; background:#fff; color:#333b47; font-size:10px; font-weight:750; }
+.ridex-events-panel .button:hover:not(:disabled) { border-color:#b7c0cc; background:#fafbfc; }
+.ridex-events-panel .button:disabled { opacity:.55; cursor:not-allowed; }
+.ridex-events-panel .button.primary { color:#fff; border-color:var(--accent,#d9282b); background:var(--accent,#d9282b); }
+.ridex-events-panel .button.danger-button { color:#b42318; border-color:#fecaca; background:#fff4f4; }
+.ridex-events-panel .button.small { min-height:28px; padding:5px 8px; font-size:9px; }
+.ridex-events-panel .api-pill { display:inline-flex; align-items:center; gap:6px; border:1px solid #e4e7ec; border-radius:999px; padding:6px 9px; background:#fff; color:#667085; font-size:9px; font-weight:750; }
+.ridex-events-panel .online-dot { width:6px; height:6px; flex:0 0 auto; border-radius:50%; background:#16a34a; }
+.ridex-events-panel .metrics-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.ridex-events-panel .metric-card { display:flex; align-items:center; gap:10px; min-width:0; padding:13px; border:1px solid var(--line,#e5e7eb); border-radius:12px; background:#fff; box-shadow:var(--shadow,0 4px 14px rgba(16,24,40,.04)); }
+.ridex-events-panel .metric-icon { display:grid; place-items:center; width:35px; height:35px; flex:0 0 auto; border:1px solid #e8ebef; border-radius:10px; background:#f8fafc; }
+.ridex-events-panel .metric-icon-success { color:#117340; background:#e8f7ee; border-color:#c6ecd4; }
+.ridex-events-panel .metric-content { display:grid; gap:4px; min-width:0; }
+.ridex-events-panel .metric-content span { color:#737c89; font-size:9px; }
+.ridex-events-panel .metric-content strong { font-size:23px; line-height:1.1; }
+.ridex-events-panel .content-grid.two { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr); gap:12px; align-items:start; }
+.ridex-events-panel .panel { min-width:0; padding:14px; border:1px solid var(--line,#e5e7eb); border-radius:14px; background:#fff; box-shadow:var(--shadow,0 4px 14px rgba(16,24,40,.04)); }
+.ridex-events-panel .panel-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+.ridex-events-panel .panel-header h3 { margin:3px 0 4px; font-size:14px; }
+.ridex-events-panel .panel-header p:not(.eyebrow) { margin:4px 0 0; color:var(--muted,#667085); font-size:10px; line-height:1.5; }
+.ridex-events-panel .detail-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+.ridex-events-panel .detail-grid label { display:flex; flex-direction:column; align-items:stretch; gap:5px; min-width:0; color:#4b5563; font-size:10px; font-weight:750; }
+.ridex-events-panel .field-label { color:#4b5563; font-size:9px; font-weight:800; }
+.ridex-events-panel .text-input { display:block; width:100%; min-width:0; border:1px solid #d7dbe1; border-radius:9px; padding:9px 10px; background:#fff; color:#151922; font:inherit; font-size:11px; outline:none; }
+.ridex-events-panel .text-input:focus { border-color:#e04447; box-shadow:0 0 0 3px rgba(217,40,43,.1); }
+.ridex-events-panel .status { display:inline-flex; align-items:center; padding:5px 7px; border-radius:999px; font-size:8px; font-weight:850; letter-spacing:.04em; }
+.ridex-events-panel .status.success { color:#117340; background:#e8f7ee; }
+.ridex-events-panel .status.warning { color:#8a6100; background:#fff4d4; }
+.ridex-events-panel .event-stop-list { display:grid; gap:10px; margin-top:10px; }
+.ridex-events-panel .event-stop-card { min-width:0; padding:11px; border:1px solid #e3e9f1; border-radius:12px; background:linear-gradient(180deg,#fff,#fbfcfe); }
+.ridex-events-panel .event-stop-card-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+.ridex-events-panel .event-stop-card-header>div:first-child { display:grid; gap:4px; min-width:0; }
+.ridex-events-panel .event-stop-card-header strong { font-size:12px; overflow-wrap:anywhere; }
+.ridex-events-panel .compact-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.ridex-events-panel .event-location-suggestions { display:grid; gap:4px; margin-top:5px; padding:5px; border:1px solid #d9e2ec; border-radius:10px; background:#fff; box-shadow:0 8px 18px rgba(15,23,42,.06); }
+.ridex-events-panel .event-location-suggestions button { display:flex; flex-direction:column; align-items:flex-start; gap:3px; width:100%; padding:8px; border:1px solid transparent; border-radius:7px; background:#fff; text-align:left; cursor:pointer; }
+.ridex-events-panel .event-location-suggestions button:hover { border-color:#dbe3ed; background:#f8fafc; }
+.ridex-events-panel .event-location-suggestions strong { font-size:10px; color:#27303a; }
+.ridex-events-panel .event-location-suggestions span { font-size:9px; line-height:1.4; color:#697382; }
+.ridex-events-panel .event-location-suggestions small, .ridex-events-panel .event-place-status { font-size:9px; line-height:1.4; color:#667085; }
+.ridex-events-panel .event-place-status { display:block; margin-top:5px; overflow-wrap:anywhere; }
+.ridex-events-panel .event-place-status.error { color:#b42318; }
+.ridex-events-panel .event-stop-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:9px; padding-top:8px; border-top:1px solid #edf0f3; color:#667085; font-size:9px; }
+.ridex-events-panel .event-catalog-list { display:grid; gap:8px; }
+.ridex-events-panel .event-catalog-card { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:11px; border:1px solid #e5e9ef; border-radius:11px; background:#fff; }
+.ridex-events-panel .event-catalog-card>div:first-child { display:grid; gap:4px; min-width:0; }
+.ridex-events-panel .event-catalog-card strong { font-size:11px; overflow-wrap:anywhere; }
+.ridex-events-panel .event-catalog-card span { color:#667085; font-size:9px; }
+.ridex-events-panel .info-box { padding:11px; border:1px solid #e4e7ec; border-radius:10px; background:#f8fafc; }
+.ridex-events-panel .info-box strong { font-size:10px; }
+.ridex-events-panel .info-box p { margin:5px 0 0; color:#667085; font-size:10px; line-height:1.5; }
+@media(max-width:1100px) { .ridex-events-panel .content-grid.two { grid-template-columns:1fr; } }
+@media(max-width:700px) { .ridex-events-panel .metrics-grid { grid-template-columns:1fr; } .ridex-events-panel .detail-grid,.ridex-events-panel .compact-grid { grid-template-columns:1fr; } .ridex-events-panel .section-header h2 { font-size:20px; } }

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_FINANCIAL_INVARIANTS_MAPPED_POLICY_AND_RUNTIME_TESTS_PENDING",
+  "authority": "services/backend is authoritative for payment status, wallet balance, ledger postings, refunds, driver earnings, cash collections and settlement.",
+  "sourceEvidence": [
+    {
+      "path": "config/financial-domain-map.json",
+      "role": "model/status catalog and business-invariant baseline"
+    },
+    {
+      "path": "config/database-integrity-contract.json",
+      "role": "Decimal amounts, constraints, transaction callsites and migration decision"
+    },
+    {
+      "path": "services/backend/src/routes/payments.ts",
+      "role": "payment/order/callback/webhook/refund/reconciliation route candidates"
+    },
+    {
+      "path": "services/backend/src/integrations/razorpay.ts",
+      "role": "provider signature verification and provider calls"
+    },
+    {
+      "path": "services/backend/src/routes/payouts.ts",
+      "role": "payout/settlement transitions and callback candidates"
+    },
+    {
+      "path": "services/backend/prisma/schema.prisma",
+      "role": "financial records, Decimal amounts, statuses, unique keys and relations"
+    },
+    {
+      "path": "apps/ridex-mobile/customer/App.tsx",
+      "role": "separate Customer target payment UX; Backend remains authoritative"
+    }
+  ],
+  "staticSourceControls": [
+    {
+      "id": "FIN-001",
+      "control": "Payment signature verification function is present and used by payment verification route.",
+      "status": "SOURCE_MARKER_PRESENT_NOT_RUNTIME_PROOF"
+    },
+    {
+      "id": "FIN-002",
+      "control": "Webhook signature verification is present and called before webhook handling.",
+      "status": "SOURCE_MARKER_PRESENT_NOT_RUNTIME_PROOF"
+    },
+    {
+      "id": "FIN-003",
+      "control": "Provider payment amount and currency are compared to expected booking/order values.",
+      "status": "SOURCE_MARKER_PRESENT_NOT_RUNTIME_PROOF"
+    },
+    {
+      "id": "FIN-004",
+      "control": "Provider signature comparison uses a timing-safe compare in integration layer.",
+      "status": "SOURCE_MARKER_PRESENT_NOT_RUNTIME_PROOF"
+    },
+    {
+      "id": "FIN-005",
+      "control": "Payment reconciliation function exists for ambiguous or follow-up provider state.",
+      "status": "SOURCE_MARKER_PRESENT_NOT_RUNTIME_PROOF"
+    },
+    {
+      "id": "FIN-006",
+      "control": "Payment/refund/wallet/ledger/earning/settlement/cash models use fixed-precision Decimal money fields.",
+      "status": "SCHEMA_DECLARATIONS_PRESENT_ARITHMETIC_UNVERIFIED"
+    },
+    {
+      "id": "FIN-007",
+      "control": "Provider webhook event has unique provider/event identity and payload hash to detect event-ID/payload conflict.",
+      "status": "SCHEMA_DECLARATION_PRESENT_NULL_AND_REPLAY_SEMANTICS_UNVERIFIED"
+    },
+    {
+      "id": "FIN-008",
+      "control": "Payment/refund/settlement transactions are atomic across business status and ledger effects.",
+      "status": "TRANSACTION_CANDIDATES_MAPPED_ATOMICITY_UNVERIFIED"
+    },
+    {
+      "id": "FIN-009",
+      "control": "Unknown/timeout provider outcomes are reconciled, not blindly represented as success or failure.",
+      "status": "POLICY_AND_FAILURE_PATH_REVIEW_PENDING"
+    },
+    {
+      "id": "FIN-010",
+      "control": "Refund amount cannot exceed refundable captured balance and partial refunds obey a cap.",
+      "status": "POLICY_AND_RUNTIME_TEST_PENDING"
+    },
+    {
+      "id": "FIN-011",
+      "control": "Commission, tax, fees, driver net earnings, cash collection and settlement use approved formulas.",
+      "status": "FORMULAS_NOT_LOCKED_DO_NOT_INVENT"
+    },
+    {
+      "id": "FIN-012",
+      "control": "TEST/demo payment paths cannot produce LIVE financial effects.",
+      "status": "ENVIRONMENT_GATE_TEST_DEFERRED"
+    },
+    {
+      "id": "FIN-013",
+      "control": "Financial adjustments require authorized actor, reason, audit record and immutable traceability.",
+      "status": "AUTHORIZATION_AND_AUDIT_TEST_PENDING"
+    },
+    {
+      "id": "FIN-014",
+      "control": "API replay response does not double-post or reveal sensitive payment/account fields.",
+      "status": "IDEMPOTENCY_AND_PRIVACY_REVIEW_PENDING"
+    }
+  ],
+  "nonNegotiableInvariants": [
+    "Provider/client response alone never confirms a financial transaction; Backend verifies trusted provider status and matching resource/amount/currency.",
+    "UNKNOWN or timed-out results remain unknown until reconciliation; do not assume success or create a second payment intent blindly.",
+    "A financial side effect is applied at most once for its approved business idempotency scope.",
+    "Wallet, ledger and related authoritative state updates must be transactionally consistent.",
+    "Captured amount, eligible refund total, commission, driver earnings, cash collection and settlement reconcile under approved formulas.",
+    "Money arithmetic uses fixed-precision/decimal-safe handling; no unapproved floating-point money formula is introduced.",
+    "No rate, fee, commission, tax, refund window, rounding mode, currency conversion or payout rule is invented by this step."
+  ],
+  "unresolvedBusinessDecisions": [
+    "Formal ledger account model and debit/credit balance equations.",
+    "Fare/commission/tax/fees rounding policy and supported currency rules.",
+    "Refund eligibility, partial refund cap, fee retention and reversal behavior.",
+    "Cash collection confirmation and dispute handling.",
+    "Payout retries, duplicate provider result, reversal and failed-settlement handling.",
+    "Formal TEST-only provider simulation policy and LIVE block conditions."
+  ],
+  "finalRequiredTests": [
+    "valid/invalid payment signature",
+    "webhook forged signature and replay",
+    "amount/currency mismatch",
+    "provider timeout UNKNOWN and reconciliation",
+    "same payment/refund request retry",
+    "partial/full refund cap",
+    "wallet atomicity and ledger balance",
+    "commission/earning/settlement reconciliation",
+    "cash collection verification",
+    "financial adjustment role denial and audit",
+    "TEST demo path denied in LIVE",
+    "decimal precision/rounding vectors"
+  ],
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+  "owner": "Backend/Finance/Payments/Security/QA/Project owner"
+}

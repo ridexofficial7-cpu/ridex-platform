@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
+const pass=[],fail=[]; const ok=m=>pass.push(m), bad=m=>fail.push(m);
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+let c; try { c=JSON.parse(read('config/gateway-android-flow-contract.json')); ok('Gateway flow contract parses'); } catch(e) { console.error(e.message); process.exit(1); }
+const server=read('services/broadcaster-provider/src/server.ts');
+const routes=read('services/broadcaster-provider/src/routes/gateway.routes.ts');
+const auth=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/auth/HttpProviderAuthClient.kt');
+const heartbeat=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/heartbeat/HttpProviderHeartbeatClient.kt');
+const control=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/control/HttpProviderControlClient.kt');
+const signed=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/config/HttpProviderSignedConfigClient.kt');
+const commands=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/control/HttpProviderCommandClient.kt');
+const sms=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/queue/HttpProviderQueueClient.kt');
+const calls=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/call/HttpProviderCallClient.kt');
+const allClients=[auth,heartbeat,control,signed,commands,sms,calls].join('\n');
+if(server.includes("app.use('/gateway',gatewayRouter)")) ok('Provider router mount prefix matches Android /gateway paths'); else bad('Provider gateway router mount prefix missing/mismatched');
+const routeDecls=[...routes.matchAll(/router\.(get|post|put|delete)\('([^']+)'/g)].map(m=>({method:m[1].toUpperCase(),path:m[2]}));
+for(const r of c.routeMappings){
+  const relative=r.providerRoute;
+  const found=routeDecls.some(x=>x.method===r.method && x.path===relative);
+  if(!found) bad(`Provider route missing: ${r.method} ${relative}`);
+  const normalized=r.clientPath.replace('{commandId}', '$commandId').replace('{requestId}', '$requestId');
+  const clientHas=allClients.includes(normalized) || (r.clientPath.includes('{commandId}') && commands.includes('/gateway/v1/commands/$commandId/ack')) || (r.clientPath.includes('{requestId}') && (sms.includes('/gateway/v1/sms/$requestId/result') || calls.includes('/gateway/v1/calls/%s/result')));
+  if(!clientHas) bad(`Android client path not mapped: ${r.method} ${r.clientPath}`);
+}
+if(auth.includes('/gateway/v1/auth/enroll') && auth.includes('/gateway/v1/auth/refresh')) ok('Enrollment and refresh transports point to Provider auth routes'); else bad('Enrollment/refresh client routes missing');
+if(allClients.includes('ProviderUrlPolicy.requireSafeHttps')) ok('Gateway Provider HTTP clients use centralized HTTPS URL policy'); else bad('Provider HTTPS URL policy is not used by Gateway transports');
+const urlPolicy=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/security/ProviderUrlPolicy.kt');
+for(const token of ['PROVIDER_BASE_URL_MUST_USE_HTTPS','PROVIDER_BASE_URL_CREDENTIALS_FORBIDDEN','PROVIDER_BASE_URL_QUERY_FORBIDDEN','PROVIDER_BASE_URL_FRAGMENT_FORBIDDEN']) if(urlPolicy.includes(token)) ok(`Provider URL blocks ${token}`); else bad(`Provider URL policy missing ${token}`);
+const verifier=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/control/GatewayRemoteCommandVerifier.kt');
+const policy=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/control/GatewayRemoteCommandPolicy.kt');
+const coordinator=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/control/RemoteCommandCoordinator.kt');
+if(verifier.includes('Signature.getInstance("Ed25519")') && verifier.includes('BAD_COMMAND_SIGNATURE')) ok('Remote command signature is verified with Ed25519'); else bad('Ed25519 command signature verification missing');
+for(const token of ['GatewayCommandActorRole.SUPER_ADMIN','requiredApprovals(command.action)','COMMAND_SEQUENCE_REPLAY']) if(policy.includes(token)) ok(`Remote command policy enforces ${token}`); else bad(`Remote command policy missing ${token}`);
+if(coordinator.includes('verifier.verify(command') && coordinator.includes('policy.validate(command') && coordinator.includes('journal.containsCommand(command.commandId)')) ok('Command flow checks signature, role/policy, sequence and replay before execution'); else bad('Remote command admission ordering incomplete');
+if(commands.includes('deliveryAttempt > 0L') && commands.includes('COMMAND_DELIVERY_ATTEMPT_INVALID') && commands.includes('acknowledgeCommand')) ok('Command ACK carries delivery attempt and validates it'); else bad('Command ACK delivery-attempt binding missing');
+const outbox=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/outbox/ProviderResultOutboxFlusher.kt');
+if(outbox.includes('store.remove(record.requestId)') && outbox.includes('onSuccess') && outbox.includes('store.recordFailure(record.requestId')) ok('Result outbox removes only on success and schedules retry on failure'); else bad('Durable result outbox retry contract incomplete');
+const manifest=read('apps/gateway-android/app/src/main/AndroidManifest.xml');
+for(const permission of ['android.permission.INTERNET','android.permission.SEND_SMS','android.permission.CALL_PHONE','android.permission.READ_PHONE_STATE']) if(manifest.includes(permission)) ok(`Android manifest declares ${permission}`); else bad(`Android manifest missing ${permission}`);
+if(manifest.includes('android:usesCleartextTraffic="false"') && manifest.includes('android:allowBackup="false"')) ok('Cleartext networking disabled and Android backup disabled'); else bad('Gateway manifest cleartext/backup hardening missing');
+const endpoint=read('apps/gateway-android/app/src/main/java/com/ridex/gateway/provider/ProviderRuntimeEndpoint.kt');
+if(endpoint.includes('PROVIDER_BASE_URL_NOT_CONFIGURED') && endpoint.includes('PROVIDER_BASE_URL_MUST_USE_HTTPS')) ok('Provider base URL is deployment supplied and fails closed if unconfigured/non-HTTPS'); else bad('Provider endpoint must fail closed when unset or non-HTTPS');
+console.log(`GATEWAY ANDROID FLOW CONTRACT: ${fail.length ? 'FAIL' : 'PASS'}`);
+for(const x of pass) console.log(`PASS ${x}`); for(const x of fail) console.error(`FAIL ${x}`);
+console.log(`Result: ${pass.length} passed, ${fail.length} failed. Physical SIM/device and runtime evidence remain pending by contract.`);
+process.exit(fail.length?1:0);

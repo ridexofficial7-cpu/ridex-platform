@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "precedenceRevision": 2,
+  "date": "2026-10-13",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "PREFERENCE_PRECEDENCE_AND_STALE_RESPONSE_GUARD_IMPLEMENTED; API_AND_CLIENT_WIRING_PENDING",
+  "implementation": {
+    "runtimeModule": "packages/localization/src/localePreferenceCoordinator.mjs",
+    "typescriptDeclarations": "packages/localization/src/localePreferenceCoordinator.d.mts",
+    "validator": "scripts/verify-locale-preference-coordinator.mjs",
+    "validationCommand": "npm run verify:locale-preference-coordinator",
+    "clientsWired": [
+      "apps/customer-mobile",
+      "apps/driver-mobile",
+      "apps/admin-mobile",
+      "apps/super-admin-control",
+      "apps/admin-web"
+    ]
+  },
+  "selectionGeneration": {
+    "scope": "in-memory client session only",
+    "purpose": "invalidate account-preference responses that began before a newer user selection",
+    "mustNotBeUsedAs": "user/account identity, security token or server-authoritative revision"
+  },
+  "accountPreferenceReadRule": "apply only when response generation equals current selection generation, there is no explicit current-session selection, and the response locale is one of en-IN/hi-IN",
+  "accountPreferenceWriteRule": "capture current selection generation and supported locale in a sync intent; result is persistence evidence only and never changes the active UI locale",
+  "staleReadBehavior": "ignore result; keep current locale",
+  "staleWriteBehavior": "ignore result for UI state; keep current locale and do not let older response overwrite newer selection",
+  "syncFailureBehavior": "keep current locale; expose a fixed non-fatal sync status to UI without raw server/error text",
+  "serverContract": "NOT_DEFINED; this coordinator does not invent an endpoint, request envelope, response fields, or account identity",
+  "supportedLocales": [
+    "en-IN",
+    "hi-IN"
+  ],
+  "defaultFallbackLocale": "en-IN",
+  "testStatus": {
+    "pureCoordinatorCases": 13,
+    "caseExecution": "DEPENDENCY_FREE_VALIDATOR",
+    "apiRaceNetworkAndAccountSwitchTests": "DEFERRED_UNTIL_ALL_FOUR_PACKAGES_IMPLEMENTED"
+  },
+  "openDependencies": [
+    "Browser/device restart and native locale negotiation require runtime checks; those are intentionally not run in the current code-only phase.",
+    "Account preference API/schema and cross-device synchronization remain pending owner decision; no API is called by this module."
+  ]
+}

@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+.expo-shared/
+dist/
+build/
+web-build/
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.bak*
+*.log
+.DS_Store
+Thumbs.db
+google-services.json
+*.jks
+*.keystore

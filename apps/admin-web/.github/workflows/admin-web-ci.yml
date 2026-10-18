@@ -1,0 +1,65 @@
+﻿name: Admin Web CI
+
+on:
+  push:
+    paths:
+      - "apps/admin-web/**"
+      - ".github/workflows/admin-web-ci.yml"
+  pull_request:
+    paths:
+      - "apps/admin-web/**"
+      - ".github/workflows/admin-web-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  admin-web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/admin-web
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/admin-web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run dependency security audit
+        run: npm audit --audit-level=high
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run TypeScript check
+        run: npm run typecheck
+
+      - name: Build Admin Web
+        run: npm run build
+
+      - name: Generate CycloneDX SBOM
+        run: npm sbom --sbom-format cyclonedx > admin-web-sbom.json
+
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: admin-web-sbom
+          path: apps/admin-web/admin-web-sbom.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Check deployed security headers
+        if: ${{ vars.RIDEX_ADMIN_DEPLOYMENT_URL != '' }}
+        env:
+          RIDEX_ADMIN_DEPLOYMENT_URL: ${{ vars.RIDEX_ADMIN_DEPLOYMENT_URL }}
+        run: npm run security:headers

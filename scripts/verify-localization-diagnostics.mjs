@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createRideXMissingKeyReporter } from '../packages/localization/src/localizationDiagnostics.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const errors=[]; let checks=0;
+const assert=(condition,message)=>{checks++;if(!condition)errors.push(message);};
+const load=rel=>JSON.parse(fs.readFileSync(path.join(root,rel),'utf8'));
+const cfg=load('config/localization-diagnostics.json');
+const baseline=load('config/project-baseline.json');
+const source=load('config/source-inventory.json');
+const loc=load('config/localization-source-inventory.json');
+const pkg=load('package.json');
+const web=fs.readFileSync(path.join(root,'apps/admin-web/src/lib/i18n.tsx'),'utf8');
+const mobile=fs.readFileSync(path.join(root,'packages/localization/src/RideXMobileLocaleProvider.tsx'),'utf8');
+assert(cfg.status.includes('TEST_ONLY_EXPLICIT_OPT_IN')&&cfg.status.includes('LIVE_SILENT'),'diagnostic policy is explicitly TEST-only and LIVE-silent');
+assert(cfg.loggedFields.join(',')==='key,locale,build','only safe key/locale/build metadata is allowed');
+assert(cfg.forbiddenFields.includes('otp')&&cfg.forbiddenFields.includes('token')&&cfg.forbiddenFields.includes('interpolationValues'),'sensitive and user-provided values are explicitly forbidden');
+assert(baseline.localizationDiagnostics?.path==='config/localization-diagnostics.json'&&source.localizationDiagnostics?.path==='config/localization-diagnostics.json'&&loc.localizationDiagnostics?.path==='config/localization-diagnostics.json','baseline and source inventories link diagnostics policy');
+assert(pkg.scripts?.['verify:localization-diagnostics']==='node scripts/verify-localization-diagnostics.mjs','diagnostic validator is exposed by root command');
+const roots=source.components.find(x=>x.id==='rootBuildScripts');
+const actualScripts=fs.readdirSync(path.join(root,'scripts')).filter(n=>fs.statSync(path.join(root,'scripts',n)).isFile()).sort();
+assert(roots.fileCount===actualScripts.length&&JSON.stringify(roots.scripts.slice().sort())===JSON.stringify(actualScripts),'root source inventory lists every static verifier and script');
+const locPkg=source.components.find(x=>x.id==='sharedLocalizationPackage');
+const actualLocFiles=[];const walk=dir=>{for(const ent of fs.readdirSync(path.join(root,dir),{withFileTypes:true})){const rel=path.posix.join(dir,ent.name);if(ent.isDirectory())walk(rel);else actualLocFiles.push(rel);}};walk('packages/localization');
+assert(locPkg.fileCount===actualLocFiles.length&&locPkg.entrypoints.includes('packages/localization/src/localizationDiagnostics.mjs')&&locPkg.entrypoints.includes('packages/localization/src/localizationDiagnostics.d.mts'),'localization package inventory covers diagnostic helper files');
+assert(web.includes('createRideXMissingKeyReporter')&&web.includes('environment: APP_ENVIRONMENT')&&web.includes('debugEnabled: DEBUG_ENABLED')&&web.includes('missingKeyReporter.reportMissing'),'Admin Web uses shared diagnostics behind TEST/debug config');
+assert(!web.includes('reportedMissingKeys = new Set'),'Admin Web legacy unbounded missing-key Set has been removed');
+assert(mobile.includes('createRideXMissingKeyReporter')&&mobile.includes("process.env.EXPO_PUBLIC_RIDEX_TEST_MODE === 'true'")&&mobile.includes("process.env.EXPO_PUBLIC_RIDEX_I18N_DIAGNOSTICS === 'true'")&&mobile.includes('mobileMissingKeyReporter.reportMissing'),'Mobile diagnostics require explicit TEST and debug opt-in');
+let logs=[];const logger={warn:(message,metadata)=>logs.push({message,metadata})};
+const live=createRideXMissingKeyReporter({environment:'LIVE',debugEnabled:true,build:'1.2.3',logger});
+assert(!live.enabled&&!live.reportMissing({key:'booking.pickup',locale:'en-IN'})&&logs.length===0,'LIVE remains silent even when debug flag is true');
+const noDebug=createRideXMissingKeyReporter({environment:'TEST',debugEnabled:false,build:'1.2.3',logger});
+assert(!noDebug.enabled&&!noDebug.reportMissing({key:'booking.pickup',locale:'en-IN'})&&logs.length===0,'TEST diagnostics remain off unless explicitly debug-enabled');
+const test=createRideXMissingKeyReporter({environment:'TEST',debugEnabled:true,build:'1.2.3',logger});
+assert(test.enabled&&test.reportMissing({key:'booking.pickup',locale:'hi-IN'})&&logs.length===1,'explicit TEST/debug reports one missing key');
+assert(logs[0].message==='[RideX i18n] Missing translation'&&Object.keys(logs[0].metadata).sort().join(',')==='build,key,locale','diagnostic metadata contains only allow-listed fields');
+assert(logs[0].metadata.key==='booking.pickup'&&logs[0].metadata.locale==='hi-IN'&&logs[0].metadata.build==='1.2.3','safe metadata values are preserved');
+assert(!test.reportMissing({key:'booking.pickup',locale:'hi-IN'})&&logs.length===1,'same key/locale/build is deduplicated');
+assert(!test.reportMissing({key:'otp=123456',locale:'hi-IN'})&&!test.reportMissing({key:'x'.repeat(101),locale:'hi-IN'}),'unsafe/overlong key identifiers are never logged');
+assert(!test.reportMissing({key:'booking.test',locale:'fr-FR'}),'unsupported locale is not logged');
+const bounded=createRideXMissingKeyReporter({environment:'TEST',debugEnabled:true,build:'b1',logger,maxReported:2});
+bounded.reportMissing({key:'a.one',locale:'en-IN'});bounded.reportMissing({key:'a.two',locale:'en-IN'});bounded.reportMissing({key:'a.three',locale:'en-IN'});
+assert(bounded.getReportedCount()===2,'unique reports are capped to a bounded count');
+const failing=createRideXMissingKeyReporter({environment:'TEST',debugEnabled:true,build:'b1',logger:{warn(){throw new Error('logger failure')}}});
+assert(!failing.reportMissing({key:'a.one',locale:'en-IN'}),'logger failure is non-fatal');
+for (const app of ['apps/customer-mobile/.env.example','apps/driver-mobile/.env.example','apps/admin-mobile/.env.example','apps/super-admin-control/.env.example','apps/ridex-mobile/.env.example']) {
+ const text=fs.readFileSync(path.join(root,app),'utf8');
+ assert(text.includes('EXPO_PUBLIC_RIDEX_I18N_DIAGNOSTICS=false'),`${app} keeps missing-key diagnostics disabled by default`);
+}
+if(errors.length){console.error(`LOCALIZATION DIAGNOSTICS CHECK: FAIL (${errors.length}/${checks})`);for(const e of errors)console.error(`FAIL ${e}`);process.exit(1)}
+console.log(`LOCALIZATION DIAGNOSTICS CHECK: PASS (${checks} assertions)`);
+console.log(`PASS ${checks} policy, wiring and pure-behavior assertions`);
+console.log('Static config/source and pure helper checks only; browser/device log review remains deferred.');

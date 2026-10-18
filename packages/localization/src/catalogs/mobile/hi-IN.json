@@ -1,0 +1,62 @@
+{
+  "common": {
+    "appName": "RideX",
+    "language": "भाषा",
+    "chooseLanguage": "अपनी भाषा चुनें",
+    "continue": "जारी रखें",
+    "back": "वापस",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "retry": "फिर कोशिश करें",
+    "loading": "लोड हो रहा है…",
+    "offline": "आप ऑफ़लाइन हैं",
+    "close": "बंद करें",
+    "search": "खोजें",
+    "done": "हो गया",
+    "notNow": "अभी नहीं"
+  },
+  "auth": {
+    "mobileNumber": "मोबाइल नंबर",
+    "enterMobileNumber": "अपना मोबाइल नंबर दर्ज करें",
+    "sendOtp": "OTP भेजें",
+    "enterOtp": "OTP दर्ज करें",
+    "verifyOtp": "OTP सत्यापित करें",
+    "resendOtp": "OTP फिर भेजें",
+    "attemptsRemaining": "बाकी प्रयास: {{count}}",
+    "otpExpiresIn": "समाप्त होने में {{time}}",
+    "login": "लॉग इन करें"
+  },
+  "settings": {
+    "language": "भाषा",
+    "languageUpdated": "भाषा बदल दी गई है",
+    "followDeviceLanguage": "डिवाइस की भाषा इस्तेमाल करें",
+    "languageHelp": "RideX के लिए अपनी पसंद की भाषा चुनें।"
+  },
+  "booking": {
+    "pickup": "पिकअप स्थान",
+    "destination": "गंतव्य",
+    "chooseRide": "राइड चुनें",
+    "confirm": "बुकिंग की पुष्टि करें",
+    "noVehicles": "कोई योग्य वाहन उपलब्ध नहीं है",
+    "tryDifferentLocation": "पिकअप का कोई दूसरा स्थान चुनें"
+  },
+  "driver": {
+    "acceptRequest": "अनुरोध स्वीकार करें",
+    "rejectRequest": "अनुरोध अस्वीकार करें",
+    "goOnline": "ऑनलाइन हों",
+    "goOffline": "ऑफ़लाइन हों"
+  },
+  "safety": {
+    "sos": "SOS / आपातकाल",
+    "callEmergency": "आपातकालीन संपर्क को कॉल करें"
+  },
+  "payment": {
+    "paymentFailed": "भुगतान की पुष्टि नहीं हो सकी",
+    "tryAgain": "फिर कोशिश करें"
+  },
+  "errors": {
+    "generic": "कुछ गड़बड़ हुई। कृपया फिर कोशिश करें।",
+    "network": "कनेक्शन में समस्या है। इंटरनेट जाँचकर फिर कोशिश करें।",
+    "sessionExpired": "आपका सेशन समाप्त हो गया है। कृपया फिर लॉग इन करें।"
+  }
+}

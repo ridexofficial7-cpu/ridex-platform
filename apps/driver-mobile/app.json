@@ -1,0 +1,72 @@
+{
+  "expo": {
+    "name": "RideX Driver TEST",
+    "slug": "ridex-driver-test",
+    "scheme": "ridex-driver-test",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "com.ridex.driver.test",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION",
+        "android.permission.POST_NOTIFICATIONS"
+      ],
+      "icon": "../logo/driver.png",
+      "adaptiveIcon": {
+        "foregroundImage": "../logo/driver.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.ridex.driver.test",
+      "infoPlist": {
+        "NSCameraUsageDescription": "RideX uses the camera only for supported role workflows."
+      }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "RideX uses photos for driver profile and document workflows.",
+          "cameraPermission": "RideX uses the camera for identity/document and QR workflows.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "RideX uses location for driver availability, matching and active trips.",
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true,
+          "isIosBackgroundLocationEnabled": true
+        }
+      ],
+      "expo-camera",
+      [
+        "expo-notifications",
+        {
+          "color": "#0AA35A"
+        }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true
+        }
+      ]
+    ],
+    "icon": "../logo/driver.png",
+    "extra": {
+      "eas": {
+        "projectId": "67a57ad8-82d1-48a9-a19d-0ff9750051d4"
+      }
+    },
+    "owner": "ridex07"
+  }
+}

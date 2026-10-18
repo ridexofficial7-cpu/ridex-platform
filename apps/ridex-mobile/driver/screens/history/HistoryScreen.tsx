@@ -1,0 +1,6 @@
+import React from 'react';
+import { Text } from 'react-native';
+import { Screen, PageScroll, BrandHeader, PageTitle, Card, OutlineButton, EmptyState, StatusPill } from '../../components/NakedUI';
+import type { DriverScreen } from '../../navigation/routes';
+import { useDriverRuntime } from '../../state/DriverRuntime';
+export default function HistoryScreen({go}:{go:(s:DriverScreen)=>void}){const {history,refreshDriver,driverId}=useDriverRuntime();return <Screen><PageScroll><BrandHeader title="Ride History" onBack={()=>go('home')}/><PageTitle title="Past rides" subtitle="Backend-returned completed and cancelled ride records."/><OutlineButton title="Refresh history" onPress={()=>void refreshDriver(driverId)}/>{history.length===0?<EmptyState title="No history" body="No history rows were returned by the backend."/>:history.map((r:any,i)=><Card key={String(r.id||r.bookingId||i)}><StatusPill label={String(r.status||'UNKNOWN')}/><Text style={{marginTop:7,fontWeight:'900'}}>{String(r.booking?.rideType||r.rideType||'Ride')}</Text><Text style={{marginTop:4,color:'#667085'}}>{String(r.booking?.pickupAddress||r.pickupAddress||'Pickup unavailable')} → {String(r.booking?.dropAddress||r.dropAddress||'Destination unavailable')}</Text></Card>)}</PageScroll></Screen>}

@@ -1,0 +1,52 @@
+﻿{
+    "expo":  {
+                 "name":  "RideX Admin TEST",
+                 "slug":  "ridex-admin-test",
+                 "scheme":  "ridex-admin-test",
+                 "version":  "0.1.0",
+                 "orientation":  "portrait",
+                 "userInterfaceStyle":  "automatic",
+                 "android":  {
+                                 "package":  "com.ridex.admin.test",
+                                 "permissions":  [
+                                                     "android.permission.CAMERA",
+                                                     "android.permission.POST_NOTIFICATIONS"
+                                                 ],
+                                 "icon":  "../logo/admin.png",
+                                 "adaptiveIcon":  {
+                                                      "foregroundImage":  "../logo/admin.png",
+                                                      "backgroundColor":  "#FFFFFF"
+                                                  }
+                             },
+                 "ios":  {
+                             "bundleIdentifier":  "com.ridex.admin.test",
+                             "infoPlist":  {
+                                               "NSCameraUsageDescription":  "RideX uses the camera only for supported role workflows."
+                                           }
+                         },
+                 "plugins":  [
+                                 [
+                                     "expo-image-picker",
+                                     {
+                                         "photosPermission":  "RideX Admin uses photos where approved for support and review workflows.",
+                                         "cameraPermission":  "RideX Admin uses the camera only for supported capture workflows.",
+                                         "microphonePermission":  false
+                                     }
+                                 ],
+                                 "expo-camera",
+                                 [
+                                     "expo-notifications",
+                                     {
+                                         "color":  "#0AA35A"
+                                     }
+                                 ],
+                                 [
+                                     "expo-secure-store",
+                                     {
+                                         "configureAndroidBackup":  true
+                                     }
+                                 ]
+                             ],
+                 "icon":  "../logo/admin.png"
+             }
+}

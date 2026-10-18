@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_INCIDENT_RESPONSE_PLAYBOOK_DEFINED_ESCALATION_SLA_PENDING_PHYSICAL_DRILLS_DEFERRED",
+  "purpose": "Source-backed incident response controls and runbook structure. No incident, alert-delivery, credential-revocation or recovery drill was executed in this planning/implementation phase.",
+  "decisionPending": {
+    "id": "RX-DEC-052",
+    "status": "VERIFY",
+    "topic": "incident-severity-sla-oncall-legal-and-escalation-ownership",
+    "owner": "Operations/Security/Legal/Finance/Project owner",
+    "requiresApproval": [
+      "on-call rota and escalation contacts",
+      "severity-specific acknowledgement/update/resolution targets",
+      "external notification and legal/privacy reporting responsibility",
+      "who may authorize credential revocation, transaction suspension and data restoration",
+      "evidence-retention and post-incident report deadlines"
+    ],
+    "noValuesInvented": true
+  },
+  "severityModel": [
+    {
+      "id": "SEV-1",
+      "meaning": "Confirmed or strongly suspected critical security compromise, financial integrity breach, broad sensitive-data exposure or loss of authoritative business data.",
+      "targetStatus": "OWNER_APPROVAL_REQUIRED",
+      "responseSla": "PENDING_RX-DEC-052"
+    },
+    {
+      "id": "SEV-2",
+      "meaning": "Material service degradation, recurring payment/booking integrity risk, privileged-access failure or significant provider/Gateway delivery disruption.",
+      "targetStatus": "OWNER_APPROVAL_REQUIRED",
+      "responseSla": "PENDING_RX-DEC-052"
+    },
+    {
+      "id": "SEV-3",
+      "meaning": "Limited-scope functional fault with known containment and no current indication of data/financial compromise.",
+      "targetStatus": "OWNER_APPROVAL_REQUIRED",
+      "responseSla": "PENDING_RX-DEC-052"
+    },
+    {
+      "id": "SEV-4",
+      "meaning": "Low-impact defect or non-critical operational issue managed through normal support workflow.",
+      "targetStatus": "OWNER_APPROVAL_REQUIRED",
+      "responseSla": "PENDING_RX-DEC-052"
+    }
+  ],
+  "roles": [
+    {"id":"incidentCommander","responsibility":"Own severity, coordination, timeline and authorized decisions."},
+    {"id":"technicalLead","responsibility":"Contain affected service, preserve technical evidence and coordinate recovery."},
+    {"id":"securityLead","responsibility":"Assess credentials/access/data exposure, audit evidence and security containment."},
+    {"id":"dataFinanceOwner","responsibility":"Validate booking/payment/ledger invariants and reconcile ambiguous transactions."},
+    {"id":"communicationsOwner","responsibility":"Approve internal, customer, provider and regulatory communication as applicable."},
+    {"id":"incidentRecorder","responsibility":"Maintain timestamped decision/action/evidence log with sensitive-value redaction."}
+  ],
+  "responsePhases": [
+    {"id":"DETECT","requiredActions":["record UTC detection time and correlation/test/run IDs","classify suspected impact and affected component","avoid printing tokens, OTPs, credentials or raw signed URLs"]},
+    {"id":"TRIAGE","requiredActions":["establish incident commander and technical/security/finance owners","record current known facts separately from hypotheses","decide severity using the approved model"]},
+    {"id":"CONTAIN","requiredActions":["use least-disruptive approved containment","revoke/rotate exposed credentials through authorized process","disable affected integration or privileged route only with recorded authorization","never route test traffic to LIVE or connect a client directly to the business database"]},
+    {"id":"PRESERVE_EVIDENCE","requiredActions":["preserve redacted logs, audit events, build revision and relevant configuration history","calculate hashes for exported evidence and restrict access","do not delete or overwrite evidence to make a service appear healthy"]},
+    {"id":"ERADICATE_AND_RECOVER","requiredActions":["fix the verified root cause","restore only from checksum-verified backup to an explicitly approved local/target environment","reconcile booking/payment/ledger/OTP/Gateway state against authoritative records"]},
+    {"id":"VALIDATE","requiredActions":["verify security boundaries and business invariants","confirm duplicate/unknown payment or delivery outcomes are reconciled","record unresolved defects and explicit rollback/forward-fix decision"]},
+    {"id":"COMMUNICATE","requiredActions":["use approved severity-specific update cadence after RX-DEC-052 is approved","share only necessary, verified information","avoid exposing personal data, secrets or exploit detail in broad channels"]},
+    {"id":"POST_INCIDENT","requiredActions":["document timeline, impact, root cause, containment and recovery evidence","create corrective actions with owners and deadlines after approval","review whether release gates, threat model or runbooks need updates"]}
+  ],
+  "playbooks": [
+    {"id":"IR-001","scenario":"Suspected token/private-key/provider-secret exposure","initialSeverity":"SEV-1 candidate; confirm scope","ownerRoles":["incidentCommander","securityLead"],"immediateActions":["restrict access to the exposed surface","preserve redacted audit/CI evidence","rotate or revoke through approved key/provider workflow","check for unauthorized use"],"evidence":["secret type and location without value","build/revision and first/last known exposure","affected identity/provider and revocation confirmation"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-002","scenario":"Unauthorized Admin/Super Admin action or geographic-scope bypass","initialSeverity":"SEV-1 candidate; confirm scope","ownerRoles":["incidentCommander","securityLead"],"immediateActions":["preserve session/audit/authorization evidence","revoke affected sessions if authorized","disable compromised account or operation through approved control","review affected records and export history"],"evidence":["request IDs, actor IDs, role/scope and action IDs; no bearer token"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-003","scenario":"Duplicate, mismatched, forged or ambiguous payment/refund/settlement","initialSeverity":"SEV-1 candidate; finance owner classifies","ownerRoles":["incidentCommander","dataFinanceOwner"],"immediateActions":["pause only the affected financial path under approved authority","preserve provider event IDs and signature-verification outcomes","reconcile provider state, PaymentAttempt, ledger and settlement before manual correction"],"evidence":["transaction IDs, amount/currency snapshots and provider correlation IDs; redact payment secrets"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-004","scenario":"OTP abuse, repeated failed attempts or account takeover indicators","initialSeverity":"SEV-1/SEV-2 candidate; security owner classifies","ownerRoles":["incidentCommander","securityLead"],"immediateActions":["preserve attempt/configuration/audit history under retention rules","apply approved rate-limit/session-revocation controls","do not expose OTP or challenge secret in alerts"],"evidence":["actor type/ID, purpose code, timestamp, request ID, safe reason"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-005","scenario":"Suspected sensitive-data/attachment/identity-document disclosure","initialSeverity":"SEV-1 candidate; privacy/legal owner classifies","ownerRoles":["incidentCommander","securityLead","communicationsOwner"],"immediateActions":["restrict affected object/access path","preserve access audit without copying contents to broad logs","determine affected data subjects and object references","apply approved notification/legal-hold workflow"],"evidence":["object IDs, access timestamps, authorization outcome and verified exposure scope"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-006","scenario":"Backend/database/provider outage or cascading timeout/retry amplification","initialSeverity":"SEV-2 candidate","ownerRoles":["incidentCommander","technicalLead"],"immediateActions":["check readiness/dependency metrics and retry/backlog limits","use bounded retries and approved degraded mode","avoid blind replay of non-idempotent operations"],"evidence":["time window, component, error class, request IDs and queue depth"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-007","scenario":"Broadcaster/Gateway queue backlog, unauthorized command or ambiguous delivery state","initialSeverity":"SEV-2 candidate; security/operations classifies","ownerRoles":["incidentCommander","technicalLead","securityLead"],"immediateActions":["pause unauthorized command path if approved","preserve job/lease/ACK/provider status transitions","reconcile before replay; do not infer delivery from HTTP acceptance alone"],"evidence":["jobId, attemptId, gatewayId/deviceId and safe result code; exclude phone numbers/secrets unless strictly needed and access-controlled"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-008","scenario":"Database corruption or suspected data loss","initialSeverity":"SEV-1 candidate","ownerRoles":["incidentCommander","technicalLead","dataFinanceOwner"],"immediateActions":["stop destructive writes only with authorized decision","preserve database/backup metadata and relevant logs","verify recovery source/checksum and expected database identity","restore only to named disposable/approved target"],"evidence":["backup checksum, database name/marker, schema revision and pre/post invariant report"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-009","scenario":"Realtime event audience leak, replay cursor abuse or stream resource exhaustion","initialSeverity":"SEV-1/SEV-2 candidate","ownerRoles":["incidentCommander","technicalLead","securityLead"],"immediateActions":["restrict affected stream or replay path","preserve correlation IDs and event IDs without payload secrets","revoke/re-auth sessions when exposure indicates compromise","reconcile exposed audience/scope"],"evidence":["actor/scope IDs, cursor range, event IDs and response metadata; never retain tokens/raw signed URL query"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"},
+    {"id":"IR-010","scenario":"TEST/LIVE boundary violation or unapproved remote database/provider target","initialSeverity":"SEV-1 candidate","ownerRoles":["incidentCommander","securityLead","technicalLead"],"immediateActions":["stop the affected process/path","preserve redacted environment key names and target classification, not credential values","verify no write occurred and assess downstream provider/DB audit","restore approved local-only configuration"],"evidence":["build/environment ID, safe host class and request/process IDs; no URL credentials"],"physicalDrillStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_COMPLETE"}
+  ],
+  "evidencePolicy": {
+    "sensitiveValuesAllowed": false,
+    "tokensOtpPasswordsPrivateKeysRawSignedUrlsAllowed": false,
+    "personalDataInBroadIncidentChannelsAllowed": false,
+    "recordedFields": ["incidentId","severity","detectedAtUtc","owner","buildRevision","environmentId","requestIdOrJobId","action","decisionOwner","outcome","evidenceHash","followupReference"],
+    "accessPolicy": "Least privilege; preserve original timestamps; redacted copies for broad review; never alter original evidence to hide a failure."
+  },
+  "physicalDrills": {
+    "status": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+    "requiredAfterImplementation": ["one auth/secret exposure tabletop","one financial ambiguity tabletop","one privacy/access incident tabletop","one provider/Gateway disruption scenario","one database restore/reconciliation scenario"],
+    "approvalGate": "RX-DEC-052 severity SLA/on-call/notification ownership approved"
+  }
+}

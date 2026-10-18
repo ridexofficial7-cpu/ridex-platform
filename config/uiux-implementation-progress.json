@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "package": "P4 — Complete App & Web UI/UX",
+  "checkpointVersion": "3.3",
+  "updatedAt": "2026-10-12",
+  "resumeAt": "P4-H",
+  "currentItemStatus": "IN_PROGRESS",
+  "completed": [
+    "P4-C static scope reconciliation",
+    "P4-D static taxonomy alignment",
+    "P4-E static journey-state mapping",
+    "P4-F static design-token alignment",
+    "P4-G static independent-shell mapping"
+  ],
+  "currentImplementation": "Driver Home now shows an explicit stale/live-updates-paused warning when realtime is disconnected and offers a user-triggered refreshDriver recovery action.",
+  "pending": [
+    "Continue auditing remaining Customer booking/payment/cancellation mutation paths for unknown outcomes without blind retries.",
+    "Continue remaining Customer and Driver App P0/P1 screen states, then Admin Mobile, Super Admin Control, Gateway and Public Website.",
+    "Complete all applicable P4-H state coverage and static reconciliation before beginning P4-I."
+  ],
+  "tests": "SKIPPED_BY_USER",
+  "resumePolicy": "Continue from P4-H checkpoint v3.3, sourced from v3.2. Next focus: remaining Customer mutation recovery and Driver P0/P1 states, then remaining surfaces. Do not start P4-I until all applicable states are implemented and statically reconciled. Tests remain skipped by user instruction.",
+  "status": "IN_PROGRESS"
+}

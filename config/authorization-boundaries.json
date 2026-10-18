@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "projectId": "ridex-super-admin-controle",
+  "rules": {
+    "clientMayChooseEffectiveActorIdentity": false,
+    "backendEnforcesAuthorization": true,
+    "uiVisibilityIsSecurityBoundary": false,
+    "adminGeographicScope": {
+      "SUPER_ADMIN": "unrestricted subject to authenticated privileged action checks",
+      "GLOBAL": "authorized global dataset",
+      "STATE": "only assigned state and its authorized data",
+      "CITY": "only assigned city and its authorized data"
+    },
+    "driverSubmissionRequires": [
+      "valid stateId",
+      "valid cityId",
+      "city belongs to assigned state",
+      "active state",
+      "active city",
+      "serviceAvailable city"
+    ],
+    "unknownModelOrScope": "FAIL_CLOSED",
+    "directDatabaseAccessFromClients": false,
+    "serviceEnablementAuthority": "Only authenticated Super Admin may change Passenger/Shared/Parcel/Goods/Event enablement; broad operational configuration permission does not authorize a service availability toggle."
+  },
+  "protectedMounts": [
+    {
+      "path": "/api/v1/driver",
+      "router": "driverRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity"
+      ]
+    },
+    {
+      "path": "/api/v1/customer",
+      "router": "customerRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity"
+      ]
+    },
+    {
+      "path": "/api/v1/trips",
+      "router": "tripsRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity"
+      ]
+    },
+    {
+      "path": "/api/v1/gps",
+      "router": "gpsRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity"
+      ]
+    },
+    {
+      "path": "/api/v1/payments",
+      "router": "paymentsRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity"
+      ]
+    },
+    {
+      "path": "/api/v1/admin/configuration",
+      "router": "configurationRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity",
+        "adminNetwork"
+      ]
+    },
+    {
+      "path": "/api/v1/admin/platform",
+      "router": "platformRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity",
+        "adminNetwork"
+      ]
+    },
+    {
+      "path": "/api/v1/admin/payouts",
+      "router": "payoutRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity",
+        "adminNetwork"
+      ]
+    },
+    {
+      "path": "/api/v1/admin/events",
+      "router": "eventAdminRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity",
+        "adminNetwork"
+      ]
+    },
+    {
+      "path": "/api/v1/admin/shared-routes",
+      "router": "sharedRideAdminRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity",
+        "adminNetwork"
+      ]
+    },
+    {
+      "path": "/api/v1/admin",
+      "router": "adminRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity",
+        "adminNetwork"
+      ]
+    },
+    {
+      "path": "/api/v1/realtime",
+      "router": "realtimeRouter",
+      "requiredMiddleware": [
+        "appAuth",
+        "actorIdentity"
+      ]
+    }
+  ],
+  "sourceEvidence": {
+    "adminScopeService": "services/backend/src/services/adminScope.ts",
+    "adminScopeContext": "services/backend/src/services/adminScopeContext.ts",
+    "authMiddleware": "services/backend/src/middleware/auth.ts",
+    "driverOnboarding": "services/backend/src/routes/driver.ts",
+    "canonicalSchema": "services/backend/prisma/schema.prisma",
+    "serviceEnablementAuthority": "services/backend/src/routes/admin.ts::PUT /matching/configuration checks changed service enablement fields inside the configuration transaction and returns 403 for non-Super-Admin actors."
+  },
+  "verificationBoundary": "Static mount/schema/source checks only; per-route negative authorization tests are deferred until final physical-test phase. Static-only source change; role-negative and concurrency authorization tests are NOT_RUN.",
+  "revision": 2
+}

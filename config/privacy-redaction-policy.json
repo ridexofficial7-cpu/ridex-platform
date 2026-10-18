@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "policyRevision": 5,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "PARTIAL_SHARED_AUDIT_REDACTION_IMPLEMENTED_FINAL_CROSS_ROUTE_REVIEW_PENDING",
+  "scope": [
+    "Backend request/response and error logging",
+    "Admin before/after audit snapshots",
+    "Backend realtime event payloads",
+    "Broadcaster Provider security-audit metadata",
+    "provider and support route error responses"
+  ],
+  "implementedStaticProtections": [
+    {
+      "file": "services/backend/src/middleware/auth.ts",
+      "control": "authentication log emits validated exception type, not raw exception message"
+    },
+    {
+      "file": "services/backend/src/routes/admin.ts",
+      "control": "TEST-only diagnostic detail emits exception type, not raw exception message"
+    },
+    {
+      "file": "services/backend/src/routes/admin.ts",
+      "control": "Admin entity outputs recursively redact token/secret/authorization/bank/storage values"
+    },
+    {
+      "file": "services/backend/src/routes/platform.ts",
+      "control": "audit snapshots omit common sensitive-key values and store route path without query string"
+    },
+    {
+      "file": "services/backend/src/services/realtime.ts",
+      "control": "realtime event normalization strips sensitive-key values from serialized payloads"
+    },
+    {
+      "file": "services/broadcaster-provider/src/services/security-audit.service.ts",
+      "control": "Provider security-audit metadata recursively redacts sensitive keys and sanitizes bearer/query/key-value text"
+    },
+    {
+      "file": "services/backend/src/routes/appAssets.ts",
+      "control": "app-asset failure logs record validated exception type, not raw exception message"
+    },
+    {
+      "file": "services/backend/src/services/auditRedaction.ts",
+      "control": "Shared recursive audit snapshot redaction for sensitive field names, bearer/JWT/private-key text, secret-bearing URL query parameters, inline key-value secrets, credential-bearing database URLs, embedded email/Indian mobile patterns; bounded depth, arrays, object entries and strings."
+    },
+    {
+      "file": "services/backend/src/routes/payouts.ts",
+      "control": "Payout audit serialization applies shared recursive field and embedded-text redaction."
+    },
+    {
+      "file": "services/backend/src/routes/customer.ts",
+      "control": "Customer audit snapshots and security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/support.ts",
+      "control": "Support audit snapshots apply shared recursive redaction without modifying idempotency/API replay bodies."
+    },
+    {
+      "file": "services/backend/src/routes/ratings.ts",
+      "control": "Ratings audit snapshots apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/safety.ts",
+      "control": "Safety/SOS audit snapshots apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/trips.ts",
+      "control": "Trip audit snapshots, including trip-start transaction audit, apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/notifications.ts",
+      "control": "Notification audit snapshots apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/driver.ts",
+      "control": "Driver audit before/after snapshots apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/bookings.ts",
+      "control": "Booking audit snapshots and security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/events.ts",
+      "control": "Event audit snapshots and security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/auth.ts",
+      "control": "OTP and protected-action grant audit metadata apply shared recursive redaction; plaintext grant response to the authorized actor is unchanged."
+    },
+    {
+      "file": "services/backend/src/services/apiResponseContract.ts",
+      "control": "Central API response-envelope normalization applies recursive key-based and embedded-secret redaction to 4xx/5xx error payloads only; successful response schemas are left unchanged, and recognized internal 5xx diagnostics still use a safe generic message."
+    },
+    {
+      "file": "services/backend/src/routes/sharedRide.ts",
+      "control": "Shared-route audit snapshots apply recursive redaction; audit failure inside a supplied DB transaction now propagates so the mutation rolls back."
+    },
+    {
+      "file": "services/backend/src/routes/configuration.ts",
+      "control": "Configuration audit snapshots, including required transaction-bound audit writes, apply shared recursive redaction after JSON normalization."
+    },
+    {
+      "file": "services/backend/src/routes/calls.ts",
+      "control": "Masked-call after snapshots and security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/gps.ts",
+      "control": "Suspicious-GPS security details apply shared recursive redaction before persistence."
+    },
+    {
+      "file": "services/backend/src/routes/devices.ts",
+      "control": "Device before/after snapshots and security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/consent.ts",
+      "control": "User consent audit snapshots and security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/services/driverDocuments.service.ts",
+      "control": "Driver document before/after snapshots and security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/services/connectionHandover.ts",
+      "control": "InterCity handover transactional audit snapshots/security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/provider.ts",
+      "control": "Provider delivery-result transactional audit metadata applies shared recursive redaction; recipient remains masked before audit."
+    },
+    {
+      "file": "services/backend/src/services/finalizeTrip.ts",
+      "control": "Authoritative trip-finalization transactional audit snapshots/security metadata apply shared recursive redaction."
+    },
+    {
+      "file": "services/backend/src/routes/payments.ts",
+      "control": "Payment audit snapshots/security metadata, including inline Razorpay reconciliation audits, apply shared redaction; a failed audit inside a supplied transaction now propagates and aborts the transaction."
+    },
+    {
+      "file": "services/backend/src/routes/payouts.ts",
+      "control": "Payout audit failures propagate whenever the audit write uses the caller transaction, preventing a financial state commit without its required audit."
+    },
+    {
+      "file": "services/backend/src/routes/bookings.ts",
+      "control": "Booking audit failures propagate for transaction-bound writes, including protected cancellation paths."
+    },
+    {
+      "file": "services/backend/src/routes/ratings.ts",
+      "control": "Rating audit failures propagate for transaction-bound writes so the rating/idempotency transaction cannot commit without its audit."
+    },
+    {
+      "file": "services/backend/src/routes/trips.ts",
+      "control": "Trip audit failures propagate when a transaction client is supplied."
+    },
+    {
+      "file": "services/backend/src/routes/driver.ts",
+      "control": "Both Driver audit helpers redact snapshots; transaction-bound audit failures propagate."
+    },
+    {
+      "file": "services/backend/src/routes/events.ts",
+      "control": "Event booking transaction audit snapshots/security metadata use shared redaction."
+    },
+    {
+      "file": "services/backend/src/routes/configuration.ts",
+      "control": "Bulk OTP configuration transaction audit snapshots/security metadata use shared redaction."
+    }
+  ],
+  "knownResidualsRequiringReview": [
+    "Multiple Backend route handlers still return raw Error.message in error responses; separate approved client-safe domain codes from internal exceptions before claiming full redaction.",
+    "Some Provider Gateway routes return error.message because current status mapping depends on message tokens; define typed error codes and preserve HTTP behavior in a reviewed migration.",
+    "Support, auth and several integration catch blocks need a complete source-wide route/log/response redaction audit.",
+    "Audit retention, deletion exceptions, and permitted personal-data fields need a separately approved retention matrix.",
+    "Private storage access/deletion is covered by config/private-storage-access-contract.json; retention periods/legal hold remain unapproved in RX-DEC-041.",
+    "Final source-wide audit must still classify every direct AuditLog write, best-effort security events, retention policy, and public response error path; no runtime tests or build checks have been run."
+  ],
+  "runtimeTestStatus": "NOT_RUN_PER_PROJECT_OWNER_INSTRUCTION",
+  "decision": "PARTIAL IMPLEMENTATION — shared backend audit/error-response redaction and stronger Provider metadata redaction are implemented. Provider audit retention/archive policy is still unapproved; 5000-record exhaustion now blocks audit-dependent mutations rather than erasing history. This is not a full compliance sign-off.",
+  "owner": "Backend/Security/Provider/QA/Project owner",
+  "evidenceRequiredAtFinalTestPhase": [
+    "Synthetic-secret log scan across Backend and Provider",
+    "API response scan ensuring internal exception text is not exposed",
+    "Audit snapshot recursive-redaction tests",
+    "Realtime payload redaction tests",
+    "Retention/deletion approval and tests"
+  ]
+}

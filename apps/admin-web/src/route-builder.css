@@ -1,0 +1,46 @@
+/* Scoped replacement for the unused legacy admin stylesheet's Route Builder rules. */
+.route-builder-page .route-builder-layout { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(320px,.9fr); gap:16px; align-items:start; }
+.route-builder-page .route-builder-lower-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:16px; margin-top:16px; }
+.route-builder-page .route-builder-toolbar { display:flex; justify-content:space-between; gap:12px; align-items:flex-end; margin-bottom:12px; flex-wrap:wrap; }
+.route-builder-page .route-builder-mode { display:flex; flex-direction:column; gap:6px; }
+.route-builder-page .route-builder-mode-buttons { display:flex; gap:6px; flex-wrap:wrap; }
+.route-builder-page .route-builder-search { min-width:280px; }
+.route-builder-page .route-builder-map { position:relative; width:100%; overflow:hidden; border-radius:16px; border:1px solid #dbe3ec; background:#e8edf3; isolation:isolate; }
+.route-builder-page .route-builder-map.dragging { cursor:grabbing; }
+.route-builder-page .route-builder-map .rx-map-inner { position:absolute; left:0; top:0; overflow:visible; transform:none; }
+
+.route-builder-page .route-builder-map .rx-map-marker { z-index:8; }
+.route-builder-page .route-builder-map .rx-map-marker.route-selected svg { border-color:#dc2626; box-shadow:0 0 0 3px rgba(220,38,38,.12); }
+.route-builder-page .route-builder-map .route-builder-polyline { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:6; overflow:visible; }
+.route-builder-page .route-builder-map .rx-map-controls { z-index:12; }
+.route-builder-page .route-builder-map .rx-map-overlay { z-index:10; }
+.route-builder-page .route-builder-map .rx-map-empty { z-index:11; }
+.route-builder-page .route-builder-sequence { margin-top:14px; display:grid; gap:10px; }
+.route-builder-page .route-sequence-line { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.route-builder-page .route-node { display:inline-flex; padding:7px 10px; border-radius:999px; background:#eef2f7; border:1px solid #dce3ec; font-size:12px; font-weight:800; }
+.route-builder-page .route-node.terminal { background:#fff1f2; border-color:#fecdd3; color:#9f1239; }
+.route-builder-page .route-builder-active { display:flex; align-items:center; gap:8px; padding:10px 0; }
+.route-builder-page .route-builder-active input { width:16px; height:16px; }
+.route-builder-page .route-builder-actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:16px; }
+.route-builder-page .route-stop-list,.route-builder-page .route-saved-list { display:grid; gap:8px; }
+.route-builder-page .route-stop-row,.route-builder-page .route-saved-row { display:flex; justify-content:space-between; align-items:center; gap:12px; border:1px solid #e4e9ef; border-radius:12px; padding:10px 12px; background:#fff; min-width:0; }
+.route-builder-page .route-stop-row > div:first-child,.route-builder-page .route-saved-row > div:first-child { display:grid; gap:3px; text-align:left; min-width:0; }
+.route-builder-page .route-stop-row span,.route-builder-page .route-saved-row span { color:#667085; font-size:11px; overflow-wrap:anywhere; }
+.route-builder-page .route-stop-actions { display:flex; gap:5px; flex-shrink:0; }
+.route-builder-page .route-stop-actions button { width:30px; height:30px; border:1px solid #d8e0e9; background:#f8fafc; border-radius:8px; display:grid; place-items:center; cursor:pointer; }
+.route-builder-page .route-stop-actions button:disabled { opacity:.4; cursor:not-allowed; }
+.route-builder-page .route-saved-row { width:100%; cursor:pointer; text-align:left; }
+.route-builder-page .route-saved-row.selected { border-color:#fb7185; box-shadow:0 0 0 2px rgba(244,63,94,.08); }
+.route-builder-page .route-location-table { display:grid; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; }
+.route-builder-page .route-location-head,.route-builder-page .route-location-row { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) minmax(0,1fr) minmax(0,1.3fr); gap:12px; align-items:center; padding:11px 12px; }
+.route-builder-page .route-location-head { background:#f8fafc; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:#667085; font-weight:900; }
+.route-builder-page .route-location-row { border-top:1px solid #edf0f3; font-size:12px; }
+.route-builder-page .route-location-row > div:first-child { display:grid; gap:3px; min-width:0; }
+.route-builder-page .route-location-row small { color:#667085; overflow-wrap:anywhere; }
+@media (max-width: 1050px) { .route-builder-page .route-builder-layout,.route-builder-page .route-builder-lower-grid { grid-template-columns:minmax(0,1fr); } }
+@media (max-width: 760px) {
+  .route-builder-page .route-location-head { display:none; }
+  .route-builder-page .route-location-row { grid-template-columns:minmax(0,1fr); }
+  .route-builder-page .route-builder-search { min-width:100%; }
+  .route-builder-page .route-stop-row,.route-builder-page .route-saved-row { align-items:flex-start; }
+}

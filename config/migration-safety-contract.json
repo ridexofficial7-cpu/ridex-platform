@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 4,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_ELEVEN_MIGRATION_CANDIDATE_CHAIN_INVENTORIED_CANONICALITY_AND_ROLLBACK_DECISIONS_OPEN_PHYSICAL_DB_TESTS_DEFERRED",
+  "canonicalPrismaDeployPath": "services/backend/prisma/migrations/",
+  "activeChain": [
+    {
+      "order": 1,
+      "migrationId": "20261001_ridex_canonical_baseline",
+      "file": "services/backend/prisma/migrations/20261001_ridex_canonical_baseline/migration.sql",
+      "sha256": "47c47b096315b4920f689b1bb68868895918504e7899f0d18e96d6d74d2544c9",
+      "role": "Initial canonical-schema candidate; fresh_baseline/migration.sql is a byte-identical reference outside Prisma deploy path."
+    },
+    {
+      "order": 2,
+      "migrationId": "20261005_backend_end_to_end_alignment",
+      "file": "services/backend/prisma/migrations/20261005_backend_end_to_end_alignment/migration.sql",
+      "sha256": "149289fddedb19975838c858eb3997fce28144bbd0ea8244714f3a7c0881a2c8",
+      "role": "Adds booking vehicle/parcel fields and provider delivery-result persistence."
+    },
+    {
+      "order": 3,
+      "migrationId": "20261005_medium_priority",
+      "file": "services/backend/prisma/migrations/20261005_medium_priority/migration.sql",
+      "sha256": "f4ee5655fa1dbcf946ce2da0eb2479e7d82d5b9005c7b812af071bcfd12ddc1b",
+      "role": "Subscription backend integration; same date prefix as prior entry, so preserve lexicographic migration ordering."
+    },
+    {
+      "order": 4,
+      "migrationId": "20261008_gateway_management",
+      "file": "services/backend/prisma/migrations/20261008_gateway_management/migration.sql",
+      "sha256": "baa389e2bbbb217781d541a9e45f5067ed5d6c4418cf3e994d0e364f4dcb2348",
+      "role": "Gateway management records and related constraints."
+    },
+    {
+      "order": 5,
+      "migrationId": "20261012_event_service_toggle",
+      "file": "services/backend/prisma/migrations/20261012_event_service_toggle/migration.sql",
+      "sha256": "ee2e922c135ee318bd2588220840cfb8fad9cd803878919583dfa252ed203672",
+      "role": "Additive Event service enable/disable flag; migration has not been executed."
+    },
+    {
+      "order": 6,
+      "migrationId": "20261012_ledger_reference_idempotency",
+      "file": "services/backend/prisma/migrations/20261012_ledger_reference_idempotency/migration.sql",
+      "sha256": "ed331a6f697798af7d9ac53209975ab395d46d83c689817cd238f530ede8c5c5",
+      "role": "Adds durable ledger reference/idempotency constraints; migration has not been executed."
+    },
+    {
+      "order": 7,
+      "migrationId": "20261012_payment_refund_atomic_idempotency",
+      "file": "services/backend/prisma/migrations/20261012_payment_refund_atomic_idempotency/migration.sql",
+      "sha256": "93781c25b23e9391a35b3937a3e99319871b200b09826fc26c4937e9ea56ba89",
+      "role": "Adds payment/refund atomic-idempotency schema changes; migration has not been executed."
+    },
+    {
+      "order": 8,
+      "migrationId": "20261012_protected_action_otp_grant",
+      "file": "services/backend/prisma/migrations/20261012_protected_action_otp_grant/migration.sql",
+      "sha256": "73402d950ec3c71c2262d5575491ae9b85da6e514f79c3e9642878f656897c1a",
+      "role": "Adds durable one-time protected-action OTP grants bound to actor/session/purpose/resource; migration has not been executed."
+    },
+    {
+      "order": 9,
+      "migrationId": "20261013_provider_delivery_result_request_channel_idempotency",
+      "file": "services/backend/prisma/migrations/20261013_provider_delivery_result_request_channel_idempotency/migration.sql",
+      "sha256": "727d7c9568b56741d9c0e4a523e210c11a4ac3540f3ad1bdf7234e5d1e3cb731",
+      "role": "Adds provider delivery-result request/channel idempotency and unique constraints; migration has not been executed."
+    },
+    {
+      "order": 10,
+      "migrationId": "20261013_z_domain_integrity_hardening",
+      "file": "services/backend/prisma/migrations/20261013_z_domain_integrity_hardening/migration.sql",
+      "sha256": "abf703498155a305573dae4cd415cba8073cde912ff25a3a14cb71008dd98f16",
+      "role": "Adds database-level domain bounds and partial unique indexes; existing invalid rows or duplicate active rows intentionally make migration fail rather than be silently changed."
+    },
+    {
+      "order": 11,
+      "migrationId": "20261014_support_reopened_status",
+      "file": "services/backend/prisma/migrations/20261014_support_reopened_status/migration.sql",
+      "sha256": "1b455aa3a12abfc6444c59eb575e5a4672dd4844088d36de5bcf36f1e34b11f6",
+      "role": "Adds support-case reopened status support; observed migration inventory only, not executed or approved."
+    }
+  ],
+  "freshBaselineReference": {
+    "file": "services/backend/prisma/fresh_baseline/migration.sql",
+    "sha256": "47c47b096315b4920f689b1bb68868895918504e7899f0d18e96d6d74d2544c9",
+    "byteIdenticalTo": "services/backend/prisma/migrations/20261001_ridex_canonical_baseline/migration.sql",
+    "includedInPrismaDeployChain": false,
+    "preserveUntilDecision": "RX-DEC-053"
+  },
+  "legacyArchive": {
+    "historicalArchiveObservedInOriginalSourceZip": true,
+    "includedInCurrentCleanProjectZip": false,
+    "restoreOrImportAllowed": false,
+    "decision": "RX-DEC-053",
+    "note": "Do not copy or execute historical legacy migrations unless the project owner explicitly reintroduces and approves their provenance and application history."
+  },
+  "migrationRunnerPolicy": {
+    "source": "services/backend/scripts/prisma-migrate-deploy.cjs",
+    "command": "prisma migrate deploy",
+    "allowedEnvironment": "TEST",
+    "productionOrLiveAllowed": false,
+    "allowedDatabaseHosts": [
+      "localhost",
+      "127.0.0.1",
+      "::1"
+    ],
+    "requiredDatabaseUrl": "DATABASE_URL_TEST",
+    "requiredExpectedDatabaseName": "RIDEX_EXPECTED_DATABASE_NAME must exactly match the database name encoded in DATABASE_URL_TEST",
+    "liveDatabaseUrlMustBeBlank": true,
+    "noSecretValuesLogged": true
+  },
+  "migrationSafetyRules": [
+    "Never execute migrations during static implementation steps.",
+    "Before final-phase migration tests, verify the exact local TEST database identity and take a checksum-verified backup.",
+    "Use only the active Prisma migrations directory for migrate deploy; fresh_baseline is a reference/consistency copy, not a second migration directory.",
+    "Do not automatically repair or mark migrations applied if the database migration history disagrees with the files.",
+    "On failed migration, stop and preserve the migration error/context; do not manually edit _prisma_migrations or rerun destructive steps without a reviewed recovery plan.",
+    "No migration rollback is assumed; use an approved forward-fix or a separately reviewed restore plan.",
+    "Compare Prisma schema, active migration history, constraints, indexes and enum values against a fresh empty local TEST database and an approved prior-version fixture during final testing."
+  ],
+  "decisionsPending": [
+    {
+      "id": "RX-DEC-053",
+      "status": "VERIFY",
+      "topic": "canonical-schema-migration-chain-and-legacy-archive-disposition"
+    },
+    {
+      "id": "RX-DEC-054",
+      "status": "VERIFY",
+      "topic": "failed-migration-forward-fix-versus-restore-recovery-policy"
+    }
+  ],
+  "finalPhysicalTests": [
+    "Verify database identity and ensure it is dedicated to this fresh project before connecting.",
+    "Run prisma migrate status against an isolated empty local TEST database.",
+    "Run prisma migrate deploy on a disposable empty local TEST database and capture applied migration IDs/checksums.",
+    "Run an approved upgrade path from a sanitized prior-version fixture and compare schema drift.",
+    "Test migration failure/interrupt handling without editing Prisma history manually.",
+    "Verify critical unique constraints, indexes, foreign keys, monetary precision and enum values after migration.",
+    "Take a checksum-verified backup before migration and verify the approved restore/forward-fix path."
+  ],
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+  "runtimeDatabaseAccessPerformed": false,
+  "noMigrationExecuted": true,
+  "migrationOrderValidation": "PRISMA_LEXICOGRAPHIC_DIRECTORY_ORDER_MUST_MATCH_RECORDED_ACTIVE_CHAIN",
+  "migrationReview": {
+    "activeMigrationDirectories": [
+      "20261001_ridex_canonical_baseline",
+      "20261005_backend_end_to_end_alignment",
+      "20261005_medium_priority",
+      "20261008_gateway_management",
+      "20261012_event_service_toggle",
+      "20261012_ledger_reference_idempotency",
+      "20261012_payment_refund_atomic_idempotency",
+      "20261012_protected_action_otp_grant",
+      "20261013_provider_delivery_result_request_channel_idempotency",
+      "20261013_z_domain_integrity_hardening",
+      "20261014_support_reopened_status"
+    ],
+    "activeMigrationCount": 11,
+    "hashesRefreshedAt": "2026-10-15",
+    "canonicalChainApproved": false,
+    "migrationsExecuted": false,
+    "decisionPending": [
+      "RX-DEC-053",
+      "RX-DEC-054"
+    ],
+    "note": "Source observation only. Inventory and SHA-256 values do not approve migration order or prove the chain applies to an existing database. Runtime migrate status/deploy and schema comparison remain deferred until explicit final TEST-database approval."
+  }
+}

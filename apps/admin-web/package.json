@@ -1,0 +1,35 @@
+{
+  "name": "ridex-admin-panel-ui",
+  "version": "5.6.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode test",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "security:headers": "node scripts/check-security-headers.mjs",
+    "dev:test": "vite --mode test",
+    "dev:live": "vite --mode live",
+    "build:test": "vite build --mode test",
+    "build:live": "vite build --mode live",
+    "preview:test": "vite preview --mode test",
+    "preview:live": "vite preview --mode live",
+    "prebuild": "npm --prefix ../.. run verify:localization-ci",
+    "prebuild:test": "npm --prefix ../.. run verify:localization-ci",
+    "prebuild:live": "node ../../scripts/verify-localization-ci.mjs --target=LIVE"
+  },
+  "dependencies": {
+    "lucide-react": "1.44.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "5.2.0",
+    "typescript": "^7.0.2",
+    "vite": "7.3.6"
+  }
+}

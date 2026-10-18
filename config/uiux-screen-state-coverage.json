@@ -1,0 +1,2683 @@
+{
+  "schemaVersion": 1,
+  "workItem": "P4-H",
+  "inventorySource": "config/uiux-source-inventory.json",
+  "screenCount": 92,
+  "stateNames": [
+    "loading",
+    "empty",
+    "offline",
+    "stale",
+    "denied",
+    "timeout",
+    "failure",
+    "recovery"
+  ],
+  "testPolicy": "SKIPPED_BY_USER — no tests executed",
+  "implementationRule": "A state may be marked IMPLEMENTED_UNVERIFIED only when a source implementation exists; do not mark runtime verified without authorized testing.",
+  "screens": [
+    {
+      "screenId": "C-01",
+      "surface": "Customer App",
+      "screenName": "Splash / launch and version check",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H launch/session restore slice v2.6: source includes explicit restore loading, accessible failure state and retry; backend booking confirmation is authoritative. Runtime unverified; offline/timeout are not separately classified."
+    },
+    {
+      "screenId": "C-02",
+      "surface": "Customer App",
+      "screenName": "Welcome, language and permission education",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-03",
+      "surface": "Customer App",
+      "screenName": "Login - mobile number",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H auth recovery slice v2.2: source shows loading feedback, accessible failure announcement, and explicit retry for thrown request/network failures. Runtime unverified; does not claim separate offline/timeout classification."
+    },
+    {
+      "screenId": "C-04",
+      "surface": "Customer App",
+      "screenName": "OTP verification",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H auth recovery slice v2.2: source shows loading feedback, accessible failure announcement, and explicit retry for thrown request/network failures. Runtime unverified; does not claim separate offline/timeout classification."
+    },
+    {
+      "screenId": "C-05",
+      "surface": "Customer App",
+      "screenName": "Profile completion",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Saved-profile fetch failure is distinguished from an incomplete profile; accessible failure guidance and explicit retry are implemented in the Customer profile-completion screen. Source-only; runtime behavior not verified."
+    },
+    {
+      "screenId": "C-06",
+      "surface": "Customer App",
+      "screenName": "Customer Home",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Customer Home surfaces current-location permission/GPS failure accessibly and offers explicit GPS retry or manual address entry. Source-only; runtime behavior not verified."
+    },
+    {
+      "screenId": "C-07",
+      "surface": "Customer App",
+      "screenName": "Pickup and destination search",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked. Nearby geocoding distinguishes loading, empty result and thrown search failure; retry is user-triggered. Source-level only."
+    },
+    {
+      "screenId": "C-08",
+      "surface": "Customer App",
+      "screenName": "Service selection",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-09",
+      "surface": "Customer App",
+      "screenName": "Passenger vehicle selection",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-10",
+      "surface": "Customer App",
+      "screenName": "Parcel booking details",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-11",
+      "surface": "Customer App",
+      "screenName": "Goods booking details",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-12",
+      "surface": "Customer App",
+      "screenName": "Shared / Connection / Event ride details",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-13",
+      "surface": "Customer App",
+      "screenName": "Fare quote and breakdown",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H v3.1 source slice: fare-review Location Compatibility distinguishes CHECKING/VALID/INVALID/UNKNOWN; reverse-geocoding failure remains non-authoritative and exposes a user-triggered retry when UNKNOWN. Backend remains authoritative for service-zone eligibility. Static source inspection only; runtime unverified."
+    },
+    {
+      "screenId": "C-14",
+      "surface": "Customer App",
+      "screenName": "Payment method",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Payment preparation now distinguishes a lost response/unknown outcome from a confirmed failure and directs the user to authoritative status refresh instead of blind retry. Source-only; runtime not verified."
+    },
+    {
+      "screenId": "C-15",
+      "surface": "Customer App",
+      "screenName": "Booking confirmation and matching",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H v2.7 booking-create unknown-outcome recovery plus v2.6 authoritative active-booking restore and v2.8 protected-action status reconciliation. Runtime unverified. Event booking transport/response ambiguity is guarded by a shared unknown-outcome pause and Check My Rides recovery; source-level only."
+    },
+    {
+      "screenId": "C-16",
+      "surface": "Customer App",
+      "screenName": "Driver assigned",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Customer confirmed active-booking screen displays accessible realtime-disconnected/stale warning and an explicit booking refresh action; source-only, runtime not verified."
+    },
+    {
+      "screenId": "C-17",
+      "surface": "Customer App",
+      "screenName": "Live trip tracking",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Customer confirmed active-booking screen displays accessible realtime-disconnected/stale warning and an explicit booking refresh action; source-only, runtime not verified."
+    },
+    {
+      "screenId": "C-18",
+      "surface": "Customer App",
+      "screenName": "Ride start/finish QR and OTP verification",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H v2.8 adds protected cancellation/ride-end transport-unknown outcome warning and authoritative booking-status refresh. No blind mutation retry; runtime unverified."
+    },
+    {
+      "screenId": "C-19",
+      "surface": "Customer App",
+      "screenName": "Trip completed and receipt",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Receipt screen exposes authoritative payment-status refresh for non-cash payments; unknown outcomes are clearly disclosed and duplicate payment action is withheld until status reconciliation. Source-only; runtime not verified."
+    },
+    {
+      "screenId": "C-20",
+      "surface": "Customer App",
+      "screenName": "Rating and feedback",
+      "priority": "P2",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-21",
+      "surface": "Customer App",
+      "screenName": "Trip history and details",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-22",
+      "surface": "Customer App",
+      "screenName": "Wallet",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H v3.2 source slice: wallet refresh exposes loading feedback, explicit empty-transaction guidance, recoverable backend/network/invalid-balance error with retry, and preserves the last successful balance/transactions on refresh failure while warning that displayed balance may be stale. No top-up route or local balance mutation is invented. Static source inspection only; runtime unverified."
+    },
+    {
+      "screenId": "C-23",
+      "surface": "Customer App",
+      "screenName": "Notifications inbox",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-24",
+      "surface": "Customer App",
+      "screenName": "Profile, saved places and settings",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-25",
+      "surface": "Customer App",
+      "screenName": "Help, complaint and safety",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-26",
+      "surface": "Customer App",
+      "screenName": "Cancel booking and reason",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "C-27",
+      "surface": "Customer App",
+      "screenName": "Global error/offline recovery",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-01",
+      "surface": "Driver App",
+      "screenName": "Launch, permission and readiness",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-02",
+      "surface": "Driver App",
+      "screenName": "Driver login",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-03",
+      "surface": "Driver App",
+      "screenName": "Driver OTP verification",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-04",
+      "surface": "Driver App",
+      "screenName": "Driver profile and registration draft",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-05",
+      "surface": "Driver App",
+      "screenName": "KYC document upload",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-06",
+      "surface": "Driver App",
+      "screenName": "Vehicle information and eligibility",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-07",
+      "surface": "Driver App",
+      "screenName": "State/city service assignment",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-08",
+      "surface": "Driver App",
+      "screenName": "Application review status",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-09",
+      "surface": "Driver App",
+      "screenName": "Driver Home and availability",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "P4-H v3.3 source slice: Driver Home warns that figures/ride updates may be stale when realtime is disconnected and provides a user-triggered authoritative Driver refresh. No automatic mutation retry; runtime unverified."
+    },
+    {
+      "screenId": "D-10",
+      "surface": "Driver App",
+      "screenName": "Incoming ride request",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Driver root now shows a persistent, accessible realtime-stale notice with explicit authoritative refresh action while authenticated and disconnected; source-only, runtime not verified."
+    },
+    {
+      "screenId": "D-11",
+      "surface": "Driver App",
+      "screenName": "Accepted ride and pickup navigation",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Driver root now shows a persistent, accessible realtime-stale notice with explicit authoritative refresh action while authenticated and disconnected; source-only, runtime not verified."
+    },
+    {
+      "screenId": "D-12",
+      "surface": "Driver App",
+      "screenName": "Pickup verification",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-13",
+      "surface": "Driver App",
+      "screenName": "Active trip and navigation",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Driver root now shows a persistent, accessible realtime-stale notice with explicit authoritative refresh action while authenticated and disconnected; source-only, runtime not verified."
+    },
+    {
+      "screenId": "D-14",
+      "surface": "Driver App",
+      "screenName": "Trip completion verification",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-15",
+      "surface": "Driver App",
+      "screenName": "Earnings and trip history",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-16",
+      "surface": "Driver App",
+      "screenName": "Cash collection and settlement",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-17",
+      "surface": "Driver App",
+      "screenName": "Driver notifications",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-18",
+      "surface": "Driver App",
+      "screenName": "Driver profile/documents/settings",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-19",
+      "surface": "Driver App",
+      "screenName": "SOS and emergency status",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "D-20",
+      "surface": "Driver App",
+      "screenName": "No requests / offline / readiness blocker",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-01",
+      "surface": "Admin Mobile",
+      "screenName": "Admin login",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-02",
+      "surface": "Admin Mobile",
+      "screenName": "Operations dashboard",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-03",
+      "surface": "Admin Mobile",
+      "screenName": "Alert inbox/detail",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-04",
+      "surface": "Admin Mobile",
+      "screenName": "Driver list and detail",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-05",
+      "surface": "Admin Mobile",
+      "screenName": "KYC review",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-06",
+      "surface": "Admin Mobile",
+      "screenName": "Live ride operations/detail",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-07",
+      "surface": "Admin Mobile",
+      "screenName": "Pricing/service settings",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AM-08",
+      "surface": "Admin Mobile",
+      "screenName": "Notifications, Admin profile and sessions",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "SA-01",
+      "surface": "Super Admin Mobile / Private Control",
+      "screenName": "Private unlock and device trust",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "SA-02",
+      "surface": "Super Admin Mobile / Private Control",
+      "screenName": "System overview",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "SA-03",
+      "surface": "Super Admin Mobile / Private Control",
+      "screenName": "TEST/LIVE mode control",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "SA-04",
+      "surface": "Super Admin Mobile / Private Control",
+      "screenName": "Release/deployment gate",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "SA-05",
+      "surface": "Super Admin Mobile / Private Control",
+      "screenName": "Critical configuration and approvals",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "SA-06",
+      "surface": "Super Admin Mobile / Private Control",
+      "screenName": "Backup, recovery and incident control",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "SA-07",
+      "surface": "Super Admin Mobile / Private Control",
+      "screenName": "Privileged audit and session management",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AW-01",
+      "surface": "Admin Web",
+      "screenName": "Login and Admin Type selector",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AW-02",
+      "surface": "Admin Web",
+      "screenName": "Web OTP / step-up",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AW-03",
+      "surface": "Admin Web",
+      "screenName": "Admin shell and navigation",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AW-04",
+      "surface": "Admin Web",
+      "screenName": "Dashboard",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AW-05",
+      "surface": "Admin Web",
+      "screenName": "Live operations board",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace now has explicit loading/empty/failure/retry handling plus realtime offline/reconnecting and replay-gap freshness warnings where this route uses the shared Core Operations, Business Control or Generic Workspace component. Source/static only; runtime verification intentionally skipped."
+    },
+    {
+      "screenId": "AW-06",
+      "surface": "Admin Web",
+      "screenName": "Booking/ride detail",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace now has explicit loading/empty/failure/retry handling plus realtime offline/reconnecting and replay-gap freshness warnings where this route uses the shared Core Operations, Business Control or Generic Workspace component. Source/static only; runtime verification intentionally skipped."
+    },
+    {
+      "screenId": "AW-07",
+      "surface": "Admin Web",
+      "screenName": "Driver management",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Core Operations/Business Control workspace source provides loading, empty-vs-failed distinction, stale last-successful snapshot notice, safe request failure classification and refresh recovery. Source-only; runtime unverified; tests skipped."
+    },
+    {
+      "screenId": "AW-08",
+      "surface": "Admin Web",
+      "screenName": "Onboarding/KYC review queue",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Core Operations/Business Control workspace source provides loading, empty-vs-failed distinction, stale last-successful snapshot notice, safe request failure classification and refresh recovery. Source-only; runtime unverified; tests skipped."
+    },
+    {
+      "screenId": "AW-09",
+      "surface": "Admin Web",
+      "screenName": "Customer management",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace implementation now exposes loading, empty, offline/reconnecting, stale/replay-gap, denied/session, timeout, failure and recovery states. Source-only; tests intentionally skipped; runtime unverified."
+    },
+    {
+      "screenId": "AW-10",
+      "surface": "Admin Web",
+      "screenName": "Service, vehicle and ride-type configuration",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "AW-11",
+      "surface": "Admin Web",
+      "screenName": "Fare and smart pricing rules",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Core Operations/Business Control workspace source provides loading, empty-vs-failed distinction, stale last-successful snapshot notice, safe request failure classification and refresh recovery. Source-only; runtime unverified; tests skipped."
+    },
+    {
+      "screenId": "AW-12",
+      "surface": "Admin Web",
+      "screenName": "Geographic scope and Admin assignment",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace now has explicit loading/empty/failure/retry handling plus realtime offline/reconnecting and replay-gap freshness warnings where this route uses the shared Core Operations, Business Control or Generic Workspace component. Source/static only; runtime verification intentionally skipped."
+    },
+    {
+      "screenId": "AW-13",
+      "surface": "Admin Web",
+      "screenName": "OTP purpose/security configuration",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace now has explicit loading/empty/failure/retry handling plus realtime offline/reconnecting and replay-gap freshness warnings where this route uses the shared Core Operations, Business Control or Generic Workspace component. Source/static only; runtime verification intentionally skipped."
+    },
+    {
+      "screenId": "AW-14",
+      "surface": "Admin Web",
+      "screenName": "Security audit and configuration history",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace implementation now exposes loading, empty, offline/reconnecting, stale/replay-gap, denied/session, timeout, failure and recovery states. Source-only; tests intentionally skipped; runtime unverified."
+    },
+    {
+      "screenId": "AW-15",
+      "surface": "Admin Web",
+      "screenName": "Realtime, push and delivery health",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace now has explicit loading/empty/failure/retry handling plus realtime offline/reconnecting and replay-gap freshness warnings where this route uses the shared Core Operations, Business Control or Generic Workspace component. Source/static only; runtime verification intentionally skipped."
+    },
+    {
+      "screenId": "AW-16",
+      "surface": "Admin Web",
+      "screenName": "Reports and exports",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace implementation now exposes loading, empty, offline/reconnecting, stale/replay-gap, denied/session, timeout, failure and recovery states. Source-only; tests intentionally skipped; runtime unverified."
+    },
+    {
+      "screenId": "AW-17",
+      "surface": "Admin Web",
+      "screenName": "System health, backup and recovery",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace now has explicit loading/empty/failure/retry handling plus realtime offline/reconnecting and replay-gap freshness warnings where this route uses the shared Core Operations, Business Control or Generic Workspace component. Source/static only; runtime verification intentionally skipped."
+    },
+    {
+      "screenId": "AW-18",
+      "surface": "Admin Web",
+      "screenName": "Support and incident case workspace",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Core Operations/Business Control workspace source provides loading, empty-vs-failed distinction, stale last-successful snapshot notice, safe request failure classification and refresh recovery. Source-only; runtime unverified; tests skipped."
+    },
+    {
+      "screenId": "AW-19",
+      "surface": "Admin Web",
+      "screenName": "Public website links and download settings",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace now has explicit loading/empty/failure/retry handling plus realtime offline/reconnecting and replay-gap freshness warnings where this route uses the shared Core Operations, Business Control or Generic Workspace component. Source/static only; runtime verification intentionally skipped."
+    },
+    {
+      "screenId": "AW-20",
+      "surface": "Admin Web",
+      "screenName": "Admin account, sessions and permissions",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "IMPLEMENTED_UNVERIFIED",
+        "empty": "IMPLEMENTED_UNVERIFIED",
+        "offline": "IMPLEMENTED_UNVERIFIED",
+        "stale": "IMPLEMENTED_UNVERIFIED",
+        "denied": "IMPLEMENTED_UNVERIFIED",
+        "timeout": "IMPLEMENTED_UNVERIFIED",
+        "failure": "IMPLEMENTED_UNVERIFIED",
+        "recovery": "IMPLEMENTED_UNVERIFIED"
+      },
+      "note": "Shared Admin Web workspace implementation now exposes loading, empty, offline/reconnecting, stale/replay-gap, denied/session, timeout, failure and recovery states. Source-only; tests intentionally skipped; runtime unverified."
+    },
+    {
+      "screenId": "WEB-01",
+      "surface": "Public Website / Landing Page",
+      "screenName": "Landing page / home",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "WEB-02",
+      "surface": "Public Website / Landing Page",
+      "screenName": "Service detail sections",
+      "priority": "P1",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "WEB-03",
+      "surface": "Public Website / Landing Page",
+      "screenName": "App downloads",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "WEB-04",
+      "surface": "Public Website / Landing Page",
+      "screenName": "Admin Web entry",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "WEB-05",
+      "surface": "Public Website / Landing Page",
+      "screenName": "Privacy, terms, safety and support",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "GW-01",
+      "surface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Gateway pairing / identity",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "GW-02",
+      "surface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Readiness and permission diagnostics",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "GW-03",
+      "surface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Queue and active job",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "GW-04",
+      "surface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Delivery result and ACK history",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    },
+    {
+      "screenId": "GW-05",
+      "surface": "Android Gateway / Broadcaster Companion",
+      "screenName": "Gateway security settings",
+      "priority": "P0",
+      "requiredStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "stateImplementationStatus": {
+        "loading": "PENDING",
+        "empty": "PENDING",
+        "offline": "PENDING",
+        "stale": "PENDING",
+        "denied": "PENDING",
+        "timeout": "PENDING",
+        "failure": "PENDING",
+        "recovery": "PENDING"
+      },
+      "note": "Source/static implementation only; runtime behavior and acceptance evidence not checked."
+    }
+  ],
+  "implementedSlices": [
+    {
+      "id": "P4-H-ADMIN-WEB-GENERIC-WORKSPACE-REALTIME-RECOVERY-03",
+      "screenIds": [
+        "AW-09",
+        "AW-14",
+        "AW-16",
+        "AW-20"
+      ],
+      "implementedStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "details": [
+        "Realtime offline/reconnecting notices",
+        "Replay-gap warning directing authoritative refresh",
+        "Request error classification and recovery guidance",
+        "Retry disabled while loading",
+        "Stale snapshot warning after failed refresh"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    },
+    {
+      "id": "P4-H-ADMIN-WEB-OPS-AND-BUSINESS-BOARDS-04",
+      "screenIds": [
+        "AW-07",
+        "AW-08",
+        "AW-11",
+        "AW-18"
+      ],
+      "implementedStates": [
+        "loading",
+        "empty",
+        "offline",
+        "stale",
+        "denied",
+        "timeout",
+        "failure",
+        "recovery"
+      ],
+      "details": [
+        "Loading indicator and disabled refresh while loading",
+        "Initial failure distinguished from an empty backend result",
+        "Last successful data identified as potentially stale after refresh failure",
+        "Request failure classifier provides denial/session/timeout/offline/server guidance",
+        "Retry refresh offered without implying failed write succeeded"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    },
+    {
+      "id": "P4-H-ADMIN-WEB-REALTIME-FRESHNESS-AND-RECOVERY-05",
+      "surface": "Admin Web",
+      "screens": [
+        "AW-05",
+        "AW-06",
+        "AW-12",
+        "AW-13",
+        "AW-15",
+        "AW-17",
+        "AW-19"
+      ],
+      "implemented": [
+        "realtime offline warning on shared Core Operations and Business Control boards",
+        "reconnecting/stale-data warning on shared Core Operations and Business Control boards",
+        "replay-gap warning directs user to authoritative backend refresh",
+        "existing loading, true-empty versus initial-load-failure distinction, stale-snapshot warning and retry remain available",
+        "generic workspace routes retain realtime freshness warnings and request-failure recovery"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    },
+    {
+      "id": "P4-H-DRIVER-REALTIME-STALE-RECOVERY-05",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "screens": [
+        "D-09",
+        "D-10",
+        "D-11",
+        "D-13"
+      ],
+      "sourceFiles": [
+        "apps/driver-mobile/driver/App.tsx",
+        "apps/driver-mobile/driver/components/ScreenStateNotice.tsx"
+      ],
+      "states": [
+        "stale",
+        "recovery"
+      ],
+      "details": "Added a shared accessible notice in the independent Driver app shell when an authenticated driver has no realtime connection. It warns that trip/request information may be stale and provides an explicit refresh action calling refreshDriver; action is disabled while the runtime is busy.",
+      "verification": "SOURCE_ONLY_TESTS_SKIPPED_BY_USER"
+    },
+    {
+      "id": "P4-H-CUSTOMER-ACTIVE-BOOKING-REALTIME-RECOVERY-06",
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "screens": [
+        "C-15",
+        "C-16",
+        "C-17",
+        "C-18"
+      ],
+      "sourceFiles": [
+        "apps/customer-mobile/customer/App.tsx"
+      ],
+      "states": [
+        "stale",
+        "recovery"
+      ],
+      "details": "On the confirmed active booking screen, if a booking exists and realtime is disconnected, show a non-blocking accessible warning that ride status/driver location may be stale and an explicit Refresh booking status action calling fetchBooking; disable action while loading.",
+      "verification": "SOURCE_ONLY_TESTS_SKIPPED_BY_USER"
+    },
+    {
+      "sliceId": "P4-H-CUSTOMER-AUTH-RECOVERY-06",
+      "checkpoint": "v2.2",
+      "screens": [
+        "C-03",
+        "C-04"
+      ],
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "implementedStates": [
+        "loading",
+        "failure",
+        "recovery"
+      ],
+      "details": "Customer mobile login and OTP verification now announce failure messages accessibly and expose explicit retry actions only after request exceptions. Retry repeats only the selected auth request; it does not retry booking or payment mutations. Server-declared invalid credentials/OTP responses do not expose network retry controls.",
+      "verification": "SOURCE_ONLY_TESTS_SKIPPED"
+    },
+    {
+      "sliceId": "P4-H-CUSTOMER-PROFILE-LOAD-RECOVERY-07",
+      "checkpoint": "v2.3",
+      "screens": [
+        "C-05"
+      ],
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "implementedStates": [
+        "failure",
+        "recovery"
+      ],
+      "details": "Customer profile-completion flow no longer treats a failed profile API fetch as a successful/complete profile. It keeps the user in the completion gate, exposes an accessible load-failure message, and offers an explicit retry action. Successful profile fetch clears the error; profile remains incomplete until required fields are saved.",
+      "verification": "SOURCE_ONLY_TESTS_SKIPPED_BY_USER"
+    },
+    {
+      "sliceId": "P4-H-CUSTOMER-HOME-LOCATION-RECOVERY-08",
+      "checkpoint": "v2.4",
+      "screens": [
+        "C-06"
+      ],
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "implementedStates": [
+        "failure",
+        "recovery"
+      ],
+      "details": "Customer Home records location permission/GPS failures separately from the general message and displays an accessible recovery panel. User can retry current location or choose manual address entry; the recovery controls are disabled while a location request is active. Successful GPS acquisition clears the location error.",
+      "verification": "SOURCE_ONLY_TESTS_SKIPPED_BY_USER"
+    },
+    {
+      "sliceId": "P4-H-CUSTOMER-SESSION-RESTORE-09",
+      "checkpoint": "v2.6",
+      "screens": [
+        "C-01",
+        "C-15"
+      ],
+      "status": "IMPLEMENTED_UNVERIFIED",
+      "implementedStates": [
+        "loading",
+        "failure",
+        "recovery"
+      ],
+      "details": "Customer launch now has an explicit session-restoring state, accessible failure message, retry restore action, and continue-to-sign-in recovery. When an authenticated saved session exists, backend active-trip lookup must succeed before restoring an active booking; a failed lookup no longer silently falls back to treating local booking metadata as authoritative. When the backend successfully reports no active trip, a locally stored booking is routed to Rides rather than restored as confirmed.",
+      "verification": "SOURCE_ONLY_TESTS_SKIPPED_BY_USER"
+    }
+  ]
+}
