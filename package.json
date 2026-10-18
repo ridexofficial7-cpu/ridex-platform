@@ -1,0 +1,7 @@
+{
+  "name": "ridex-platform",
+  "private": true,
+  "scripts": {
+    "verify:localization-ci": "node scripts/verify-localization-ci.mjs"
+  }
+}
