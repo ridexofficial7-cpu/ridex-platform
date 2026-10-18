@@ -1,0 +1,973 @@
+{
+  "schemaVersion": 1,
+  "threatModelRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "DESIGN_MAPPED_NOT_TESTED",
+  "purpose": "Threat and trust-boundary mapping for the planned RideX fresh project; this is not penetration-test evidence or a production security approval.",
+  "method": {
+    "basis": "System boundary, data ownership, authorization boundary, 25-edge connection register, security requirements and component source inventories.",
+    "physicalTests": "DEFERRED_UNTIL_ALL_FOUR_PACKAGES_IMPLEMENTED",
+    "defaultDeny": "Unknown actor, object, role, geographic scope or ownership must fail closed.",
+    "authority": "Backend remains authoritative for identity, bookings, fares, payment outcomes, authorization and trip state."
+  },
+  "trustZones": [
+    {
+      "id": "customer-mobile",
+      "kind": "mobile-client",
+      "trustZone": "untrusted-client",
+      "authority": "customer interaction, local UI preferences and non-authoritative cache only"
+    },
+    {
+      "id": "driver-mobile",
+      "kind": "mobile-client",
+      "trustZone": "untrusted-client",
+      "authority": "driver interaction and device location capture; Backend validates all trip state"
+    },
+    {
+      "id": "admin-mobile",
+      "kind": "mobile-client",
+      "trustZone": "untrusted-client",
+      "authority": "Admin UI only; Backend enforces permission and geographic scope"
+    },
+    {
+      "id": "super-admin-control",
+      "kind": "privileged-mobile-client",
+      "trustZone": "privileged-client",
+      "authority": "privileged control requests only after device trust and key lifecycle are implemented; current shell has no live authority"
+    },
+    {
+      "id": "admin-web",
+      "kind": "web-client",
+      "trustZone": "untrusted-client",
+      "authority": "Admin display/actions only; Backend checks role, permission, scope and session"
+    },
+    {
+      "id": "public-website",
+      "kind": "static-website",
+      "trustZone": "public-edge",
+      "authority": "public informational content and verified public links; no private control authority"
+    },
+    {
+      "id": "backend",
+      "kind": "business-api",
+      "trustZone": "trusted-server",
+      "authority": "authoritative identity/session validation, authorization, booking/trip state, pricing, financial rules and business database writes"
+    },
+    {
+      "id": "business-database",
+      "kind": "postgresql-database",
+      "trustZone": "private-data",
+      "authority": "authoritative RideX business records; accessible only from approved server-side services"
+    },
+    {
+      "id": "broadcaster-provider",
+      "kind": "delivery-provider-service",
+      "trustZone": "trusted-integration",
+      "authority": "durable delivery orchestration and provider results; must not override Backend business state"
+    },
+    {
+      "id": "gateway-android",
+      "kind": "android-device-agent",
+      "trustZone": "device-edge",
+      "authority": "execute only authenticated, authorized delivery commands and report acknowledgements/results"
+    },
+    {
+      "id": "external-providers",
+      "kind": "provider-boundary",
+      "trustZone": "external-service",
+      "authority": "maps, payment, OTP/push, storage and telephony services; each integration requires an explicit local/test/live adapter and verification"
+    }
+  ],
+  "dataAssets": [
+    {
+      "id": "ASSET-IDENTITY",
+      "owner": "backend",
+      "sensitivity": "PERSONAL_DATA_AND_CREDENTIALS",
+      "source": "config/data-ownership.json"
+    },
+    {
+      "id": "ASSET-OTP",
+      "owner": "backend",
+      "sensitivity": "AUTHENTICATION_SECRET",
+      "source": "config/data-ownership.json"
+    },
+    {
+      "id": "ASSET-BOOKING-TRIP",
+      "owner": "backend",
+      "sensitivity": "BUSINESS_STATE",
+      "source": "config/domain-model-map.json"
+    },
+    {
+      "id": "ASSET-FINANCIAL",
+      "owner": "backend",
+      "sensitivity": "FINANCIAL_RECORDS",
+      "source": "config/financial-domain-map.json"
+    },
+    {
+      "id": "ASSET-KYC-FILES",
+      "owner": "backend-plus-private-storage",
+      "sensitivity": "HIGHLY_SENSITIVE_PERSONAL_DATA",
+      "source": "config/data-ownership.json"
+    },
+    {
+      "id": "ASSET-ADMIN-CONFIG",
+      "owner": "backend",
+      "sensitivity": "PRIVILEGED_CONFIGURATION",
+      "source": "config/security-priority-policy.json"
+    },
+    {
+      "id": "ASSET-GATEWAY-JOBS",
+      "owner": "broadcaster-provider",
+      "sensitivity": "OPERATIONAL_DELIVERY_STATE",
+      "source": "config/provider-gateway-contract.json"
+    },
+    {
+      "id": "ASSET-AUDIT",
+      "owner": "backend-and-provider-audit-boundaries",
+      "sensitivity": "SECURITY_AND_FORENSIC_EVIDENCE",
+      "source": "config/observability-audit-contract.json"
+    }
+  ],
+  "threats": [
+    {
+      "id": "THR-001",
+      "title": "Client actor/identity spoofing",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "driver-mobile",
+        "admin-mobile",
+        "admin-web"
+      ],
+      "attackOrFailureScenario": "An untrusted client changes actor IDs or object IDs to act as another user.",
+      "requiredMitigations": "Backend derives effective actor from validated session and checks ownership/object authorization on every protected operation.",
+      "owner": "Backend auth/API owners",
+      "linkedRequirements": [
+        "REQ-SEC-003",
+        "REQ-SEC-004",
+        "REQ-CORE-002"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-003-C1",
+        "REQ-SEC-003-C2",
+        "REQ-SEC-004-C1",
+        "REQ-SEC-004-C2",
+        "REQ-CORE-002-C1",
+        "REQ-CORE-002-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend",
+        "driver-to-backend",
+        "admin-web-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-002",
+        "CX-003"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/src/routes/customer.ts",
+        "services/backend/src/routes/driver.ts"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-002",
+      "title": "Admin role or geography escalation",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "admin-mobile",
+        "admin-web",
+        "backend"
+      ],
+      "attackOrFailureScenario": "STATE/CITY Admin accesses another state/city by changing URL, filters, object identifiers, export or bulk action.",
+      "requiredMitigations": "Enforce server-side GLOBAL/STATE/CITY scope across list/detail/create/update/delete/export/nested resources; deny unknown scope by default.",
+      "owner": "Backend authorization owner",
+      "linkedRequirements": [
+        "REQ-SEC-004",
+        "REQ-SEC-005",
+        "REQ-SEC-006"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-004-C1",
+        "REQ-SEC-004-C2",
+        "REQ-SEC-005-C1",
+        "REQ-SEC-005-C2",
+        "REQ-SEC-006-C1",
+        "REQ-SEC-006-C2"
+      ],
+      "architectureConnectionRefs": [
+        "admin-web-to-backend",
+        "admin-mobile-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-003",
+        "CX-004"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/services/adminScope.ts",
+        "services/backend/src/routes/admin.ts"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-003",
+      "title": "OTP guessing, resend abuse or purpose confusion",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "driver-mobile",
+        "backend",
+        "external-providers"
+      ],
+      "attackOrFailureScenario": "Repeated guessing, resend races, old OTP reuse, wrong-purpose verification or account enumeration.",
+      "requiredMitigations": "Purpose-bound server validation; expiry/attempt limits, resend timing/cooldown, old-code invalidation with attempts carried forward, rate limits and non-enumerating responses. Exact length/cooldown still require final decision.",
+      "owner": "Auth/security owner",
+      "linkedRequirements": [
+        "REQ-OTP-001",
+        "REQ-OTP-002",
+        "REQ-OTP-003",
+        "REQ-OTP-004",
+        "REQ-OTP-005",
+        "REQ-SEC-007"
+      ],
+      "linkedControlCases": [
+        "REQ-OTP-001-C1",
+        "REQ-OTP-001-C2",
+        "REQ-OTP-002-C1",
+        "REQ-OTP-002-C2",
+        "REQ-OTP-003-C1",
+        "REQ-OTP-003-C2",
+        "REQ-OTP-004-C1",
+        "REQ-OTP-004-C2",
+        "REQ-OTP-005-C1",
+        "REQ-OTP-005-C2",
+        "REQ-SEC-007-C1",
+        "REQ-SEC-007-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend",
+        "driver-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-002",
+        "CX-010"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/src"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-004",
+      "title": "Session token theft or replay",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "driver-mobile",
+        "admin-mobile",
+        "admin-web",
+        "backend"
+      ],
+      "attackOrFailureScenario": "Token copied from weak client storage/logs and replayed before expiry/revocation.",
+      "requiredMitigations": "Platform-appropriate secure token storage, short/defined expiry, revocation, user/device state checks, TLS and strict log redaction. Mobile secure storage and revocation behavior need runtime evidence.",
+      "owner": "Client and Backend auth owners",
+      "linkedRequirements": [
+        "REQ-SEC-001",
+        "REQ-SEC-002",
+        "REQ-SEC-003",
+        "REQ-SEC-009",
+        "REQ-MOB-006"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-001-C1",
+        "REQ-SEC-001-C2",
+        "REQ-SEC-002-C1",
+        "REQ-SEC-002-C2",
+        "REQ-SEC-003-C1",
+        "REQ-SEC-003-C2",
+        "REQ-SEC-009-C1",
+        "REQ-SEC-009-C2",
+        "REQ-MOB-006-C1",
+        "REQ-MOB-006-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend",
+        "driver-to-backend",
+        "admin-web-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-002",
+        "CX-003"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "apps/ridex-mobile",
+        "apps/customer-mobile",
+        "apps/driver-mobile",
+        "services/backend/src/routes/auth.ts"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-005",
+      "title": "Super Admin control/key impersonation",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "super-admin-control",
+        "backend"
+      ],
+      "attackOrFailureScenario": "A private key or static privileged secret is embedded in a distributed app, or a control device is impersonated.",
+      "requiredMitigations": "Never ship a plaintext private key in the app. Define enrollment, proof-of-possession, device trust, key rotation/revocation and privileged-action confirmation; shell currently has no live authority.",
+      "owner": "Super Admin/security owner",
+      "linkedRequirements": [
+        "REQ-MOB-007",
+        "REQ-SEC-001",
+        "REQ-SEC-006",
+        "REQ-OPS-012"
+      ],
+      "linkedControlCases": [
+        "REQ-MOB-007-C1",
+        "REQ-MOB-007-C2",
+        "REQ-SEC-001-C1",
+        "REQ-SEC-001-C2",
+        "REQ-SEC-006-C1",
+        "REQ-SEC-006-C2",
+        "REQ-OPS-012-C1",
+        "REQ-OPS-012-C2"
+      ],
+      "architectureConnectionRefs": [
+        "super-admin-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-005"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "apps/super-admin-control",
+        "services/backend/src/routes/platform.ts"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-006",
+      "title": "TEST/LIVE environment crossover",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "backend",
+        "business-database",
+        "broadcaster-provider",
+        "gateway-android",
+        "customer-mobile",
+        "driver-mobile",
+        "admin-web"
+      ],
+      "attackOrFailureScenario": "A TEST client/provider or old DB endpoint writes to LIVE resources or activates test payment logic in LIVE.",
+      "requiredMitigations": "Separate database identities, app IDs, API hosts and provider credentials; local-only during foundation; server enforces mode; TEST mocks/signatures rejected by LIVE providers.",
+      "owner": "Platform/Release owner",
+      "linkedRequirements": [
+        "REQ-DATA-001",
+        "REQ-SEC-001",
+        "REQ-SEC-002",
+        "REQ-OPS-012"
+      ],
+      "linkedControlCases": [
+        "REQ-DATA-001-C1",
+        "REQ-DATA-001-C2",
+        "REQ-SEC-001-C1",
+        "REQ-SEC-001-C2",
+        "REQ-SEC-002-C1",
+        "REQ-SEC-002-C2",
+        "REQ-OPS-012-C1",
+        "REQ-OPS-012-C2"
+      ],
+      "architectureConnectionRefs": [
+        "backend-to-provider"
+      ],
+      "connectionRegisterRefs": [
+        "CX-006",
+        "CX-012",
+        "CX-014"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "config/environment-policy.json",
+        "services/backend/src/config",
+        "apps/ridex-mobile",
+        "services/broadcaster-provider"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-007",
+      "title": "Fare/payment tampering or replay",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "backend",
+        "external-providers",
+        "business-database"
+      ],
+      "attackOrFailureScenario": "Client modifies fare/amount/currency/provider status or replays create/refund/webhook calls.",
+      "requiredMitigations": "Backend computes or validates authoritative quotes; verify provider signatures, amount/currency/order binding, idempotency and atomic ledger updates; reconcile ambiguous outcomes.",
+      "owner": "Financial/Backend owner",
+      "linkedRequirements": [
+        "REQ-CORE-003",
+        "REQ-CORE-004",
+        "REQ-CORE-005",
+        "REQ-SEC-010",
+        "REQ-RIDE-001"
+      ],
+      "linkedControlCases": [
+        "REQ-CORE-003-C1",
+        "REQ-CORE-003-C2",
+        "REQ-CORE-004-C1",
+        "REQ-CORE-004-C2",
+        "REQ-CORE-005-C1",
+        "REQ-CORE-005-C2",
+        "REQ-SEC-010-C1",
+        "REQ-SEC-010-C2",
+        "REQ-RIDE-001-C1",
+        "REQ-RIDE-001-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-008"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/payments.ts",
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-008",
+      "title": "Concurrent booking/driver acceptance race",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "driver-mobile",
+        "backend",
+        "business-database"
+      ],
+      "attackOrFailureScenario": "Two drivers accept one offer, or retries create duplicate bookings/trips.",
+      "requiredMitigations": "Atomic conditional state transition, database uniqueness/transaction constraints, idempotency keys and deterministic terminal state.",
+      "owner": "Booking/Trip domain owner",
+      "linkedRequirements": [
+        "REQ-CORE-003",
+        "REQ-CORE-004",
+        "REQ-CORE-005",
+        "REQ-CORE-006",
+        "REQ-RIDE-001",
+        "REQ-RIDE-002"
+      ],
+      "linkedControlCases": [
+        "REQ-CORE-003-C1",
+        "REQ-CORE-003-C2",
+        "REQ-CORE-004-C1",
+        "REQ-CORE-004-C2",
+        "REQ-CORE-005-C1",
+        "REQ-CORE-005-C2",
+        "REQ-CORE-006-C1",
+        "REQ-CORE-006-C2",
+        "REQ-RIDE-001-C1",
+        "REQ-RIDE-001-C2",
+        "REQ-RIDE-002-C1",
+        "REQ-RIDE-002-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend",
+        "driver-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-002",
+        "CX-006"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/src/routes/trips.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-009",
+      "title": "Database/schema lineage or direct access failure",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "backend",
+        "business-database",
+        "local-operator"
+      ],
+      "attackOrFailureScenario": "A client or wrong environment reaches business DB; conflicting baseline/legacy migrations cause wrong schema or data loss.",
+      "requiredMitigations": "Only Backend owns business DB; clients never connect directly. Reconcile canonical migration lineage before applying to a fresh disposable local DB; backups/restores loopback-only with explicit destructive opt-in.",
+      "owner": "Database owner",
+      "linkedRequirements": [
+        "REQ-DATA-001",
+        "REQ-DATA-002",
+        "REQ-CORE-006",
+        "REQ-CORE-007"
+      ],
+      "linkedControlCases": [
+        "REQ-DATA-001-C1",
+        "REQ-DATA-001-C2",
+        "REQ-DATA-002-C1",
+        "REQ-DATA-002-C2",
+        "REQ-CORE-006-C1",
+        "REQ-CORE-006-C2",
+        "REQ-CORE-007-C1",
+        "REQ-CORE-007-C2"
+      ],
+      "architectureConnectionRefs": [],
+      "connectionRegisterRefs": [
+        "CX-006"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/prisma/schema.prisma",
+        "services/backend/prisma/migrations",
+        "services/backend/scripts"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-010",
+      "title": "Forged/replayed provider webhook or Gateway callback",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "external-providers",
+        "broadcaster-provider",
+        "gateway-android",
+        "backend"
+      ],
+      "attackOrFailureScenario": "Unauthenticated callback changes delivery/payment state or repeated ACK causes duplicate business action.",
+      "requiredMitigations": "Verify callback signature/authentication, nonce/request/job binding and timestamp/replay window; make ACK/result idempotent; keep Gateway unable to change business trip state directly.",
+      "owner": "Provider/Gateway + Backend owners",
+      "linkedRequirements": [
+        "REQ-SEC-010",
+        "REQ-ASYNC-003",
+        "REQ-ASYNC-004",
+        "REQ-ASYNC-005"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-010-C1",
+        "REQ-SEC-010-C2",
+        "REQ-ASYNC-003-C1",
+        "REQ-ASYNC-003-C2",
+        "REQ-ASYNC-004-C1",
+        "REQ-ASYNC-004-C2",
+        "REQ-ASYNC-005-C1",
+        "REQ-ASYNC-005-C2"
+      ],
+      "architectureConnectionRefs": [
+        "gateway-to-provider"
+      ],
+      "connectionRegisterRefs": [
+        "CX-013",
+        "CX-014",
+        "CX-015"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/provider.ts",
+        "services/broadcaster-provider/src",
+        "apps/gateway-android/app/src"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-011",
+      "title": "Unauthorized private file/KYC access",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "driver-mobile",
+        "admin-web",
+        "backend",
+        "private-storage"
+      ],
+      "attackOrFailureScenario": "Guessable object IDs/URLs or stolen signed links expose KYC or private files.",
+      "requiredMitigations": "Check object ownership and role/scope server-side; short-lived signed links, upload MIME/size verification, no public bucket and privacy-safe access audit.",
+      "owner": "Document/storage owner",
+      "linkedRequirements": [
+        "REQ-SEC-011",
+        "REQ-DATA-004",
+        "REQ-SEC-009"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-011-C1",
+        "REQ-SEC-011-C2",
+        "REQ-DATA-004-C1",
+        "REQ-DATA-004-C2",
+        "REQ-SEC-009-C1",
+        "REQ-SEC-009-C2"
+      ],
+      "architectureConnectionRefs": [
+        "admin-web-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-003",
+        "CX-018"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/driver.ts",
+        "services/backend/src"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-012",
+      "title": "Sensitive-data disclosure via logs/diagnostics",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "backend",
+        "broadcaster-provider",
+        "gateway-android",
+        "admin-web"
+      ],
+      "attackOrFailureScenario": "OTP, bearer tokens, full query URLs, personal IDs, provider credentials or payment payloads are written to logs or responses.",
+      "requiredMitigations": "Structured allowlisted logging, field-level redaction, route-template labels, correlation IDs without secrets, tested retention and restricted access.",
+      "owner": "Observability/security owner",
+      "linkedRequirements": [
+        "REQ-SEC-009",
+        "REQ-CORE-001",
+        "REQ-DATA-003"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-009-C1",
+        "REQ-SEC-009-C2",
+        "REQ-CORE-001-C1",
+        "REQ-CORE-001-C2",
+        "REQ-DATA-003-C1",
+        "REQ-DATA-003-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend",
+        "backend-to-provider"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-012",
+        "CX-014"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src",
+        "services/broadcaster-provider/src",
+        "apps/admin-web/src"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-013",
+      "title": "Provider queue loss/duplicate execution/storage split",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "broadcaster-provider",
+        "gateway-android",
+        "business-database"
+      ],
+      "attackOrFailureScenario": "Different JSON/SQLite/PostgreSQL state stores disagree; leases expire incorrectly; restart loses jobs or duplicates delivery attempts.",
+      "requiredMitigations": "Choose one authoritative Provider storage path; durable queue/outbox, atomic lease/claim, bounded retry, terminal/dead-letter state and reconciliation. Storage choice remains open.",
+      "owner": "Broadcaster/Gateway owner",
+      "linkedRequirements": [
+        "REQ-ASYNC-001",
+        "REQ-ASYNC-002",
+        "REQ-ASYNC-003",
+        "REQ-ASYNC-005",
+        "REQ-ASYNC-006",
+        "REQ-ASYNC-008"
+      ],
+      "linkedControlCases": [
+        "REQ-ASYNC-001-C1",
+        "REQ-ASYNC-001-C2",
+        "REQ-ASYNC-002-C1",
+        "REQ-ASYNC-002-C2",
+        "REQ-ASYNC-003-C1",
+        "REQ-ASYNC-003-C2",
+        "REQ-ASYNC-005-C1",
+        "REQ-ASYNC-005-C2",
+        "REQ-ASYNC-006-C1",
+        "REQ-ASYNC-006-C2",
+        "REQ-ASYNC-008-C1",
+        "REQ-ASYNC-008-C2"
+      ],
+      "architectureConnectionRefs": [
+        "gateway-to-provider",
+        "backend-to-provider"
+      ],
+      "connectionRegisterRefs": [
+        "CX-012",
+        "CX-014",
+        "CX-015"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/broadcaster-provider/src",
+        "apps/gateway-android/app/src"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-014",
+      "title": "Cross-actor realtime/event leakage",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "driver-mobile",
+        "admin-web",
+        "backend"
+      ],
+      "attackOrFailureScenario": "SSE/push replay exposes another customer/driver/admin\u2019s events or stale event replay overrides authoritative state.",
+      "requiredMitigations": "Authenticate subscriptions, authorize audience/server-side scope, use opaque cursor replay bounds, handle replay gaps by fetching authoritative snapshots and redact event payloads.",
+      "owner": "Realtime/API owner",
+      "linkedRequirements": [
+        "REQ-SEC-004",
+        "REQ-CORE-001",
+        "REQ-MOB-008"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-004-C1",
+        "REQ-SEC-004-C2",
+        "REQ-CORE-001-C1",
+        "REQ-CORE-001-C2",
+        "REQ-MOB-008-C1",
+        "REQ-MOB-008-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend",
+        "driver-to-backend",
+        "admin-web-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-002",
+        "CX-003"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/realtime.ts",
+        "apps/ridex-mobile/shared/realtime/client.ts",
+        "apps/admin-web/src"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-015",
+      "title": "Spoofed/stale GPS or incorrect Driver assignment",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "driver-mobile",
+        "backend",
+        "business-database"
+      ],
+      "attackOrFailureScenario": "Mocked/stale location or invalid city/state assignment affects matching, trip safety or service availability.",
+      "requiredMitigations": "Validate active state/city/serviceability on submit; enforce timestamp/freshness and anomaly checks; client coordinates are signals, not sole proof.",
+      "owner": "Driver/location owner",
+      "linkedRequirements": [
+        "REQ-RIDE-006",
+        "REQ-RIDE-007",
+        "REQ-RIDE-008",
+        "REQ-RIDE-005"
+      ],
+      "linkedControlCases": [
+        "REQ-RIDE-006-C1",
+        "REQ-RIDE-006-C2",
+        "REQ-RIDE-007-C1",
+        "REQ-RIDE-007-C2",
+        "REQ-RIDE-008-C1",
+        "REQ-RIDE-008-C2",
+        "REQ-RIDE-005-C1",
+        "REQ-RIDE-005-C2"
+      ],
+      "architectureConnectionRefs": [
+        "driver-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-002",
+        "CX-006"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/driver.ts",
+        "services/backend/src/routes/gps.ts",
+        "apps/driver-mobile/driver/state/DriverRuntime.tsx"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-016",
+      "title": "Test/demo feature enabled in LIVE",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "customer-mobile",
+        "backend",
+        "admin-web",
+        "external-providers"
+      ],
+      "attackOrFailureScenario": "Demo subscription/insurance flow or synthetic payment result is enabled against production API.",
+      "requiredMitigations": "Use compile-time build profiles and backend environment/authorization gates; reject test signatures on LIVE server; release manifest fails if test-only feature is enabled.",
+      "owner": "Release/Payments owner",
+      "linkedRequirements": [
+        "REQ-DATA-001",
+        "REQ-OPS-012",
+        "REQ-CORE-004"
+      ],
+      "linkedControlCases": [
+        "REQ-DATA-001-C1",
+        "REQ-DATA-001-C2",
+        "REQ-OPS-012-C1",
+        "REQ-OPS-012-C2",
+        "REQ-CORE-004-C1",
+        "REQ-CORE-004-C2"
+      ],
+      "architectureConnectionRefs": [
+        "customer-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-001",
+        "CX-008"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "apps/customer-mobile/customer",
+        "services/backend/src/routes/payments.ts",
+        "services/backend/src/config"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-017",
+      "title": "Dependency/supply-chain compromise",
+      "priority": "P1",
+      "assetsAndComponents": [
+        "backend",
+        "admin-web",
+        "customer-mobile",
+        "driver-mobile",
+        "admin-mobile",
+        "gateway-android",
+        "build-runner"
+      ],
+      "attackOrFailureScenario": "Compromised package or stale generated artifact introduces malicious code or undisclosed behavior.",
+      "requiredMitigations": "Pin lockfiles, verify clean reproducible builds, run dependency/SBOM scanning, review postinstall/native scripts and do not ship stale dist/build artifacts.",
+      "owner": "Build/Release owner",
+      "linkedRequirements": [
+        "REQ-SEC-013",
+        "REQ-OPS-012",
+        "REQ-MOB-007"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-013-C1",
+        "REQ-SEC-013-C2",
+        "REQ-OPS-012-C1",
+        "REQ-OPS-012-C2",
+        "REQ-MOB-007-C1",
+        "REQ-MOB-007-C2"
+      ],
+      "architectureConnectionRefs": [],
+      "connectionRegisterRefs": [
+        "CX-019"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "package.json",
+        "services/backend/package-lock.json",
+        "apps/admin-web/package-lock.json",
+        "apps/ridex-mobile/package-lock.json",
+        "apps/gateway-android/build.gradle.kts"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    },
+    {
+      "id": "THR-018",
+      "title": "Unsafe deletion/retention of security audit data",
+      "priority": "P0",
+      "assetsAndComponents": [
+        "backend",
+        "business-database",
+        "admin-web"
+      ],
+      "attackOrFailureScenario": "Deleting OTP-purpose configuration also deletes related history/audit; security investigations lose evidence.",
+      "requiredMitigations": "Treat OTP-purpose deletion as explicit approved exception only; review lawful retention and forensic impact, require privileged confirmation and document remaining irrecoverability.",
+      "owner": "Security/Legal/Project owner",
+      "linkedRequirements": [
+        "REQ-SEC-014",
+        "REQ-DATA-003",
+        "REQ-OTP-007"
+      ],
+      "linkedControlCases": [
+        "REQ-SEC-014-C1",
+        "REQ-SEC-014-C2",
+        "REQ-DATA-003-C1",
+        "REQ-DATA-003-C2",
+        "REQ-OTP-007-C1",
+        "REQ-OTP-007-C2"
+      ],
+      "architectureConnectionRefs": [
+        "admin-web-to-backend"
+      ],
+      "connectionRegisterRefs": [
+        "CX-003",
+        "CX-006"
+      ],
+      "unmatchedConnectionAliases": [],
+      "sourceEvidence": [
+        "services/backend/src/routes/configuration.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "status": "DESIGN_MAPPED_NOT_TESTED"
+    }
+  ],
+  "globalControls": [
+    {
+      "id": "TM-GC-01",
+      "control": "Clients never connect directly to the business database.",
+      "status": "POLICY_MAPPED"
+    },
+    {
+      "id": "TM-GC-02",
+      "control": "Client-supplied actor identity, fare, payment outcome or trip status is not authoritative.",
+      "status": "POLICY_MAPPED"
+    },
+    {
+      "id": "TM-GC-03",
+      "control": "Super Admin private key must not be embedded in a distributed application.",
+      "status": "POLICY_MAPPED"
+    },
+    {
+      "id": "TM-GC-04",
+      "control": "Physical tests, security scans and deployment verification remain NOT RUN until all four package implementations complete.",
+      "status": "DEFERRED"
+    },
+    {
+      "id": "TM-GC-05",
+      "control": "The recorded OTP-purpose deletion/history exception requires explicit final risk review; do not generalize deletion behavior.",
+      "status": "REVIEW_REQUIRED"
+    }
+  ],
+  "openReviews": [
+    "OTP exact digit length, cooldown and push retry policy are not all finalized.",
+    "Canonical top-level success:boolean envelope is recorded; dynamic/idempotency replay bodies and runtime caller compatibility still need verification.",
+    "Provider authoritative storage path must be selected before job durability tests.",
+    "Canonical migration lineage must be approved before any database migration is executed.",
+    "Super Admin Control key enrollment, rotation and revocation design is incomplete.",
+    "Audit retention/deletion policy and the OTP-purpose deletion exception need authorized review.",
+    "Dependency installation and Android SDK availability are blocked in the current analysis runtime."
+  ]
+}

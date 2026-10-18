@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 1,
+  "mapRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_INPUT_VALIDATION_COVERAGE_MAPPED_RUNTIME_NOT_TESTED",
+  "policy": {
+    "validateClientInputAtTrustBoundary": true,
+    "denyUnknownOrOutOfRangeValues": true,
+    "serverAuthoritativeValues": [
+      "actor identity",
+      "fare/quote",
+      "payment provider outcome",
+      "booking/trip state",
+      "Admin permission/geographic scope"
+    ],
+    "inputValidationIsNotAuthorization": true,
+    "physicalTests": "DEFERRED_UNTIL_ALL_FOUR_PACKAGES_IMPLEMENTED"
+  },
+  "commonContract": {
+    "bodyType": "JSON object where applicable; endpoint-specific upload/webhook schemas are explicit exceptions",
+    "maximumRequestSize": "Existing Backend body limits are the initial ceiling; route-specific limits must be reviewed",
+    "unknownFields": "Per-route explicit decision; do not silently strip security-sensitive fields",
+    "errors": "Canonical active Backend response envelope is success:boolean; ok:false remains read-only client compatibility. Error bodies retain endpoint-specific message/code/requestId availability; dynamic/idempotency replay and runtime compatibility checks remain pending.",
+    "queryControls": [
+      "allowlisted query keys",
+      "bounded pagination/limits",
+      "enum allowlists",
+      "typed timestamps and cursors"
+    ]
+  },
+  "routeModuleCount": 27,
+  "routes": [
+    {
+      "module": "admin.ts",
+      "source": "services/backend/src/routes/admin.ts",
+      "requiredChecks": [
+        "authenticated session",
+        "Admin permission",
+        "GLOBAL/STATE/CITY scope",
+        "bounded pagination/filter/export",
+        "object ownership",
+        "bulk-action limits",
+        "consistent error response"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "appAssets.ts",
+      "source": "services/backend/src/routes/appAssets.ts",
+      "requiredChecks": [
+        "asset ID whitelist",
+        "URL/source validation",
+        "cache/version field bounds",
+        "public/private asset access"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "auth.ts",
+      "source": "services/backend/src/routes/auth.ts",
+      "requiredChecks": [
+        "mobile/actor normalization",
+        "purpose-code allowlist",
+        "OTP format and attempt limit",
+        "rate-limit checks",
+        "password/password-reset bounds",
+        "non-enumerating errors"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "bookingOptions.ts",
+      "source": "services/backend/src/routes/bookingOptions.ts",
+      "requiredChecks": [
+        "service/ride subtype allowlist",
+        "active city/serviceability",
+        "list size bounds",
+        "server-owned option IDs"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "bookings.ts",
+      "source": "services/backend/src/routes/bookings.ts",
+      "requiredChecks": [
+        "ride/service enum allowlist",
+        "location coordinate/range validation",
+        "passenger/capacity bounds",
+        "quote ID/version/expiry",
+        "idempotency and allowed state transition"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "calls.ts",
+      "source": "services/backend/src/routes/calls.ts",
+      "requiredChecks": [
+        "session and actor ownership",
+        "phone/provider ID bounds",
+        "masked-call permission",
+        "provider response validation"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "configuration.ts",
+      "source": "services/backend/src/routes/configuration.ts",
+      "requiredChecks": [
+        "explicit configuration permission",
+        "setting key allowlist",
+        "setting value type/range",
+        "bulk size and atomicity",
+        "audit metadata"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "consent.ts",
+      "source": "services/backend/src/routes/consent.ts",
+      "requiredChecks": [
+        "actor identity from session",
+        "consent purpose/version allowlist",
+        "timestamp and payload bounds"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "customer.ts",
+      "source": "services/backend/src/routes/customer.ts",
+      "requiredChecks": [
+        "customer ownership",
+        "profile field lengths",
+        "saved-location coordinate bounds",
+        "gallery/doc metadata limits"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "devices.ts",
+      "source": "services/backend/src/routes/devices.ts",
+      "requiredChecks": [
+        "device ID/token length bounds",
+        "token uniqueness/ownership",
+        "platform enum allowlist",
+        "registration rate limit"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "driver.ts",
+      "source": "services/backend/src/routes/driver.ts",
+      "requiredChecks": [
+        "Driver ownership",
+        "stateId/cityId/service eligibility",
+        "KYC/vehicle enum allowlist",
+        "document metadata/MIME/size",
+        "profile field lengths"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "events.ts",
+      "source": "services/backend/src/routes/events.ts",
+      "requiredChecks": [
+        "published event/session allowlist",
+        "location/date/seat bounds",
+        "booking ownership",
+        "valid event state transitions"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "gps.ts",
+      "source": "services/backend/src/routes/gps.ts",
+      "requiredChecks": [
+        "latitude/longitude ranges",
+        "timestamp/freshness bounds",
+        "Driver session and trip ownership",
+        "rate limits and impossible-jump checks"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "health.ts",
+      "source": "services/backend/src/routes/health.ts",
+      "requiredChecks": [
+        "route exposure policy",
+        "bounded query fields",
+        "no secret/config disclosure"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "meta.ts",
+      "source": "services/backend/src/routes/meta.ts",
+      "requiredChecks": [
+        "version/platform enum allowlist",
+        "bounded client metadata",
+        "no arbitrary config values"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "notifications.ts",
+      "source": "services/backend/src/routes/notifications.ts",
+      "requiredChecks": [
+        "notification owner/recipient scope",
+        "notification ID lists bounded",
+        "safe action enum",
+        "no client-controlled delivery outcome"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "payments.ts",
+      "source": "services/backend/src/routes/payments.ts",
+      "requiredChecks": [
+        "server-authoritative amount/currency",
+        "provider/order/payment ID bounds",
+        "signature/webhook verification",
+        "idempotency/replay control",
+        "allowed payment state transitions"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "payouts.ts",
+      "source": "services/backend/src/routes/payouts.ts",
+      "requiredChecks": [
+        "Admin/Driver ownership and scope",
+        "amount/currency/period bounds",
+        "payout provider ID validation",
+        "privileged approval and audit"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "platform.ts",
+      "source": "services/backend/src/routes/platform.ts",
+      "requiredChecks": [
+        "privileged session and permission",
+        "release/config enum allowlist",
+        "bounded manifest/control payload",
+        "reauth/confirmation for dangerous actions"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "provider.ts",
+      "source": "services/backend/src/routes/provider.ts",
+      "requiredChecks": [
+        "callback signature/authentication",
+        "jobId/attemptId identity binding",
+        "timestamp/replay protection",
+        "result enum allowlist",
+        "idempotent callback processing"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "quick-locations.ts",
+      "source": "services/backend/src/routes/quick-locations.ts",
+      "requiredChecks": [
+        "location ID and text bounds",
+        "coordinate ranges",
+        "serviceability and publish permission"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "ratings.ts",
+      "source": "services/backend/src/routes/ratings.ts",
+      "requiredChecks": [
+        "one rating per eligible completed trip",
+        "score bounds",
+        "review text length",
+        "actor/trip ownership"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "realtime.ts",
+      "source": "services/backend/src/routes/realtime.ts",
+      "requiredChecks": [
+        "authenticated actor",
+        "cursor length/order bounds",
+        "subscription audience/scope",
+        "replay-window limits",
+        "safe event payload shape"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "safety.ts",
+      "source": "services/backend/src/routes/safety.ts",
+      "requiredChecks": [
+        "authenticated actor/trip ownership",
+        "SOS type allowlist",
+        "message/contact bounds",
+        "duplicate incident idempotency"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "sharedRide.ts",
+      "source": "services/backend/src/routes/sharedRide.ts",
+      "requiredChecks": [
+        "ride/session ownership",
+        "seat/passenger capacity bounds",
+        "route/stop ordering and bounds",
+        "valid sharing state transitions"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "support.ts",
+      "source": "services/backend/src/routes/support.ts",
+      "requiredChecks": [
+        "case ownership/scope",
+        "category/status allowlist",
+        "message/attachment size",
+        "file type bounds",
+        "rate limit"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    },
+    {
+      "module": "trips.ts",
+      "source": "services/backend/src/routes/trips.ts",
+      "requiredChecks": [
+        "active trip and actor ownership",
+        "state-machine transition allowlist",
+        "purpose-bound start/finish verification",
+        "location/time values",
+        "idempotency and concurrency"
+      ],
+      "status": "STATIC_COVERAGE_MAP_RUNTIME_NOT_TESTED",
+      "knownGap": "Required checks listed for review; this map does not assert every check is fully implemented in source."
+    }
+  ],
+  "clientInputSurfaces": [
+    {
+      "surface": "Customer Mobile",
+      "coverage": "Forms, OTP, locations, quote, booking, payment and safety controls must map to API schemas."
+    },
+    {
+      "surface": "Driver Mobile",
+      "coverage": "Onboarding, documents, vehicle, GPS, offers and trip verification must map to API schemas."
+    },
+    {
+      "surface": "Admin Mobile",
+      "coverage": "Configuration, KYC, payouts and bulk operations require server permission/scope validation."
+    },
+    {
+      "surface": "Admin Web",
+      "coverage": "Forms, filters, exports, uploads and privileged actions require schema/permission mapping."
+    },
+    {
+      "surface": "Super Admin Control",
+      "coverage": "Privileged command schemas need device trust, signature and replay protection before live operation."
+    },
+    {
+      "surface": "Android Gateway",
+      "coverage": "Command/ACK/telephony payload bounds, identity binding and replay checks."
+    },
+    {
+      "surface": "Public Website",
+      "coverage": "Forms/download links should allowlist destinations and bound user inputs."
+    }
+  ],
+  "requiredFailureCases": [
+    "missing field",
+    "wrong type",
+    "overlong string",
+    "invalid enum",
+    "out-of-range number/coordinate",
+    "oversized body/file",
+    "unknown actor/object",
+    "wrong geographic scope",
+    "replayed request/callback",
+    "request timeout or malformed upstream response"
+  ],
+  "linkedSecurityRequirements": [
+    "REQ-SEC-004",
+    "REQ-SEC-007",
+    "REQ-SEC-008",
+    "REQ-SEC-010",
+    "REQ-SEC-011",
+    "REQ-CORE-002",
+    "REQ-CORE-009",
+    "REQ-CORE-010",
+    "REQ-RIDE-003",
+    "REQ-RIDE-004",
+    "REQ-ASYNC-004"
+  ],
+  "physicalTestStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_IMPLEMENTED"
+}

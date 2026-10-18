@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "projectId": "ridex-super-admin-controle",
+  "scope": "Authentication refresh-token rotation, reuse detection, concurrent-session limits, and role-specific session lifetime audit",
+  "sourceEvidence": [
+    {
+      "file": "services/backend/src/services/authSession.ts",
+      "finding": "Creates opaque random session tokens and persists SHA-256 hashes; resolve checks absolute expiresAt and current user status."
+    },
+    {
+      "file": "services/backend/src/services/authSession.ts",
+      "finding": "createAuthSession uses one configured RIDEX_SESSION_TTL_SECONDS value for all user types; no visible role-specific idle-timeout enforcement in the inspected service."
+    },
+    {
+      "file": "services/backend/src/services/authSession.ts",
+      "finding": "createAuthSession inserts a session directly; no visible role-specific active-session count check is performed before creation."
+    },
+    {
+      "file": "services/backend/prisma/schema.prisma",
+      "finding": "AuthSession has tokenHash uniqueness and revocation/expiry fields, but no refresh-token family, consumed-token marker, or rotation lineage fields."
+    },
+    {
+      "file": "services/backend/src/routes/auth.ts",
+      "finding": "Routes create/revoke opaque sessions; no refresh endpoint/family rotation/reuse-detection flow was found in the inspected route source."
+    },
+    {
+      "file": "services/backend/prisma/schema.prisma",
+      "finding": "UserType enum is CUSTOMER, DRIVER, ADMIN; Super Admin and Admin Mobile/Web are surfaces/roles rather than distinct UserType values. Session policy must resolve the current AdminUser role and client surface before applying distinct approved limits."
+    },
+    {
+      "file": "services/backend/src/routes/auth.ts",
+      "finding": "Current login flows return opaque session tokens; no refresh-token endpoint or refresh-token client contract is present in the inspected routes. Adding rotation requires an explicit client/API contract and persistent one-time token-family state, not merely renaming the existing session token."
+    },
+    {
+      "file": "services/backend/src/services/authSession.ts",
+      "finding": "Session creation currently uses prisma.authSession.create outside the advisory-lock transaction used by revoke-other-session operations. A safe cap requires the same per-user lock around count and insert; idle expiry also needs a defined meaningful-activity signal rather than treating every protected request as activity."
+    }
+  ],
+  "verifiedExistingControls": [
+    "Cryptographically random opaque session token",
+    "SHA-256 token-hash storage",
+    "Absolute expiry check",
+    "User status/type revalidation",
+    "Single-session and all-session revocation helpers",
+    "Device binding support"
+  ],
+  "blockers": [
+    {
+      "id": "AUTH-ROT-01",
+      "priority": "P0",
+      "status": "NOT_IMPLEMENTED",
+      "requirement": "Define refresh API/client contract, persist single-use token family/consumption state, atomically rotate, detect reuse and revoke family; add DB-backed race/replay tests."
+    },
+    {
+      "id": "AUTH-LIMIT-01",
+      "priority": "P0",
+      "status": "NOT_ENFORCED",
+      "requirement": "Resolve surface/privilege classification, then enforce approved limits under a per-user database lock; reject over-limit creation without silent session eviction."
+    },
+    {
+      "id": "AUTH-LIFE-01",
+      "priority": "P0",
+      "status": "NOT_ENFORCED",
+      "requirement": "Wire role/surface-specific max lifetime and idle expiry. Only meaningful foreground activity may refresh idle expiry; absolute maximum must never slide."
+    },
+    {
+      "id": "AUTH-RUNTIME-01",
+      "priority": "P0",
+      "status": "PENDING",
+      "requirement": "Database-backed negative/concurrency tests for replay, refresh races, session-limit races, expiry, revocation, suspension and device binding."
+    }
+  ],
+  "approvedPolicyReference": "config/auth-session-baseline.json",
+  "releaseStatus": "BLOCKED_NOT_PRODUCTION_READY",
+  "scopeLimit": "This artifact records a source audit; it does not claim these missing controls have been implemented or runtime-tested.",
+  "implementationReadiness": {
+    "sessionLimitImplementation": "BLOCKED_PENDING_SURFACE_CLASSIFICATION_AND_ATOMIC_CREATE_CHANGE",
+    "idleTimeoutImplementation": "BLOCKED_PENDING_MEANINGFUL_ACTIVITY_SIGNAL_AND_POLICY_WIRING",
+    "refreshRotationImplementation": "BLOCKED_PENDING_API_CLIENT_CONTRACT_AND_PERSISTED_TOKEN_FAMILY_STATE",
+    "reason": "Avoided introducing a partial refresh-token scheme that would break existing bearer-session clients or falsely claim replay/race safety. This iteration strengthens evidence and records the exact implementation dependencies; no production auth behavior is changed by this audit update."
+  }
+}

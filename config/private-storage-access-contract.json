@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_PRIVATE_STORAGE_GUARDS_MAPPED_CLEANUP_IMPROVED_RUNTIME_ACCESS_TESTS_DEFERRED",
+  "authority": "services/backend owns all private-object authorization decisions, storage-key persistence, signed-link issuance, file metadata and deletion state. Clients never receive direct storage credentials or raw object keys.",
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+  "limits": {
+    "maxPrivateObjectBytes": 10485760,
+    "minSignedUrlTtlSeconds": 60,
+    "maxSignedUrlTtlSeconds": 900,
+    "customerGallerySignedLinkTtlSeconds": 900,
+    "driverKycSignedUrlTtlSeconds": 900,
+    "allowedVerifiedMimeTypes": [
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "application/pdf"
+    ],
+    "webpMagicSignature": "RIFF bytes 0..3 and WEBP bytes 8..11"
+  },
+  "sourceEvidence": [
+    {
+      "path": "services/backend/src/integrations/storage.ts",
+      "role": "Environment bucket isolation, storage-key validation, file signature/size/type validation, local path boundary, storage read/write/delete and signed URL TTL clamp."
+    },
+    {
+      "path": "services/backend/src/services/driverDocuments.service.ts",
+      "role": "Driver document ownership, latest-version requirement, validation and short-lived signed download URL."
+    },
+    {
+      "path": "services/backend/src/routes/driver.ts",
+      "role": "Driver-scoped KYC upload/download handlers and audit records."
+    },
+    {
+      "path": "services/backend/src/routes/customer.ts",
+      "role": "Customer gallery ownership, expiring HMAC link, download audit and private-object cleanup on deletion."
+    },
+    {
+      "path": "services/backend/src/routes/admin.ts",
+      "role": "Permission-gated KYC/resume/app-asset access and upload candidates."
+    },
+    {
+      "path": "services/backend/src/routes/support.ts",
+      "role": "Support attachment owner/permission and signed-link candidate; runtime verification pending."
+    },
+    {
+      "path": "services/backend/prisma/schema.prisma",
+      "role": "DriverDocument, CustomerGalleryPhoto, support and AppAsset storage references."
+    },
+    {
+      "path": "config/security-requirement-register.json",
+      "role": "REQ-SEC-011 private file access, REQ-DATA-003 data retention and REQ-DATA-004 private storage traceability."
+    }
+  ],
+  "controls": [
+    {
+      "id": "STOR-001",
+      "requirementIds": [
+        "REQ-SEC-011",
+        "REQ-DATA-004"
+      ],
+      "control": "A requested storage bucket must equal the bucket configured for the current TEST/PRODUCTION environment.",
+      "status": "SOURCE_GUARD_PRESENT_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-002",
+      "requirementIds": [
+        "REQ-SEC-011",
+        "REQ-DATA-004"
+      ],
+      "control": "Storage keys reject absolute paths, backslashes, NUL, empty/dot/dot-dot segments, invalid characters and overlong paths; local filesystem paths are resolved and checked to remain within the private root.",
+      "status": "SOURCE_GUARD_PRESENT_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-003",
+      "requirementIds": [
+        "REQ-DATA-004"
+      ],
+      "control": "Private uploads require a non-empty Buffer within the 1-byte to 10-MB boundary and a declared MIME type validated against an endpoint allowlist.",
+      "status": "SOURCE_GUARD_PRESENT_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-004",
+      "requirementIds": [
+        "REQ-DATA-004"
+      ],
+      "control": "JPEG, PNG, WebP and PDF file extensions/content signatures must agree with the MIME type; WebP uses RIFF/WEBP magic signature validation.",
+      "status": "SOURCE_GUARD_ADDED_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-005",
+      "requirementIds": [
+        "REQ-SEC-011"
+      ],
+      "control": "Customer gallery downloads require a signed, unexpired HMAC URL, timing-safe signature comparison and a database row whose owner matches the signed customer identity.",
+      "status": "SOURCE_GUARD_PRESENT_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-006",
+      "requirementIds": [
+        "REQ-SEC-011"
+      ],
+      "control": "Driver document downloads require driver/document ownership, the latest document version where the service path is used, and short-lived signed URLs.",
+      "status": "SOURCE_GUARD_PRESENT_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-007",
+      "requirementIds": [
+        "REQ-SEC-011"
+      ],
+      "control": "Admin document downloads require a drivers VIEW permission check and a scoped document lookup containing both driverId and documentId.",
+      "status": "SOURCE_GUARD_PRESENT_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-008",
+      "requirementIds": [
+        "REQ-DATA-004"
+      ],
+      "control": "The generic signed URL provider clamp limits requested TTL to 60\u2013900 seconds; sensitive call sites use at most 900 seconds.",
+      "status": "SOURCE_GUARD_TIGHTENED_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-009",
+      "requirementIds": [
+        "REQ-DATA-004"
+      ],
+      "control": "Successful Customer Gallery file downloads are audited without raw file bytes or raw storage keys; responses use private no-store cache control and nosniff.",
+      "status": "SOURCE_GUARD_ADDED_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-010",
+      "requirementIds": [
+        "REQ-DATA-004",
+        "REQ-DATA-003"
+      ],
+      "control": "Gallery deletion removes the private storage object before deleting its database pointer, retains the database record when object deletion fails, audits failures, and permits safe retry when the object is already missing.",
+      "status": "SOURCE_GUARD_ADDED_STATIC_ONLY"
+    },
+    {
+      "id": "STOR-011",
+      "requirementIds": [
+        "REQ-DATA-003"
+      ],
+      "control": "No comprehensive retention/deletion schedule exists yet for KYC, resumes, support attachments, assets, backups and audit records.",
+      "status": "OPEN_POLICY_GAP"
+    },
+    {
+      "id": "STOR-012",
+      "requirementIds": [
+        "REQ-SEC-011",
+        "REQ-DATA-004"
+      ],
+      "control": "Cross-owner denial, signed-URL expiry, file-signature/MIME/size, storage provider error, cleanup retry and no-orphan/no-loss behavior require final physical/storage tests.",
+      "status": "NOT_RUN_DEFERRED"
+    }
+  ],
+  "routeCallsiteCoverage": [
+    {
+      "area": "Driver KYC",
+      "routes": [
+        "POST /driver/:driverId/documents/:documentId/upload",
+        "GET /driver/:driverId/documents/:documentId/url"
+      ],
+      "guard": "verifyRouteDriverIdentity + document lookup scoped by driverId/documentId; admin access is separately permission-gated.",
+      "status": "STATIC_MAPPED_TEST_PENDING"
+    },
+    {
+      "area": "Customer gallery",
+      "routes": [
+        "GET /customer/:customerId/gallery",
+        "POST /customer/:customerId/gallery",
+        "DELETE /customer/:customerId/gallery/:photoId",
+        "GET /customer/:customerId/gallery/:photoId/download"
+      ],
+      "guard": "Customer session equality for CRUD/list; HMAC expiry/timing-safe signature plus database owner equality for signed download.",
+      "status": "STATIC_GUARDS_PRESENT_DELETE_CLEANUP_ADDED_TEST_PENDING"
+    },
+    {
+      "area": "Admin KYC/resume/assets",
+      "routes": [
+        "GET /admin/drivers/:driverId/documents/:documentId/url",
+        "GET /admin/admins/:adminId/resume/url",
+        "app asset list/create/version routes"
+      ],
+      "guard": "Permission gates, object ID lookups and signed URL helper; role/scope and full retention testing pending.",
+      "status": "STATIC_MAPPED_TEST_PENDING"
+    },
+    {
+      "area": "Support attachments",
+      "routes": [
+        "Support attachment upload and signed download endpoints"
+      ],
+      "guard": "Source candidates exist; a complete ownership/retention runtime proof is pending.",
+      "status": "REVIEW_PENDING"
+    }
+  ],
+  "knownResidualsRequiringFinalReview": [
+    "Confirm every uploadPrivateObject call is preceded by the correct endpoint-specific validatePrivateFile allowlist and signature check, including Support attachment routes.",
+    "The generic storage upload interface still receives a MIME type but relies on endpoint callers to invoke validatePrivateFile; decide whether to enforce an allowlist/signature at the storage boundary as well.",
+    "Define retention, deletion, legal hold and orphan cleanup/reconciliation for KYC documents, Admin resumes, Support attachments, old app asset versions and backups.",
+    "Review all signed URL issuance call sites and ensure there are no direct public-object routes, excessively long capabilities or uncapped expiration inputs.",
+    "Audit logging is improved for Customer Gallery download and delete; verify full actor attribution and audit-failure behavior across every private download route.",
+    "Storage provider bucket ACL/private setting, signed URL behavior and delete semantics require final integration tests against a disposable local/test bucket.",
+    "No runtime/database/storage/provider tests were run in this implementation step."
+  ],
+  "finalRequiredTests": [
+    "Owner A cannot download Customer B gallery photo with a guessed ID or modified signed link.",
+    "Expired gallery link is rejected at the exact expiry second.",
+    "Tampered signature and malformed signature lengths are rejected without timing/exception leakage.",
+    "Driver A cannot access Driver B KYC document upload or signed URL endpoint.",
+    "Admin without drivers VIEW permission cannot request KYC signed URLs.",
+    "Older DriverDocument version cannot be downloaded when a newer version is current via the service API.",
+    "JPEG/PNG/WebP/PDF valid magic signatures pass only when the file type is allowed for the route.",
+    "Fake MIME, wrong extension, truncated magic signature, oversized and empty uploads are rejected.",
+    "Requested signed URL TTL below/above range is clamped to 60/900 seconds at the storage boundary.",
+    "Production mode fails closed when private storage is not configured and never falls back to local storage.",
+    "Deleting gallery photo removes the private object and DB row and writes an audit event without raw object key/content.",
+    "Storage deletion failure preserves the DB row and responds retryably; retry is safe if provider object is already missing.",
+    "Storage path traversal, wrong environment bucket, local root escape and malformed storage keys are rejected.",
+    "Successful signed downloads use private no-store and X-Content-Type-Options: nosniff headers.",
+    "Retention/deletion policy and orphan reconciliation are reviewed before release."
+  ],
+  "retentionDeletionContract": {
+    "path": "config/data-retention-deletion-contract.json",
+    "supportAttachmentSignedDownload": "Revalidate filename/MIME/signature before bytes are served; exact expiry second rejected; successful download audited."
+  }
+}

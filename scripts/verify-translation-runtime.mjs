@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {fileURLToPath} from 'node:url';
+import {resolveRideXTranslation,translateRideXText,createRideXTranslationAdapter,RIDEX_GENERIC_MISSING_TRANSLATION} from '../packages/localization/src/translationRuntime.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');const errors=[];const checks=[];const pass=m=>checks.push(`PASS ${m}`);const fail=m=>errors.push(m);const req=(c,m)=>c?pass(m):fail(m);const load=r=>{try{return JSON.parse(fs.readFileSync(path.join(root,r),'utf8'))}catch(e){fail(`${r}: ${e.message}`);return null}};
+const contract=load('config/localization-interface.json');const base=load('config/project-baseline.json');const inv=load('config/source-inventory.json');const pkg=load('package.json');
+req(Boolean(contract&&base&&inv&&pkg),'shared translation interface and linked manifests parse');
+const cases=[];const add=(id,fn)=>{try{fn();cases.push(`PASS ${id}`)}catch(e){errors.push(`${id}: ${e.message}`)}};
+const catalogs={'en-IN':{'common.language':'Language','auth.login':'Log in',nested:{hello:'Hello'}},'hi-IN':{'common.language':'भाषा',nested:{hello:'नमस्ते'}}};
+if(contract&&base&&inv&&pkg){
+ req(contract.status==='SHARED_TRANSLATION_RUNTIME_ADMIN_WEB_AND_CORE_MOBILE_JOURNEYS_WIRED; FULL_SCREEN_COVERAGE_AND_BACKEND_SYNC_PENDING','interface status accurately separates implemented adapter from remaining surfaces');
+ req(contract.catalogPolicy.silentCatalogMerge==='prohibited'&&contract.catalogPolicy.adminWebCatalog.includes('retain'),'catalogs are not silently merged and existing Web translations remain preserved');
+ req(contract.contract.rawInternalKey==='never render as fallback copy'&&contract.contract.lookupOrder[0]==='selected locale catalog'&&contract.contract.lookupOrder[1]==='en-IN catalog','lookup and safe fallback contract is explicit');
+ req(contract.contract.placeholdersAndFormatting.includes('Step N') && contract.contract.placeholdersAndFormatting.includes('dynamicFormatting.mjs'),'lookup runtime links to the separately implemented Step N dynamic-formatting module');
+ req(base.localizationInterface?.path==='config/localization-interface.json'&&inv.localizationInterface?.path==='config/localization-interface.json','baseline/source inventory link common interface');
+ req(pkg.scripts?.['verify:translation-runtime']==='node scripts/verify-translation-runtime.mjs','dedicated verifier is registered');
+ const rb=inv.components?.find(c=>c.id==='rootBuildScripts');const actual=fs.readdirSync(path.join(root,'scripts')).filter(n=>fs.statSync(path.join(root,'scripts',n)).isFile()).sort();req(rb?.scripts?.includes('verify-translation-runtime.mjs')&&rb.fileCount===actual.length&&JSON.stringify(rb.scripts.slice().sort())===JSON.stringify(actual),'root script inventory/count is current');
+ add('selected locale exact flat key',()=>assert.deepEqual(resolveRideXTranslation({locale:'hi-IN',key:'common.language',dictionaries:catalogs}),{text:'भाषा',requestedLocale:'hi-IN',resolvedLocale:'hi-IN',source:'REQUESTED_LOCALE',translationFound:true}));
+ add('selected locale nested key',()=>assert.equal(translateRideXText({locale:'hi-IN',key:'nested.hello',dictionaries:catalogs}),'नमस्ते'));
+ add('English catalog fallback',()=>assert.deepEqual(resolveRideXTranslation({locale:'hi-IN',key:'auth.login',dictionaries:catalogs}),{text:'Log in',requestedLocale:'hi-IN',resolvedLocale:'en-IN',source:'ENGLISH_FALLBACK',translationFound:true}));
+ add('caller fallback is used after catalog misses',()=>assert.deepEqual(resolveRideXTranslation({locale:'hi-IN',key:'driver.missing',dictionaries:catalogs,fallbackText:'Driver label'}),{text:'Driver label',requestedLocale:'hi-IN',resolvedLocale:null,source:'CALLER_FALLBACK',translationFound:false}));
+ add('generic safe fallback is used after total miss',()=>assert.equal(translateRideXText({locale:'en-IN',key:'not.present',dictionaries:catalogs}),RIDEX_GENERIC_MISSING_TRANSLATION));
+ add('raw key is not returned as fallback',()=>assert.notEqual(translateRideXText({locale:'en-IN',key:'secret.internal.key',dictionaries:catalogs,fallbackText:'secret.internal.key'}),'secret.internal.key'));
+ add('unsafe locale falls back to en-IN without enabling it',()=>assert.deepEqual(resolveRideXTranslation({locale:'bn-IN',key:'auth.login',dictionaries:catalogs}),{text:'Log in',requestedLocale:'en-IN',resolvedLocale:'en-IN',source:'REQUESTED_LOCALE',translationFound:true}));
+ add('only non-empty string translation values count',()=>assert.equal(resolveRideXTranslation({locale:'en-IN',key:'x',dictionaries:{'en-IN':{x:42}}}).translationFound,false));
+ add('empty translation falls back safely',()=>assert.equal(translateRideXText({locale:'en-IN',key:'x',dictionaries:{'en-IN':{x:'   '}},genericFallback:'Safe copy'}),'Safe copy'));
+ add('flat full key takes precedence over nested path',()=>assert.equal(translateRideXText({locale:'en-IN',key:'nested.hello',dictionaries:{'en-IN':{'nested.hello':'Flat','nested':{hello:'Nested'}}}}),'Flat'));
+ add('prototype segments are blocked',()=>assert.equal(resolveRideXTranslation({locale:'en-IN',key:'__proto__.polluted',dictionaries:catalogs}).translationFound,false));
+ add('invalid key input uses safe generic copy',()=>assert.equal(translateRideXText({locale:'en-IN',key:123,dictionaries:catalogs}),RIDEX_GENERIC_MISSING_TRANSLATION));
+ add('invalid dictionary does not throw',()=>assert.equal(translateRideXText({locale:'en-IN',key:'x',dictionaries:null}),'Text unavailable'));
+ add('adapter reads the latest locale value at call time',()=>{let locale='en-IN';const adapter=createRideXTranslationAdapter({getLocale:()=>locale,dictionaries:catalogs});assert.equal(adapter.t('common.language'),'Language');locale='hi-IN';assert.equal(adapter.t('common.language'),'भाषा')});
+ add('adapter has distinguishes translated keys from fallbacks',()=>{const adapter=createRideXTranslationAdapter({getLocale:()=> 'hi-IN',dictionaries:catalogs});assert.equal(adapter.has('common.language'),true);assert.equal(adapter.has('missing.key'),false)});
+ add('adapter getLocale exception falls back safely',()=>{const adapter=createRideXTranslationAdapter({getLocale:()=>{throw new Error('sensitive detail')},dictionaries:catalogs});assert.equal(adapter.t('auth.login'),'Log in')});
+ add('resolved outputs do not echo missing internal key',()=>{const r=resolveRideXTranslation({locale:'en-IN',key:'raw.internal.secret',dictionaries:catalogs});assert.equal(JSON.stringify(r).includes('raw.internal.secret'),false)});
+ add('translation resolver does not mutate catalogs',()=>{const before=structuredClone(catalogs);resolveRideXTranslation({locale:'hi-IN',key:'common.language',dictionaries:catalogs});assert.deepEqual(catalogs,before)});
+ add('result is immutable and reports source locale',()=>{const r=resolveRideXTranslation({locale:'hi-IN',key:'missing',dictionaries:catalogs});assert.equal(Object.isFrozen(r),true);assert.equal(r.requestedLocale,'hi-IN')});
+ req(cases.length===19,`${cases.length} deterministic shared-runtime cases pass`);
+ const webI18n=fs.readFileSync(path.join(root,'apps/admin-web/src/lib/i18n.tsx'),'utf8');
+ req(webI18n.includes('resolveRideXTranslation')&&webI18n.includes('humanizeMissingKey(key)'),'Admin Web translation provider uses shared runtime while preserving existing safe missing-copy behavior');
+ req(contract.surfaceIntegration.adminWeb.startsWith('WIRED_TO_SHARED_TRANSLATION_RUNTIME')&&contract.surfaceIntegration.customerMobile.startsWith('CORE_AUTH')&&contract.surfaceIntegration.driverMobile.startsWith('CORE_AUTH')&&contract.surfaceIntegration.adminMobile.startsWith('CORE_LOGIN')&&contract.surfaceIntegration.publicWebsite.startsWith('PENDING'),'surface integration state distinguishes core mobile wiring from remaining surfaces');
+ req(contract.dynamicFormattingModule==='packages/localization/src/dynamicFormatting.mjs'&&contract.dynamicFormattingStatus.includes('STATIC_CASES_PASS'),'shared interface documents the Step N dynamic formatting module');
+ req(contract.testStatus.all25Lqa==='NOT_RUN'&&contract.testStatus.physicalUiTests==='DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH','physical UI/LQA testing remains deferred');
+}
+if(errors.length){console.error('SHARED TRANSLATION RUNTIME CHECK: FAIL');for(const e of errors)console.error(`FAIL ${e}`);process.exit(1)}console.log('SHARED TRANSLATION RUNTIME CHECK: PASS');for(const c of checks)console.log(c);for(const c of cases)console.log(c);console.log('Pure lookup checks and source integration guard only; full UI/LQA tests remain NOT_RUN.');

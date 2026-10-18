@@ -1,0 +1,29 @@
+:root {
+  --ridex-color-primary: #E11D48;
+  --ridex-color-primary-dark: #BE123C;
+  --ridex-color-primary-soft: #FFF1F2;
+  --ridex-color-ink: #0F172A;
+  --ridex-color-text: #334155;
+  --ridex-color-muted: #64748B;
+  --ridex-color-muted-subtle: #94A3B8;
+  --ridex-color-border: #E5E7EB;
+  --ridex-color-surface: #FFFFFF;
+  --ridex-color-background: #F8FAFC;
+  --ridex-color-surface-tint: #F1F5F9;
+  --ridex-color-success: #15803D;
+  --ridex-color-success-soft: #ECFDF3;
+  --ridex-color-warning: #B45309;
+  --ridex-color-warning-soft: #FFF8E8;
+  --ridex-color-danger: #DC2626;
+  --ridex-color-danger-soft: #FEF2F2;
+  --ridex-color-info: #2563EB;
+  --ridex-color-info-soft: #EFF6FF;
+  --ridex-focus-ring: 0 0 0 3px rgba(225, 29, 72, 0.24);
+  --ridex-radius-xs: 8px;
+  --ridex-radius-sm: 10px;
+  --ridex-radius-md: 14px;
+  --ridex-radius-lg: 18px;
+  --ridex-radius-xl: 20px;
+  --ridex-motion-fast: 160ms;
+  --ridex-motion-normal: 220ms;
+}

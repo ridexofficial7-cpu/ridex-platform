@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "registerRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_ACCEPTANCE_EXECUTION_REGISTER_PREPARED_CASE_DETAIL_RECONCILIATION_PENDING_ALL_TESTS_DEFERRED",
+  "sourceBaseline": "Package 2 — Smooth & Secure Project Requirements Package, 24-test acceptance matrix",
+  "baselineSummary": {
+    "acceptanceTestCount": 24,
+    "priorityDistribution": {"P0": 19, "P1": 5},
+    "distributionSource": "Baseline package summary; per-test ID priority assignment still requires row-level reconciliation.",
+    "executionStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH"
+  },
+  "caseDetailPolicy": {
+    "titlesAndExpectedResultsInvented": false,
+    "perIdPriorityAssignedWithoutSourceRow": false,
+    "status": "PENDING_ROW_LEVEL_RECONCILIATION_TO_BASELINE_ACCEPTANCE_MATRIX",
+    "note": "This register reserves all 24 baseline IDs and the reported aggregate priority distribution without fabricating per-case names, priority assignments, preconditions or expected results. Row details must be reconciled before physical execution."
+  },
+  "cases": [
+    {"id":"T-001","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-002","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-003","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-004","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-005","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-006","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-007","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-008","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-009","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-010","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-011","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-012","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-013","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-014","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-015","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-016","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-017","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-018","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-019","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-020","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-021","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-022","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-023","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]},
+    {"id":"T-024","priority":null,"title":null,"expectedResult":null,"detailStatus":"PENDING_BASELINE_ROW_RECONCILIATION","executionStatus":"NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH","result":"NOT_RUN","evidence":[]}
+  ],
+  "executionEvidenceSchema": {
+    "requiredPerExecutedCase": ["caseId","buildRevision","environmentId","testRunId","startedAtUtc","completedAtUtc","actualResult","passFailBlocked","logsOrScreenshotsRedacted","relatedDefectIds","reviewer"],
+    "allowedFinalResultValues": ["PASS","FAIL","BLOCKED"],
+    "secretOrPersonalDataAllowedInEvidence": false,
+    "physicalExecutionAllowedBeforeAllFourPackagesComplete": false
+  },
+  "requiredPreparationBeforeExecution": [
+    "Reconcile all 24 case titles, preconditions, priority-by-ID and expected results with the original baseline acceptance matrix.",
+    "Map each case to relevant security requirements, source modules, API contracts and applicable UI screen IDs.",
+    "Approve TEST-only environment and fixture data; link each result to build revision and run ID.",
+    "Run the 24 acceptance cases only after all four package implementations are complete and their prerequisite decisions are resolved."
+  ],
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH"
+}

@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "registryRevision": 1,
+  "date": "2026-10-12",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "CANONICAL_LOCALE_REGISTRY_NORMALIZED; SURFACE_ENABLEMENT_PENDING",
+  "sourceProvenance": {
+    "baselinePackage": "RideX_Language_Selection_and_Multilingual_Setup_Package.zip",
+    "baselineZipSha256": "271e8b7394dcb6e3b07d75865703cbf255af0b541f6a422d4dfe54647d0fe135",
+    "localeRegistryCsvSha256": "aa30af2117e9f93ab76fb4f936ec07241c9957b1424eaa5b0ee6bb8231107258",
+    "normalizationPolicy": "Source tags/statuses/scripts/directions preserved; only the Gujarati English-name field was corrected in this canonical copy. The original source ZIP and raw observed record remain unchanged."
+  },
+  "rules": {
+    "sourceLocale": "en-IN",
+    "defaultFallbackLocale": "en-IN",
+    "firstSelectableLocales": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "plannedOrBacklogSelectable": false,
+    "unlistedLocaleSelectable": false,
+    "invalidLocaleTag": "reject from selection/API writes; do not coerce silently into a different language",
+    "direction": "use the locale registry direction; keep OTP/mobile/number payload controls semantically LTR where applicable",
+    "displayName": "languageEnglishName for English UI; languageSelfName for native-language chooser labels",
+    "registryDoesNotProveTranslationCompleteness": true
+  },
+  "rolloutCounts": {
+    "SUPPORTED_FIRST": 2,
+    "PLANNED": 15,
+    "BACKLOG": 8
+  },
+  "locales": [
+    {
+      "localeTag": "en-IN",
+      "languageEnglishName": "English",
+      "languageSelfName": "English",
+      "scriptCode": "Latn",
+      "direction": "LTR",
+      "rolloutPriority": "P0",
+      "rolloutStatus": "SUPPORTED_FIRST",
+      "selectableByPolicy": true,
+      "runtimeEnablement": "IMPLEMENTATION_AND_QA_REQUIRED",
+      "sourceNotes": "Main fallback/source language; all critical keys must exist."
+    },
+    {
+      "localeTag": "hi-IN",
+      "languageEnglishName": "Hindi",
+      "languageSelfName": "हिन्दी",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P0",
+      "rolloutStatus": "SUPPORTED_FIRST",
+      "selectableByPolicy": true,
+      "runtimeEnablement": "IMPLEMENTATION_AND_QA_REQUIRED",
+      "sourceNotes": "Primary Indian-language UI; complete review by fluent reviewer."
+    },
+    {
+      "localeTag": "bn-IN",
+      "languageEnglishName": "Bengali",
+      "languageSelfName": "বাংলা",
+      "scriptCode": "Beng",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Pilot after translation, font and text-expansion QA."
+    },
+    {
+      "localeTag": "mr-IN",
+      "languageEnglishName": "Marathi",
+      "languageSelfName": "मराठी",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Keep Hindi and Marathi translations separate despite shared script."
+    },
+    {
+      "localeTag": "ta-IN",
+      "languageEnglishName": "Tamil",
+      "languageSelfName": "தமிழ்",
+      "scriptCode": "Taml",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Validate font shaping and long labels."
+    },
+    {
+      "localeTag": "te-IN",
+      "languageEnglishName": "Telugu",
+      "languageSelfName": "తెలుగు",
+      "scriptCode": "Telu",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Validate line-height and text wrapping."
+    },
+    {
+      "localeTag": "gu-IN",
+      "languageEnglishName": "Gujarati",
+      "languageSelfName": "ગુજરાતી",
+      "scriptCode": "Gujr",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Validate digits, numerals and translated payment terms.",
+      "sourceCorrection": {
+        "field": "languageEnglishName",
+        "originalObservedValue": "ગુજરાતી",
+        "canonicalValue": "Gujarati",
+        "selfNamePreserved": true,
+        "issueId": "LANG-DQ-001"
+      }
+    },
+    {
+      "localeTag": "kn-IN",
+      "languageEnglishName": "Kannada",
+      "languageSelfName": "ಕನ್ನಡ",
+      "scriptCode": "Knda",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Validate font rendering and small-size legibility."
+    },
+    {
+      "localeTag": "ml-IN",
+      "languageEnglishName": "Malayalam",
+      "languageSelfName": "മലയാളം",
+      "scriptCode": "Mlym",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Expect text expansion; avoid fixed-height labels."
+    },
+    {
+      "localeTag": "pa-Guru-IN",
+      "languageEnglishName": "Punjabi",
+      "languageSelfName": "ਪੰਜਾਬੀ",
+      "scriptCode": "Guru",
+      "direction": "LTR",
+      "rolloutPriority": "P1",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Use Gurmukhi script for the India locale."
+    },
+    {
+      "localeTag": "or-IN",
+      "languageEnglishName": "Odia",
+      "languageSelfName": "ଓଡ଼ିଆ",
+      "scriptCode": "Orya",
+      "direction": "LTR",
+      "rolloutPriority": "P2",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Confirm platform locale handling and translation QA."
+    },
+    {
+      "localeTag": "as-IN",
+      "languageEnglishName": "Assamese",
+      "languageSelfName": "অসমীয়া",
+      "scriptCode": "Beng",
+      "direction": "LTR",
+      "rolloutPriority": "P2",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Bengali script family; translation must remain Assamese."
+    },
+    {
+      "localeTag": "ur-IN",
+      "languageEnglishName": "Urdu",
+      "languageSelfName": "اردو",
+      "scriptCode": "Arab",
+      "direction": "RTL",
+      "rolloutPriority": "P2",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Requires RTL layout review; mixed phone/OTP strings remain LTR."
+    },
+    {
+      "localeTag": "mai-IN",
+      "languageEnglishName": "Maithili",
+      "languageSelfName": "मैथिली",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P2",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Optional locale; plan a native-language review."
+    },
+    {
+      "localeTag": "bho-IN",
+      "languageEnglishName": "Bhojpuri",
+      "languageSelfName": "भोजपुरी",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P2",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "App-level locale tag; OS language picker availability may vary."
+    },
+    {
+      "localeTag": "kok-IN",
+      "languageEnglishName": "Konkani",
+      "languageSelfName": "कोंकणी",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P2",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Confirm target script with local users before release."
+    },
+    {
+      "localeTag": "ne-IN",
+      "languageEnglishName": "Nepali",
+      "languageSelfName": "नेपाली",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P2",
+      "rolloutStatus": "PLANNED",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Confirm target dialect/terminology with intended users."
+    },
+    {
+      "localeTag": "sa-IN",
+      "languageEnglishName": "Sanskrit",
+      "languageSelfName": "संस्कृतम्",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Release only if there is a verified user need."
+    },
+    {
+      "localeTag": "doi-IN",
+      "languageEnglishName": "Dogri",
+      "languageSelfName": "डोगरी",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Script/terminology review required."
+    },
+    {
+      "localeTag": "ks-Arab-IN",
+      "languageEnglishName": "Kashmiri (Perso-Arabic)",
+      "languageSelfName": "کٲشُر",
+      "scriptCode": "Arab",
+      "direction": "RTL",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "RTL and script-specific support required."
+    },
+    {
+      "localeTag": "ks-Deva-IN",
+      "languageEnglishName": "Kashmiri (Devanagari)",
+      "languageSelfName": "कश्मीरी",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Offer as a distinct script choice only if requested."
+    },
+    {
+      "localeTag": "brx-IN",
+      "languageEnglishName": "Bodo",
+      "languageSelfName": "बड़ो",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Confirm preferred script with intended audience."
+    },
+    {
+      "localeTag": "mni-Mtei-IN",
+      "languageEnglishName": "Meitei/Manipuri",
+      "languageSelfName": "ꯃꯤꯇꯩꯂꯣꯟ",
+      "scriptCode": "Mtei",
+      "direction": "LTR",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Native Meitei Mayek support and fonts must be verified."
+    },
+    {
+      "localeTag": "sat-Olck-IN",
+      "languageEnglishName": "Santali",
+      "languageSelfName": "ᱥᱟᱱᱛᱟᱲᱤ",
+      "scriptCode": "Olck",
+      "direction": "LTR",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Ol Chiki font and input/visual QA required."
+    },
+    {
+      "localeTag": "sd-Deva-IN",
+      "languageEnglishName": "Sindhi (Devanagari)",
+      "languageSelfName": "सिन्धी",
+      "scriptCode": "Deva",
+      "direction": "LTR",
+      "rolloutPriority": "P3",
+      "rolloutStatus": "BACKLOG",
+      "selectableByPolicy": false,
+      "runtimeEnablement": "DISABLED_UNTIL_TRANSLATIONS_AND_QA_APPROVED",
+      "sourceNotes": "Script choice must be reviewed; Sindhi may also use Arabic script."
+    }
+  ],
+  "corrections": [
+    {
+      "id": "LANG-DQ-001",
+      "localeTag": "gu-IN",
+      "field": "languageEnglishName",
+      "originalObservedValue": "ગુજરાતી",
+      "canonicalValue": "Gujarati",
+      "preservedField": "languageSelfName",
+      "preservedValue": "ગુજરાતી",
+      "status": "RESOLVED_IN_CANONICAL_REGISTRY_SOURCE_EVIDENCE_PRESERVED"
+    }
+  ],
+  "qaStatus": {
+    "translationReview": "NOT_RUN",
+    "layoutAndAccessibility": "NOT_RUN",
+    "LQA001To025": "NOT_RUN",
+    "crossSurfaceRuntimeEnablement": "PENDING"
+  }
+}

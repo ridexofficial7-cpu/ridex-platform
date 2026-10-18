@@ -1,0 +1,5353 @@
+{
+  "schemaVersion": 1,
+  "catalogRevision": 3,
+  "date": "2026-10-12",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "CANDIDATE_KEY_CATALOG_CREATED; EXISTING_KEYS_PRESERVED; SEMANTIC_AND_SCREEN_MAPPING_PENDING",
+  "policy": {
+    "stableIdentifier": "The exact existing dot-separated key is the stable candidate ID. No existing key is renamed, deleted or silently redirected by this step.",
+    "noSilentMerge": "Starter template, Mobile/Web examples and Admin Web dictionaries remain separate value sources; this catalogue records provenance only.",
+    "noInventedTranslations": "This catalogue contains no translation strings. Existing locale values remain in their original dictionaries.",
+    "activation": "A key is not treated as complete for a surface until its screen/API owner, reviewed English/Hindi value, placeholder contract and QA evidence are mapped.",
+    "unknownNamespace": "Preserve the observed sourceRoot; do not remap a legacy root to a shared namespace without a traceable alias and approval."
+  },
+  "supportedLocales": [
+    "en-IN",
+    "hi-IN"
+  ],
+  "sourceCatalogs": {
+    "STARTER_TEMPLATE": {
+      "path": "translation_key_template.csv",
+      "keyCount": 31
+    },
+    "MOBILE_EXAMPLE": {
+      "path": "examples/mobile/locales/en-IN.json + examples/mobile/locales/hi-IN.json",
+      "keyCount": 44
+    },
+    "ADMIN_WEB": {
+      "path": "apps/admin-web/src/locales/en-IN.json + apps/admin-web/src/locales/hi-IN.json",
+      "keyCount": 266
+    }
+  },
+  "sourceSetComparison": {
+    "templateMobile": 31,
+    "templateAdminWeb": 7,
+    "mobileAdminWeb": 9,
+    "unionKeyCount": 301
+  },
+  "canonicalTargetNamespaces": [
+    "common",
+    "auth",
+    "booking",
+    "driver",
+    "payment",
+    "safety",
+    "admin",
+    "errors",
+    "notifications",
+    "settings"
+  ],
+  "observedSourceRoots": [
+    "app",
+    "auth",
+    "booking",
+    "common",
+    "dashboard",
+    "driver",
+    "errors",
+    "nav",
+    "navGroup",
+    "payment",
+    "recovery",
+    "reports",
+    "safety",
+    "settings",
+    "shell",
+    "support",
+    "workspace"
+  ],
+  "namespaceRegistry": [
+    {
+      "namespace": "common",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 46,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "auth",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 54,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "booking",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 6,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "driver",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 4,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "payment",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 2,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "safety",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 2,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "admin",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 0,
+      "status": "PLANNED_NO_EXISTING_KEYS_DO_NOT_SYNTHESIZE_TRANSLATIONS"
+    },
+    {
+      "namespace": "errors",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 15,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "notifications",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 0,
+      "status": "PLANNED_NO_EXISTING_KEYS_DO_NOT_SYNTHESIZE_TRANSLATIONS"
+    },
+    {
+      "namespace": "settings",
+      "role": "CROSS_SURFACE_TARGET",
+      "sourceKeyCount": 4,
+      "status": "OBSERVED_IN_EXISTING_KEYS"
+    },
+    {
+      "namespace": "app",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 3,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "dashboard",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 37,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "nav",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 58,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "navGroup",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 10,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "reports",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 19,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "shell",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 8,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "support",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 11,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "workspace",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 9,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    },
+    {
+      "namespace": "recovery",
+      "role": "EXISTING_LEGACY_SOURCE_ROOT",
+      "sourceKeyCount": 13,
+      "status": "PRESERVE_UNCHANGED; MAP_TO_CROSS_SURFACE_NAMESPACE_ONLY_AFTER_REVIEW"
+    }
+  ],
+  "keyCount": 301,
+  "keys": [
+    {
+      "key": "app.control",
+      "sourceRoot": "app",
+      "namespace": "app",
+      "namespaceGroup": "ADMIN_WEB_BRANDING",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "app.name",
+      "sourceRoot": "app",
+      "namespace": "app",
+      "namespaceGroup": "ADMIN_WEB_BRANDING",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "app.secureConsole",
+      "sourceRoot": "app",
+      "namespace": "app",
+      "namespaceGroup": "ADMIN_WEB_BRANDING",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.adminAccount",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.adminOtp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.adminType",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.adminTypeNote",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.attemptsRemaining",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.back",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.backendSession",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.backToSignIn",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.completePasswordReset",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.confirmNewPassword",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.continue",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.controlCenter",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.credentialsHelp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.deviceIdentity",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.enterMobileNumber",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.enterOtp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.environment",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.expires",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.forgotPassword",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.identity",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.identityPlaceholder",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.invalidOtp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.login",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.method",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.mobileNumber",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.mobileRequired",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.newPassword",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.noPrivilegeSelector",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.otpExpiresIn",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.otpHelp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.otpPlaceholder",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.password",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.passwordPlaceholder",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.passwordResetSuccess",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.passwordsDoNotMatch",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.registeredMobile",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.registeredMobilePlaceholder",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.resendIn",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.resendOtp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.resetRequestHelp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.resetRequestTitle",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.resetVerifyHelp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.resetVerifyTitle",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.sendOtp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.sendResetOtp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.signIn",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.signOutLocalOnly",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.stateAdmin",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.superAdmin",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.testOtpConfig",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.testOtpLabel",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.verifyAndSignIn",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.verifyLogin",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.verifyOtp",
+      "sourceRoot": "auth",
+      "namespace": "auth",
+      "namespaceGroup": "AUTHENTICATION_AND_SECURITY",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "booking.chooseRide",
+      "sourceRoot": "booking",
+      "namespace": "booking",
+      "namespaceGroup": "CUSTOMER_BOOKING",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "booking.confirm",
+      "sourceRoot": "booking",
+      "namespace": "booking",
+      "namespaceGroup": "CUSTOMER_BOOKING",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "booking.destination",
+      "sourceRoot": "booking",
+      "namespace": "booking",
+      "namespaceGroup": "CUSTOMER_BOOKING",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "booking.noVehicles",
+      "sourceRoot": "booking",
+      "namespace": "booking",
+      "namespaceGroup": "CUSTOMER_BOOKING",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "booking.pickup",
+      "sourceRoot": "booking",
+      "namespace": "booking",
+      "namespaceGroup": "CUSTOMER_BOOKING",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "booking.tryDifferentLocation",
+      "sourceRoot": "booking",
+      "namespace": "booking",
+      "namespaceGroup": "CUSTOMER_BOOKING",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.allStatuses",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.appName",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.back",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.backendResponse",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.backendResultSet",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.cancel",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.chooseLanguage",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.close",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.continue",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.currentFilters",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.customerRestricted",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.customerRestrictedNote",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.detailContext",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.done",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.english",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.filteredCount",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.hindi",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.language",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.lastFetch",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.loading",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.nameAZ",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.needsAttention",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.newestFirst",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.next",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.noMatchingRecords",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.noRecords",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.notNow",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.offline",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.oldestFirst",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.operationalDetails",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.pageOf",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.previous",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.recordPagination",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.records",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.refresh",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.retry",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.save",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.search",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.selected",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.selectItem",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.selectRecord",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.showingRecords",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.signOut",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.sortRecords",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.statusAZ",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "common.visible",
+      "sourceRoot": "common",
+      "namespace": "common",
+      "namespaceGroup": "SHARED_UI",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.activeRides",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.alerts",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.apiBackend",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.checkAvailability",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.connected",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.connecting",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.customers",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.dashboardData",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.description",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.driversOnline",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.eyebrow",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.globalView",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.inspectSos",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.lastEvent",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.live",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.liveMap",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.needHelp",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.offline",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.openDrivers",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.openKyc",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.openSupport",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.pendingKyc",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.priorityActions",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.quickNavigation",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.rawResponse",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.realtime",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.refreshButton",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.refreshing",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.replayGap",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.reviewKyc",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.reviewSafety",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.scopedView",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.supportDescription",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.systemHealth",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.title",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.todayRevenue",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "dashboard.waitingRealtime",
+      "sourceRoot": "dashboard",
+      "namespace": "dashboard",
+      "namespaceGroup": "ADMIN_WEB_DASHBOARD",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "driver.acceptRequest",
+      "sourceRoot": "driver",
+      "namespace": "driver",
+      "namespaceGroup": "DRIVER_OPERATIONS",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "driver.goOffline",
+      "sourceRoot": "driver",
+      "namespace": "driver",
+      "namespaceGroup": "DRIVER_OPERATIONS",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "driver.goOnline",
+      "sourceRoot": "driver",
+      "namespace": "driver",
+      "namespaceGroup": "DRIVER_OPERATIONS",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "driver.rejectRequest",
+      "sourceRoot": "driver",
+      "namespace": "driver",
+      "namespaceGroup": "DRIVER_OPERATIONS",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.generic",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.invalidCredentials",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.loginSessionMissing",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.network",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.networkUnavailable",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.otpAttemptsExceeded",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.otpChallengeInvalid",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.otpExpired",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.otpInvalid",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.permissionDenied",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.rateLimited",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.requestFailed",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.requestTimedOut",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.serviceUnavailable",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "errors.sessionExpired",
+      "sourceRoot": "errors",
+      "namespace": "errors",
+      "namespaceGroup": "CROSS_SURFACE_ERRORS",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE",
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.admins",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.assets",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.assetsGroup",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.audit",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.availability",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.backup",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.cities",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.cityZones",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.commandCenter",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.commission",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.customers",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.dashboard",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.dataMerge",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.deliveryHealth",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.drivers",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.driversOps",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.events",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.fieldOps",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.finance",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.gateway",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.integrations",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.kyc",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.live",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.locations",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.matching",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.monitoring",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.notifications",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.operations",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.otp",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.payments",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.platform",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.pricing",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.promotions",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.publicLinks",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.quickLocations",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.quickRide",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.reports",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.rides",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.roles",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.routeBuilder",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.routeRules",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.routesLocation",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.routesOps",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.safety",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.safetySupport",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.scopeAssignments",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.security",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.securityAdmin",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.services",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.sessions",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.setup",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.sharingRoutes",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.states",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.support",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.users",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.vehicleCatalog",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.vehicles",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "nav.workingRoutes",
+      "sourceRoot": "nav",
+      "namespace": "nav",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Assets",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Command Center",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Finance",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Operations",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Platform",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Reports",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Routes & Location",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Safety & Support",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Security & Admin",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "navGroup.Users",
+      "sourceRoot": "navGroup",
+      "namespace": "navGroup",
+      "namespaceGroup": "ADMIN_WEB_NAVIGATION",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "payment.paymentFailed",
+      "sourceRoot": "payment",
+      "namespace": "payment",
+      "namespaceGroup": "FINANCIAL_UI",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "payment.tryAgain",
+      "sourceRoot": "payment",
+      "namespace": "payment",
+      "namespaceGroup": "FINANCIAL_UI",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.activeEnvironment",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.backupReady",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.deploymentStatus",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.environment",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.latestBackupCompleted",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.latestBackupId",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.loading",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.noVerifiedBackup",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.recoveryReady",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.sensitiveStorage",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.stale",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.statusEyebrow",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "recovery.statusTitle",
+      "sourceRoot": "recovery",
+      "namespace": "recovery",
+      "namespaceGroup": "ADMIN_WEB_RECOVERY",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.availabilityTitle",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.available",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.catalog",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.catalogDetail",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.contractGate",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.contractNotice",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.currentScope",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.disabled",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.exports",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.exportsDetail",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.filters",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.filtersDetail",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.geographicWarning",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.jobs",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.jobsDetail",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.noFakeExports",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.notAvailable",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.scopeNote",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "reports.sourceDashboard",
+      "sourceRoot": "reports",
+      "namespace": "reports",
+      "namespaceGroup": "ADMIN_WEB_REPORTS",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "safety.callEmergency",
+      "sourceRoot": "safety",
+      "namespace": "safety",
+      "namespaceGroup": "SAFETY_AND_EMERGENCY",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "safety.sos",
+      "sourceRoot": "safety",
+      "namespace": "safety",
+      "namespaceGroup": "SAFETY_AND_EMERGENCY",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "settings.followDeviceLanguage",
+      "sourceRoot": "settings",
+      "namespace": "settings",
+      "namespaceGroup": "USER_PREFERENCES",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "settings.language",
+      "sourceRoot": "settings",
+      "namespace": "settings",
+      "namespaceGroup": "USER_PREFERENCES",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "settings.languageHelp",
+      "sourceRoot": "settings",
+      "namespace": "settings",
+      "namespaceGroup": "USER_PREFERENCES",
+      "sourceCatalogs": [
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "settings.languageUpdated",
+      "sourceRoot": "settings",
+      "namespace": "settings",
+      "namespaceGroup": "USER_PREFERENCES",
+      "sourceCatalogs": [
+        "STARTER_TEMPLATE",
+        "MOBILE_EXAMPLE"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": true,
+        "baselineExampleHindi": true,
+        "adminWebEnglish": false,
+        "adminWebHindi": false
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.backendControls",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.globalSearch",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.localeDiagnostic",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.openNavigation",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.realtimeConnected",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.realtimeConnecting",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.realtimeOffline",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "shell.skipMain",
+      "sourceRoot": "shell",
+      "namespace": "shell",
+      "namespaceGroup": "ADMIN_WEB_SHELL",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.attachmentHidden",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.contractNotice",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.detailLoading",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.detailTitle",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.internalNoteLabel",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.internalNotes",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.noInternalNotes",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.noMessages",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.noTimeline",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.publicConversation",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "support.timelineTitle",
+      "sourceRoot": "support",
+      "namespace": "support",
+      "namespaceGroup": "ADMIN_WEB_SUPPORT",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.audit.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.customers.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.deliveryHealth.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.monitoring.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.otp.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.publicLinks.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.reports.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.scopeAssignments.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    },
+    {
+      "key": "workspace.support.description",
+      "sourceRoot": "workspace",
+      "namespace": "workspace",
+      "namespaceGroup": "ADMIN_WEB_WORKSPACES",
+      "sourceCatalogs": [
+        "ADMIN_WEB"
+      ],
+      "localeValueAvailability": {
+        "baselineExampleEnglish": false,
+        "baselineExampleHindi": false,
+        "adminWebEnglish": true,
+        "adminWebHindi": true
+      },
+      "stableKeyPolicy": "PRESERVE_EXISTING_KEY; DO_NOT_RENAME_OR_DELETE_WITHOUT_TRACEABLE_ALIAS",
+      "mappingStatus": "SCREEN_OWNER_AND_SEMANTIC_REVIEW_PENDING"
+    }
+  ],
+  "validation": {
+    "screenMapping": "STATIC_MAP_DONE_SEMANTIC_REVIEW_PENDING",
+    "dictionaryValueReconciliation": "SKIPPED_PENDING_FINAL_CROSS_CATALOG_REVIEW",
+    "journeyWiring": "CORE_AUTH_OTP_BOOKING_DRIVER_REQUEST_AND_ADMIN_OTP_WIRED; FULL_SCREEN_COVERAGE_PENDING",
+    "dynamicFormatting": "PENDING_STEP_N",
+    "languageQA": "NOT_RUN",
+    "nativeReview": "PENDING_BEFORE_LIVE"
+  }
+}

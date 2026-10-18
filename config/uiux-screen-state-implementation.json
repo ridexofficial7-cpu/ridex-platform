@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "package": "Package 4 — Complete App & Web UI/UX",
+  "workItem": "P4-H",
+  "title": "Applicable screen loading, empty, offline, stale, denied, timeout, failure and recovery states",
+  "status": "IN_PROGRESS",
+  "resumeRule": "Resume P4-H; do not start P4-I until all applicable 92-screen states are implemented and statically reconciled. Physical/device tests remain skipped by user instruction.",
+  "requiredStateCatalog": [
+    "loading",
+    "empty",
+    "offline",
+    "stale",
+    "denied",
+    "timeout",
+    "failure",
+    "recovery"
+  ],
+  "completedImplementationSlices": [
+    {
+      "id": "P4-H-ADMIN-WEB-DASHBOARD-RECOVERY-01",
+      "surface": "Admin Web",
+      "screens": [
+        "AW-04"
+      ],
+      "implemented": [
+        "retry action",
+        "explicit unknown-data empty state",
+        "preserve unknown values instead of zero",
+        "loading-aware retry control",
+        "accessible live status"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    },
+    {
+      "id": "P4-H-ADMIN-WEB-REQUEST-FAILURE-CLASSIFIER-02",
+      "surface": "Admin Web",
+      "screens": [
+        "AW-04"
+      ],
+      "implemented": [
+        "safe user-facing classification for HTTP 401/session invalid, HTTP 403/denied, timeout statuses, network/offline errors, server errors and generic failures",
+        "recovery guidance avoids treating unknown outcomes as confirmed success"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    },
+    {
+      "id": "P4-H-ADMIN-WEB-REALTIME-FRESHNESS-AND-RECOVERY-05",
+      "surface": "Admin Web",
+      "screens": [
+        "AW-05",
+        "AW-06",
+        "AW-12",
+        "AW-13",
+        "AW-15",
+        "AW-17",
+        "AW-19"
+      ],
+      "implemented": [
+        "realtime offline warning on shared Core Operations and Business Control boards",
+        "reconnecting/stale-data warning on shared Core Operations and Business Control boards",
+        "replay-gap warning directs user to authoritative backend refresh",
+        "existing loading, true-empty versus initial-load-failure distinction, stale-snapshot warning and retry remain available",
+        "generic workspace routes retain realtime freshness warnings and request-failure recovery"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    },
+    {
+      "id": "P4-H-CUSTOMER-PAYMENT-UNKNOWN-OUTCOME-07",
+      "surface": "Customer App",
+      "screens": [
+        "C-14",
+        "C-19"
+      ],
+      "implemented": [
+        "payment preparation network exception sets UNKNOWN rather than falsely claiming FAILED",
+        "receipt screen refreshes payment status from authoritative booking endpoint",
+        "unknown payment outcome warns against duplicate payment and suppresses TEST payment retry until reconciliation",
+        "refresh errors retain unknown outcome and provide safe guidance"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    },
+    {
+      "id": "P4-H-CUSTOMER-PROTECTED-ACTION-UNKNOWN-OUTCOME-08",
+      "surface": "Customer App",
+      "screens": [
+        "C-15",
+        "C-18"
+      ],
+      "implemented": [
+        "transport exception on customer cancellation/ride-end no longer asserts definitive failure",
+        "accessible unknown-outcome panel",
+        "authoritative booking-status refresh before any repeated protected action",
+        "block starting another protected action while previous outcome is unknown",
+        "no blind cancellation/ride-end retry"
+      ],
+      "verification": "NOT_RUN — testing intentionally skipped",
+      "status": "IMPLEMENTED_UNVERIFIED"
+    }
+  ],
+  "remaining": [
+    "Finish P4-H across Customer App and Driver App P0 screens; then cover remaining Admin Mobile, Super Admin Control, Gateway and Public Website screens",
+    "Reconcile every applicable screen-state entry against the actual component/route source; avoid marking states implemented solely from inventory presence",
+    "Add safe recovery for actions with unknown outcomes and prevent duplicate side effects",
+    "Do not execute tests until user authorizes them"
+  ],
+  "testPolicy": "SKIPPED_BY_USER — no runtime, device, browser, API, or automated tests executed",
+  "coverageRegister": "config/uiux-screen-state-coverage.json"
+}

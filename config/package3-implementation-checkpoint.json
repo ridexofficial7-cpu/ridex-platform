@@ -1,0 +1,614 @@
+{
+  "package": "Package 3 — Language & Multilingual Setup",
+  "checkpointDate": "2026-10-12",
+  "checkpointId": "P3-L-DRIVER-EARNINGS-01",
+  "scope": "Continue Package 3 one point at a time. Current point localizes Driver Mobile Earnings screen: totals, earnings list, refresh action and empty state. Preserve baseline catalogs and candidate union. Earnings calculations, amounts, currency formatting, backend records and refresh API unchanged.",
+  "changes": [
+    {
+      "file": "package.json",
+      "change": "Root build:admin-web now runs verify:localization-ci before the Admin Web TEST build."
+    },
+    {
+      "file": "apps/admin-web/package.json",
+      "change": "Added prebuild and prebuild:test localization CI hooks; added prebuild:live hook that runs verify:localization-ci --target=LIVE and fails closed while required review/LQA gates are pending."
+    },
+    {
+      "file": "apps/customer-mobile/package.json",
+      "change": "Added preandroid and preios localization CI hooks."
+    },
+    {
+      "file": "apps/driver-mobile/package.json",
+      "change": "Added preandroid and preios localization CI hooks."
+    },
+    {
+      "file": "apps/admin-mobile/package.json",
+      "change": "Added preandroid and preios localization CI hooks."
+    },
+    {
+      "file": "apps/super-admin-control/package.json",
+      "change": "Added preandroid and preios localization CI hooks."
+    },
+    {
+      "file": "apps/ridex-mobile/package.json",
+      "change": "Added preandroid and preios localization CI hooks."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json",
+      "change": "Added expanded runtime English catalog for Driver welcome/login/new-device OTP/registration labels while preserving the original 44-key mobile baseline fixture."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added corresponding Hindi runtime strings; translation wording remains pending qualified native/domain review."
+    },
+    {
+      "file": "packages/localization/src/RideXMobileLocaleProvider.tsx",
+      "change": "Switched runtime provider imports to the separate mobile-runtime catalogs; local preference/security behavior unchanged."
+    },
+    {
+      "file": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "change": "Replaced hard-coded Driver welcome/login/new-device OTP/registration headings, helper copy, labels, status text and loading copy with stable runtime translation keys and safe English fallbacks. Authentication/API/OTP logic unchanged."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded 34 runtime-only keys and source provenance without modifying the 44-key baseline examples or 260-key source-derived candidate union."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Added separate mobile-runtime English/Hindi catalog parity/placeholder validation; baseline mobile and Admin Web catalog pairs remain distinct."
+    },
+    {
+      "file": "scripts/verify-localization-ci.mjs",
+      "change": "Aggregate catalog assertion now derives expected pair/key totals from the configured catalog-pair policy."
+    },
+    {
+      "file": "config/source-inventory.json",
+      "change": "Updated shared localization package inventory to include two runtime catalogs (19 files)."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer welcome, service benefit cards, terms labels, login method selection, mobile/OTP entry, password login, OTP sent/resend/countdown/verification/change-mobile copy using stable customerAuth/auth/common keys. No authentication, API, session, OTP limit, resend timer or navigation behavior was changed."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 35 paired Customer welcome/login/OTP runtime keys (including one auth.mobileExample key); total runtime mobile catalog now contains 113 matching leaf keys. Hindi text remains candidate copy pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded the 35 Customer runtime keys with Customer App source provenance and native-review-pending status; original baseline catalogs and 260-key candidate union remain unchanged."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated mobile-runtime catalog expected key count to 113 for exact English/Hindi parity validation."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer home tagline, feature labels, destination prompt, pickup/location fallback copy, saved places, quick-place actions, six service/ride choice cards, location picker title/help/search, GPS action, empty-result message, select/save/confirm labels and location validation copy through stable customerBooking/booking keys. Booking, route, GPS and selection logic unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 39 paired Customer home and location-picker runtime keys; total mobile runtime catalog is now 152 matching leaf keys. Hindi wording remains candidate copy pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded 39 Customer home/location-picker keys with source provenance and native-review-pending status; preserved baseline catalog fixtures and source-derived 260-key candidate union."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 152 for exact English/Hindi parity and placeholder checks."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized the Customer rideType screen static UI: route summary fallbacks, passenger/goods mode cards, ride option titles/subtitles, Sharing Route catalog states and pickup/drop point labels, passenger counts, schedule controls/help, vehicle availability/capacity, route-stop/interchange labels, payment/promo summary and Book Ride loading CTA. Selection, scheduling, fare, passenger-capacity, route and backend behavior unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 49 paired customerRideType runtime keys, including matching interpolation placeholders; runtime mobile catalog now contains 201 matching leaf keys. Hindi wording remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded 49 Customer ride-type keys with source provenance and candidate/native-review-pending status; preserved original baseline catalogs and 260-key candidate union."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 201."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Goods/Parcel screen mode labels, Category 3 cargo notes, cargo vehicle metadata fallbacks, City/Quick Parcel choices, parcel item and photo controls, Battery Pickup Truck details, weight/description/duration inputs, delivery note, schedule copy, continue-to-review CTA, required-details message and safety note. Business logic, validation, vehicle selection and navigation unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 34 paired customerGoods runtime keys; runtime mobile catalog now has 235 matching leaf keys. Hindi text remains a candidate pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded 34 Customer Goods/Parcel keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 235."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer review/confirm screen headings, location-compatibility states, resolving fallbacks, selected vehicle, goods/ride/event details, passenger capacity, event vehicle availability, schedule and pricing summary, payment method/options, promo input/helper, fare authority/explanation, special instructions and mode-specific confirmation CTA. Financial/booking/API logic unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 55 paired customerReview runtime keys; runtime mobile catalog now has 290 matching leaf keys, with interpolation placeholders aligned. Hindi wording remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded 55 Customer review/confirm keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 290."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized active Ride/Goods header, active-flow label, pickup/drop summary, QR+OTP requirement and step labels, scan instructions, verified/pending states, ride OTP instructions/expiry/waiting copy, both-step backend confirmation rule, verification method, completed state, Trip Summary and Safety Center tile copy. Verification and trip-state logic unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 26 paired customerTrip runtime keys with matching interpolation placeholders; runtime mobile catalog now contains 316 matching leaf keys. Hindi text remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded 26 Customer active-trip and QR/OTP verification keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 316."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized six cancellation reasons, secure cancellation review/fee disclosure, protected Ride End and Cancellation OTP titles/instructions/field labels, attempts/resend countdown, loading/request-new-OTP/keep-ride actions and mode-specific verification labels. Existing backend-authoritative fee, OTP, grant and action logic unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 28 paired customerProtectedOtp runtime keys with matching interpolation placeholders; runtime mobile catalog now contains 344 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded 28 Customer cancellation/protected OTP keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 344."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer My Rides/history list, ride details, receipt/payment/refund/invoice copy, action labels and common booking-status display. Date/time in history and payment/refund details now use the currently selected en-IN/hi-IN locale. Unknown status codes still fall back to a readable underscore-separated value. No API, payment, refund or booking logic changed."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 44 paired Customer history/receipt/status runtime keys in total across the history point (30 history labels plus 14 payment/status labels); runtime mobile catalog now has 388 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer history, receipt and status keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 388."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Wallet title/balance, wallet payment options, selected/available states, transaction filters, refund summary, empty transaction message, top-up unavailability disclosure and security copy. Wallet transaction dates use selected en-IN/hi-IN locale. Payment selection and wallet data logic unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 25 paired customerWallet runtime keys with matching interpolation placeholders; runtime mobile catalog now contains 413 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Wallet keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 413."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Profile menu and Edit/Complete Profile form labels, placeholders, profile status, verified mobile, wallet balance, avatar actions, GPS/map address actions, save/loading copy, menu alerts and helper notes. Menu display labels use presentation-only mapping while original internal English title identifiers remain unchanged for existing navigation conditions."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 70 paired customerProfile runtime keys, including matching interpolation placeholders; runtime mobile catalog now contains 483 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Profile/Edit Profile keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 483."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Help & Support headings, case-history controls, attachment/chat composer actions, support tiles, FAQ category titles/subtitles and FAQ alerts, WhatsApp/callback actions and emergency SOS entry copy. Presentation-only FAQ mapping preserves the original English identifiers passed into support-case creation; support API and navigation behavior unchanged. Support timestamps use selected locale."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 49 paired customerSupport runtime keys; runtime mobile catalog now contains 532 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Support keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 532."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Safety Center, emergency contact management, primary/mobile masking labels, SOS warning/confirmation, reason choices, send/loading states and emergency assistance guidance. Added presentation-only SOS reason label mapping so original English reason values remain unchanged in backend requests. Static fallback feedback is localized; backend-provided messages remain as returned."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 43 paired customerSafety runtime keys; runtime mobile catalog now contains 575 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Safety Center and emergency feedback keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 575."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Gallery heading/help, camera and photo-picker actions, empty state, remove action and camera/library permission plus save/failure feedback. Existing photo upload/delete APIs, permission checks, local cache and gallery behavior unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 14 paired customerGallery runtime keys; runtime mobile catalog now contains 589 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Gallery keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 589."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized cancelled-booking title/description, retry-booking and return-home actions, and generic fallback error message. Rebook action and navigation behavior unchanged; generic app title uses the existing common.appName key."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 6 paired customerRebook runtime keys; runtime mobile catalog now contains 595 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer rebook/fallback state keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 595."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Connected shared BottomNav display labels to useRideXLocale stable translation keys for Home, My Rides, Book Ride, Support and Profile. Stable navigation IDs, callbacks, active state and routing behavior unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 5 paired customerNav runtime keys; runtime mobile catalog now contains 600 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded shared Customer navigation keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 600."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Subscription/Pass title, RideX ownership note, plan display names/benefits, active-pass validity, plan duration, activation action, login/error feedback, TEST activation message, checkout instruction and backend-authoritative state note. Stable plan IDs used by existing backend order/verification logic remain unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 21 paired customerSubscription runtime keys with matching interpolation placeholders; runtime mobile catalog now contains 621 matching leaf keys. Hindi wording remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer subscription utility keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 621."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Insurance/Claim demo screen headings, demo-only disclosure, claim ID/reason/status labels, reason choices, create/reset actions and login prompt. Presentation-only reason mapping preserves original English reason values stored in the local demo claim; no real insurer/provider integration added."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 15 paired customerInsurance runtime keys; runtime mobile catalog now contains 636 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Insurance/Claim demo keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 636."
+    },
+    {
+      "file": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "change": "Connected EventSessionScreen to RideX mobile locale provider; localized event ride headings, preview/empty/error messages, event/session selection accessibility labels, start/end stop steps and fallbacks, route alignment summary, capacity, fare summary, continue CTA and footer. Date/time formatting now follows selected en-IN/hi-IN locale. Dynamic Admin-published event titles/descriptions and IDs remain source data; event/route/fare behavior unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 47 paired customerEventRide runtime keys with matching interpolation placeholders; runtime mobile catalog now contains 683 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Event Ride screen keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 683."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized completed-trip/goods-delivered banners, fare distance/duration/payment method labels, total fare, payment success/pending/cash collection states, UPI status refresh and TEST payment controls, receipt link, driver rating prompt, review input, submit, rebook/home actions and thank-you/slogan copy. Added presentation-only payment method/status labels; internal payment enum values and financial logic unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 34 paired customerPayment runtime keys with matching interpolation placeholders; runtime mobile catalog now contains 717 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer trip completion/payment and rating prompt keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 717."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized standalone Rate Your Driver title/question, optional comment field, submitting/submit/skip actions and static rating save/success feedback. Rating submission API, stars, comments and navigation behavior unchanged; backend-provided error messages remain authoritative."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 9 paired customerRating runtime keys; runtime mobile catalog now contains 726 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer rating screen and feedback keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 726."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized Customer Notifications heading, Mark all read action, empty-state heading/help and fallback notification title. Notification timestamps now use selected en-IN/hi-IN locale. Backend-provided notification titles/messages and read APIs remain unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 5 paired customerNotifications runtime keys; runtime mobile catalog now contains 731 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer Notifications keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 731."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized SearchState, NoMatchState, ScheduledState, AssignedState, ArrivedState, TripInProgressState and StatusTimeline headings, explanatory text, route fallbacks, step labels, vehicle/service labels, ETA/distance copy, call/support/SOS/cancel actions and refresh guidance. Matching reason codes map to localized user-facing explanations without changing backend reason values. Split goods/driver in-progress copy to keep English grammar correct."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added active ride lifecycle runtime translations and replaced unused generic in-progress subject keys with separate grammatically correct goods/driver messages; runtime mobile catalog now contains 796 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded active ride lifecycle keys with source provenance and native-review-pending status; removed superseded unused subject keys from the additions ledger."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 796."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Connected shared DriverSummary and RideXMap to the locale provider; localized driver/vehicle fallback labels, pickup/drop marker titles/descriptions, driver marker descriptions, searching/arrival/completion overlays and current-location accessibility label. No map/driver/location behavior changed."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 18 paired shared customerDriverSummary/customerMap runtime keys; runtime mobile catalog now contains 814 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded DriverSummary and RideXMap shared component keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 814."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Localized QR scanner close action and static messages for missing active ride leg, successful QR verification, failed verification and unavailable verification. Backend-provided verification error text remains authoritative; credential handling and QR+OTP sequence unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 5 paired customerQrScanner runtime keys; runtime mobile catalog now contains 819 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer QR scanner keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 819."
+    },
+    {
+      "file": "apps/customer-mobile/customer/App.tsx",
+      "change": "Connected TopLanguage accessibilityLabel to stable customerLanguage translation keys for switching to Hindi or English. The visible native language names and existing local toggle behavior remain unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 2 paired customerLanguage runtime keys; runtime mobile catalog now contains 821 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Customer language-switch accessibility keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 821."
+    },
+    {
+      "file": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "change": "Localized Driver Home dashboard title/subtitle, online/offline state, greeting fallback, daily metrics, realtime/GPS/approval labels, active ride/request buttons, map title/fallback labels, backend readiness note and all 12 workspace navigation labels. Stable DriverScreen route identifiers and callbacks remain unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 41 paired driverHome runtime keys with matching English/Hindi key parity; runtime mobile catalog now contains 862 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Driver Home and navigation labels with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 862."
+    },
+    {
+      "file": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "change": "Localized Driver Service Mode title/subtitle, backend-authoritative capability note, service list, available/not-available states, empty service/route states, approved-route note/count and refresh/back actions. Added presentation-only mapping for known service codes PASSENGER/PARCEL/GOODS/EVENT; unknown backend names remain unchanged. No manual service-mode mutation or capability logic added."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 20 paired driverServiceMode runtime keys; runtime mobile catalog now contains 882 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Driver Service Mode keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 882."
+    },
+    {
+      "file": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "change": "Localized Driver Ride Requests heading/subtitle, refresh action, no-live-request/offline/empty messages, pickup/destination fallbacks and request status display for known OFFERED/ACCEPTED/REJECTED/EXPIRED/CANCELLED values. Unknown statuses remain readable. Accept/reject actions and request APIs unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 16 paired driverRequests runtime keys; runtime mobile catalog now contains 898 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Driver Ride Requests keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 898."
+    },
+    {
+      "file": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "change": "Connected shared Summary/RideMap and Accepted/Arrived/Trip/Completed/EventSession screens to the locale provider. Localized ride details, QR generation/verification copy, Ride OTP labels, start/complete/refresh actions, backend-authoritative status notes, event session states and stop-list empty state. No verification, GPS, route, booking or trip-state logic changed."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 59 paired driverRide runtime keys; runtime mobile catalog now contains 957 matching leaf keys. Hindi copy remains pending qualified native/domain review."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Driver ride lifecycle keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 957."
+    },
+    {
+      "file": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "change": "Connected Driver HistoryScreen to the locale provider; localized title/subtitle, refresh action, empty state, ride and address fallbacks, and known completed/cancelled/assigned/in-progress status labels. Unknown status values remain readable; backend history query/data behavior unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 14 paired driverHistory runtime keys; runtime mobile catalog now contains 971 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Driver History screen keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 971."
+    },
+    {
+      "file": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx",
+      "change": "Connected EarningsScreen to the locale provider; localized page heading/subtitle, Gross/Commission/Net labels, refresh action, empty state, ride fallback and gross/net earnings line with matching interpolation placeholders. Earnings totals and calculations remain backend/runtime sourced and unchanged."
+    },
+    {
+      "file": "packages/localization/src/catalogs/mobile-runtime/en-IN.json and packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+      "change": "Added 11 paired driverEarnings runtime keys; runtime mobile catalog now contains 982 matching leaf keys."
+    },
+    {
+      "file": "config/mobile-runtime-catalog-additions.json",
+      "change": "Recorded Driver Earnings keys with source provenance and native-review-pending status."
+    },
+    {
+      "file": "config/localization-ci-policy.json",
+      "change": "Updated runtime mobile catalog expected key count to 982."
+    }
+  ],
+  "verification": {
+    "localizationCi": "PASS — 18 assertions; Admin Web 225 keys, baseline mobile 44 keys, runtime mobile 982 keys; parity and interpolation placeholders match.",
+    "coreJourneyLocalization": "PASS — 59 assertions; baseline immutability, provider wiring and stable-key source contracts preserved.",
+    "translationValues": "PASS — 27 assertions; baseline hashes, candidate union and source conflicts preserved.",
+    "localizationSourceInventory": "PASS — baseline/template/catalog inventory checks pass.",
+    "localizationDiagnostics": "PASS — 25 assertions.",
+    "sourceInventory": "PASS — inventory consistent; shared localization package 19 files; no planning documents or generated build/VCS directories bundled.",
+    "fullStaticSuite": "NOT COMPLETED — overall static runner timed out before final summary on prior iterations. Focused localization CI, core journey, translation reconciliation, diagnostics, localization inventory and TSX parser checks for this checkpoint passed.",
+    "nativeBuildAndRuntime": "NOT RUN — Expo native builds, dependency-aware typecheck, physical-device/UI, accessibility and LQA remain deferred.",
+    "customerAppTsxSyntax": "PASS — TypeScript createSourceFile TSX parse diagnostics: 0 for Customer App.tsx.",
+    "eventSessionScreenSyntax": "PASS — TypeScript createSourceFile TSX parse diagnostics: 0 for EventSessionScreen.tsx.",
+    "driverHomeTsxSyntax": "PASS — TypeScript createSourceFile TSX parse diagnostics: 0 for Driver HomeScreens.tsx.",
+    "driverRideScreensTsxSyntax": "PASS — TypeScript createSourceFile TSX parse diagnostics: 0 for Driver RideScreens.tsx.",
+    "driverHistoryTsxSyntax": "PASS — TypeScript createSourceFile TSX parse diagnostics: 0 for Driver HistoryScreen.tsx.",
+    "driverEarningsTsxSyntax": "PASS — TypeScript createSourceFile TSX parse diagnostics: 0 for EarningsScreens.tsx."
+  },
+  "stillBlockedOrDeferred": [
+    "P3-K cross-catalog semantic review: preserve source conflicts until qualified review; do not silently merge.",
+    "P3-M critical native/domain translation review for OTP, SOS, payments/refunds, cancellation, consent and legal copy.",
+    "P3-Q/R/S account preference API, persistence schema and cross-device sync await API-owner decision; no speculative backend route or schema added.",
+    "P3-T notification locale policy awaits API-owner decision and approved message copy.",
+    "P3-V/X final 25-scenario LQA and physical visual/accessibility QA remain deferred until all four package implementations finish.",
+    "P3-Z language release sign-off remains blocked; LIVE releaseApproved remains false.",
+    "Driver Home, Service Mode, Ride Requests, ride lifecycle, Ride History and Earnings are localized; Driver Wallet, Profile, KYC/Onboarding, Payout, Messages, Safety and notifications still require point-by-point localization."
+  ],
+  "filesModified": [
+    "package.json",
+    "apps/admin-web/package.json",
+    "apps/customer-mobile/package.json",
+    "apps/driver-mobile/package.json",
+    "apps/admin-mobile/package.json",
+    "apps/super-admin-control/package.json",
+    "apps/ridex-mobile/package.json",
+    "config/package3-implementation-checkpoint.json",
+    "packages/localization/src/catalogs/mobile-runtime/en-IN.json",
+    "packages/localization/src/catalogs/mobile-runtime/hi-IN.json",
+    "packages/localization/src/RideXMobileLocaleProvider.tsx",
+    "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+    "config/mobile-runtime-catalog-additions.json",
+    "config/localization-ci-policy.json",
+    "scripts/verify-localization-ci.mjs",
+    "config/source-inventory.json",
+    "apps/customer-mobile/customer/App.tsx",
+    "apps/customer-mobile/customer/EventSessionScreen.tsx",
+    "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+    "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+    "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+    "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx"
+  ],
+  "releaseApproved": false
+}

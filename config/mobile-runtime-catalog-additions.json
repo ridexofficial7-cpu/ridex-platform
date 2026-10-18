@@ -1,0 +1,4708 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-12",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "DRIVER_AUTH_CUSTOMER_FULL_FLOW_DRIVER_HOME_SERVICE_MODE_REQUESTS_RIDE_LIFECYCLE_HISTORY_AND_EARNINGS_RUNTIME_KEYS_ADDED; QUALIFIED_NATIVE_REVIEW_AND_LQA_PENDING",
+  "purpose": "Track runtime-only mobile localization keys for Driver auth, Customer full flows, Driver Home, Service Mode, Ride Requests, ride lifecycle, ride history and earnings while preserving baseline catalogs and the 260-key candidate union.",
+  "sourceLocale": "en-IN",
+  "targetLocale": "hi-IN",
+  "baselineCatalog": "packages/localization/src/catalogs/mobile/en-IN.json",
+  "runtimeCatalogs": [
+    "packages/localization/src/catalogs/mobile-runtime/en-IN.json",
+    "packages/localization/src/catalogs/mobile-runtime/hi-IN.json"
+  ],
+  "keys": [
+    {
+      "key": "auth.address",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.addressPlaceholder",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.backendControlledOnboarding",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.backendIssuedMobile",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.connectedWorkspace",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.connectedWorkspaceSubtitle",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.createDriverAccount",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.creating",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.driverLoginSubtitle",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.driverMobile",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.driverRegistration",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.driverUserId",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.driverWelcomeSubtitle",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.driverWelcomeTitle",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.fullName",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.fullNamePlaceholder",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.newDeviceVerification",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.newDriverRegister",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.onboardingSequence",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.onboardingSequenceTitle",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.otpAcceptedSubtitle",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.otpFourDigits",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.password",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.purposeDriverNewDevice",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.registerAsDriver",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.registrationOtpSent",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.registrationSequenceSubtitle",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.sending",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.signingIn",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.userIdMobileEmail",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.verifyDevice",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.verifyMobileCreateAccount",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.verifying",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.welcomeBack",
+      "source": "apps/driver-mobile/driver/screens/auth/AuthScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "auth.mobileExample",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.tagline",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.heroBenefits",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.smartRouteFlow",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.ride",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.goAnywhere",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.sharingRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.saveTogether",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.logisticParcel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.sendWithTrust",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.eventRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.adminSessions",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.getStarted",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.loginToAccount",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.mobileOtpFirst",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.socialLinkNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.termsPrefix",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.termsPrivacy",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.chooseAccess",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.mobileOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.userIdPassword",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.otpLoginNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.credentialsSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.userIdPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.loginWithUserId",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.existingLogin",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.passwordLoginNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.adminLogin",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.otpSentTo",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.resendAvailableIn",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.resendPolicy",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.resendIn",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.requestNewOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerAuth.changeMobile",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.homeTagline",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.safeRides",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.cleanGreen",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.affordable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.stronger",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.whereGoing",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.onMap",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.currentLocation",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.detectingLocation",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.searchLocationArea",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.home",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.work",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.add",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.addLocation",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.savedPlaces",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.fullRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.cityDirect",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.shareRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.shareSave",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.connectionRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.intercityCapacity",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.parcelWeight",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.logisticGoods",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.cargoDelivery",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.vehicleCapacity",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.pickupLocation",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.routeStop",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.interchangePoint",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.profileAddress",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.locationSearch",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.locationSearchHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.typeToSearch",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.useCurrentGps",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.noLocationWithinRange",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.location",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.select",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.save",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.confirmSelection",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerBooking.selectLocationFirst",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.pickupNotSet",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.tapMapDestination",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.minutesRoute",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.routeUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.forPassengers",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.passengerRideTypes",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.forGoods",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.logisticOptions",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.backendMatchNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.fullRideSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.serverCalculated",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.sharingSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.connectionSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.sharingRoute",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.refresh",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.chooseAdminRoute",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.sharingCatalogUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.noActiveSharingRoutes",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.pickupPoint",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.dropPoint",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.authoritativeSelection",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.passengers",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.onePassenger",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.manyPassengers",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.scheduleRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.scheduled",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.now",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.scheduleHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.datePlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.timePlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.availablePassengerVehicle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.vehicleAvailabilityNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.selected",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.capacityMax",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.passengerCount",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.passengerCapacityHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.routeStopBehavior",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.routeStopBehaviorHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.interchangePoints",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.interchangeHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.interchangePoint",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.remove",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.addInterchangePoint",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.payWith",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.paymentOptions",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.promoCode",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.applySave",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.checkingLocations",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideType.bookRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.passenger",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.passengerTypes",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.logisticGoodsBooking",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.parcelCategoryNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.goodsCategoryNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.cargoVehicle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.parcelVehicleNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.speedUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.payloadUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.parcelBooking",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.cityParcelRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.quickParcel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.parcelItem",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.weightKg",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.description",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.addParcelItem",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.parcelImageOptional",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.optionalParcelPhoto",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.changePhoto",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.addPhoto",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.parcelVehicleServiceNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.goodsVehicleBooking",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.batteryPickupTruck",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.goodsOnlySubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.dedicatedGoodsVehicle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.durationDistanceRules",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.goodsDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.estimatedWeightKg",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.durationMinutes",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.deliveryNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.handlingNotePlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.continueReview",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.requiredDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGoods.secureGoodsNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.locationCompatibility",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.checkRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.validated",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.backendCheck",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.pickupCityResolving",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.destinationCityResolving",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.serviceZoneNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.selectedVehicle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.change",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.addDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.smallItems",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.medium",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.large",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.itemDescription",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.rideDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.serviceEvent",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.eventLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.sessionLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.startLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.endLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.vehicleLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.checkingAvailability",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.passengerCapacity",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.rideTypeLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.passengersLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.scheduledLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.availableEventVehicles",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.eventAvailabilityLoading",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.eventVehiclesOnlyAvailable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.eventPassengerCount",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.eventPassengerCapacityHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.schedule",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.routePricing",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.backendCalculated",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.backendWillCalculate",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.paymentMethod",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.cardPaymentsUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.cash",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.wallet",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.payDriver",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.onlinePayment",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.useBalance",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.promoCode",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.enterPromoCode",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.promoValidationNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.bookingFare",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.calculatedByRideX",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.authoritativeFareNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.backendPricingNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.specialInstructions",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.specialInstructionsPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.confirmGoods",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.confirmEvent",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerReview.confirmRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.logisticGoodsTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.rideTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.activeRideFlow",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.pickupDropDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.rideVerification",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.bothVerificationRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.qrVerification",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.scanDriverQr",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.verified",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.pending",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.openQrScanner",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.rideOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.rideOtpInstructions",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.yourRideOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.expiresAt",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.waitingRideOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.bothStepsRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.verificationMethod",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.qrOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.verifyDriverStartTrip",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.backendVerificationComplete",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.tripVerificationComplete",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.tripSummary",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.viewHistoryReceipt",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.safetyCenter",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerTrip.safetyPriority",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.reasonDriverLate",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.reasonPlansChanged",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.reasonMistake",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.reasonRouteChanged",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.reasonOtherRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.reasonOther",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.endTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.endSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.endFieldLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.endVerifyTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.endSuccess",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancelTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancelSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancelFieldLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancelVerifyTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancelSuccess",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancelQuestion",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancelReasonInstruction",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.reasonLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.cancellationCharge",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.feeNotProvided",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.feeAuthorityNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.continueSecureOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.keepRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.otpPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.attemptsRemaining",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.requestNewOtp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProtectedOtp.resendIn",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.myRides",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.allRides",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.historySubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.passengerRides",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.goodsRides",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.noRides",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.viewDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.bookAgain",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.viewReceipt",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.rideDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.rideNotFound",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.fare",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.rideTypeLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.paymentLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.driverLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.vehicleLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.bookingId",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.paymentRefundDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.paymentStatus",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.paymentId",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.provider",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.providerPayment",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.refunds",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.refundRecord",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.requested",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.processed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.providerRefund",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.noRefundRecord",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.invoiceReceipt",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.invoiceEndpointNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.paidLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusNew",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusMatching",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusDriverAssigned",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusDriverArriving",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusDriverArrived",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusStarted",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusInProgress",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusCompleted",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusCancelled",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusUpcoming",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusPending",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerHistory.statusRefunded",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.secureWalletFlow",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.availableBalance",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.refresh",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.walletPayments",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.usageNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.wallet",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.cash",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.selected",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.available",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.methodSelectedMessage",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.transactions",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.all",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.credits",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.debits",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.refunds",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.refundsReversals",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.refundAuthorityNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.transactionFallback",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.noTransactions",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.walletLower",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.topUp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.topUpUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.security",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerWallet.securityNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.customerFallback",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.addEmail",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.cityNotSet",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.editProfile",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.member",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.profileIncomplete",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.accountVerified",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.walletBalance",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.personalInformation",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.savedAddresses",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.paymentMethods",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.wallet",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.subscriptionPass",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.insuranceClaim",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.notifications",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.gallery",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.offersRewards",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.myRides",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.helpSupport",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.settings",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.privacySecurity",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.personalInformationSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.savedAddressesSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.paymentMethodsSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.walletSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.subscriptionActiveUntil",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.subscriptionPlans",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.insuranceSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.notificationsSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.gallerySubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.offersRewardsSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.myRidesSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.helpSupportSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.settingsSubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.privacySecuritySubtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.offersAlert",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.settingsAlert",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.privacyAlert",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.paymentAlert",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.logout",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.completeProfile",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.completeBeforeContinue",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.completeBeforeBooking",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.profilePhoto",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.selectImportPhoto",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.useAvatar",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.avatarLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.fullNameRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.fullNamePlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.verifiedMobile",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.verified",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.emailOptional",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.emailPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.addressRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.autoCaptureGps",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.addressPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.stateRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.statePlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.cityRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.cityPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.townRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.townPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.nearByRequired",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.nearbyPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.chooseAddressMap",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.saving",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.saveContinueBooking",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.saveProfile",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerProfile.formHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.emergency",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.subtitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.supportHistory",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.conversationCount",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.hide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.show",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.supportCase",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.support",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.close",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.viewAttachment",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.writeMessage",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.attachmentSelected",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.attachImage",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.send",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.safetyCenter",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.safetyPriority",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.liveChat",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.liveChatSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.callSupport",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.callRideXSupport",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.createSupportCase",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.emailUs",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.reportIssue",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.tellProblem",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.viewAll",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqBooking",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqPayments",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqGoodsParcel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqAccount",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqTechnical",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqSafety",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqOffers",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqBookingSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqPaymentsSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqGoodsParcelSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqAccountSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqTechnicalSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqSafetySub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.faqOffersSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.whatsapp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.whatsappSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.requestCallback",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.callbackSub",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.emergencySos",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.emergencyHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.tapToCall",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSupport.sending",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.ridexSafety",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sosWarning",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.emergencyContacts",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.noContacts",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.emergencyContact",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.primary",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.mobileProtected",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.delete",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.contactName",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.relationOptional",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.contactMobile",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.saveContact",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.callContact",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.storageNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.reasonLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.reasonUnsafe",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.reasonAccident",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.reasonMedical",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.reasonHarassment",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.reasonBreakdown",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.reasonOther",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.confirmAssistance",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sendingSos",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sendSos",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sosPrivacyNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.loadContactsFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.loginToSaveContact",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.enterContactName",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.invalidContactMobile",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.maxContacts",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.saveContactFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.contactSaved",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.deleteContactFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.contactDeleted",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.saveContactFirst",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.callContactFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sosActiveBookingOnly",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.confirmBeforeSos",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sendingSosMessage",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sosFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sosSent",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSafety.sosUnreachable",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.cameraPermission",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.photoSaved",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.cameraFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.libraryPermission",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.photosAdded",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.galleryFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.deleteFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.syncNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.camera",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.choosePhotos",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.noPhotos",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.emptyHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerGallery.remove",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRebook.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRebook.bookingCancelled",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRebook.description",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRebook.yesBookAgain",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRebook.noBackHome",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRebook.genericError",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNav.home",
+      "source": "apps/customer-mobile/customer/App.tsx (BottomNav)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNav.rides",
+      "source": "apps/customer-mobile/customer/App.tsx (BottomNav)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNav.bookRide",
+      "source": "apps/customer-mobile/customer/App.tsx (BottomNav)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNav.support",
+      "source": "apps/customer-mobile/customer/App.tsx (BottomNav)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNav.profile",
+      "source": "apps/customer-mobile/customer/App.tsx (BottomNav)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.ridexSubscription",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.ownershipNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.basic",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.plus",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.max",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.activePass",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.validUntil",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.days",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.memberFareOffers",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.priorityOfferVisibility",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.monthlyBookingBenefit",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.extendedValidity",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.activatePass",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.loginFirst",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.orderFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.verificationFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.testActivated",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.completeCheckout",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.activationFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerSubscription.authorityNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.demoModeOnly",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.demoModeNote",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.demoClaim",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.claimId",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.reasonLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.statusLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.demoSubmitted",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.resetDemoClaim",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.createDemoClaim",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.reasonAccident",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.reasonVehicleDamage",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.reasonMedical",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.reasonOther",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerInsurance.loginFirst",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.timeToBeAnnounced",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.previewMessage",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.noPublishedMessage",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.loginRequired",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.loginBeforeBooking",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.chooseSessionStops",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.invalidFare",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.back",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.kicker",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.title",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.ticket",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.publishedRoute",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.routeAlign",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.loadingSessions",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.checkingAvailability",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.noPublishedEvents",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.noEventsHelp",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.stepEvent",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.selectEvent",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.eventBadge",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.citySession",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.adminPublishedRoute",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.stopSessionCount",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.stepSession",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.selectSession",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.available",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.capacity",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.stepStartingStop",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.startingStopAccessibility",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.addressUnavailable",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.stepEndingStop",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.endingStopAccessibility",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.routeAlignment",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.routeShapeCheck",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.selectStops",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.align",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.bookingSummary",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.eventLabel",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.sessionLabel",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.fromLabel",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.selectStartStop",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.toLabel",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.selectEndStop",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.fareLabel",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.continueAccessibility",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.continueToPayment",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerEventRide.footerNote",
+      "source": "apps/customer-mobile/customer/EventSessionScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.tripCompleted",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.goodsDelivered",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.tripCompletedBang",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.reachedSafely",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.fareDetails",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.roadDistance",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.routeDuration",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.minutes",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.paymentMethod",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.totalFare",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.paymentSuccessful",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.cashCollectionPending",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.paymentPending",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.cashReconciled",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.methodLabel",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.upiStatus",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.refreshing",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.refreshPaymentStatus",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.statusRefreshed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.processing",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.completeTestPayment",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.viewReceipt",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.rateDriver",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.rateQuestion",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.reviewPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.submit",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.bookAnotherRide",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.goHome",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.thankYou",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.slogan",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.upi",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.statusSuccess",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.statusPending",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerPayment.statusFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.saveFailed",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.thankYou",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.saveTryAgain",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.question",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.commentPlaceholder",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.submitting",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.submit",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRating.skip",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNotifications.title",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNotifications.markAllRead",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNotifications.none",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNotifications.emptyHelp",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerNotifications.fallbackTitle",
+      "source": "apps/customer-mobile/customer/App.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverOfferSent",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.findingDriver",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.goodsService",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.rideService",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.offerWaiting",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.matchingWaiting",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.pickupLocation",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.dropLocation",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.bookingCreated",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverOfferSentLower",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.findingEligibleDriver",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverAcceptance",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverEnRoute",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.goodsVehicleTitle",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.passengerVehicleTitle",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.goodsServiceMeta",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.passengerServiceMeta",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.offeredDriverDetailsNote",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.eligibleDriverMatchingNote",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.noDriverNow",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonOutsideArea",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonSharedZone",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonSharedUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonSharedPoints",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonNoOnlineDriver",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonNoEligibleDriver",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonLegUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonDefault",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.bookingProtected",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.noAssignmentNote",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.matchingResult",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.reasonCode",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.refreshStatus",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.cancelBooking",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.refreshExplanation",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.scheduledGoods",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.scheduledRide",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.scheduledNote",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.destination",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.scheduledPickup",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.scheduledByRideX",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.authoritativeFare",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverAssigned",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverOnWay",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.etaMinutes",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.distanceAway",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.distanceUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.yourPickupLocation",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.call",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.supportChat",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.sos",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.cancel",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverArrived",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverWaiting",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.ready",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.atPickup",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.tripStarted",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.backendRoute",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.timelineAssigned",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.timelineOnWay",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.timelineArrived",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.timelineStarted",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.timelineCompleted",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.goodsOnWay",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerRideStatus.driverOnWayToDestination",
+      "source": "apps/customer-mobile/customer/App.tsx (active ride state components)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerDriverSummary.driver",
+      "source": "apps/customer-mobile/customer/App.tsx (DriverSummary)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerDriverSummary.pickupTruck",
+      "source": "apps/customer-mobile/customer/App.tsx (DriverSummary)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerDriverSummary.eRickshaw",
+      "source": "apps/customer-mobile/customer/App.tsx (DriverSummary)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerDriverSummary.vehicleUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx (DriverSummary)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.pickupLocation",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.pickupDescription",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.destination",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.destinationDescription",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.driverTitle",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.driverLocation",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.driverOnWay",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.searchingDrivers",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.matchingBooking",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.useCurrentLocation",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.driverArrived",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.atPickup",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.tripCompleted",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerMap.onWayDestination",
+      "source": "apps/customer-mobile/customer/App.tsx (RideXMap)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerQrScanner.legUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx (QR scanner)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerQrScanner.qrVerified",
+      "source": "apps/customer-mobile/customer/App.tsx (QR scanner)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerQrScanner.verificationFailed",
+      "source": "apps/customer-mobile/customer/App.tsx (QR scanner)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerQrScanner.verificationUnavailable",
+      "source": "apps/customer-mobile/customer/App.tsx (QR scanner)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerQrScanner.closeScanner",
+      "source": "apps/customer-mobile/customer/App.tsx (QR scanner)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerLanguage.switchToHindi",
+      "source": "apps/customer-mobile/customer/App.tsx (TopLanguage)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "customerLanguage.switchToEnglish",
+      "source": "apps/customer-mobile/customer/App.tsx (TopLanguage)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.title",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.online",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.offline",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.subtitle",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.driverFallback",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.homeAssetAccessibility",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.today",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.rides",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.vehicle",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.realtime",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.connected",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.gps",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.available",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.notAvailable",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.approval",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.approved",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.pending",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.openActiveRide",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.openRideRequests",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.driverRideMap",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.backendReadiness",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.readinessNote",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.workspace",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.currentLocation",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.gpsOnline",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.gpsLabel",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.pickup",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.pickupLocation",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.destination",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navRideRequests",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navServiceMode",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navRideHistory",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navEarnings",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navWallet",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navWorkingRoutes",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navKycVehicle",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navPayout",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navNotifications",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navMessages",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navSafety",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHome.navProfile",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.title",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.pageTitle",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.subtitle",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.driver",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.manualChangeNote",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.availableServices",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.passenger",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.parcel",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.goods",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.event",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.notAvailable",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.available",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.noServices",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.approvedRoutes",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.routesNote",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.routeCount",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.noRoutes",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.refreshing",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.refreshCapabilities",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverServiceMode.backHome",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (ServiceModeScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.title",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.pageTitle",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.subtitle",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.refresh",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.noLiveRequests",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.driverOffline",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.noneEligible",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.goOnlineHelp",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.rideRequest",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.pickupUnavailable",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.destinationUnavailable",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.statusOffered",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.statusAccepted",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.statusRejected",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.statusExpired",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRequests.statusCancelled",
+      "source": "apps/driver-mobile/driver/screens/home/HomeScreens.tsx (RequestScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.pickup",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.destination",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.fare",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.pickupLocation",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.driverLocation",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.currentGps",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.rideRoute",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.acceptedRide",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.rideAccepted",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.assignedNote",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.updating",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.markArrived",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.eventSession",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.safety",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.arrived",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.atPickup",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.bothFactorsRequired",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.qrVerified",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.qrPrepared",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.qrPending",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.qrPayloadPrepared",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.generateQr",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.customerScanQr",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.backendGeneratedQr",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.otpVerified",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.otpPending",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.rideLeg",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.otpFourDigit",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.enterOtpFromCustomer",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.verifyRideOtp",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.refreshVerification",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.startRide",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.trip",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.rideInProgress",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.tripBackendNote",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.refreshGps",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.completeTrip",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.safetyCenter",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.completed",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.tripCompleted",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.completionNote",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.backendCompletionConfirmed",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.driverEarning",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.payment",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.distance",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.viewEarnings",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.backHome",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.fixedRouteEventTitle",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.eventBackendNote",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.noActiveEventRide",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.startAssignedEvent",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.notEventRide",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.eventOnlyWorkspace",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.eventRide",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.booking",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.publishedEventStops",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.stopFallback",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.noEventStops",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverRide.refreshEventSession",
+      "source": "apps/driver-mobile/driver/screens/ride/RideScreens.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.title",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.pageTitle",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.subtitle",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.refresh",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.noHistory",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.emptyHelp",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.rideFallback",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.pickupUnavailable",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.destinationUnavailable",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.statusCompleted",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.statusCancelled",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.statusAssigned",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.statusInProgress",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverHistory.statusUnknown",
+      "source": "apps/driver-mobile/driver/screens/history/HistoryScreen.tsx",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.title",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.pageTitle",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.subtitle",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.gross",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.commission",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.net",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.refresh",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.noEarnings",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.emptyHelp",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.rideFallback",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    },
+    {
+      "key": "driverEarnings.fareLine",
+      "source": "apps/driver-mobile/driver/screens/earnings/EarningsScreens.tsx (EarningsScreen)",
+      "status": "CANDIDATE_IMPLEMENTED_NATIVE_REVIEW_PENDING"
+    }
+  ],
+  "keyCount": 34,
+  "review": "Hindi wording is implementation copy only; qualified native/domain review remains pending. No LQA is claimed."
+}

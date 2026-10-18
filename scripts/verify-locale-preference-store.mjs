@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
+import { createRideXLocalePreferenceStore, RIDEX_LOCALE_PREFERENCE_STORAGE_KEY } from '../packages/localization/src/localePreferenceStore.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const errors=[];const checks=[];const pass=m=>checks.push(`PASS ${m}`);const fail=m=>errors.push(m);const req=(c,m)=>c?pass(m):fail(m);
+const load=rel=>{try{return JSON.parse(fs.readFileSync(path.join(root,rel),'utf8'));}catch(e){fail(`${rel}: ${e.message}`);return null;}};
+const contract=load('config/locale-preference-persistence.json');const resolver=load('config/locale-first-launch-resolution.json');const policy=load('config/localization-support-policy.json');const baseline=load('config/project-baseline.json');const inv=load('config/source-inventory.json');const pkg=load('package.json');
+req(Boolean(contract&&resolver&&policy&&baseline&&inv&&pkg),'preference store and linked locale policies/manifests parse');
+const cases=[];
+const add=async(id,run)=>{try{await run();cases.push(`PASS ${id}`)}catch(e){errors.push(`${id}: ${e.message}`)}};
+if(contract&&resolver&&policy&&baseline&&inv&&pkg){
+ req(contract.status.includes('WIRED_TO_MOBILE_PROVIDERS')&&contract.status.includes('ACCOUNT_SYNC_AND_RUNTIME_REVIEW_PENDING')&&['customerMobile','driverMobile','adminMobile','superAdminControl'].every(app=>contract.integrationStatus[app]?.startsWith('WIRED_TO_SHARED_STORE_RESOLVER')),'storage status reflects wired mobile adapters while account sync and runtime review remain pending');
+ req(contract.implementation.storageKey===RIDEX_LOCALE_PREFERENCE_STORAGE_KEY&&contract.implementation.storageKey==='ridex.locale.preference.v1','one versioned non-sensitive local storage key is canonical');
+ req(JSON.stringify(contract.supportedValues)===JSON.stringify(['en-IN','hi-IN']),'only approved locale values may be persisted');
+ req(String(contract.rules.globalStorageAccess).startsWith('prohibited')&&contract.rules.networkAccountSync==='not implemented by this storage module','storage module requires injected adapter and performs no global/network I/O');
+ req(contract.rules.storageReadWriteClearFailure==='return non-fatal status; do not throw into UI','storage failures are designed to be non-fatal');
+ req(contract.rules.unsupportedStoredValue.includes('never return the raw value')&&contract.rules.unsupportedWrite.includes('without invoking adapter'),'unsupported values are not returned/stored');
+ req(contract.testStatus.browserDeviceAndAppRestartTests==='DEFERRED_UNTIL_RUNTIME_DEVICE_RESTART_TESTS_RUN','physical persistence tests remain deferred pending runtime verification');
+ req(baseline.localePreferencePersistence?.path==='config/locale-preference-persistence.json'&&inv.localePreferencePersistence?.path==='config/locale-preference-persistence.json','baseline/inventory link the storage contract');
+ req(pkg.scripts?.['verify:locale-preference-store']==='node scripts/verify-locale-preference-store.mjs','dedicated validator is registered');
+ const rb=inv.components?.find(c=>c.id==='rootBuildScripts');const actual=fs.readdirSync(path.join(root,'scripts')).filter(n=>fs.statSync(path.join(root,'scripts',n)).isFile()).sort();
+ req(rb?.scripts?.includes('verify-locale-preference-store.mjs')&&rb.fileCount===actual.length&&JSON.stringify(rb.scripts.slice().sort())===JSON.stringify(actual),'root script inventory/count updated');
+
+ await add('valid save persists canonical locale under fixed key',async()=>{let written;const store=createRideXLocalePreferenceStore({getItem:()=>null,setItem:(k,v)=>{written=[k,v]},removeItem:()=>{}});assert.deepEqual(await store.save('hi-IN'),{status:'SAVED',locale:'hi-IN'});assert.deepEqual(written,[RIDEX_LOCALE_PREFERENCE_STORAGE_KEY,'hi-IN'])});
+ await add('case variant is stored canonically',async()=>{let written;const store=createRideXLocalePreferenceStore({getItem:()=>null,setItem:(k,v)=>{written=v},removeItem:()=>{}});assert.deepEqual(await store.save('HI_in'),{status:'SAVED',locale:'hi-IN'});assert.equal(written,'hi-IN')});
+ await add('unsupported write is rejected without touching storage',async()=>{let calls=0;const store=createRideXLocalePreferenceStore({getItem:()=>null,setItem:()=>{calls++},removeItem:()=>{calls++}});assert.deepEqual(await store.save('bn-IN'),{status:'REJECTED',diagnosticCode:'LOCALE_SELECTION_UNSUPPORTED'});assert.equal(calls,0)});
+ await add('missing key returns NOT_SET',async()=>{const store=createRideXLocalePreferenceStore({getItem:()=>null,setItem:()=>{},removeItem:()=>{}});assert.deepEqual(await store.load(),{status:'NOT_SET'})});
+ await add('supported stored preference loads',async()=>{const store=createRideXLocalePreferenceStore({getItem:()=>Promise.resolve('en-IN'),setItem:()=>{},removeItem:()=>{}});assert.deepEqual(await store.load(),{status:'LOADED',locale:'en-IN'})});
+ await add('unsupported stored value is not returned',async()=>{const store=createRideXLocalePreferenceStore({getItem:()=> 'secret-looking-unsupported-value',setItem:()=>{},removeItem:()=>{}});assert.deepEqual(await store.load(),{status:'INVALID_STORED_VALUE',diagnosticCode:'LOCALE_STORAGE_VALUE_UNSUPPORTED'});assert.equal(JSON.stringify(await store.load()).includes('secret-looking'),false)});
+ await add('read exception returns safe non-fatal status',async()=>{const store=createRideXLocalePreferenceStore({getItem:()=>{throw new Error('private storage path detail')},setItem:()=>{},removeItem:()=>{}});assert.deepEqual(await store.load(),{status:'STORAGE_UNAVAILABLE',diagnosticCode:'LOCALE_STORAGE_READ_FAILED'})});
+ await add('write exception returns safe non-fatal status',async()=>{const store=createRideXLocalePreferenceStore({getItem:()=>null,setItem:()=>{throw new Error('secret error')},removeItem:()=>{}});assert.deepEqual(await store.save('en-IN'),{status:'STORAGE_UNAVAILABLE',diagnosticCode:'LOCALE_STORAGE_WRITE_FAILED'})});
+ await add('clear uses only the canonical key',async()=>{let removed;const store=createRideXLocalePreferenceStore({getItem:()=>null,setItem:()=>{},removeItem:k=>{removed=k}});assert.deepEqual(await store.clear(),{status:'CLEARED'});assert.equal(removed,RIDEX_LOCALE_PREFERENCE_STORAGE_KEY)});
+ await add('clear exception is non-fatal',async()=>{const store=createRideXLocalePreferenceStore({getItem:()=>null,setItem:()=>{},removeItem:()=>{throw new Error('secret error')}});assert.deepEqual(await store.clear(),{status:'STORAGE_UNAVAILABLE',diagnosticCode:'LOCALE_STORAGE_CLEAR_FAILED'})});
+ await add('invalid adapter does not throw',async()=>{const store=createRideXLocalePreferenceStore({getItem:()=>null});assert.deepEqual(await store.load(),{status:'STORAGE_UNAVAILABLE',diagnosticCode:'LOCALE_STORAGE_ADAPTER_INVALID'});assert.deepEqual(await store.save('hi-IN'),{status:'STORAGE_UNAVAILABLE',diagnosticCode:'LOCALE_STORAGE_ADAPTER_INVALID'})});
+ await add('sync browser-like Storage adapter is supported',async()=>{const data=new Map();const adapter={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)};const store=createRideXLocalePreferenceStore(adapter);assert.equal((await store.save('hi-IN')).status,'SAVED');assert.deepEqual(await store.load(),{status:'LOADED',locale:'hi-IN'});assert.equal((await store.clear()).status,'CLEARED')});
+ await add('async AsyncStorage-like adapter is supported',async()=>{const data=new Map();const adapter={getItem:async k=>data.get(k)??null,setItem:async(k,v)=>data.set(k,v),removeItem:async k=>data.delete(k)};const store=createRideXLocalePreferenceStore(adapter);assert.equal((await store.save('en-IN')).locale,'en-IN');assert.deepEqual(await store.load(),{status:'LOADED',locale:'en-IN'})});
+ await add('adapter values never include an account/user identifier',async()=>{let keyUsed;const store=createRideXLocalePreferenceStore({getItem:k=>{keyUsed=k;return null},setItem:(k)=>{keyUsed=k},removeItem:k=>{keyUsed=k}});await store.load();assert.equal(keyUsed,'ridex.locale.preference.v1');assert.equal(keyUsed.includes('user'),false);assert.equal(keyUsed.includes('account'),false)});
+ await add('resolver and persistence are separate modules',async()=>{assert.notEqual(contract.implementation.runtimeModule,resolver.implementation.runtimeModule);assert.equal(contract.rules.sessionOrBusinessStateMutation,'none')});
+ req(cases.length===15,`${cases.length} dependency-free storage adapter cases pass`);
+}
+if(errors.length){console.error('LOCALE PREFERENCE STORE CHECK: FAIL');for(const e of errors)console.error(`FAIL ${e}`);process.exit(1)}console.log('LOCALE PREFERENCE STORE CHECK: PASS');for(const c of checks)console.log(c);for(const c of cases)console.log(c);console.log('Adapter logic only. No browser/device restart, account API, network, or database test was run.');

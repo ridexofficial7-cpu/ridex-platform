@@ -1,0 +1,1394 @@
+{
+  "schemaVersion": 1,
+  "registerRevision": 25,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_REQUIREMENT_REGISTER_AUDITED_IMPLEMENTATION_AND_TEST_STATUS_UNVERIFIED",
+  "sourceBaseline": "RideX_Smooth_Secure_Package/requirement_register.csv",
+  "summary": {
+    "totalRequirements": 67,
+    "priorityCounts": {
+      "P0": 43,
+      "P1": 24
+    },
+    "initialStatusCounts": {
+      "VERIFY": 67
+    },
+    "passClaims": 0
+  },
+  "policy": [
+    "All baseline Initial Status values are retained unchanged.",
+    "ImplementationStatus stays UNVERIFIED until explicit build/test evidence is collected in the final phase.",
+    "Source paths are evidence candidates only, not proof that acceptance criteria pass.",
+    "Known conflicts/gaps remain explicit and are not silently resolved.",
+    "Do not include any live secret values or personal records in this registry."
+  ],
+  "requirements": [
+    {
+      "id": "REQ-SEC-001",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Secret management",
+      "acceptanceCriteria": "No secrets in code, mobile bundles, logs or artifacts; unique TEST/LIVE secrets; exposed secrets rotated.",
+      "verificationEvidenceRequested": "Secret scan, bundle scan, credential rotation evidence.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/environment-policy.json",
+        "services/backend/.env.example",
+        "apps/customer-mobile/.env.example",
+        "apps/admin-web/.env.example"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "No secrets were printed in this register; actual repository/bundle credential scan and rotation remain unrun."
+    },
+    {
+      "id": "REQ-SEC-002",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "TLS and ingress",
+      "acceptanceCriteria": "Production APIs use HTTPS; redirect/deny cleartext; restrictive ports/routes.",
+      "verificationEvidenceRequested": "TLS scan and production smoke test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/main.ts",
+        "apps/customer-mobile/shared/api/config.ts",
+        "apps/admin-web/src/lib/api.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Static source permits configurable URL paths; TLS/cleartext policy requires config and target build checks."
+    },
+    {
+      "id": "REQ-SEC-003",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Session lifecycle",
+      "acceptanceCriteria": "Expiry, refresh/rotation, logout/revocation and role-change invalidation defined and tested.",
+      "verificationEvidenceRequested": "Session lifecycle integration tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/auth-session-baseline.json",
+        "services/backend/src/routes/auth.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-004",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Object-level authorization",
+      "acceptanceCriteria": "Every data object read/mutation checks actor + object policy in Backend.",
+      "verificationEvidenceRequested": "IDOR negative test suite.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/authorization-boundaries.json",
+        "services/backend/src/services/adminScope.ts",
+        "services/backend/src/routes/customer.ts",
+        "services/backend/src/routes/bookings.ts",
+        "config/incident-response-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence. Incident response owner/SLA and tabletop evidence are defined but not tested; RX-DEC-052 remains VERIFY."
+    },
+    {
+      "id": "REQ-SEC-005",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Geographic Admin scope",
+      "acceptanceCriteria": "GLOBAL/STATE/CITY scope enforced for list/read/create/update/delete/export/nested APIs.",
+      "verificationEvidenceRequested": "Out-of-scope negative tests for each route family.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/authorization-boundaries.json",
+        "services/backend/src/services/adminScope.ts",
+        "services/backend/src/routes/admin.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-006",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Privileged Admin security",
+      "acceptanceCriteria": "MFA/re-auth for high-impact actions, least privilege, audited changes.",
+      "verificationEvidenceRequested": "Role test + audit evidence.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/admin.ts",
+        "services/backend/src/routes/configuration.ts",
+        "apps/admin-web/src/components/PermissionGate.tsx",
+        "config/privileged-configuration-contract.json",
+        "scripts/verify-privileged-configuration.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-007",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Rate limiting",
+      "acceptanceCriteria": "Auth, OTP, search, sensitive mutations and public callbacks have appropriate rate/size limits.",
+      "verificationEvidenceRequested": "Abuse test and 429 behavior.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/src/main.ts",
+        "services/broadcaster-provider/src/middleware/gateway-enrollment-rate-limit.middleware.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-008",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Request validation",
+      "acceptanceCriteria": "Strict server schemas and bounded body/query/file size.",
+      "verificationEvidenceRequested": "Fuzz and malformed-request tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/main.ts",
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/src/routes/payments.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-009",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Sensitive log redaction",
+      "acceptanceCriteria": "OTP, tokens, credentials, private keys and sensitive payloads never logged.",
+      "verificationEvidenceRequested": "Final-phase synthetic-secret scanning across logs and API errors, audit snapshot/realtime payload tests, and approved retention/deletion matrix.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/observability-audit-contract.json",
+        "config/privacy-redaction-policy.json",
+        "services/backend/src/middleware/auth.ts",
+        "services/backend/src/routes/admin.ts",
+        "services/backend/src/routes/appAssets.ts",
+        "services/backend/src/routes/platform.ts",
+        "services/backend/src/services/observability.ts",
+        "services/backend/src/services/realtime.ts",
+        "services/broadcaster-provider/src/services/security-audit.service.ts",
+        "config/realtime-safety-contract.json",
+        "config/incident-response-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "PARTIAL_IMPLEMENTATION_SKIPPED_FINAL_CROSS_ROUTE_REVIEW",
+      "analysisNote": "Partial producer-level protections are now statically mapped; several legacy route handlers still return raw Error.message, so the complete cross-route redaction review is explicitly skipped and implementationStatus remains UNVERIFIED. Realtime safety contract maps bounded SSE lifecycle, client parsing and deferred physical tests; it is static evidence only. Incident response owner/SLA and tabletop evidence are defined but not tested; RX-DEC-052 remains VERIFY."
+    },
+    {
+      "id": "REQ-SEC-010",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Webhook security",
+      "acceptanceCriteria": "Signatures, timestamp/replay protection, dedupe and resource/amount matching.",
+      "verificationEvidenceRequested": "Forged/replay/mismatch tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/integrations/razorpay.ts",
+        "services/backend/src/routes/payments.ts",
+        "services/backend/src/routes/provider.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-011",
+      "area": "SEC",
+      "priority": "P0",
+      "requirement": "Private file access",
+      "acceptanceCriteria": "Files private by default; ownership check and short-lived signed URLs.",
+      "verificationEvidenceRequested": "Cross-user access/expiry tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/integrations/storage.ts",
+        "services/backend/src/routes/appAssets.ts",
+        "services/backend/src/services/driverDocuments.service.ts",
+        "config/private-storage-access-contract.json",
+        "services/backend/src/routes/customer.ts",
+        "services/backend/src/routes/driver.ts",
+        "services/backend/src/routes/admin.ts",
+        "config/incident-response-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "STATIC_STORAGE_GUARDS_MAPPED_TESTS_UNVERIFIED",
+      "analysisNote": "Static contract maps ownership checks, short-lived signed URLs, validated uploads and audited gallery download/deletion. Cross-owner and expiry runtime tests remain deferred. Incident response owner/SLA and tabletop evidence are defined but not tested; RX-DEC-052 remains VERIFY."
+    },
+    {
+      "id": "REQ-SEC-012",
+      "area": "SEC",
+      "priority": "P1",
+      "requirement": "Security headers / CORS",
+      "acceptanceCriteria": "CSP, HSTS and suitable headers; exact CORS allowlist.",
+      "verificationEvidenceRequested": "Automated header review.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/main.ts",
+        "apps/admin-web/scripts/check-security-headers.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-013",
+      "area": "SEC",
+      "priority": "P1",
+      "requirement": "Dependency scanning",
+      "acceptanceCriteria": "Lockfile, vulnerability scan, patch policy and SBOM or equivalent inventory.",
+      "verificationEvidenceRequested": "CI reports and release manifest.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/package-lock.json",
+        "services/broadcaster-provider/package-lock.json",
+        "apps/admin-web/package-lock.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-014",
+      "area": "SEC",
+      "priority": "P1",
+      "requirement": "Admin audit integrity",
+      "acceptanceCriteria": "Material privileged actions recorded with actor, target, result, requestId and safe before/after data.",
+      "verificationEvidenceRequested": "Audit completeness tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/prisma/schema.prisma",
+        "services/backend/src/routes/configuration.ts",
+        "config/observability-audit-contract.json",
+        "config/privileged-configuration-contract.json",
+        "scripts/verify-privileged-configuration.mjs",
+        "config/data-retention-deletion-contract.json",
+        "scripts/verify-data-retention-deletion.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-SEC-015",
+      "area": "SEC",
+      "priority": "P1",
+      "requirement": "Secret rotation drill",
+      "acceptanceCriteria": "Rotate provider/service credentials and revoke old key without uncontrolled outage.",
+      "verificationEvidenceRequested": "Runbook drill evidence.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/external-integration-catalog.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "No credential rotation drill is recorded; provider account/rotation verification is deferred."
+    },
+    {
+      "id": "REQ-CORE-001",
+      "area": "CORE",
+      "priority": "P0",
+      "requirement": "Request correlation",
+      "acceptanceCriteria": "Each request has server-generated/request-validated requestId and logs/response correlate safely.",
+      "verificationEvidenceRequested": "Trace one command across API, DB, job and callback.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/main.ts",
+        "services/backend/src/services/observability.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-CORE-002",
+      "area": "CORE",
+      "priority": "P0",
+      "requirement": "Consistent error contract",
+      "acceptanceCriteria": "Stable machine error codes, requestId, no stack/secret leakage.",
+      "verificationEvidenceRequested": "Contract test by error class.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/connection-register.json",
+        "services/backend/src/main.ts",
+        "apps/admin-web/src/lib/apiContract.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Existing Backend/client response envelopes include both success and ok patterns; canonical envelope is skipped for final review."
+    },
+    {
+      "id": "REQ-CORE-003",
+      "area": "CORE",
+      "priority": "P0",
+      "requirement": "Idempotent creates",
+      "acceptanceCriteria": "Retry with same idempotency key does not duplicate bookings/payment intents/jobs.",
+      "verificationEvidenceRequested": "Replay same request concurrently.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/idempotency-contract.json",
+        "scripts/verify-idempotency-contract.mjs",
+        "services/backend/prisma/schema.prisma",
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/src/routes/payments.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "STATIC_IDEMPOTENCY_MAPPING_RUNTIME_TESTS_UNVERIFIED",
+      "analysisNote": "Selected booking/payment/safety idempotency helpers, global key schema and webhook replay hash are mapped; consistency across all routes, expiry policy, concurrency, atomicity and response replay remain unverified pending final physical tests."
+    },
+    {
+      "id": "REQ-CORE-004",
+      "area": "CORE",
+      "priority": "P0",
+      "requirement": "Transactional state changes",
+      "acceptanceCriteria": "Critical state + required audit/outbox changes commit atomically.",
+      "verificationEvidenceRequested": "Crash/rollback integration test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/services/realtime.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-CORE-005",
+      "area": "CORE",
+      "priority": "P0",
+      "requirement": "Concurrency-safe transitions",
+      "acceptanceCriteria": "Conditional update/versioning prevents multiple driver accepts or illegal race transitions.",
+      "verificationEvidenceRequested": "Concurrent accept/cancel/start tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/src/routes/trips.ts",
+        "config/package1-foundation-signoff.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-CORE-006",
+      "area": "CORE",
+      "priority": "P0",
+      "requirement": "Database constraints",
+      "acceptanceCriteria": "Unique/FK/check constraints protect core invariants.",
+      "verificationEvidenceRequested": "Migration schema inspection + negative insert tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-CORE-007",
+      "area": "CORE",
+      "priority": "P0",
+      "requirement": "Migration release safety",
+      "acceptanceCriteria": "Migrations versioned, reviewed, staged against prior schema and have recovery plan.",
+      "verificationEvidenceRequested": "Restore/migration rehearsal.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/prisma/migrations",
+        "services/backend/scripts/prisma-migrate-deploy.cjs",
+        "services/backend/scripts/backup-restore-drill.sh"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Active, duplicate fresh-baseline and legacy migration paths conflict; migration step N is skipped for final review."
+    },
+    {
+      "id": "REQ-CORE-008",
+      "area": "CORE",
+      "priority": "P1",
+      "requirement": "API specification",
+      "acceptanceCriteria": "OpenAPI or equivalent describes all public routes, scopes and response semantics.",
+      "verificationEvidenceRequested": "Spec-client contract checks.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/main.ts",
+        "services/backend/scripts/final-api-contract-audit.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-CORE-009",
+      "area": "CORE",
+      "priority": "P1",
+      "requirement": "Pagination/resource bounds",
+      "acceptanceCriteria": "List/search endpoints have stable pagination and bounded query cost.",
+      "verificationEvidenceRequested": "Load/query-size tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/customer.ts",
+        "services/backend/src/routes/admin.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-CORE-010",
+      "area": "CORE",
+      "priority": "P1",
+      "requirement": "Timeout/retry policy",
+      "acceptanceCriteria": "Every integration has timeout and safe retry classification.",
+      "verificationEvidenceRequested": "Dependency timeout/fault injection.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/external-integration-catalog.json",
+        "services/backend/src/services/routing.ts",
+        "config/retry-timeout-policy.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence. Retry/timeout policy maps per-component bounds; Gateway/outbox configuration upper bounds remain explicit decisions, and physical retry/failover tests are deferred."
+    },
+    {
+      "id": "REQ-CORE-011",
+      "area": "CORE",
+      "priority": "P1",
+      "requirement": "Circuit breaker/failure mode",
+      "acceptanceCriteria": "Dependency outage fails boundedly; no unbounded thread/socket exhaustion.",
+      "verificationEvidenceRequested": "Simulated provider outage.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/services/routing.ts",
+        "services/backend/src/services/observability.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-CORE-012",
+      "area": "CORE",
+      "priority": "P1",
+      "requirement": "Feature configuration",
+      "acceptanceCriteria": "Flags/config changes are versioned, scope-controlled and safe-default.",
+      "verificationEvidenceRequested": "Unauthorized and rollback tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/configuration.ts",
+        "services/backend/prisma/schema.prisma",
+        "config/privileged-configuration-contract.json",
+        "scripts/verify-privileged-configuration.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OTP-001",
+      "area": "OTP",
+      "priority": "P0",
+      "requirement": "Purpose-bound OTP",
+      "acceptanceCriteria": "OTP validates both code and exact purposeCode bound to actor.",
+      "verificationEvidenceRequested": "Cross-purpose replay test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "config/auth-session-baseline.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OTP-002",
+      "area": "OTP",
+      "priority": "P0",
+      "requirement": "Expiry and attempt rules",
+      "acceptanceCriteria": "5-minute baseline expiry and five wrong-attempt cutoff enforced atomically.",
+      "verificationEvidenceRequested": "Boundary and concurrent attempt tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OTP-003",
+      "area": "OTP",
+      "priority": "P0",
+      "requirement": "Resend interval and count",
+      "acceptanceCriteria": "1-minute resend eligibility; configured max limit/cooldown applied.",
+      "verificationEvidenceRequested": "Clock-boundary and abuse tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/src/routes/configuration.ts",
+        "config/package1-foundation-signoff.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Some OTP values/defaults are pending decision and UI/backend digit length conflicts; step K skipped for final review."
+    },
+    {
+      "id": "REQ-OTP-004",
+      "area": "OTP",
+      "priority": "P0",
+      "requirement": "PUSH no provider fallback",
+      "acceptanceCriteria": "PUSH purpose never falls back to provider/SMS.",
+      "verificationEvidenceRequested": "Force push outage and verify no provider send.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/src/routes/configuration.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OTP-005",
+      "area": "OTP",
+      "priority": "P0",
+      "requirement": "Resend replaces old code",
+      "acceptanceCriteria": "Old code invalidated; attempt count carries forward; no replay.",
+      "verificationEvidenceRequested": "Resend after 1-4 failures then verify.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OTP-006",
+      "area": "OTP",
+      "priority": "P1",
+      "requirement": "Security alert on fifth failure",
+      "acceptanceCriteria": "Admin alert contains allowed audit metadata without OTP plaintext.",
+      "verificationEvidenceRequested": "Alert integration test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/auth.ts",
+        "services/backend/src/routes/notifications.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OTP-007",
+      "area": "OTP",
+      "priority": "P1",
+      "requirement": "Config version history",
+      "acceptanceCriteria": "Authorized changes/bulk changes/rollback produce expected global+field history and audit.",
+      "verificationEvidenceRequested": "History regression suite.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/configuration.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-001",
+      "area": "RIDE",
+      "priority": "P0",
+      "requirement": "Booking state machine",
+      "acceptanceCriteria": "All transitions and allowed actor/preconditions/timeout/cancel rules are explicit.",
+      "verificationEvidenceRequested": "Model-based transition tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/src/routes/trips.ts",
+        "config/package1-foundation-signoff.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Complete Booking/Trip transition table is not yet approved; step P skipped for final review."
+    },
+    {
+      "id": "REQ-RIDE-002",
+      "area": "RIDE",
+      "priority": "P0",
+      "requirement": "Atomic driver acceptance",
+      "acceptanceCriteria": "Only one eligible driver can win a booking offer.",
+      "verificationEvidenceRequested": "Concurrent winner test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-003",
+      "area": "RIDE",
+      "priority": "P0",
+      "requirement": "Vehicle eligibility",
+      "acceptanceCriteria": "Only eligible/available categories for current location/service are shown and accepted.",
+      "verificationEvidenceRequested": "Matrix tests by service/geography/vehicle.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/ride-service-taxonomy.json",
+        "apps/customer-mobile/shared/vehicleCatalog.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-004",
+      "area": "RIDE",
+      "priority": "P0",
+      "requirement": "Passenger/capacity limits",
+      "acceptanceCriteria": "Share/Connection/Event and goods/parcel capacity constraints enforced server-side.",
+      "verificationEvidenceRequested": "Boundary tests on capacity.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/ride-service-taxonomy.json",
+        "services/backend/src/routes/bookings.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-005",
+      "area": "RIDE",
+      "priority": "P0",
+      "requirement": "Trip verification",
+      "acceptanceCriteria": "Backend validates QR and OTP against ride/actor/purpose/expiry/state.",
+      "verificationEvidenceRequested": "Wrong ride/user/purpose/expired token tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/trips.ts",
+        "services/backend/src/routes/sharedRide.ts",
+        "apps/driver-mobile/driver/App.tsx"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-006",
+      "area": "RIDE",
+      "priority": "P0",
+      "requirement": "Driver geographic assignment",
+      "acceptanceCriteria": "Valid active state/city required; onboarding submit blocked otherwise.",
+      "verificationEvidenceRequested": "Missing/inactive/mismatched assignment tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/authorization-boundaries.json",
+        "services/backend/src/routes/driver.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-007",
+      "area": "RIDE",
+      "priority": "P1",
+      "requirement": "Location freshness",
+      "acceptanceCriteria": "Matching rejects or marks stale driver location using configurable policy.",
+      "verificationEvidenceRequested": "Clock/freshness boundary test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/gps.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-008",
+      "area": "RIDE",
+      "priority": "P1",
+      "requirement": "Suspicious location alert",
+      "acceptanceCriteria": "Suspicious signal audited and alerts Admin; behavior matches approved no-auto-stop rule.",
+      "verificationEvidenceRequested": "Simulated spoof signal test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/gps.ts",
+        "services/backend/src/routes/safety.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-RIDE-009",
+      "area": "RIDE",
+      "priority": "P1",
+      "requirement": "SOS workflow",
+      "acceptanceCriteria": "SOS creates a durable alert with retry/status and clear user-facing state.",
+      "verificationEvidenceRequested": "Offline and provider-error tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/safety.ts",
+        "services/backend/prisma/schema.prisma"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-ASYNC-001",
+      "area": "ASYNC",
+      "priority": "P0",
+      "requirement": "Durable job persistence",
+      "acceptanceCriteria": "202/accepted job has persisted jobId and observable status.",
+      "verificationEvidenceRequested": "Restart API after queue acceptance.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/prisma/schema.prisma",
+        "services/broadcaster-provider/src/services/provider-storage.service.ts",
+        "config/realtime-safety-contract.json",
+        "config/async-job-durability-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence. Realtime safety contract maps bounded SSE lifecycle, client parsing and deferred physical tests; it is static evidence only. Async-job contract records durable domains, bounded lease/retry behavior and dead-letter retention; physical crash/restart and cross-worker tests are deferred."
+    },
+    {
+      "id": "REQ-ASYNC-002",
+      "area": "ASYNC",
+      "priority": "P0",
+      "requirement": "Lease/claim",
+      "acceptanceCriteria": "Gateway claim uses expiring lease/unique token; abandoned claim is recoverable.",
+      "verificationEvidenceRequested": "Kill worker after claim.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/provider-gateway-contract.json",
+        "services/broadcaster-provider/src/routes/gateway.routes.ts",
+        "apps/gateway-android/app/src/main"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-ASYNC-003",
+      "area": "ASYNC",
+      "priority": "P0",
+      "requirement": "Duplicate ACK idempotency",
+      "acceptanceCriteria": "Duplicate/late ACK cannot regress terminal state or duplicate logical effect.",
+      "verificationEvidenceRequested": "Replay ack and reorder events.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/provider-gateway-contract.json",
+        "services/broadcaster-provider/src/services/gateway-command.service.ts",
+        "apps/gateway-android/app/src/main",
+        "config/async-job-durability-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence. Async-job contract records durable domains, bounded lease/retry behavior and dead-letter retention; physical crash/restart and cross-worker tests are deferred."
+    },
+    {
+      "id": "REQ-ASYNC-004",
+      "area": "ASYNC",
+      "priority": "P0",
+      "requirement": "Callback authentication",
+      "acceptanceCriteria": "Provider callback verifies cryptographic authenticity and prevents replay.",
+      "verificationEvidenceRequested": "Forged and stale callback tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/broadcaster-provider/src/middleware/ridex-backend-auth.middleware.ts",
+        "services/backend/src/routes/provider.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-ASYNC-005",
+      "area": "ASYNC",
+      "priority": "P0",
+      "requirement": "Bounded retry and dead letter",
+      "acceptanceCriteria": "Retries classified, bounded, backoff+jitter, terminal queue visible.",
+      "verificationEvidenceRequested": "Permanent/retryable error tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/broadcaster-provider/src/services/backend-result-outbox.service.ts",
+        "services/broadcaster-provider/src/services/provider-storage.service.ts",
+        "config/async-job-durability-contract.json",
+        "config/retry-timeout-policy.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence. Async-job contract records durable domains, bounded lease/retry behavior and dead-letter retention; physical crash/restart and cross-worker tests are deferred. Retry/timeout policy maps per-component bounds; Gateway/outbox configuration upper bounds remain explicit decisions, and physical retry/failover tests are deferred."
+    },
+    {
+      "id": "REQ-ASYNC-006",
+      "area": "ASYNC",
+      "priority": "P1",
+      "requirement": "Reconciliation worker",
+      "acceptanceCriteria": "Unknown/stuck jobs reconciled and aged-out items alert operators.",
+      "verificationEvidenceRequested": "Seed stuck job and verify resolution path.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/broadcaster-provider/src/services/backend-result-outbox.service.ts",
+        "services/backend/src/routes/provider.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-ASYNC-007",
+      "area": "ASYNC",
+      "priority": "P1",
+      "requirement": "Gateway revocation",
+      "acceptanceCriteria": "Lost/compromised device identity can be blocked/rotated.",
+      "verificationEvidenceRequested": "Revoked device claim rejected.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/broadcaster-provider/src/routes/gateway.routes.ts",
+        "services/broadcaster-provider/src/services/gateway-auth.service.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-ASYNC-008",
+      "area": "ASYNC",
+      "priority": "P1",
+      "requirement": "Truthful delivery states",
+      "acceptanceCriteria": "“Delivered” only used when provider/carrier receipt supports it.",
+      "verificationEvidenceRequested": "State mapping review.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/provider-gateway-contract.json",
+        "services/broadcaster-provider/src/services/provider-storage.service.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-DATA-001",
+      "area": "DATA",
+      "priority": "P0",
+      "requirement": "TEST/LIVE isolation",
+      "acceptanceCriteria": "Different DB/provider credentials and test destinations, no cross-environment access.",
+      "verificationEvidenceRequested": "Cross-environment negative test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/database-integrity-contract.json",
+        "config/environment-policy.json",
+        "scripts/verify-database-integrity-contract.mjs",
+        "scripts/verify-environment-boundaries.mjs",
+        "config/migration-safety-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "STATIC_SCHEMA_MAPPING_DB_TESTS_DEFERRED",
+      "analysisNote": "Current schema counts, critical uniqueness declarations, fixed-precision amount fields and transaction call sites are inventoried. Fresh/upgrade migration lineage, constraint failures, concurrency and restore integrity remain untested by policy until all four packages finish. Migration chain is hashed and statically guarded, but no DB migration/runtime upgrade test was run; RX-DEC-053/054 remain VERIFY."
+    },
+    {
+      "id": "REQ-DATA-002",
+      "area": "DATA",
+      "priority": "P0",
+      "requirement": "Backup restore test",
+      "acceptanceCriteria": "Backup restore to isolated environment verified, measured RPO/RTO recorded.",
+      "verificationEvidenceRequested": "Signed restore drill record.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/run-recovery-baseline.json",
+        "services/backend/scripts/backup-db.sh",
+        "services/backend/scripts/restore-db.sh",
+        "config/migration-safety-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Backup/restore guard is added, but no actual dump, restore or RPO/RTO measurement was run. Migration chain is hashed and statically guarded, but no DB migration/runtime upgrade test was run; RX-DEC-053/054 remain VERIFY."
+    },
+    {
+      "id": "REQ-DATA-003",
+      "area": "DATA",
+      "priority": "P0",
+      "requirement": "Data retention inventory",
+      "acceptanceCriteria": "GPS, KYC, payment, OTP/audit, app/log/backups each has owner/purpose/retention.",
+      "verificationEvidenceRequested": "Approved data inventory.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/observability-audit-contract.json",
+        "services/backend/prisma/schema.prisma",
+        "config/private-storage-access-contract.json",
+        "config/data-retention-deletion-contract.json",
+        "scripts/verify-data-retention-deletion.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Data retention requirements include private storage lifecycle. A comprehensive field-by-field retention/deletion schedule remains an open policy gap; no retention period is assumed."
+    },
+    {
+      "id": "REQ-DATA-004",
+      "area": "DATA",
+      "priority": "P1",
+      "requirement": "Private storage",
+      "acceptanceCriteria": "Private access by default, file validation and lifecycle rules.",
+      "verificationEvidenceRequested": "Access and deletion lifecycle test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/integrations/storage.ts",
+        "services/backend/src/routes/appAssets.ts",
+        "config/private-storage-access-contract.json",
+        "services/backend/src/routes/customer.ts",
+        "services/backend/src/routes/driver.ts",
+        "services/backend/src/routes/admin.ts",
+        "config/data-retention-deletion-contract.json",
+        "scripts/verify-data-retention-deletion.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "STATIC_STORAGE_LIFECYCLE_PARTIAL_RETENTION_POLICY_PENDING",
+      "analysisNote": "Static contract maps private access, MIME/signature/size checks and Customer Gallery object cleanup. Full retention/deletion matrix and storage runtime tests remain pending."
+    },
+    {
+      "id": "REQ-DATA-005",
+      "area": "DATA",
+      "priority": "P1",
+      "requirement": "Deletion/export workflow",
+      "acceptanceCriteria": "Approved account/data export/deletion process including backups/holds documented.",
+      "verificationEvidenceRequested": "End-to-end privacy workflow test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/customer.ts",
+        "services/backend/src/routes/admin.ts"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Deletion/export policy needs complete product/legal decision and route-by-route verification."
+    },
+    {
+      "id": "REQ-MOB-006",
+      "area": "MOB",
+      "priority": "P0",
+      "requirement": "Secure token storage",
+      "acceptanceCriteria": "Mobile session tokens stored in platform secure store; clear on logout/revocation.",
+      "verificationEvidenceRequested": "Device inspection and logout test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "apps/customer-mobile",
+        "apps/driver-mobile",
+        "config/auth-session-baseline.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Submitted mobile source used AsyncStorage for bearer session tokens; secure platform token-storage implementation remains pending."
+    },
+    {
+      "id": "REQ-MOB-007",
+      "area": "MOB",
+      "priority": "P0",
+      "requirement": "No embedded super-admin private secret",
+      "acceptanceCriteria": "No server private key/master secret in APK/IPA/client config.",
+      "verificationEvidenceRequested": "Bundle scan and architecture review.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "apps/super-admin-control",
+        "config/system-boundaries.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "No private key embedding is permitted, but Super Admin Control is only a shell and no operational key lifecycle is implemented."
+    },
+    {
+      "id": "REQ-MOB-008",
+      "area": "MOB",
+      "priority": "P1",
+      "requirement": "Offline/error UX",
+      "acceptanceCriteria": "No misleading success; retry states and stale data are clear.",
+      "verificationEvidenceRequested": "Network fault/device-kill tests.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "apps/customer-mobile",
+        "apps/driver-mobile",
+        "apps/admin-mobile"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-WEB-009",
+      "area": "WEB",
+      "priority": "P1",
+      "requirement": "Admin Web XSS/CSRF/CORS",
+      "acceptanceCriteria": "Output escaping, cookie/CSRF strategy, CSP, strict CORS and secure headers.",
+      "verificationEvidenceRequested": "WSTG-style test report.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "apps/admin-web/src/App.tsx",
+        "apps/admin-web/scripts/check-security-headers.mjs",
+        "apps/admin-web/tests"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OPS-010",
+      "area": "OPS",
+      "priority": "P0",
+      "requirement": "Health/readiness",
+      "acceptanceCriteria": "Health path covers intended dependency status without leaking secret data; readiness distinguishes startup/dependency failures.",
+      "verificationEvidenceRequested": "Post-deploy smoke test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/src/routes/health.ts",
+        "services/backend/src/main.ts",
+        "scripts/verify-startup-foundation.mjs",
+        "config/run-recovery-baseline.json",
+        "services/backend/scripts/backup-db.sh"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OPS-011",
+      "area": "OPS",
+      "priority": "P0",
+      "requirement": "Rollback/forward-fix",
+      "acceptanceCriteria": "Known-good artifact, schema compatibility plan and rollback rehearsal.",
+      "verificationEvidenceRequested": "Recorded recovery drill.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/scripts/backup-restore-drill.sh",
+        "services/backend/scripts/promote-release.sh",
+        "config/run-recovery-baseline.json",
+        "services/backend/scripts/backup-db.sh",
+        "config/incident-response-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Rollback/forward-fix/recovery compatibility has not been exercised; restore/deploy tests remain deferred. Incident response owner/SLA and tabletop evidence are defined but not tested; RX-DEC-052 remains VERIFY."
+    },
+    {
+      "id": "REQ-OPS-012",
+      "area": "OPS",
+      "priority": "P0",
+      "requirement": "Release manifest",
+      "acceptanceCriteria": "Commit, artifact, migrations, tests, approver, environment and rollback ref recorded.",
+      "verificationEvidenceRequested": "Inspect sample release record.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/prisma/schema.prisma",
+        "services/backend/scripts/promote-release.sh",
+        "config/project-baseline.json",
+        "config/run-recovery-baseline.json",
+        "services/backend/scripts/restore-db.sh"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-OPS-013",
+      "area": "OPS",
+      "priority": "P1",
+      "requirement": "SLO dashboards/alerts",
+      "acceptanceCriteria": "Core API, DB, jobs, OTP, rides, payment and cost monitored with owners.",
+      "verificationEvidenceRequested": "Alert firing test.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/observability-audit-contract.json",
+        "services/backend/src/services/observability.ts",
+        "config/run-recovery-baseline.json",
+        "services/backend/scripts/restore-db.sh",
+        "config/incident-response-contract.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Metrics counters exist, but durable dashboards/alert-delivery integration is not established. Incident response owner/SLA and tabletop evidence are defined but not tested; RX-DEC-052 remains VERIFY."
+    },
+    {
+      "id": "REQ-OPS-014",
+      "area": "OPS",
+      "priority": "P1",
+      "requirement": "Incident response",
+      "acceptanceCriteria": "SEV policy, incident ID, containment, communications and postmortem process.",
+      "verificationEvidenceRequested": "Tabletop drill.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "config/run-recovery-baseline.json",
+        "services/backend/src/services/observability.ts",
+        "services/backend/scripts/restore-db.sh"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "SOURCE_CANDIDATES_PRESENT_UNVERIFIED",
+      "analysisNote": "Source candidates mapped for later implementation/test review; presence is not pass evidence."
+    },
+    {
+      "id": "REQ-QA-015",
+      "area": "QA",
+      "priority": "P0",
+      "requirement": "Critical E2E journeys",
+      "acceptanceCriteria": "Customer, Driver, Admin, payment, OTP and gateway critical journeys pass in TEST.",
+      "verificationEvidenceRequested": "Automated E2E report.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "apps/admin-web/tests",
+        "apps/gateway-android/app/src/test",
+        "config/financial-correctness-contract.json",
+        "scripts/verify-financial-correctness-contract.mjs",
+        "services/backend/scripts/validate-final.mjs"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "STATIC_FINANCIAL_CONTROLS_MAPPED_RUNTIME_TESTS_UNVERIFIED",
+      "analysisNote": "Critical financial control candidates and explicit unapproved policy decisions are mapped. Provider signature/amount mismatch/reconciliation code presence is not runtime proof; final financial tests and approved accounting formulas remain pending."
+    },
+    {
+      "id": "REQ-QA-016",
+      "area": "QA",
+      "priority": "P1",
+      "requirement": "Load/fault testing",
+      "acceptanceCriteria": "Declared baseline load and dependency failures tested, bottlenecks documented.",
+      "verificationEvidenceRequested": "Load report and defect closure.",
+      "suggestedOwner": "Implementation owner",
+      "baselineInitialStatus": "VERIFY",
+      "implementationStatus": "UNVERIFIED",
+      "sourceEvidence": [
+        "services/backend/scripts/validate-final.mjs",
+        "services/backend/src/services/observability.ts",
+        "config/load-fault-test-plan.json"
+      ],
+      "unresolvedEvidencePaths": [],
+      "auditStatus": "KNOWN_GAP_OR_DECISION_PENDING",
+      "analysisNote": "Static load/fault scenarios are defined. No physical load/fault test has been executed; quantitative workload and SLO targets remain pending RX-DEC-048/049."
+    }
+  ],
+  "openItems": [
+    "Map all 67 requirements to Package 1-4 implementation steps and actual test evidence after their implementations.",
+    "Execute the 24 acceptance tests only after all four package implementations are complete.",
+    "Run secret scan, dependency audit, TLS, authorization, provider, database, backup/restore and load/fault tests in the final physical phase.",
+    "Approve RX-DEC-048 workload profile and RX-DEC-049 performance SLO/stop thresholds before final physical testing.",
+    "Approve RX-DEC-050 recovery targets/ownership and RX-DEC-051 fresh/disposable database identities before the final backup/restore drill.",
+    "Approve RX-DEC-052 incident on-call/severity SLA and security/legal escalation ownership before incident drills.",
+    "Approve RX-DEC-053 canonical migration chain/legacy archive disposition and RX-DEC-054 failed-migration forward-fix/restore procedure before database migration tests.",
+    "Do not enable LIVE until all 18 blockers in config/pre-live-release-gate.json have evidence-backed approval and all physical tests complete.",
+    "Package 2 Step Z records unresolved risks and owner closure evidence; no risk is accepted, mandatory P0 is not waivable, and pre-LIVE remains blocked until all four packages and required physical evidence are complete."
+  ],
+  "priorityPolicy": "config/security-priority-policy.json",
+  "threatModel": {
+    "path": "config/threat-model.json",
+    "status": "DESIGN_MAPPED_NOT_TESTED",
+    "notes": "Requirement and control-case links exist; no actual security test status was changed."
+  },
+  "authenticationSecurityContract": "config/authentication-security-contract.json",
+  "otpPolicyDecisionBlockers": "config/otp-policy-decision-blockers.json",
+  "authorizationCoverageMap": "config/authorization-coverage-map.json",
+  "inputValidationCoverageMap": "config/input-validation-coverage-map.json",
+  "secretHygieneContract": "config/secret-hygiene-contract.json",
+  "privilegedConfigurationContract": {
+    "path": "config/privileged-configuration-contract.json",
+    "validator": "scripts/verify-privileged-configuration.mjs",
+    "status": "STATIC_SOURCE_POLICY_CHECKED_RUNTIME_TESTS_NOT_RUN"
+  },
+  "dataRetentionDeletionContract": {
+    "path": "config/data-retention-deletion-contract.json",
+    "validator": "scripts/verify-data-retention-deletion.mjs",
+    "status": "STATIC_INVENTORY_CREATED_RETENTION_APPROVAL_AND_PHYSICAL_TESTS_PENDING"
+  },
+  "loadFaultTestPlan": {
+    "path": "config/load-fault-test-plan.json",
+    "validator": "scripts/verify-load-fault-test-plan.mjs",
+    "status": "PLAN_DEFINED_EXECUTION_DEFERRED"
+  },
+  "runRecoveryBaseline": {
+    "path": "config/run-recovery-baseline.json",
+    "validator": "scripts/verify-run-recovery-baseline.mjs",
+    "status": "STATIC_GUARDS_UPDATED_PHYSICAL_RESTORE_DEFERRED"
+  },
+  "incidentResponseContract": {
+    "path": "config/incident-response-contract.json",
+    "validator": "scripts/verify-incident-response.mjs",
+    "status": "STATIC_PLAYBOOK_DEFINED_DRILLS_DEFERRED"
+  },
+  "migrationSafetyContract": {
+    "path": "config/migration-safety-contract.json",
+    "validator": "scripts/verify-migration-safety.mjs",
+    "status": "STATIC_ONLY_MIGRATIONS_DEFERRED"
+  },
+  "finalAcceptanceTestRegister": {
+    "path": "config/final-acceptance-test-register.json",
+    "validator": "scripts/verify-final-acceptance-register.mjs",
+    "status": "STATIC_REGISTER_ONLY_EXECUTION_DEFERRED"
+  },
+  "preLiveReleaseGate": {
+    "path": "config/pre-live-release-gate.json",
+    "validator": "scripts/verify-pre-live-release-gate.mjs",
+    "status": "STATIC_GATE_DEFINED_NOT_APPROVED"
+  },
+  "securityRiskExceptionRegister": {
+    "path": "config/security-risk-exception-register.json",
+    "status": "OPEN_RISK_EXCEPTION_REGISTER_NO_RISKS_ACCEPTED",
+    "validator": "scripts/verify-package2-risk-signoff.mjs"
+  },
+  "package2SecuritySignoff": {
+    "path": "config/package2-security-signoff.json",
+    "status": "STATIC_SECURITY_HANDOFF_COMPLETE_WITH_OPEN_DECISIONS_AND_PHYSICAL_TESTS_DEFERRED_NOT_PRODUCTION_APPROVED",
+    "productionApproval": false
+  }
+}

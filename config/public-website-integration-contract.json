@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "surface": "Public Website",
+  "status": "STATIC_MARKETING_SURFACE_EXTERNAL_DESTINATIONS_UNCONFIGURED",
+  "clientAuthority": "NONE",
+  "backendConnectionPolicy": "The public website is a static marketing and information surface. It must not call business APIs directly or expose backend/provider credentials. Dynamic business state and all privileged actions remain backend-owned through the authenticated apps.",
+  "canonicalConnectionId": "CX-025",
+  "outboundDestinations": {
+    "adminUrl": {
+      "source": "window.RIDEX_CONFIG.adminUrl",
+      "requiredProtocol": "https:",
+      "mustBeAbsolute": true,
+      "default": "unconfigured"
+    },
+    "androidUrl": {
+      "source": "window.RIDEX_CONFIG.androidUrl",
+      "requiredProtocol": "https:",
+      "mustBeAbsolute": true,
+      "default": "unconfigured"
+    },
+    "iosUrl": {
+      "source": "window.RIDEX_CONFIG.iosUrl",
+      "requiredProtocol": "https:",
+      "mustBeAbsolute": true,
+      "default": "unconfigured"
+    }
+  },
+  "expectedStaticSections": [
+    "home",
+    "downloads",
+    "services",
+    "about",
+    "safety",
+    "why",
+    "legal-notice",
+    "contact"
+  ],
+  "requiredBeforePublishing": [
+    "Verify official Admin URL before configuring adminUrl.",
+    "Verify official Google Play URL before configuring androidUrl.",
+    "Verify official Apple App Store URL before configuring iosUrl.",
+    "Keep all unconfigured destinations disabled and never invent a URL.",
+    "Verify the test-period notice and service claims with authorized project owners.",
+    "Perform keyboard, mobile responsive and browser smoke tests."
+  ],
+  "rules": [
+    "No direct fetch, XMLHttpRequest, axios, WebSocket or EventSource calls from the public website.",
+    "No localhost or loopback endpoints in shipped website files.",
+    "Configured outbound destinations must be absolute HTTPS URLs with a hostname and without embedded username/password.",
+    "Do not infer service availability from static marketing content; backend confirmation is authoritative.",
+    "Do not display OTPs, tokens, provider secrets or private keys on the public website.",
+    "Unknown download/admin destinations stay disabled until approved."
+  ],
+  "runtimeVerification": "Static source checks only; browser and production-host smoke tests remain pending."
+}

@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 2,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_DURABILITY_AND_RETRY_GUARDS_MAPPED_PHYSICAL_TESTS_DEFERRED",
+  "scope": "Package 2 Step P — asynchronous job persistence, ownership, leases, bounded retries, terminal failure retention and reconciliation.",
+  "durableDomains": [
+    {
+      "id": "backend-realtime-outbox",
+      "owner": "services/backend",
+      "source": "services/backend/prisma/schema.prisma:model RealtimeEventOutbox",
+      "keyFields": [
+        "id",
+        "eventType",
+        "actorType",
+        "actorId",
+        "payload",
+        "status",
+        "attempts",
+        "availableAt",
+        "publishedAt",
+        "lastError"
+      ],
+      "knownGap": "Publisher transaction atomicity/order/restart behavior requires final database test."
+    },
+    {
+      "id": "notification-delivery-attempts",
+      "owner": "services/backend",
+      "source": "services/backend/prisma/schema.prisma:model NotificationDeliveryAttempt",
+      "keyFields": [
+        "notificationId",
+        "attemptNumber",
+        "status",
+        "provider",
+        "errorCode",
+        "sentAt"
+      ],
+      "invariant": "Unique notificationId+attemptNumber; no provider delivery is claimed solely from UI state."
+    },
+    {
+      "id": "provider-sms-call-queues",
+      "owner": "services/broadcaster-provider",
+      "source": "services/broadcaster-provider/src/services/provider-storage.service.ts",
+      "keyFields": [
+        "requestId",
+        "status",
+        "attemptCount",
+        "nextRetryAtEpochMs",
+        "leaseUntilEpochMs",
+        "gatewayId",
+        "deviceId"
+      ],
+      "ownership": "Claimed item is bound to gatewayId/deviceId; finalization must match that owner. Existing lease is bounded by 30–3600 seconds (default 300)."
+    },
+    {
+      "id": "provider-backend-result-outbox",
+      "owner": "services/broadcaster-provider",
+      "source": "services/broadcaster-provider/src/services/backend-result-outbox.service.ts",
+      "keyFields": [
+        "outboxId",
+        "requestId",
+        "payloadEncrypted",
+        "attempts",
+        "nextAttemptAtEpochMs",
+        "status",
+        "lastError",
+        "deadLetteredAt"
+      ],
+      "invariant": "Payload is encrypted at rest within provider state; POST uses resultId as Idempotency-Key; retries use bounded backoff and a configured max attempt count."
+    },
+    {
+      "id": "provider-gateway-commands",
+      "owner": "services/broadcaster-provider",
+      "source": "services/broadcaster-provider/src/services/gateway-command.service.ts",
+      "keyFields": [
+        "commandId",
+        "targetGatewayId",
+        "targetDeviceId",
+        "status",
+        "commandSequence",
+        "expiresAtEpochMs",
+        "deliveryCount"
+      ],
+      "invariant": "Command delivery is distinct from handset execution/ACK; identity, signature, expiry and approvals are validated by separate command/Gateway paths."
+    },
+    {
+      "id": "data-merge-review-job",
+      "owner": "services/backend",
+      "source": "services/backend/prisma/schema.prisma:model DataMergeJob",
+      "keyFields": [
+        "id",
+        "status",
+        "reviewed",
+        "reviewedBy",
+        "sourceScope",
+        "targetDataset",
+        "result"
+      ],
+      "knownGap": "Schema represents a reviewed job record; a dedicated durable executor/lease/recovery path is not established in the current source package."
+    }
+  ],
+  "retryOutboxBehavior": {
+    "readyStatus": "READY",
+    "deadLetterStatus": "DEAD_LETTER",
+    "defaultMaxAttempts": 8,
+    "maxBackoffMs": 300000,
+    "requestTimeoutMs": 10000,
+    "idempotencyHeader": "Idempotency-Key",
+    "idempotencyValue": "Delivery result ID",
+    "invalidEncryptedPayload": "Dead-letter immediately; deterministic parse/decryption failures must not be retried endlessly.",
+    "maxAttemptsReached": "Retain encrypted outbox item with safe lastError and deadLetteredAt; do not silently delete undelivered work.",
+    "legacyRecords": "Missing status is backward-compatible and treated as READY. A dead-letter record is not automatically retried; manual repair/replay policy remains pending."
+  },
+  "storageSelection": {
+    "currentCandidates": [
+      "JSON atomic file replacement",
+      "SQLite single state row with transaction",
+      "PostgreSQL JSONB state row with SELECT FOR UPDATE"
+    ],
+    "authoritativeRuntimeSelection": "NOT_APPROVED",
+    "multiInstanceClaimSafety": "NOT_PROVEN for JSON/SQLite; PostgreSQL row updates serialize one provider-state row but deployment-scale behavior needs tests.",
+    "policy": "Do not change provider storage driver or migrate persisted provider data automatically during this step."
+  },
+  "controls": [
+    {
+      "id": "JOB-001",
+      "title": "Durable owner",
+      "required": "Every queued work domain identifies one owning service and persisted state source."
+    },
+    {
+      "id": "JOB-002",
+      "title": "Gateway queue ownership",
+      "required": "Gateway claims and finalization are scoped to the assigned gateway/device identity."
+    },
+    {
+      "id": "JOB-003",
+      "title": "Lease expiry",
+      "required": "SMS/call queue claims use finite lease timestamps and claim eligibility checks lease expiry."
+    },
+    {
+      "id": "JOB-004",
+      "title": "Retry schedule",
+      "required": "Queue/outbox retries have next-attempt timestamps and bounded backoff/max attempts."
+    },
+    {
+      "id": "JOB-005",
+      "title": "Backend idempotency",
+      "required": "Provider result POST uses a stable resultId Idempotency-Key so an uncertain response can be retried safely at the API boundary."
+    },
+    {
+      "id": "JOB-006",
+      "title": "Encrypted result queue",
+      "required": "Provider backend-result payload is encrypted before it is persisted in provider state."
+    },
+    {
+      "id": "JOB-007",
+      "title": "Dead-letter retention",
+      "required": "Invalid encrypted/schema payloads and retry-exhausted remote deliveries retain a DEAD_LETTER record with a safe error code and timestamp."
+    },
+    {
+      "id": "JOB-008",
+      "title": "No false success",
+      "required": "Backend result is acknowledged only after a successful HTTP response; queued/delivered command state is not equal to handset execution success."
+    },
+    {
+      "id": "JOB-009",
+      "title": "No auto-replay of dead letter",
+      "required": "Dead-letter work is not sent automatically again without an explicit replay/reset policy."
+    },
+    {
+      "id": "JOB-010",
+      "title": "Storage ambiguity visible",
+      "required": "JSON, SQLite and PostgreSQL driver candidates remain disclosed; no exactly-once or cross-process claim without atomic-claim proof."
+    },
+    {
+      "id": "JOB-011",
+      "title": "Unimplemented executor visible",
+      "required": "DataMergeJob has a schema record but no established worker/lease path in this source package; do not report it as executing durable work."
+    },
+    {
+      "id": "JOB-012",
+      "title": "Physical tests deferred",
+      "required": "Crash/restart, competing worker, lease expiry, poison payload and idempotent replay tests remain NOT_RUN until all four packages finish."
+    }
+  ],
+  "finalPhysicalTests": [
+    "Provider state survives process restart for the selected approved persistence driver.",
+    "Two workers cannot claim the same queue item concurrently on production-selected storage.",
+    "Expired lease is safely reclaimed while an unexpired lease is not duplicated.",
+    "Wrong Gateway/device cannot finalize a claimed SMS/call item.",
+    "Backend result outbox retries after timeout with stable Idempotency-Key and no duplicate Backend side effect.",
+    "Invalid encrypted/JSON payload is retained as DEAD_LETTER with safe error metadata.",
+    "Retry exhaustion retains the outbox record and linked delivery result remains unacknowledged.",
+    "A successful Backend result response marks delivery result ACKed and removes READY retry item.",
+    "Dead-letter queue is visible to authorized operational review and is not auto-replayed.",
+    "Provider storage driver migration between JSON/SQLite/PostgreSQL cannot lose or split authoritative state.",
+    "Realtime outbox work resumes after Backend restart and preserves actor audience/order.",
+    "Notification attempts are unique by notificationId and attemptNumber.",
+    "Gateway command delivered state is distinct from command execution/ACK result.",
+    "DataMergeJob has an explicitly approved executor or remains clearly non-executable/manual-only."
+  ],
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+  "knownResidualsRequiringFinalReview": [
+    "Approve exactly one authoritative Provider storage driver and migration procedure.",
+    "Decide cross-process lease/claim algorithm and worker concurrency limits.",
+    "Define authorized manual DEAD_LETTER inspect/replay/reset controls and retention policy.",
+    "DataMergeJob has no proven durable worker/lease implementation in the current source package.",
+    "Remote callback delivery is at-least-once; real backend idempotency semantics must be tested.",
+    "Provider JSON/SQLite whole-state updates and multi-process locking safety remain unproven."
+  ],
+  "retryTimeoutPolicy": {
+    "path": "config/retry-timeout-policy.json",
+    "validator": "scripts/verify-retry-timeout-policy.mjs",
+    "status": "LINKED_CONFIGURATION_BOUNDS_AND_TIMEOUTS_RECORDED"
+  },
+  "privilegedConfigurationContract": {
+    "path": "config/privileged-configuration-contract.json",
+    "bulkAtomicityDecision": "RX-DEC-044"
+  }
+}

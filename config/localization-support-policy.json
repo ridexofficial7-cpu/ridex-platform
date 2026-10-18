@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "policyRevision": 1,
+  "date": "2026-10-13",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "SHARED_LOCAL_PREFERENCE_STORE_WIRED; DEVICE_STARTUP_AND_NATIVE_REVIEW_PENDING",
+  "source": "RideX_Language_Selection_and_Multilingual_Setup_Package.zip locale_registry.csv and LANGUAGE_PREFERENCE_API_CONTRACT.md, reconciled with current source inventory",
+  "productLocalePolicy": {
+    "sourceLocale": "en-IN",
+    "defaultFallbackLocale": "en-IN",
+    "firstSupportedLocales": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "localeRegistryPath": "config/locale-registry.json",
+    "enableOtherLocalesOnlyAfter": [
+      "complete translation catalog reviewed by a fluent language reviewer",
+      "placeholders/plurals/formatting validated",
+      "screen text-expansion and accessibility checks completed",
+      "approved locale-specific notifications and critical copy reviewed",
+      "relevant LQA cases pass and product owner approves rollout"
+    ],
+    "unsupportedExplicitSelection": "reject selection and retain current valid locale; do not mark planned/backlog locale as enabled only because it exists in registry",
+    "unsupportedAccountPreferenceOnRead": "use en-IN fallback and record a safe TEST-only diagnostic without user-sensitive data",
+    "unsupportedPreferenceWrite": "reject with a stable validation error code; never trust an arbitrary locale string",
+    "missingTranslation": "try en-IN dictionary; if still missing, use a supplied safe fallback or approved generic display copy; do not render raw internal translation key",
+    "mobileWebDictionaryMerge": "prohibited without an explicit canonical key mapping and review; current catalogs are materially different"
+  },
+  "selectionAndSync": {
+    "beforeAuthentication": [
+      "valid explicit local selection",
+      "supported device locale if local selection absent/invalid",
+      "en-IN fallback"
+    ],
+    "afterAuthentication": [
+      "if the user explicitly changed language during the current session, preserve that choice and synchronize it to the account preference when the approved API is available",
+      "otherwise apply the account saved preference if it is supported",
+      "if account preference is missing/unsupported, preserve the valid local selection and synchronize it after login",
+      "if local selection is also missing/invalid, use supported device locale or en-IN"
+    ],
+    "localSelectionBehavior": "apply immediately without network dependency; persistence failure must not crash the UI",
+    "syncFailureBehavior": "do not revert the current UI language; show a non-blocking sync warning and retry through a bounded idempotent sync mechanism after network recovery",
+    "serverRouteStatus": "NOT_ESTABLISHED; verify existing profile/preferences routes before adding a duplicate API",
+    "accountPreferencePersistenceStatus": "NOT_IMPLEMENTED_OR_NOT_FOUND_IN_CURRENT_SCHEMA",
+    "acceptLanguageHeader": "may advertise current locale to Backend for human-readable responses; stable codes and structured params remain the UI contract"
+  },
+  "languageChangeMustNotResetOrMutate": [
+    "OTP challenge expiry, wrong-attempt count, resend eligibility or purpose code",
+    "authentication/session/device trust state",
+    "Customer booking, quote, payment or active trip state",
+    "Driver online state, current offer, trip or GPS lifecycle",
+    "Admin role, permissions, geographic scope or privileged approvals",
+    "Gateway identity, command queue or delivery state"
+  ],
+  "surfaceReadiness": [
+    {
+      "surface": "Admin Web",
+      "currentStatus": "LOCAL_EN_HI_I18N_PRESENT",
+      "policyEnablement": "en-IN and hi-IN only; backend account synchronization still pending"
+    },
+    {
+      "surface": "Customer Mobile",
+      "currentStatus": "CORE_AUTH_OTP_BOOKING_KEYS_WIRED_LOCAL_SELECTOR_ACTIVE",
+      "policyEnablement": "local en-IN/hi-IN selection active for mapped core copy; full screen coverage and backend account sync pending"
+    },
+    {
+      "surface": "Driver Mobile",
+      "currentStatus": "CORE_AUTH_REGISTRATION_HOME_REQUEST_KEYS_WIRED",
+      "policyEnablement": "mapped core copy and local selector active; remaining hard-coded strings and QA pending"
+    },
+    {
+      "surface": "Admin Mobile",
+      "currentStatus": "CORE_LOGIN_OTP_KEYS_WIRED",
+      "policyEnablement": "mapped login/OTP labels and local selector active; full Admin copy coverage pending"
+    },
+    {
+      "surface": "Super Admin Control",
+      "currentStatus": "LANGUAGE_TOGGLE_IN_DISABLED_STRUCTURAL_SHELL",
+      "policyEnablement": "language preference works in shell; security entry and operational control remain disabled/unimplemented"
+    },
+    {
+      "surface": "Public Website",
+      "currentStatus": "STATIC_CONTENT_LOCALIZATION_NOT_ESTABLISHED",
+      "policyEnablement": "not enabled yet"
+    },
+    {
+      "surface": "Android Gateway",
+      "currentStatus": "UI_LOCALE_SUPPORT_NOT_ESTABLISHED",
+      "policyEnablement": "verify user-visible strings before locale enablement"
+    },
+    {
+      "surface": "Broadcaster Provider",
+      "currentStatus": "USER_FACING_LOCALE_SCOPE_NOT_ESTABLISHED",
+      "policyEnablement": "only localize any operator-facing UI if one is in scope"
+    }
+  ],
+  "testStatus": {
+    "languageQAScenarios": "NOT_RUN",
+    "physicalUIAPIAndPreferenceTests": "DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+    "productionApproval": false
+  },
+  "openDependencies": [
+    "Shared lookup runtime is implemented and Admin Web uses it; Mobile clients still require platform wiring and screen keys.",
+    "Shared lookup runtime is implemented and Admin Web uses it; Mobile clients still require platform wiring and screen keys.",
+    "Step C must correct gu-IN English name and define clean locale metadata without altering language_self_name.",
+    "Step H must introduce central mobile localization adapters and a canonical catalog policy.",
+    "Steps Q/R must verify existing Backend profile/preferences routes and approve schema migration before persisted account preference implementation.",
+    "Step D must map selector placements to the 92-screen inventory.",
+    "Step V must run LQA-001 through LQA-025 only during final test phase."
+  ],
+  "firstLaunchResolver": {
+    "path": "config/locale-first-launch-resolution.json",
+    "runtimeModule": "packages/localization/src/localeResolver.mjs",
+    "status": "IMPLEMENTED_NOT_WIRED_TO_CLIENTS",
+    "validationCommand": "npm run verify:locale-first-launch",
+    "precedence": "See contract; explicit session choice > saved account preference (authenticated) > local preference > supported device locale > en-IN fallback as applicable",
+    "deviceRegionMapping": "Different region for supported base language maps to configured Indian locale; explicit different script is rejected."
+  },
+  "localPreferencePersistence": {
+    "path": "config/locale-preference-persistence.json",
+    "module": "packages/localization/src/localePreferenceStore.mjs",
+    "storageKey": "ridex.locale.preference.v1",
+    "status": "DEPENDENCY_INJECTED_PORT_IMPLEMENTED_CLIENT_ADAPTERS_PENDING",
+    "failureBehavior": "Non-fatal status; resolved language remains selected and UI must not crash."
+  },
+  "preferencePrecedenceGuard": {
+    "path": "config/locale-preference-precedence.json",
+    "module": "packages/localization/src/localePreferenceCoordinator.mjs",
+    "status": "PURE_COORDINATION_GUARDS_IMPLEMENTED; API/CLIENT_INTEGRATION_PENDING",
+    "behavior": "Account preference reads with stale generation or a current explicit selection cannot override current locale; write responses never change current UI locale."
+  },
+  "localizationInterface": {
+    "path": "config/localization-interface.json",
+    "runtimeModule": "packages/localization/src/translationRuntime.mjs",
+    "status": "IMPLEMENTED_ADMIN_WEB_WIRED_MOBILE_AND_OTHER_SURFACES_PENDING",
+    "lookupOrder": [
+      "selected locale catalog",
+      "en-IN catalog",
+      "safe caller fallback",
+      "generic fallback"
+    ],
+    "rawKeyShown": false,
+    "catalogsMerged": false
+  },
+  "implementation": {
+    "canonicalLocalPreferenceKey": "ridex.locale.preference.v1",
+    "legacyMigration": "Mobile reads ridex.language.preference.v1 only when canonical key is absent; Admin Web migrates ridex-admin-language:<environment> into canonical key.",
+    "firstLaunch": "Supported device locale (English/Hindi) is resolved after local preference; en-IN is fallback. Explicit user selection applies immediately and stale startup persistence is generation guarded."
+  }
+}

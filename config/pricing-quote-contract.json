@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 1,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_PRICING_CONTRACT_MAPPED_FINANCIAL_APPROVAL_AND_RUNTIME_VALIDATION_PENDING",
+  "authority": {
+    "pricingAndQuote": "Backend only",
+    "routingDistanceAndDuration": "Backend routing service",
+    "clientPrice": "display-only; never authoritative",
+    "financialMutation": "Backend transaction and verified provider/accounting rules"
+  },
+  "observedBackend": {
+    "pricingModule": "services/backend/src/services/pricing.ts",
+    "bookingRoute": "services/backend/src/routes/bookings.ts",
+    "routingModule": "services/backend/src/services/routing.ts",
+    "pricingRuleModel": "PricingRule",
+    "fareFunctions": [
+      "distanceFare",
+      "fullRideFare",
+      "sharedFare",
+      "goodsFare"
+    ],
+    "smartPricingFunction": "applySmartPricing",
+    "couponValidation": "validateCoupon",
+    "routingFunction": "roadRoute",
+    "bookingFareFields": [
+      "estimatedFare",
+      "finalFare",
+      "pricingVersion"
+    ],
+    "observedNumericStorage": "Prisma Decimal(12,2) for Booking.estimatedFare, Booking.finalFare, and PricingRule monetary rule fields; multiplier Decimal(8,4)."
+  },
+  "pricingRuleFieldsPresent": [
+    "serviceType",
+    "bookingType",
+    "rideType",
+    "vehicleType",
+    "zoneId",
+    "dayOfWeek",
+    "startTime",
+    "endTime",
+    "demandMin",
+    "demandMax",
+    "minFare",
+    "maxFare",
+    "baseFare",
+    "perKm",
+    "perMinute",
+    "waitingPerMinute",
+    "weightPerKg",
+    "multiplier",
+    "priority",
+    "metadata"
+  ],
+  "requestAndQuotePrinciples": [
+    "Customer-supplied customerId does not establish identity; authenticated session resolves the customer.",
+    "Road distance/duration is sourced by Backend routing, not trusted from client-supplied fare fields.",
+    "Quote/estimated fare is calculated by Backend pricing rules; client displays Backend result only.",
+    "Coupon/promo validity and pricing must be rechecked by Backend during booking confirmation.",
+    "Payment/provider success and final fare are separate authoritative states; a client success label is not payment proof."
+  ],
+  "requiredFareComponentsByService": {
+    "PASSENGER": [
+      "applicable base/min/max fare rules",
+      "server road distance",
+      "approved ride type/vehicle rule",
+      "approved time/duration/waiting components where configured",
+      "approved multiplier/surge behavior",
+      "approved coupon treatment"
+    ],
+    "EVENT": [
+      "approved Event/session fare source",
+      "passenger count",
+      "eligible vehicle capacity",
+      "approved booking/payment treatment"
+    ],
+    "PARCEL": [
+      "server route/distance",
+      "approved parcel service subtype",
+      "weight/payload components where configured",
+      "approved min/max and modifier rules"
+    ],
+    "GOODS": [
+      "server route/distance",
+      "goods vehicle type and size",
+      "weight/payload components where configured",
+      "approved min/max and modifier rules"
+    ]
+  },
+  "financialRulesNotInvented": [
+    "No new base fare, per-kilometre, per-minute, waiting, weight, minimum/maximum, commission, discount, tax or surge amounts are selected here.",
+    "Existing pricing.ts values/formulas are implementation evidence only until reconciled with the approved financial source-of-truth and test vectors.",
+    "Exact rounding points/order of operations and all monetary boundary vectors require finance/product sign-off.",
+    "Quote identifier/version/expiry, price-lock duration, fare-change consent and currency representation require explicit contract review; no quote TTL or currency column is assumed.",
+    "Repricing/cancellation/waiting charges/partial route changes/refund interactions need approved acceptance rules."
+  ],
+  "finalTestVectorsRequired": [
+    "minimum distance and distance rounding boundary",
+    "zero/missing/negative/huge inputs rejected or normalized per approved policy",
+    "each passenger ride type and Full Ride no passenger-count collection",
+    "Event per-passenger/session fare and capacity boundaries",
+    "each parcel subtype and goods size/type/weight boundary",
+    "minimum/maximum fare and modifier boundaries",
+    "coupon valid/expired/over-discount/conflict cases",
+    "route provider timeout/invalid route/alternate route behavior",
+    "quote expiry and server-side reprice/consent",
+    "decimal precision, rounding and ledger/payment amount equality"
+  ]
+}

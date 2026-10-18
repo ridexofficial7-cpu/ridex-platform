@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "interfaceRevision": 8,
+  "date": "2026-10-12",
+  "project": "RideX-Super_Admin_Controle",
+  "status": "SHARED_TRANSLATION_RUNTIME_ADMIN_WEB_AND_CORE_MOBILE_JOURNEYS_WIRED; FULL_SCREEN_COVERAGE_AND_BACKEND_SYNC_PENDING",
+  "implementation": {
+    "runtimeModule": "packages/localization/src/translationRuntime.mjs",
+    "typescriptDeclarations": "packages/localization/src/translationRuntime.d.mts",
+    "validator": "scripts/verify-translation-runtime.mjs",
+    "validationCommand": "npm run verify:translation-runtime"
+  },
+  "contract": {
+    "supportedLocales": [
+      "en-IN",
+      "hi-IN"
+    ],
+    "requestedLocaleFallback": "en-IN if current locale is invalid/unsupported",
+    "lookupOrder": [
+      "selected locale catalog",
+      "en-IN catalog",
+      "provided safe fallback text",
+      "generic display fallback"
+    ],
+    "flatAndNestedKeys": "supported; flat exact key lookup is preferred before dotted path traversal",
+    "rawInternalKey": "never render as fallback copy",
+    "prototypePathSegments": [
+      "__proto__",
+      "prototype",
+      "constructor"
+    ],
+    "placeholdersAndFormatting": "Step N packages/localization/src/dynamicFormatting.mjs provides named interpolation, Intl plural selection and locale-aware number/date/currency presentation; currency must be explicit and financial rounding/business timezone remain Backend decisions."
+  },
+  "catalogPolicy": {
+    "adminWebCatalog": "retain current 225-key English/Hindi catalogs; shared runtime only centralizes lookup/fallback",
+    "mobileExampleCatalog": "Use the original 44-key English/Hindi mobile example dictionaries for core journey keys; preserve separate Admin Web dictionaries and source conflicts.",
+    "silentCatalogMerge": "prohibited",
+    "canonicalKeyReconciliation": "Steps I/J static catalog and screen map complete; Step K skipped for final semantic review; catalog source variants remain separate.",
+    "canonicalKeyCatalog": "config/translation-key-catalog.json",
+    "canonicalKeyCatalogStatus": "CANDIDATE_CATALOG_CREATED; semantic ownership and Screen ID mapping pending at Step J"
+  },
+  "surfaceIntegration": {
+    "adminWeb": "WIRED_TO_SHARED_TRANSLATION_RUNTIME_AND_DYNAMIC_FORMATTING_HELPERS; 225-KEY-DICTIONARIES-PRESERVED; 16_HINDI_ENCODING_REPAIRS_REQUIRE_NATIVE_REVIEW",
+    "customerMobile": "CORE_AUTH_OTP_AND_BOOKING_LABELS_WIRED; SHARED_DYNAMIC_FORMAT_NUMBER_CURRENCY_DATE_DATETIME_PLURAL_AND_INTERPOLATION_METHODS_EXPOSED; REMAINING_SCREEN_COPY_PENDING",
+    "driverMobile": "CORE_AUTH_REGISTRATION_HOME_AND_REQUEST_ACTIONS_WIRED; SHARED_DYNAMIC_FORMATTING_METHODS_EXPOSED; REMAINING_SCREEN_COPY_PENDING",
+    "adminMobile": "CORE_LOGIN_OTP_AND_ATTEMPT_LABELS_WIRED; SHARED_DYNAMIC_FORMATTING_METHODS_EXPOSED; REMAINING_ADMIN_COPY_PENDING",
+    "superAdminControl": "LANGUAGE_TOGGLE_WIRED_TO_DISABLED_STRUCTURAL_SHELL_ONLY; PRIVILEGED_FUNCTIONALITY_NOT_IMPLEMENTED",
+    "publicWebsite": "PENDING_LOCALIZATION_SCOPE_AND_ADAPTER",
+    "gateway": "PENDING_USER_VISIBLE_COPY_REVIEW",
+    "broadcasterProvider": "CONDITIONAL_NO_OPERATOR_UI_IN_SCOPE"
+  },
+  "testStatus": {
+    "pureLookupCases": 19,
+    "caseExecution": "DEPENDENCY_FREE_VALIDATOR",
+    "all25Lqa": "NOT_RUN",
+    "physicalUiTests": "DEFERRED_UNTIL_ALL_FOUR_PACKAGE_IMPLEMENTATIONS_FINISH",
+    "mobileCoreKeyReferences": "STATIC_SOURCE_GUARD",
+    "pureDynamicFormattingCases": 36
+  },
+  "openDependencies": [
+    "Core mobile journey copy is wired for the available 44-key example catalog; full-screen key coverage and semantics remain incomplete.",
+    "Step K remains skipped for final cross-catalog semantic review; four source conflicts remain explicit and the 16 recovered Hindi strings require native review.",
+    "Backend account-language preference API/schema and cross-device synchronization remain pending Steps Q/R/S; this provider persists only the local preference.",
+    "Step N will standardize remaining interpolation/plural/date/number/currency behavior; physical LQA remains deferred.",
+    "Missing-key diagnostics are TEST-only and explicitly opted-in; actual browser/device log review remains pending final physical validation."
+  ],
+  "screenMap": "config/screen-to-key-map.json",
+  "screenMapStatus": "92 Screen IDs statically mapped; core auth/booking/driver/admin mobile key usage wired; remaining screen copy and semantic review pending",
+  "valueReconciliation": "config/translation-value-reconciliation.json",
+  "valueReconciliationStatus": "16 reversible Hindi encoding repairs applied; four cross-source key conflicts remain skipped for final review",
+  "coreJourneyLocalization": "config/core-journey-localization.json",
+  "coreJourneyStatus": "CORE_MOBILE_JOURNEY_KEYS_WIRED_STATIC_VERIFY; FULL_SCREEN_COPY_NATIVE_REVIEW_AND_LQA_PENDING",
+  "dynamicFormattingModule": "packages/localization/src/dynamicFormatting.mjs",
+  "dynamicFormattingStatus": "IMPLEMENTED_STATIC_CASES_PASS; ADMIN_WEB_AND_MOBILE_CONTEXT_HELPERS_EXPOSED; FULL_SCREEN_USAGE_AND_LQA_PENDING",
+  "diagnostics": {
+    "path": "config/localization-diagnostics.json",
+    "runtimeModule": "packages/localization/src/localizationDiagnostics.mjs",
+    "validator": "scripts/verify-localization-diagnostics.mjs",
+    "status": "TEST_ONLY_EXPLICIT_OPT_IN; LIVE_SILENT; LOGS_SAFE_METADATA_ONLY"
+  },
+  "ciValidation": {
+    "path": "config/localization-ci-policy.json",
+    "validator": "scripts/verify-localization-ci.mjs",
+    "status": "STATIC_PAIR_KEY_AND_PLACEHOLDER_GATES_IMPLEMENTED; LIVE_BLOCKED_WHILE_REVIEW_OR_LQA_PENDING"
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "contractRevision": 3,
+  "project": "RideX-Super_Admin_Controle",
+  "status": "STATIC_RETENTION_DELETION_INVENTORY_CREATED_SCHEDULES_UNAPPROVED_PHYSICAL_TESTS_DEFERRED",
+  "policy": {
+    "retentionDuration": "NOT_APPROVED; do not invent TTLs or run bulk purges until RX-DEC-041/RX-DEC-045 are approved.",
+    "financialRecords": "Do not use ordinary account/test cleanup as a general live payment, ledger, refund or settlement deletion mechanism. Financial retention and anonymization need explicit approval.",
+    "privateObjects": "Delete private object before deleting its authoritative DB pointer where the user initiated deletion; if object deletion fails, retain the DB pointer for retry.",
+    "accessLogs": "Record successful sensitive document downloads without recording signed query strings, signatures, raw object keys or file contents.",
+    "testDataCleanup": "Test-data reset/deletion must stay TEST-only, use RIDEX_TEST_MODE=true and require exact confirmation; source inspection is not proof of the complete deletion boundary.",
+    "otpPurposeDeletionException": "The approved RideX exception removes the deleted purpose's configuration history and owned audit rows; unrelated bulk-operation audit rows remain. Existing active OTPs retain their generation-time configuration until normal expiry; tombstones prevent restoration.",
+    "expirySemantics": "Signed access links expire when expiresAt is less than or equal to the current UTC epoch second.",
+    "cleanupJobs": "No retention/cleanup job is treated as implemented unless a dedicated durable scheduler/worker and observable deletion evidence are present."
+  },
+  "dataClasses": [
+    {
+      "id": "OTP_PURPOSE_CONFIGURATION",
+      "owner": "Backend Configuration",
+      "source": "services/backend/src/routes/configuration.ts",
+      "observedBehavior": "DELETE creates a tombstone, removes current purpose configuration/history and purpose-owned audit rows; unrelated bulk audit rows are preserved.",
+      "retentionStatus": "EXPLICIT_PRODUCT_EXCEPTION; wider retention duration unresolved",
+      "decisionIds": [
+        "RX-DEC-041",
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "ACTIVE_OTP_CHALLENGES",
+      "owner": "Backend Authentication",
+      "source": "services/backend/src/routes/auth.ts; services/backend/prisma/schema.prisma",
+      "observedBehavior": "OTP expiry and generation-time purpose/configuration snapshots are represented; retention/purge behavior for expired challenge/attempt records is not established by this step.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "PROTECTED_ACTION_OTP_GRANTS",
+      "owner": "Backend Authentication",
+      "source": "services/backend/src/services/protectedActionGrants.ts; services/backend/prisma/schema.prisma",
+      "observedBehavior": "Authorization grants expire after 120 seconds and are rejected after expiry; bounded opportunistic cleanup runs during issuance, but no durable cleanup schedule is established.",
+      "retentionStatus": "ROW_CLEANUP_RETENTION_POLICY_PENDING",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "AUTH_SESSIONS",
+      "owner": "Backend Authentication",
+      "source": "services/backend/src/services/authSession.ts; services/backend/prisma/schema.prisma",
+      "observedBehavior": "Session expiry/revocation exists; expired/revoked-row cleanup schedule is not established here.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "CUSTOMER_GALLERY_PRIVATE_OBJECTS",
+      "owner": "Backend Customer/Storage",
+      "source": "services/backend/src/routes/customer.ts; services/backend/src/integrations/storage.ts",
+      "observedBehavior": "Private object is deleted before its DB pointer; if object deletion fails the DB row remains for retry; signed download is short-lived, audited and no-store.",
+      "retentionStatus": "DELETE FLOW PRESENT; routine orphan cleanup/retention schedule unresolved",
+      "decisionIds": [
+        "RX-DEC-041",
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "DRIVER_KYC_DOCUMENTS",
+      "owner": "Backend Driver/KYC",
+      "source": "services/backend/src/routes/driver.ts; services/backend/src/routes/admin.ts; services/backend/src/integrations/storage.ts",
+      "observedBehavior": "Document expiry describes validity, not retention; object retention, replacement cleanup and legal hold are not established in this step.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-041",
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "SUPPORT_ATTACHMENTS",
+      "owner": "Backend Support/Storage",
+      "source": "services/backend/src/routes/support.ts; services/backend/src/integrations/storage.ts",
+      "observedBehavior": "Access is via expiring signed links; successful download validates filename/MIME/content signature, writes an EXPORT audit and uses private no-store/nosniff headers. No approved attachment retention/deletion endpoint or orphan sweep is declared.",
+      "retentionStatus": "ACCESS HARDENED; retention/deletion schedule unresolved",
+      "decisionIds": [
+        "RX-DEC-041",
+        "RX-DEC-045",
+        "RX-DEC-046"
+      ]
+    },
+    {
+      "id": "SUPPORT_CASES_MESSAGES_NOTES",
+      "owner": "Backend Support",
+      "source": "services/backend/src/routes/support.ts; services/backend/prisma/schema.prisma",
+      "observedBehavior": "Support records and internal notes exist; permanent-delete, legal-hold and retention workflow not established by this step.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-045",
+        "RX-DEC-046"
+      ]
+    },
+    {
+      "id": "PAYMENTS_REFUNDS_LEDGER_SETTLEMENTS",
+      "owner": "Backend Finance",
+      "source": "services/backend/src/routes/payments.ts; services/backend/src/routes/payouts.ts; services/backend/src/routes/admin.ts; services/backend/prisma/schema.prisma",
+      "observedBehavior": "Financial models and reconciliation paths exist; do not define a retention duration or a general production delete path without approved accounting/legal rules.",
+      "retentionStatus": "VERIFY; live deletion prohibited by this contract until approved policy exists",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "AUDIT_AND_SECURITY_LOGS",
+      "owner": "Backend Security/Audit",
+      "source": "services/backend/src/routes/configuration.ts; services/backend/prisma/schema.prisma",
+      "observedBehavior": "Audit rows are emitted; OTP-purpose deletion is the documented special exception. General retention, archival and legal-hold behavior are not configured by this step.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-041",
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "IDEMPOTENCY_AND_WEBHOOK_RECORDS",
+      "owner": "Backend Integrations/Payments",
+      "source": "services/backend/src/routes/payments.ts; services/backend/src/routes/bookings.ts; services/backend/src/routes/events.ts; services/backend/src/routes/ratings.ts; services/backend/src/routes/safety.ts",
+      "observedBehavior": "Some expired idempotency rows are removed lazily during requests; a global background purge/retention job is not established.",
+      "retentionStatus": "TTL/cleanup consistency pending review",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "PROVIDER_QUEUE_AND_DEAD_LETTER",
+      "owner": "Broadcaster Provider",
+      "source": "services/broadcaster-provider/src/services/backend-result-outbox.service.ts; services/broadcaster-provider/src/services/provider-storage.service.ts",
+      "observedBehavior": "Exhausted/poisoned result records are retained as DEAD_LETTER; manual replay, inspection access control and long-term cleanup schedule unresolved.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "GATEWAY_COMMANDS_AND_DELIVERY_RESULTS",
+      "owner": "Android Gateway/Provider",
+      "source": "apps/gateway-android/app/src/main; services/broadcaster-provider/src",
+      "observedBehavior": "Expiry/terminal status fields exist; historical command/result retention and cleanup schedule are not established here.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "BACKUPS_AND_SNAPSHOTS",
+      "owner": "Operations/Database",
+      "source": "services/backend/src/scripts; services/backend/prisma/schema.prisma; config/run-recovery-baseline.json",
+      "observedBehavior": "Backup/restore entrypoints exist; actual backup retention, encryption/key lifecycle and restore verification remain final-phase work.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "APP_ASSET_VERSIONS",
+      "owner": "Backend Platform/Clients",
+      "source": "services/backend/src/routes/appAssets.ts; services/backend/prisma/schema.prisma",
+      "observedBehavior": "Version activation/rollback exists; obsolete asset cleanup and retention of previously active versions is not established by this step.",
+      "retentionStatus": "VERIFY",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    },
+    {
+      "id": "TEST_DATA_RECORDS",
+      "owner": "Backend Test Data Lab",
+      "source": "services/backend/src/routes/admin.ts",
+      "observedBehavior": "Test-data endpoints require TEST environment, RIDEX_TEST_MODE=true and exact confirmation; prove every cascading target stays within the intended test fixture boundary before use.",
+      "retentionStatus": "TEST-ONLY PURGE; fixture-target proof deferred",
+      "decisionIds": [
+        "RX-DEC-045"
+      ]
+    }
+  ],
+  "deletionRoutes": [
+    {
+      "method": "DELETE",
+      "path": "/api/v1/customer/:customerId/gallery/:photoId",
+      "source": "services/backend/src/routes/customer.ts",
+      "status": "PRIVATE_OBJECT_FIRST_DB_POINTER_SECOND"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/customer/:customerId/saved-locations/:locationId",
+      "source": "services/backend/src/routes/customer.ts",
+      "status": "CUSTOMER_OWNER_AND_AUDIT_SCOPE_REVIEW"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/notifications/:notificationId",
+      "source": "services/backend/src/routes/notifications.ts",
+      "status": "SOURCE_PRESENT_AUTH_AND_RETENTION_TEST_DEFERRED"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/drivers/:driverId/top-driver",
+      "source": "services/backend/src/routes/admin.ts",
+      "status": "SUPER_ADMIN_OPERATIONAL_MARKER_DELETE"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/admin-presence/sessions/:sessionId",
+      "source": "services/backend/src/routes/admin.ts",
+      "status": "SESSION_REVOCATION_HISTORY_RETENTION_REVIEW"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/drivers/:driverId/working-routes/:routeId",
+      "source": "services/backend/src/routes/admin.ts",
+      "status": "ADMIN_PERMISSION_SCOPE_AND_AUDIT_REVIEW"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/security/otp-configurations/:purposeCode",
+      "source": "services/backend/src/routes/admin.ts",
+      "status": "LEGACY_API_DELETE_SEMANTICS_AND_DUPLICATE_SYSTEM_REVIEW"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/configuration/otp/purposes/:purposeCode",
+      "source": "services/backend/src/routes/configuration.ts",
+      "status": "APPROVED_PURPOSE_DELETION_EXCEPTION; CANONICAL_API_DECISION_OPEN"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/test-data",
+      "source": "services/backend/src/routes/admin.ts",
+      "status": "TEST_ONLY_EXACT_CONFIRMATION"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/admin/test-data/:entity/:id",
+      "source": "services/backend/src/routes/admin.ts",
+      "status": "TEST_ONLY_FIXTURE_RECORD_RESTRICTION"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/sos/emergency-contacts/:contactId",
+      "source": "services/backend/src/routes/safety.ts",
+      "status": "CUSTOMER_OWNER_AND_IDEMPOTENCY_SCOPE_REVIEW"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/sos/driver/emergency-contacts/:contactId",
+      "source": "services/backend/src/routes/safety.ts",
+      "status": "DRIVER_OWNER_AND_IDEMPOTENCY_SCOPE_REVIEW"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/sos/incidents/:incidentId",
+      "source": "services/backend/src/routes/safety.ts",
+      "status": "SENSITIVE_SAFETY_RECORD_DELETION_POLICY_REVIEW"
+    }
+  ],
+  "openDecisions": [
+    {
+      "id": "RX-DEC-041",
+      "status": "VERIFY",
+      "topic": "private-file-retention-and-deletion-policy"
+    },
+    {
+      "id": "RX-DEC-045",
+      "status": "VERIFY",
+      "topic": "global-data-retention-legal-hold-archive-and-purge-schedule"
+    },
+    {
+      "id": "RX-DEC-046",
+      "status": "VERIFY",
+      "topic": "support-attachment-deletion-and-orphan-object-cleanup"
+    },
+    {
+      "id": "RX-DEC-047",
+      "status": "VERIFY",
+      "topic": "canonical-otp-configuration-api-and-persistence-owner"
+    }
+  ],
+  "finalPhysicalTests": [
+    "Customer Gallery object-delete failure preserves DB pointer for retry and successful delete removes both object and pointer.",
+    "Support attachment signed URL rejects at expiresAt equal to current epoch second.",
+    "Support attachment body MIME/signature mismatch is rejected before bytes are served.",
+    "Support attachment successful access writes redacted EXPORT audit metadata.",
+    "Signed/download responses cannot be cached and include nosniff.",
+    "OTP purpose deletion removes only the deleted purpose's rows and preserves unrelated bulk audit records.",
+    "Active OTP remains valid only through its recorded generation-time expiry/configuration.",
+    "TEST data deletion denies non-TEST runtime and missing/wrong exact confirmation.",
+    "Test data purge never deletes live financial/safety records or unrelated IDs.",
+    "No general cleanup job deletes financial or audit data before retention/legal approval.",
+    "Support attachment retention/deletion and orphan sweep use approved policy and preserve legal holds.",
+    "Session/OTP/idempotency cleanup is bounded and does not delete active/in-progress rows.",
+    "Dead-letter cleanup preserves unresolved/incident records until authorized retention/replay disposition.",
+    "Backups and snapshots obey approved retention and remain restore-verified before purge."
+  ],
+  "testStatus": "NOT_RUN_DEFERRED_UNTIL_ALL_FOUR_PACKAGES_ARE_IMPLEMENTED",
+  "duplicateOtpConfigurationSurfaces": {
+    "legacyAdminApi": {
+      "basePath": "/api/v1/admin/security/otp-configurations",
+      "source": "services/backend/src/routes/admin.ts",
+      "permission": "requireOtpSecurityPermission -> approved Admin or Super Admin plus explicit security:MANAGE_SECURITY, security:CONFIGURE, or System Configuration:CONFIGURE",
+      "persistence": "OtpConfiguration / OtpConfigurationHistory Prisma models",
+      "consumer": "Admin Web API contract currently references /admin/security/otp-configurations"
+    },
+    "systemConfigurationApi": {
+      "basePath": "/api/v1/admin/configuration/otp/purposes",
+      "source": "services/backend/src/routes/configuration.ts",
+      "permission": "requireOtpPurposeMutationAdmin on mutations",
+      "persistence": "SystemConfiguration-backed OTP state plus OtpConfiguration mirror/history models",
+      "consumer": "Admin Web API contract references /admin/configuration/otp/purposes"
+    },
+    "decision": "Do not remove or merge either API until one canonical contract/persistence owner is approved; both mutation paths now accept explicit System Configuration/Security privileges, but their persistence/history/delete semantics differ.",
+    "decisionId": "RX-DEC-047"
+  }
+}

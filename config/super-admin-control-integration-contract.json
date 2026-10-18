@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "surface": "Super Admin Control",
+  "status": "DISABLED_STRUCTURAL_TEST_SHELL",
+  "priority": "P0",
+  "connectionId": "CX-005",
+  "clientAuthority": "NONE",
+  "backendAuthority": "Identity, authorization, environment state, service enablement, release control, recovery and audit remain server-side.",
+  "mappedBackendBoundaries": [
+    {
+      "path": "services/backend/src/routes/platform.ts",
+      "mount": "/api/v1/admin/platform",
+      "purpose": "Environment and release/recovery controls",
+      "currentGuard": "Approved ADMIN identity with SUPER_ADMIN role",
+      "dedicatedDeviceTrustAndSignedCommandContract": "NOT_IMPLEMENTED"
+    },
+    {
+      "path": "services/backend/src/routes/configuration.ts",
+      "mount": "/api/v1/admin/configuration",
+      "purpose": "System and security configuration",
+      "currentGuard": "Configuration admin guard; sensitive operations have stronger checks",
+      "dedicatedDeviceTrustAndSignedCommandContract": "NOT_IMPLEMENTED"
+    },
+    {
+      "path": "services/backend/src/routes/admin.ts",
+      "mount": "/api/v1/admin",
+      "purpose": "Existing admin operations and service enablement",
+      "currentGuard": "Backend permission checks; service-enable changes require SUPER_ADMIN",
+      "dedicatedSuperAdminControlClientBinding": "NOT_IMPLEMENTED"
+    }
+  ],
+  "requiredBeforeActivation": [
+    "Approved trusted-device enrollment, revocation and recovery lifecycle",
+    "Hardware-backed/private-key storage contract; no private key in app bundle or .env",
+    "Challenge-bound signed command with nonce, replay protection and requestId",
+    "Step-up authentication and explicit confirmation for high-impact actions",
+    "Durable audit, idempotency and uncertain-outcome reconciliation",
+    "Negative authorization tests and runtime device/API integration tests",
+    "Owner approval of the dedicated Super Admin Control API contract"
+  ],
+  "policy": "Do not add direct client control calls or enable privileged actions until every activation requirement is implemented and verified. Existing Admin routes are mapped evidence, not an approved dedicated control-plane API."
+}
