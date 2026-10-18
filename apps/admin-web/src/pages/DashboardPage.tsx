@@ -30,15 +30,15 @@ function formatMetric(value: number | null | undefined): string {
 export function DashboardPage({ metrics, context, navigate, loading, onRefresh, error, lastUpdatedAt, realtime, realtimeEvent, environment }: Props) {
   const { t } = useLanguage();
   const systemHealth = String(metrics?.systemHealth || "Unknown");
-  const stats: { label: string; value: ReactNode; hint: string }[] = [
-    { label: t("dashboard.activeRides"), value: formatMetric(metrics?.activeRides), hint: "LIVE" },
-    { label: t("dashboard.driversOnline"), value: formatMetric(metrics?.driversOnline), hint: "AVAILABILITY" },
-    { label: t("dashboard.customers"), value: formatMetric(metrics?.customers), hint: "BASE" },
-    { label: t("dashboard.pendingKyc"), value: formatMetric(metrics?.pendingKyc), hint: "REVIEW" },
-    { label: t("dashboard.openSupport"), value: formatMetric(metrics?.openSupport), hint: "SERVICE" },
-    { label: t("dashboard.todayRevenue"), value: metrics?.todayRevenue == null ? "—" : formatCurrencyINR(metrics.todayRevenue), hint: "FINANCE" },
-    { label: t("dashboard.alerts"), value: formatMetric(metrics?.alerts), hint: "ATTENTION" },
-    { label: t("dashboard.systemHealth"), value: <StatusPill value={systemHealth}/>, hint: "STATUS" },
+  const stats: { label: string; value: ReactNode; hint: string; icon: ReactNode; tone: string }[] = [
+    { label: t("dashboard.activeRides"), value: formatMetric(metrics?.activeRides), hint: "LIVE", icon: <CarFront size={18}/>, tone: "red" },
+    { label: t("dashboard.driversOnline"), value: formatMetric(metrics?.driversOnline), hint: "AVAILABILITY", icon: <Users size={18}/>, tone: "green" },
+    { label: t("dashboard.customers"), value: formatMetric(metrics?.customers), hint: "BASE", icon: <Users size={18}/>, tone: "blue" },
+    { label: t("dashboard.pendingKyc"), value: formatMetric(metrics?.pendingKyc), hint: "REVIEW", icon: <ShieldCheck size={18}/>, tone: "amber" },
+    { label: t("dashboard.openSupport"), value: formatMetric(metrics?.openSupport), hint: "SERVICE", icon: <ReceiptText size={18}/>, tone: "blue" },
+    { label: t("dashboard.todayRevenue"), value: metrics?.todayRevenue == null ? "—" : formatCurrencyINR(metrics.todayRevenue), hint: "FINANCE", icon: <WalletCards size={18}/>, tone: "green" },
+    { label: t("dashboard.alerts"), value: formatMetric(metrics?.alerts), hint: "ATTENTION", icon: <AlertTriangle size={18}/>, tone: "amber" },
+    { label: t("dashboard.systemHealth"), value: <StatusPill value={systemHealth}/>, hint: "STATUS", icon: <CheckCircle2 size={18}/>, tone: "green" },
   ];
 
   return <div className="rx-page">
@@ -50,8 +50,12 @@ export function DashboardPage({ metrics, context, navigate, loading, onRefresh, 
     {loading ? <PixelLoader variant="inline" label={t("dashboard.refreshing")}/> : null}
     {realtimeEvent.replayGap ? <Notice tone="warning">{t("dashboard.replayGap")}</Notice> : null}
     <div className="rx-live-meta" aria-live="polite"><span>{realtime === "connected" ? t("dashboard.live", "LIVE") : realtime === "connecting" ? t("dashboard.connecting", "CONNECTING") : t("dashboard.offline", "OFFLINE")}</span><span>{realtimeEvent.type ? t("dashboard.lastEvent").replace("{event}", realtimeEvent.type) : t("dashboard.waitingRealtime")}</span><span>{realtimeEvent.at ? new Date(realtimeEvent.at).toLocaleTimeString() : "—"}</span><span>{lastUpdatedAt ? `Snapshot ${new Date(lastUpdatedAt).toLocaleTimeString()}` : "No confirmed snapshot"}</span></div>
-    <div className="rx-stats-grid" aria-busy={loading}>
-      {stats.map(({ label, value, hint }) => <div className="rx-stat-card" key={label}><span>{label}</span><strong>{loading && !metrics ? <Skeleton width={label === t("dashboard.systemHealth") ? 90 : 70} height={22}/> : value}</strong><small>{hint}</small></div>)}
+    <div className="rx-stats-grid rx-dashboard-metric-grid" aria-busy={loading}>
+      {stats.map(({ label, value, hint, icon, tone }, index) => <div className={`rx-stat-card rx-dashboard-metric-card tone-${tone}`} key={label} style={{ "--metric-index": index } as React.CSSProperties}>
+        <div className="rx-metric-card-top"><span>{label}</span><span className="rx-metric-icon" aria-hidden="true">{icon}</span></div>
+        <strong>{loading && !metrics ? <Skeleton width={label === t("dashboard.systemHealth") ? 90 : 70} height={22}/> : value}</strong>
+        <small><span className="rx-metric-dot" aria-hidden="true"/>{hint}</small>
+      </div>)}
     </div>
     <GeoMap data={metrics?.raw} title={t("dashboard.liveMap", "Live operational map")} height={390}/>
     <div className="rx-dashboard-grid">

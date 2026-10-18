@@ -1,7 +1,7 @@
 import { storage } from "../lib/storage";
 import { getAvailableEnvironments, setSelectedEnvironment } from "../lib/environmentSelection";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, Globe2, LockKeyhole, Smartphone } from "lucide-react";
+import { Activity, ArrowRight, CarFront, Globe2, LockKeyhole, MapPin, ShieldCheck, Smartphone, Users } from "lucide-react";
 import { Button, Notice } from "../components/ui";
 import { ApiError, completePasswordReset, passwordLogin, resendOtp, sendOtp, verifyOtp } from "../lib/api";
 import type { Environment } from "../types";
@@ -199,7 +199,34 @@ export function LoginPage({ onAuthenticated, authMessage = "", configWarning = "
     }
   };
   return (
-    <div className="rx-login">
+    <div className="rx-login rx-auth-experience">
+      <aside className="rx-auth-visual" aria-label="RideX Admin Portal introduction">
+        <div className="rx-auth-visual-top">
+          <div className="rx-logo rx-auth-logo">R<span>X</span></div>
+          <div><strong>RideX</strong><span>Admin Portal</span></div>
+          <span className="rx-auth-secure"><ShieldCheck size={14}/> Secure access</span>
+        </div>
+        <div className="rx-auth-hero-copy">
+          <span className="rx-auth-kicker"><i/> OPERATIONS CONTROL CENTER</span>
+          <h2>Manage.<br/>Operate. <em>Grow.</em></h2>
+          <p>One workspace for rides, drivers, customers and the systems that keep RideX moving.</p>
+        </div>
+        <div className="rx-auth-route-art" aria-hidden="true">
+          <div className="rx-auth-route-glow"/>
+          <svg viewBox="0 0 520 210" role="presentation" focusable="false">
+            <path className="rx-auth-route-line rx-auth-route-line-back" d="M-20 174 C80 125 96 198 184 147 S312 48 388 101 S466 135 550 30"/>
+            <path className="rx-auth-route-line" d="M-20 174 C80 125 96 198 184 147 S312 48 388 101 S466 135 550 30"/>
+            <circle cx="184" cy="147" r="6"/><circle cx="388" cy="101" r="6"/><circle cx="480" cy="78" r="5"/>
+          </svg>
+          <div className="rx-auth-floating-stat"><span className="rx-auth-stat-icon"><Activity size={16}/></span><span><strong>Control in one place</strong><small>Operational visibility</small></span><i/></div>
+        </div>
+        <div className="rx-auth-feature-grid">
+          <div><CarFront/><span><strong>Ride operations</strong><small>Live trip workflows</small></span></div>
+          <div><Users/><span><strong>People & access</strong><small>Drivers and customers</small></span></div>
+          <div><MapPin/><span><strong>Routes & zones</strong><small>Location management</small></span></div>
+        </div>
+        <div className="rx-auth-visual-footer"><span>RIDEX ADMIN</span><span><i/> AUTHORIZED PERSONNEL ONLY</span></div>
+      </aside>
       <div className="rx-login-card">
         <div className="rx-login-brand">
           <div className="rx-logo large">R<span>X</span></div>

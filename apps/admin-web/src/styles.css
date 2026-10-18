@@ -675,3 +675,504 @@ button,input,select,textarea{accent-color:var(--primary-color)}
 .rx-support-feed-list p { margin: 8px 0 0; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; white-space: pre-wrap; }
 .rx-support-internal-notes { display: grid; gap: 10px; padding-top: 12px; border-top: 1px solid var(--line, #e2e7eb); }
 @media (max-width: 560px) { .rx-support-detail-facts { grid-template-columns: minmax(0, 1fr); } .rx-support-detail-toolbar { align-items: stretch; flex-direction: column; } }
+
+/* RideX responsive refinement — desktop, tablet, and mobile usability. */
+:root {
+  --rx-page-gutter: clamp(12px, 2.2vw, 28px);
+  --rx-card-padding: clamp(14px, 1.5vw, 20px);
+}
+
+/* Keep dense operational workspaces readable on tablets and small laptops. */
+@media (min-width: 821px) and (max-width: 1180px) {
+  .rx-sidebar { width: 238px; padding-inline: 11px; }
+  .rx-content { padding: clamp(14px, 2vw, 22px); }
+  .rx-topbar { padding-inline: 14px; gap: 9px; }
+  .rx-topbar-right { gap: 6px; }
+  .rx-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rx-dashboard-grid { grid-template-columns: minmax(0, 1fr); }
+  .rx-workspace-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Mobile navigation remains a fixed drawer and never shrinks the workspace. */
+@media (max-width: 820px) {
+  .rx-sidebar { position: fixed; left: calc(-1 * min(290px, calc(100vw - 44px))); top: 0; bottom: 0; height: 100dvh; max-height: 100dvh; z-index: 50; transition: left .2s ease; }
+  .rx-sidebar.mobile-open { left: 0; }
+  .rx-main { width: 100%; min-width: 0; }
+  .rx-content { width: 100%; padding: clamp(12px, 3vw, 20px); }
+  .rx-topbar { gap: 8px; }
+  .rx-global-search { min-width: 0; }
+  .rx-topbar-right { margin-left: auto; }
+  .rx-page-head { align-items: flex-start; }
+  .rx-page-head h1 { line-height: 1.2; }
+  .rx-table-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* Comfortable tap targets and stacked actions on phones. */
+@media (max-width: 600px) {
+  .rx-login { min-height: 100svh; padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)); }
+  .rx-login-card { width: 100%; padding: clamp(16px, 5vw, 22px); border-radius: 16px; }
+  .rx-login-brand { gap: 9px; }
+  .rx-login-brand .rx-logo.large { flex: 0 0 auto; }
+  .rx-login-brand > .rx-language-control { margin-left: auto; }
+  .rx-form input, .rx-form select, .rx-form textarea { min-height: 44px; font-size: 16px; }
+  .rx-form .rx-btn, .rx-login-card .rx-btn { min-height: 44px; }
+  .rx-page-head { gap: 10px; }
+  .rx-page-head > :last-child { max-width: 100%; }
+  .rx-toolbar { align-items: stretch; flex-direction: column; }
+  .rx-search, .rx-search-wrap { width: 100%; min-width: 0; }
+  .rx-toolbar-actions { width: 100%; }
+  .rx-toolbar-actions .rx-btn { flex: 1 1 auto; }
+  .rx-action-grid, .rx-asset-slots, .rx-asset-catalog { grid-template-columns: minmax(0, 1fr); }
+  .rx-row { grid-template-columns: minmax(0, 1fr); }
+  .rx-row > :last-child { justify-self: start; }
+  .rx-pagination { align-items: stretch; }
+  .rx-pagination > div { flex-wrap: wrap; }
+  .rx-topbar-right .rx-env-pill { font-size: 8px; }
+  .rx-footer { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+/* Very narrow phones and landscape/zoomed layouts. */
+@media (max-width: 380px) {
+  .rx-content { padding: 10px; }
+  .rx-topbar { padding-inline: 8px; }
+  .rx-breadcrumb { font-size: 10px; }
+  .rx-stats-grid, .rx-quick-grid { grid-template-columns: minmax(0, 1fr); }
+  .rx-login-card { padding: 14px; }
+  .rx-login-copy { margin-top: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-sidebar { transition: none; }
+}
+
+
+/* RideX Auth Experience — responsive visual shell and restrained motion. */
+.rx-auth-experience{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(300px,.92fr) minmax(380px,560px);align-items:stretch;justify-content:center;gap:0;padding:clamp(14px,3vw,40px);background:radial-gradient(ellipse at 7% 12%,rgba(217,40,43,.12),transparent 31rem),radial-gradient(ellipse at 93% 90%,rgba(37,64,92,.09),transparent 28rem),#f4f6f9;overflow:hidden}
+.rx-auth-experience:before,.rx-auth-experience:after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(1px)}
+.rx-auth-experience:before{width:340px;height:340px;left:-190px;bottom:-170px;border:1px solid rgba(217,40,43,.16);box-shadow:0 0 0 28px rgba(217,40,43,.025),0 0 0 58px rgba(217,40,43,.02);animation:rxAuthOrbit 18s linear infinite}
+.rx-auth-experience:after{width:260px;height:260px;right:-155px;top:-120px;border:1px solid rgba(45,58,78,.12);box-shadow:0 0 0 28px rgba(45,58,78,.025),0 0 0 58px rgba(45,58,78,.018)}
+.rx-auth-visual{position:relative;display:flex;flex-direction:column;min-width:0;min-height:650px;overflow:hidden;padding:clamp(24px,3.3vw,42px);color:#fff;border:1px solid #242b36;border-right:0;border-radius:24px 0 0 24px;background:radial-gradient(ellipse at 78% 56%,rgba(217,40,43,.22),transparent 22rem),linear-gradient(150deg,#171d27 0%,#0d1118 52%,#07090d 100%);box-shadow:0 24px 70px rgba(17,24,39,.14);animation:rxAuthPanelIn .65s cubic-bezier(.2,.75,.2,1) both}
+.rx-auth-visual:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(to bottom,black,transparent 78%)}
+.rx-auth-visual-top{position:relative;z-index:1;display:flex;align-items:center;gap:11px}.rx-auth-visual-top>div:nth-child(2){display:grid;gap:1px}.rx-auth-visual-top>div:nth-child(2) strong{font-size:17px;letter-spacing:-.035em}.rx-auth-visual-top>div:nth-child(2) span{font-size:11px;color:#aeb7c4}.rx-auth-logo{background:#fff;color:#121720;width:42px;height:42px;border-radius:12px;font-size:19px}.rx-auth-logo span{color:#e1262d}.rx-auth-secure{margin-left:auto;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 9px;color:#d3dae4;font-size:10px;background:rgba(255,255,255,.04)}.rx-auth-secure svg{color:#ff666b}
+.rx-auth-hero-copy{position:relative;z-index:1;margin-top:clamp(44px,7vh,82px);max-width:430px;animation:rxAuthContentIn .72s .08s both}.rx-auth-kicker{display:inline-flex;align-items:center;gap:8px;color:#ff8b8e;font-size:9px;font-weight:850;letter-spacing:.16em}.rx-auth-kicker i,.rx-auth-visual-footer i{width:6px;height:6px;display:inline-block;border-radius:50%;background:#f04449;box-shadow:0 0 0 4px rgba(240,68,73,.14)}.rx-auth-hero-copy h2{margin:18px 0 14px;font-size:clamp(36px,4.2vw,58px);line-height:.99;letter-spacing:-.065em;font-weight:850}.rx-auth-hero-copy h2 em{font-style:normal;color:#f04449}.rx-auth-hero-copy p{max-width:340px;margin:0;color:#b6bfcc;font-size:13px;line-height:1.75}
+.rx-auth-route-art{position:relative;min-height:200px;flex:1;display:flex;align-items:center;margin:16px -18px 12px}.rx-auth-route-art svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.rx-auth-route-line{fill:none;stroke:#e1262d;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:8 10;animation:rxAuthRouteTravel 16s linear infinite}.rx-auth-route-line-back{stroke:#ff8589;stroke-width:13;opacity:.08;filter:blur(7px);stroke-dasharray:none;animation:none}.rx-auth-route-art circle{fill:#ff545a;stroke:#fff;stroke-width:2;filter:drop-shadow(0 0 8px rgba(240,68,73,.5));animation:rxAuthPinPulse 2.8s ease-in-out infinite}.rx-auth-route-art circle:nth-of-type(2){animation-delay:.8s}.rx-auth-route-art circle:nth-of-type(3){animation-delay:1.4s}.rx-auth-route-glow{position:absolute;width:220px;height:110px;right:6%;top:12%;background:rgba(225,38,45,.15);filter:blur(45px);border-radius:50%;animation:rxAuthGlow 5s ease-in-out infinite alternate}
+.rx-auth-floating-stat{position:absolute;right:4%;bottom:12%;display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid rgba(255,255,255,.14);border-radius:13px;background:rgba(20,25,34,.84);box-shadow:0 16px 35px rgba(0,0,0,.2);backdrop-filter:blur(12px);animation:rxAuthFloat 5s ease-in-out infinite}.rx-auth-stat-icon{width:33px;height:33px;display:grid;place-items:center;border-radius:10px;background:rgba(240,68,73,.14);color:#ff6a70}.rx-auth-floating-stat>span:nth-child(2){display:grid;gap:3px}.rx-auth-floating-stat strong{font-size:10px}.rx-auth-floating-stat small{font-size:9px;color:#9ea8b6}.rx-auth-floating-stat>i{width:6px;height:6px;margin-left:12px;border-radius:50%;background:#3fcb86;box-shadow:0 0 0 4px rgba(63,203,134,.12)}
+.rx-auth-feature-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.rx-auth-feature-grid>div{display:flex;align-items:flex-start;gap:8px;min-width:0;padding:11px 9px;border:1px solid rgba(255,255,255,.085);border-radius:12px;background:rgba(255,255,255,.035);transition:background .2s ease,border-color .2s ease,transform .2s ease}.rx-auth-feature-grid>div:hover{transform:translateY(-3px);background:rgba(255,255,255,.07);border-color:rgba(240,68,73,.35)}.rx-auth-feature-grid svg{width:17px;height:17px;flex:0 0 auto;color:#ff656a}.rx-auth-feature-grid span{display:grid;gap:4px;min-width:0}.rx-auth-feature-grid strong{font-size:9px;line-height:1.35}.rx-auth-feature-grid small{font-size:8px;line-height:1.4;color:#98a3b2}.rx-auth-visual-footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:24px;padding-top:14px;border-top:1px solid rgba(255,255,255,.09);font-size:8px;letter-spacing:.1em;color:#8d98a8}.rx-auth-visual-footer span:last-child{display:inline-flex;align-items:center;gap:8px}.rx-auth-visual-footer i{width:5px;height:5px}
+.rx-auth-experience .rx-login-card{align-self:stretch;display:flex;flex-direction:column;justify-content:center;width:100%;max-width:none;min-width:0;margin:0;padding:clamp(24px,3.5vw,44px);border:1px solid #e7eaf0;border-radius:0 24px 24px 0;box-shadow:0 24px 70px rgba(17,24,39,.10);animation:rxAuthPanelIn .7s .07s cubic-bezier(.2,.75,.2,1) both}.rx-auth-experience .rx-login-copy{margin:clamp(24px,4vh,42px) 0 20px}.rx-auth-experience .rx-login-copy h1{font-size:clamp(27px,3vw,36px);line-height:1.1;letter-spacing:-.055em}.rx-auth-experience .rx-login-copy p{max-width:390px;font-size:13px;line-height:1.6}.rx-auth-experience .rx-form{gap:15px}.rx-auth-experience .rx-form label{font-size:11px;gap:7px}.rx-auth-experience .rx-form input,.rx-auth-experience .rx-form select{min-height:46px;border-radius:11px;padding:12px 13px;font-size:13px;transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}.rx-auth-experience .rx-form input:focus{border-color:#e1262d;box-shadow:0 0 0 4px rgba(225,38,45,.09)}.rx-auth-experience .rx-form .rx-btn{min-height:46px;border-radius:11px;font-size:12px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}.rx-auth-experience .rx-form .rx-btn-primary{box-shadow:0 8px 18px rgba(217,40,43,.14)}.rx-auth-experience .rx-form .rx-btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 24px rgba(217,40,43,.22)}.rx-auth-experience .rx-admin-type-selector{border-radius:12px;border-color:#e8ebf0;background:#fafbfc;padding:12px}.rx-auth-experience .rx-admin-type-selector small{font-size:10px;line-height:1.5}.rx-auth-experience .rx-login-footer{gap:10px;margin-top:auto;padding-top:20px}.rx-auth-experience .rx-login-footer div{font-size:9px;line-height:1.5}.rx-auth-experience .rx-login-footer svg{flex:0 0 auto;color:#d92b30}.rx-auth-experience .rx-notice{font-size:11px;line-height:1.5;animation:rxAuthContentIn .25s ease both}.rx-auth-experience .rx-otp-verification-page{animation:rxAuthContentIn .32s ease both}.rx-auth-experience .rx-otp-meta span{font-size:10px}.rx-auth-experience .rx-inline-actions{flex-wrap:wrap}.rx-auth-experience .rx-inline-actions .rx-btn{flex:1 1 auto}
+@keyframes rxAuthPanelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes rxAuthContentIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}@keyframes rxAuthRouteTravel{to{stroke-dashoffset:-360}}@keyframes rxAuthPinPulse{0%,100%{opacity:.85;transform:scale(1);transform-origin:center}50%{opacity:1;filter:drop-shadow(0 0 12px rgba(240,68,73,.75));transform:scale(1.22);transform-origin:center}}@keyframes rxAuthGlow{from{opacity:.45;transform:translateX(-8px) scale(.9)}to{opacity:1;transform:translateX(8px) scale(1.08)}}@keyframes rxAuthFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes rxAuthOrbit{to{transform:rotate(360deg)}}
+@media(max-width:1000px){.rx-auth-experience{grid-template-columns:minmax(0,.78fr) minmax(360px,1fr);padding:18px}.rx-auth-visual{padding:25px;min-height:610px}.rx-auth-hero-copy h2{font-size:clamp(34px,4.8vw,48px)}.rx-auth-feature-grid{grid-template-columns:1fr}.rx-auth-feature-grid>div{padding:8px 10px}.rx-auth-route-art{min-height:145px}.rx-auth-floating-stat{right:0;bottom:8%}.rx-auth-experience .rx-login-card{padding:25px}}
+@media(max-width:760px){.rx-auth-experience{grid-template-columns:minmax(0,1fr);gap:0;padding:12px;align-content:start;min-height:100dvh}.rx-auth-visual{min-height:0;padding:20px 20px 16px;border:1px solid #242b36;border-bottom:0;border-radius:20px 20px 0 0}.rx-auth-hero-copy{margin-top:25px}.rx-auth-hero-copy h2{font-size:clamp(30px,7vw,43px);margin:12px 0 8px}.rx-auth-hero-copy p{max-width:560px;font-size:12px}.rx-auth-route-art{display:none}.rx-auth-feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:20px}.rx-auth-feature-grid>div{flex-direction:column;gap:6px;padding:9px}.rx-auth-feature-grid strong{font-size:9px}.rx-auth-feature-grid small{font-size:8px}.rx-auth-visual-footer{margin-top:14px;padding-top:10px}.rx-auth-experience .rx-login-card{padding:23px 20px;border-radius:0 0 20px 20px;border-top:0;min-height:0}.rx-auth-experience .rx-login-copy{margin:22px 0 16px}.rx-auth-experience .rx-login-footer{margin-top:20px;padding-top:14px}}
+@media(max-width:420px){.rx-auth-experience{padding:8px}.rx-auth-visual{padding:17px 16px 13px}.rx-auth-secure{font-size:9px;padding:6px 7px}.rx-auth-logo{width:36px;height:36px}.rx-auth-visual-top>div:nth-child(2) strong{font-size:15px}.rx-auth-hero-copy{margin-top:22px}.rx-auth-hero-copy h2{font-size:31px}.rx-auth-kicker{font-size:8px}.rx-auth-feature-grid{gap:5px}.rx-auth-feature-grid>div{padding:8px 6px}.rx-auth-feature-grid svg{width:16px;height:16px}.rx-auth-feature-grid strong{font-size:8px}.rx-auth-visual-footer{font-size:7px}.rx-auth-experience .rx-login-card{padding:20px 16px}.rx-auth-experience .rx-login-brand{gap:9px}.rx-auth-experience .rx-login-copy h1{font-size:27px}.rx-auth-experience .rx-login-footer{grid-template-columns:1fr}.rx-auth-experience .rx-inline-actions{display:grid;grid-template-columns:1fr}.rx-auth-experience .rx-inline-actions .rx-btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.rx-auth-experience:before,.rx-auth-visual,.rx-auth-hero-copy,.rx-auth-route-line,.rx-auth-route-art circle,.rx-auth-route-glow,.rx-auth-floating-stat,.rx-auth-experience .rx-login-card,.rx-auth-experience .rx-notice,.rx-auth-experience .rx-otp-verification-page{animation:none!important;transform:none!important;opacity:1!important}.rx-auth-feature-grid>div,.rx-auth-experience .rx-form input,.rx-auth-experience .rx-form .rx-btn{transition:none!important}}
+
+/* Step 2 — responsive shared shell, accessible mobile drawer and mobile workspace search. */
+.rx-menu-toggle { flex: 0 0 auto; }
+.rx-mobile-search-toggle { display: none; flex: 0 0 auto; }
+.rx-mobile-nav-backdrop { display: none; }
+.rx-sidebar { overscroll-behavior: contain; }
+.rx-nav-item { min-height: 40px; }
+.rx-topbar { overflow: visible; }
+.rx-topbar-right { align-items: center; flex: 0 0 auto; }
+.rx-env-pill { white-space: nowrap; }
+.rx-global-search { flex-shrink: 1; }
+.rx-global-search-results { z-index: 80; }
+@media (max-width: 820px) {
+  .rx-sidebar { z-index: 61; left: calc(-1 * min(290px, calc(100vw - 44px))); transition: left .24s cubic-bezier(.2,.75,.2,1), box-shadow .24s ease; }
+  .rx-sidebar.mobile-open { left: 0; }
+  .rx-mobile-nav-backdrop { display: block; position: fixed; inset: 0; z-index: 60; border: 0; padding: 0; background: rgba(11,15,22,.52); backdrop-filter: blur(2px); animation: rxBackdropIn .18s ease both; }
+  .rx-mobile-search-toggle { display: grid; }
+  .rx-topbar { flex-wrap: wrap; height: auto; min-height: 62px; padding-block: 10px; }
+  .rx-breadcrumb { flex: 1 1 auto; }
+  .rx-topbar-right { margin-left: auto; gap: 6px; }
+  .rx-global-search:not(.rx-mobile-global-search) { display: none; }
+  .rx-mobile-global-search { display: flex; order: 5; flex: 1 0 100%; width: 100%; min-width: 0; margin-top: 2px; padding: 0 12px; min-height: 42px; animation: rxFadeIn .18s ease both; }
+  .rx-mobile-global-search input { min-height: 40px; font-size: 14px; }
+  .rx-topbar.rx-mobile-search-active { row-gap: 8px; }
+  .rx-env-pill { font-size: 9px; }
+}
+@media (max-width: 480px) {
+  .rx-topbar { gap: 6px; padding-inline: 10px; }
+  .rx-icon-btn { width: 40px; height: 40px; }
+  .rx-topbar-right { gap: 5px; }
+  .rx-topbar-right .rx-language-control.compact .rx-language-select { max-width: 78px; }
+  .rx-env-pill { padding: 6px 7px; }
+  .rx-mobile-global-search .rx-global-search-results { position: fixed; top: 112px; left: 10px; right: 10px; max-height: min(55vh, 360px); }
+  .rx-sidebar { padding-top: max(18px, env(safe-area-inset-top)); padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+}
+@keyframes rxBackdropIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .rx-sidebar, .rx-mobile-nav-backdrop, .rx-mobile-global-search { animation: none !important; transition: none !important; }
+}
+
+/* Step 3 — Dashboard visual refinement. Data and navigation remain backend-authoritative. */
+.rx-dashboard-metric-grid{gap:14px;margin:16px 0 18px}
+.rx-dashboard-metric-card{position:relative;isolation:isolate;overflow:hidden;min-height:136px;padding:17px 17px 14px;border-radius:16px;animation:rxMetricEnter .42s var(--page-ease) both;animation-delay:calc(var(--metric-index, 0) * 45ms)}
+.rx-dashboard-metric-card::after{content:"";position:absolute;z-index:-1;right:-26px;top:-30px;width:100px;height:100px;border-radius:50%;background:var(--metric-tint,rgba(217,40,43,.055));transition:transform .25s ease}
+.rx-dashboard-metric-card:hover::after{transform:scale(1.25)}
+.rx-metric-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rx-dashboard-metric-card .rx-metric-card-top>span:first-child{font-size:11px;font-weight:700;color:#606a78;line-height:1.4}
+.rx-metric-icon{display:grid;place-items:center;width:36px;height:36px;flex:0 0 36px;border-radius:11px;background:var(--metric-tint,rgba(217,40,43,.08));color:var(--metric-color,var(--accent))}
+.rx-dashboard-metric-card>strong{font-size:clamp(23px,2vw,29px);line-height:1.2;letter-spacing:-.035em;margin:10px 0 8px;overflow-wrap:anywhere}
+.rx-dashboard-metric-card>small{display:flex;align-items:center;gap:6px;color:#7b8491;font-size:9px;letter-spacing:.09em;font-weight:800}
+.rx-metric-dot{width:6px;height:6px;border-radius:50%;background:var(--metric-color,var(--accent));box-shadow:0 0 0 3px var(--metric-tint,rgba(217,40,43,.08))}
+.rx-dashboard-metric-card.tone-red{--metric-color:#c92a2e;--metric-tint:rgba(217,40,43,.09)}
+.rx-dashboard-metric-card.tone-green{--metric-color:#14804a;--metric-tint:rgba(20,128,74,.09)}
+.rx-dashboard-metric-card.tone-blue{--metric-color:#2868b2;--metric-tint:rgba(40,104,178,.09)}
+.rx-dashboard-metric-card.tone-amber{--metric-color:#9a6700;--metric-tint:rgba(217,155,34,.13)}
+.rx-live-meta{gap:8px 12px;min-height:38px;box-shadow:0 2px 8px rgba(16,24,40,.025)}
+.rx-live-meta span:first-child{display:inline-flex;align-items:center;gap:6px}
+.rx-live-meta span:first-child::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px rgba(217,40,43,.08)}
+.rx-action-list button{border-radius:10px;padding:12px 9px;transition:background .18s ease,transform .18s ease}
+.rx-action-list button:hover{background:#fafbfc;transform:translateX(2px)}
+.rx-action-list button>svg{flex:0 0 auto;color:var(--accent);background:rgba(217,40,43,.07);box-sizing:content-box;padding:8px;border-radius:10px}
+.rx-health-list>div{gap:10px;padding:13px 0}
+.rx-health-list>div>svg{color:#16804a;flex:0 0 auto}
+.rx-quick-grid button{min-height:86px;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.rx-quick-grid button:hover{transform:translateY(-2px);border-color:rgba(217,40,43,.35);box-shadow:0 8px 20px rgba(16,24,40,.06)}
+.rx-quick-grid button>svg{color:var(--accent)}
+.rx-dashboard-page-head .rx-dashboard-actions{align-self:flex-end}
+@keyframes rxMetricEnter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1100px){.rx-dashboard-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.rx-dashboard-metric-card{min-height:124px}}
+@media(max-width:520px){.rx-dashboard-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.rx-dashboard-metric-card{min-height:115px;padding:12px;border-radius:13px}.rx-dashboard-metric-card .rx-metric-card-top>span:first-child{font-size:10px}.rx-metric-icon{width:30px;height:30px;flex-basis:30px;border-radius:9px}.rx-dashboard-metric-card>strong{font-size:clamp(19px,6vw,25px);margin:9px 0 7px}.rx-dashboard-metric-card>small{font-size:8px}.rx-live-meta{align-items:flex-start;flex-direction:column;gap:5px}.rx-dashboard-page-head .rx-dashboard-actions{align-self:stretch}.rx-dashboard-actions>.rx-btn{flex:1}}
+@media(prefers-reduced-motion:reduce){.rx-dashboard-metric-card,.rx-dashboard-metric-card::after,.rx-action-list button,.rx-quick-grid button{animation:none!important;transition:none!important}}
+
+/* Step 4 — Operations workspace polish: presentation only; data and action contracts stay unchanged. */
+.rx-core-ops-page .rx-core-ops-stats>div{position:relative;overflow:hidden;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;animation:rx-ops-enter .42s both}
+.rx-core-ops-page .rx-core-ops-stats>div:nth-child(2){animation-delay:45ms}
+.rx-core-ops-page .rx-core-ops-stats>div:nth-child(3){animation-delay:90ms}
+.rx-core-ops-page .rx-core-ops-stats>div:nth-child(4){animation-delay:135ms}
+.rx-core-ops-page .rx-core-ops-stats>div:hover{transform:translateY(-2px);border-color:var(--rx-accent,#5b7cfa);box-shadow:0 8px 22px rgba(15,23,42,.07)}
+.rx-core-ops-page .rx-core-ops-stats>div:after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rx-accent,#5b7cfa);opacity:.55}
+.rx-core-ops-page .rx-core-op-row{transition:background .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;animation:rx-ops-enter .32s both}
+.rx-core-ops-page .rx-core-op-row:hover{transform:translateX(2px);box-shadow:0 4px 14px rgba(15,23,42,.055)}
+.rx-core-ops-page .rx-core-op-row:focus-visible{outline:2px solid var(--rx-accent,#5b7cfa);outline-offset:2px}
+.rx-core-ops-page .rx-core-op-row.selected{border-color:var(--rx-accent,#5b7cfa);box-shadow:inset 3px 0 0 var(--rx-accent,#5b7cfa),0 3px 12px rgba(15,23,42,.045)}
+.rx-core-ops-page .rx-core-detail{animation:rx-ops-enter .24s ease both}
+.rx-core-ops-page .rx-core-detail-head .rx-status-pill{flex-shrink:0}
+.rx-core-ops-page .rx-core-ops-map{box-shadow:0 4px 18px rgba(15,23,42,.035)}
+.rx-core-ops-page .rx-toolbar{gap:12px}
+.rx-core-ops-page .rx-filter-row select{max-width:100%;min-width:0}
+.rx-core-ops-kyc .rx-core-ops-stats>div:first-child:after{background:var(--rx-warning,#d97706)}
+.rx-core-ops-live .rx-core-ops-stats>div:first-child:after{background:var(--rx-success,#16a34a)}
+.rx-core-ops-drivers .rx-core-ops-stats>div:first-child:after{background:var(--rx-accent,#5b7cfa)}
+.rx-core-ops-rides .rx-core-ops-stats>div:first-child:after{background:var(--rx-info,#0284c7)}
+@keyframes rx-ops-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:700px){
+  .rx-core-ops-page .rx-page-head{align-items:flex-start;gap:12px}
+  .rx-core-ops-page .rx-core-ops-head-actions{width:100%;justify-content:space-between}
+  .rx-core-ops-page .rx-core-ops-stats>div{padding:11px 12px}
+  .rx-core-ops-page .rx-core-detail-head{flex-wrap:wrap}
+  .rx-core-ops-page .rx-core-detail-strip span{max-width:100%;overflow-wrap:anywhere}
+  .rx-core-ops-page .rx-toolbar,.rx-core-ops-page .rx-filter-row{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .rx-core-ops-page .rx-core-ops-stats>div,.rx-core-ops-page .rx-core-op-row,.rx-core-ops-page .rx-core-detail{animation:none!important;transition:none!important}
+}
+
+/* Step 5 — Routes & Location workspace polish */
+.rx-location-row,.rx-location-row-main,.rx-coverage-item,.rx-coverage-guardrails p{transition:background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.rx-location-row:hover,.rx-location-row:focus-within{border-color:var(--rx-accent,#e1262d);box-shadow:0 5px 18px rgba(18,32,55,.07)}
+.rx-location-row-main{min-width:0;overflow-wrap:anywhere}
+.rx-coverage-item{background:var(--rx-surface,#fff);min-width:0;overflow-wrap:anywhere}
+.rx-coverage-item:hover{transform:translateY(-2px);border-color:var(--rx-accent,#e1262d);box-shadow:0 7px 18px rgba(18,32,55,.06)}
+.rx-coverage-form label{line-height:1.45}
+.rx-coverage-form input:focus-visible,.rx-coverage-form select:focus-visible{outline:3px solid color-mix(in srgb,var(--rx-accent,#e1262d) 24%,transparent);outline-offset:1px;border-color:var(--rx-accent,#e1262d)}
+.rx-coverage-actions>*{max-width:100%}
+.rx-map,.rx-geo-map,.rx-route-map{max-width:100%;min-width:0;overflow:hidden;border-radius:14px}
+.rx-map svg,.rx-geo-map svg,.rx-route-map svg{max-width:100%;height:auto}
+@media(max-width:760px){
+ .rx-coverage-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .rx-coverage-item{padding:10px}
+ .rx-coverage-form{grid-template-columns:minmax(0,1fr);gap:10px}
+ .rx-coverage-actions{flex-direction:row;align-items:stretch;gap:8px}
+ .rx-coverage-actions>*{flex:1 1 140px}
+ .rx-location-row-main{gap:5px}
+}
+@media(max-width:420px){.rx-coverage-grid{grid-template-columns:minmax(0,1fr)}.rx-coverage-actions>*{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){.rx-location-row,.rx-location-row-main,.rx-coverage-item,.rx-coverage-guardrails p{transition:none!important}.rx-coverage-item:hover{transform:none}}
+
+/* Step 6 — Users workspace visual polish (presentation only; no data or permission changes) */
+.rx-screen-customers .rx-page-head,.rx-screen-drivers .rx-page-head,.rx-screen-admins .rx-page-head,.rx-screen-roles .rx-page-head{gap:16px;align-items:center}
+.rx-screen-customers .rx-workspace-stats,.rx-screen-drivers .rx-workspace-stats,.rx-screen-admins .rx-workspace-stats,.rx-screen-roles .rx-workspace-stats{gap:12px}
+.rx-screen-customers .rx-stat-card,.rx-screen-drivers .rx-stat-card,.rx-screen-admins .rx-stat-card,.rx-screen-roles .rx-stat-card{min-width:0;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;animation:rx-user-card-enter .38s ease both}
+.rx-screen-customers .rx-stat-card:hover,.rx-screen-drivers .rx-stat-card:hover,.rx-screen-admins .rx-stat-card:hover,.rx-screen-roles .rx-stat-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(18,32,55,.08);border-color:var(--rx-accent,#e1262d)}
+.rx-screen-customers .rx-workspace-layout,.rx-screen-drivers .rx-workspace-layout,.rx-screen-admins .rx-workspace-layout,.rx-screen-roles .rx-workspace-layout{min-width:0;gap:16px}
+.rx-screen-customers .rx-workspace-layout>*,.rx-screen-drivers .rx-workspace-layout>*,.rx-screen-admins .rx-workspace-layout>*,.rx-screen-roles .rx-workspace-layout>*{min-width:0}
+.rx-screen-customers .rx-detail-grid,.rx-screen-drivers .rx-detail-grid,.rx-screen-admins .rx-detail-grid,.rx-screen-roles .rx-detail-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.rx-screen-customers .rx-detail-item,.rx-screen-drivers .rx-detail-item,.rx-screen-admins .rx-detail-item,.rx-screen-roles .rx-detail-item{overflow-wrap:anywhere}
+.rx-screen-customers input:focus-visible,.rx-screen-customers select:focus-visible,.rx-screen-drivers input:focus-visible,.rx-screen-drivers select:focus-visible,.rx-screen-admins input:focus-visible,.rx-screen-admins select:focus-visible,.rx-screen-roles input:focus-visible,.rx-screen-roles select:focus-visible{outline:3px solid color-mix(in srgb,var(--rx-accent,#e1262d) 25%,transparent);outline-offset:2px}
+@keyframes rx-user-card-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){
+ .rx-screen-customers .rx-page-head,.rx-screen-drivers .rx-page-head,.rx-screen-admins .rx-page-head,.rx-screen-roles .rx-page-head{align-items:stretch;flex-direction:column}
+ .rx-screen-customers .rx-page-head>button,.rx-screen-drivers .rx-page-head>button,.rx-screen-admins .rx-page-head>button,.rx-screen-roles .rx-page-head>button{align-self:flex-start}
+ .rx-screen-customers .rx-workspace-stats,.rx-screen-drivers .rx-workspace-stats,.rx-screen-admins .rx-workspace-stats,.rx-screen-roles .rx-workspace-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .rx-screen-customers .rx-stat-card,.rx-screen-drivers .rx-stat-card,.rx-screen-admins .rx-stat-card,.rx-screen-roles .rx-stat-card{padding:11px;overflow-wrap:anywhere}
+ .rx-screen-customers .rx-detail-grid,.rx-screen-drivers .rx-detail-grid,.rx-screen-admins .rx-detail-grid,.rx-screen-roles .rx-detail-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:380px){.rx-screen-customers .rx-workspace-stats,.rx-screen-drivers .rx-workspace-stats,.rx-screen-admins .rx-workspace-stats,.rx-screen-roles .rx-workspace-stats{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.rx-screen-customers .rx-stat-card,.rx-screen-drivers .rx-stat-card,.rx-screen-admins .rx-stat-card,.rx-screen-roles .rx-stat-card{animation:none!important;transition:none!important}.rx-screen-customers .rx-stat-card:hover,.rx-screen-drivers .rx-stat-card:hover,.rx-screen-admins .rx-stat-card:hover,.rx-screen-roles .rx-stat-card:hover{transform:none}}
+
+/* Step 7 — Finance UI refinement (presentation only; backend remains authoritative) */
+.rx-screen-finance .rx-business-kpi,
+.rx-screen-payments .rx-business-kpi,
+.rx-screen-commission .rx-business-kpi,
+.rx-screen-promotions .rx-business-kpi {
+  position: relative;
+  overflow: hidden;
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.rx-screen-finance .rx-business-kpi:hover,
+.rx-screen-payments .rx-business-kpi:hover,
+.rx-screen-commission .rx-business-kpi:hover,
+.rx-screen-promotions .rx-business-kpi:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  box-shadow: 0 8px 22px rgba(15, 23, 42, .07);
+}
+.rx-screen-finance .rx-business-kpi::after,
+.rx-screen-payments .rx-business-kpi::after {
+  content: "";
+  position: absolute;
+  inset: auto 12px 0;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--primary), transparent 85%);
+  opacity: .55;
+}
+.rx-screen-finance .rx-business-row,
+.rx-screen-payments .rx-business-row,
+.rx-screen-commission .rx-business-row,
+.rx-screen-promotions .rx-business-row { min-width: 0; }
+.rx-screen-finance .rx-business-row:focus-visible,
+.rx-screen-payments .rx-business-row:focus-visible,
+.rx-screen-commission .rx-business-row:focus-visible,
+.rx-screen-promotions .rx-business-row:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 45%, transparent);
+  outline-offset: 2px;
+}
+.rx-screen-finance .rx-business-detail,
+.rx-screen-payments .rx-business-detail { min-width: 0; overflow-wrap: anywhere; }
+.rx-screen-finance .rx-business-toolbar,
+.rx-screen-payments .rx-business-toolbar { align-items: center; }
+.rx-screen-finance :where(input, select, textarea),
+.rx-screen-payments :where(input, select, textarea),
+.rx-screen-commission :where(input, select, textarea),
+.rx-screen-promotions :where(input, select, textarea) { min-width: 0; }
+@media (max-width: 700px) {
+  .rx-screen-finance .rx-business-toolbar,
+  .rx-screen-payments .rx-business-toolbar,
+  .rx-screen-commission .rx-business-toolbar,
+  .rx-screen-promotions .rx-business-toolbar { gap: 8px; }
+  .rx-screen-finance .rx-business-layout,
+  .rx-screen-payments .rx-business-layout,
+  .rx-screen-commission .rx-business-layout,
+  .rx-screen-promotions .rx-business-layout { gap: 10px; }
+  .rx-screen-finance .rx-control-context,
+  .rx-screen-payments .rx-control-context { line-height: 1.5; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rx-screen-finance .rx-business-kpi,
+  .rx-screen-payments .rx-business-kpi,
+  .rx-screen-commission .rx-business-kpi,
+  .rx-screen-promotions .rx-business-kpi { transition: none; }
+  .rx-screen-finance .rx-business-kpi:hover,
+  .rx-screen-payments .rx-business-kpi:hover,
+  .rx-screen-commission .rx-business-kpi:hover,
+  .rx-screen-promotions .rx-business-kpi:hover { transform: none; }
+}
+
+/* Step 8 — Safety & Support workspace polish. Presentation only; no workflow or API changes. */
+.rx-support-timeline,
+.rx-support-detail-feed,
+.rx-support-detail-facts,
+.rx-support-detail-toolbar,
+.rx-support-feed-list,
+.rx-support-internal-notes { min-width: 0; }
+.rx-support-timeline,
+.rx-support-detail-feed,
+.rx-support-detail-facts,
+.rx-support-internal-notes {
+  border-radius: var(--radius-lg, 14px);
+  overflow-wrap: anywhere;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+.rx-support-detail-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.rx-support-feed-list { padding-inline-start: clamp(14px, 2vw, 24px); }
+.rx-support-feed-list > * { min-width: 0; overflow-wrap: anywhere; }
+.rx-support-timeline :where(button, a, input, select, textarea),
+.rx-support-detail-feed :where(button, a, input, select, textarea),
+.rx-support-detail-facts :where(button, a, input, select, textarea),
+.rx-support-internal-notes :where(button, a, input, select, textarea) { max-width: 100%; }
+.rx-support-timeline :where(button, a, input, select, textarea):focus-visible,
+.rx-support-detail-feed :where(button, a, input, select, textarea):focus-visible,
+.rx-support-detail-facts :where(button, a, input, select, textarea):focus-visible,
+.rx-support-internal-notes :where(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary, #2563eb) 42%, transparent);
+  outline-offset: 2px;
+}
+.rx-support-feed-list > * { animation: rx-support-enter 240ms ease both; }
+@keyframes rx-support-enter { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 760px) {
+  .rx-support-detail-toolbar { align-items: stretch; }
+  .rx-support-detail-toolbar > * { min-width: 0; max-width: 100%; }
+  .rx-support-detail-facts,
+  .rx-support-detail-feed,
+  .rx-support-internal-notes,
+  .rx-support-timeline { overflow-wrap: anywhere; }
+  .rx-support-feed-list { padding-inline-start: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rx-support-timeline, .rx-support-detail-feed, .rx-support-detail-facts,
+  .rx-support-detail-toolbar, .rx-support-feed-list, .rx-support-internal-notes,
+  .rx-support-feed-list > * { animation: none !important; transition: none !important; }
+}
+
+/* Step 9 — Reports workspace presentation polish. UI-only; reporting contract and export availability remain unchanged. */
+.rx-screen-reports .rx-report-readiness { gap: clamp(12px, 2vw, 20px); min-width: 0; }
+.rx-screen-reports .rx-report-availability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.rx-screen-reports .rx-report-availability-card { position: relative; min-width: 0; border-radius: 14px; padding: clamp(12px, 1.8vw, 17px); transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease; animation: rx-report-card-enter 260ms ease both; }
+.rx-screen-reports .rx-report-availability-card:nth-child(2) { animation-delay: 35ms; }
+.rx-screen-reports .rx-report-availability-card:nth-child(3) { animation-delay: 70ms; }
+.rx-screen-reports .rx-report-availability-card:nth-child(4) { animation-delay: 105ms; }
+.rx-screen-reports .rx-report-availability-card:hover { border-color: color-mix(in srgb, var(--primary, #2563eb) 34%, var(--line, #e2e7eb)); box-shadow: 0 8px 22px rgba(15, 23, 42, .06); transform: translateY(-2px); }
+.rx-screen-reports .rx-report-availability-head { align-items: center; flex-wrap: wrap; }
+.rx-screen-reports .rx-report-availability-head span { max-width: 100%; white-space: normal; }
+.rx-screen-reports .rx-report-availability-card p { font-size: 12px; line-height: 1.65; }
+.rx-screen-reports .rx-report-scope { border-radius: 14px; padding: clamp(12px, 1.8vw, 17px); gap: 6px; overflow-wrap: anywhere; }
+.rx-screen-reports :where(button, a, input, select, textarea):focus-visible { outline: 3px solid color-mix(in srgb, var(--primary, #2563eb) 44%, transparent); outline-offset: 2px; }
+@keyframes rx-report-card-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 760px) {
+  .rx-screen-reports .rx-report-availability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .rx-screen-reports .rx-report-availability-head { align-items: flex-start; }
+}
+@media (max-width: 520px) {
+  .rx-screen-reports .rx-report-availability-grid { grid-template-columns: minmax(0, 1fr); }
+  .rx-screen-reports .rx-report-availability-card { padding: 13px; }
+  .rx-screen-reports .rx-report-availability-head { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rx-screen-reports .rx-report-availability-card { animation: none !important; transition: none !important; }
+  .rx-screen-reports .rx-report-availability-card:hover { transform: none; }
+}
+
+/* Step 10 — Security & Admin workspace polish. Presentation-only; authorization and audit behavior are unchanged. */
+:where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(button, a, input, select, textarea):focus-visible { outline: 3px solid color-mix(in srgb, var(--primary, #2563eb) 45%, transparent); outline-offset: 2px; }
+:where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(table, [role="table"]) { width: 100%; }
+:where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(th, td) { overflow-wrap: anywhere; }
+:where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(button, [role="button"]) { transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+:where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(button, [role="button"]):hover { box-shadow: 0 5px 16px rgba(15, 23, 42, .07); }
+:where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(.rx-card, .card, [data-card]) { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  :where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(.toolbar, .page-toolbar, .filters, .filter-row) { flex-wrap: wrap; gap: 10px; }
+  :where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(input, select, textarea) { max-width: 100%; }
+  :where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) :where(table, [role="table"]) { display: block; max-width: 100%; overflow-x: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) *,
+  :where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) *::before,
+  :where(.rx-screen-security, .rx-screen-admin-access, .rx-screen-audit-history, .rx-screen-admin-scope, .rx-screen-admin-module) *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* STEP 11 — Platform workspace responsive polish */
+.rx-service-config-page .rx-service-grid,
+.rx-platform-workspace .rx-card-grid { align-items: stretch; }
+.rx-service-config-page .rx-service-card-head,
+.rx-service-config-page .rx-service-save-row { gap: 14px; }
+.rx-service-config-page .rx-service-card-head h3 { letter-spacing: -.02em; }
+.rx-service-config-page .rx-live-meta { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; }
+.rx-service-config-page .rx-service-card,
+.rx-platform-workspace .rx-card,
+.rx-platform-workspace article,
+.rx-platform-workspace section.rounded-xl { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.rx-service-config-page .rx-service-card:hover,
+.rx-platform-workspace article:hover,
+.rx-platform-workspace section.rounded-xl:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15,23,42,.07); }
+.rx-platform-workspace button:focus-visible,
+.rx-service-config-page button:focus-visible,
+.rx-service-config-page input:focus-visible,
+.rx-service-config-page textarea:focus-visible { outline: 3px solid rgba(37,99,235,.35); outline-offset: 2px; }
+.rx-platform-workspace table { border-collapse: separate; border-spacing: 0; }
+.rx-platform-workspace th { position: sticky; top: 0; z-index: 1; background: #f8fafc; }
+@media (max-width: 760px) {
+  .rx-service-config-page .rx-page-head { align-items: stretch; gap: 12px; }
+  .rx-service-config-page .rx-live-meta { display:grid; grid-template-columns: minmax(0,1fr); }
+  .rx-service-config-page .rx-service-grid { grid-template-columns: minmax(0,1fr) !important; }
+  .rx-service-config-page .rx-service-card-head,
+  .rx-service-config-page .rx-service-save-row { align-items: stretch; flex-direction: column; }
+  .rx-service-config-page .rx-service-save-row button { width: 100%; justify-content: center; }
+  .rx-platform-workspace .grid { min-width: 0; }
+  .rx-platform-workspace table { min-width: 520px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rx-service-config-page *, .rx-platform-workspace * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+/* Step 12 — Asset Manager responsive polish */
+.rx-asset-manager-head{align-items:center;flex-wrap:wrap;gap:14px}
+.rx-asset-manager-head>div:first-child{min-width:0;flex:1 1 260px}
+.rx-asset-manager-head-actions{max-width:100%;min-width:0}
+.rx-asset-manager-head-actions select{max-width:100%;min-height:40px}
+.rx-asset-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));align-items:stretch}
+.rx-asset-manager-card{min-width:0;align-items:flex-start;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease}
+.rx-asset-manager-card>div:last-child{min-width:0;overflow-wrap:anywhere}
+.rx-asset-manager-card:hover{transform:translateY(-2px);border-color:var(--accent,#b91c1c);box-shadow:0 10px 26px rgba(16,24,40,.08)}
+.rx-asset-manager-card:focus-visible{outline:3px solid color-mix(in srgb,var(--accent,#b91c1c) 45%,transparent);outline-offset:2px}
+.rx-asset-manager-card.selected{background:linear-gradient(145deg,#fff 0%,#fff8f8 100%);border-color:var(--accent,#b91c1c)}
+.rx-asset-manager-icon{transition:transform .2s ease,background .2s ease}
+.rx-asset-manager-card:hover .rx-asset-manager-icon{transform:scale(1.05);background:#feecec}
+.rx-asset-delivery-card{min-width:0;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+.rx-asset-delivery-preview,.rx-asset-delivery-meta{min-width:0}
+.rx-asset-delivery-facts span{overflow-wrap:anywhere}
+.rx-asset-upload-row>*{max-width:100%;min-width:0}
+.rx-asset-upload-row input:not([type=file]){flex:1 1 220px;min-width:min(100%,220px)}
+.rx-file-input{display:inline-flex;align-items:center;min-height:42px;box-sizing:border-box;max-width:100%;overflow-wrap:anywhere}
+.rx-asset-help{line-height:1.6}
+@media(max-width:800px){.rx-asset-delivery-card{grid-template-columns:minmax(0,1fr)}.rx-asset-delivery-preview{min-height:150px}.rx-asset-delivery-actions>*{max-width:100%}}
+@media(max-width:520px){.rx-asset-manager-head-actions{width:100%}.rx-asset-manager-head-actions select{flex:1;min-width:0}.rx-asset-grid{grid-template-columns:minmax(0,1fr)}.rx-asset-manager-card{padding:12px}.rx-asset-upload-row{align-items:stretch}.rx-asset-upload-row>*{width:100%;box-sizing:border-box}.rx-asset-upload-row input:not([type=file]){min-width:0;width:100%}.rx-asset-upload-row .rx-btn{justify-content:center}.rx-asset-selected-preview-text{max-width:100%}}
+@media(prefers-reduced-motion:reduce){.rx-asset-manager-card,.rx-asset-manager-icon{transition:none!important}.rx-asset-manager-card:hover{transform:none}}
+
+/* Step 13 — Cross-screen UI consistency and responsive integration */
+:root {
+  --rx-ui-radius-sm: 8px;
+  --rx-ui-radius-md: 12px;
+  --rx-ui-radius-lg: 16px;
+  --rx-ui-motion-fast: 160ms;
+  --rx-ui-motion-normal: 220ms;
+}
+/* Prevent long labels, IDs and metadata from forcing the workspace wider. */
+main, [role="main"], .workspace, .page-content, .rx-platform-workspace,
+.rx-asset-manager-page, .rx-asset-manager, .rx-service-config-page {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+button, input, select, textarea { font: inherit; }
+button, [role="button"], a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid rgba(37, 99, 235, .42);
+  outline-offset: 2px;
+}
+:where(button, a, [role="button"]) { transition: color var(--rx-ui-motion-fast) ease, background-color var(--rx-ui-motion-fast) ease, border-color var(--rx-ui-motion-fast) ease, box-shadow var(--rx-ui-motion-fast) ease; }
+:where(input, select, textarea) { max-width: 100%; }
+:where(img, svg, video, canvas) { max-width: 100%; }
+/* Tables remain readable on narrow screens without squeezing their columns. */
+:where(.workspace, main, [role="main"]) table { max-width: 100%; }
+:where(.workspace, main, [role="main"]) th,
+:where(.workspace, main, [role="main"]) td { overflow-wrap: anywhere; }
+/* Common card and grid behavior used across the admin workspaces. */
+:where(.workspace, main, [role="main"]) :where(.card, .panel, .stat-card, .metric-card) { min-width: 0; }
+@media (max-width: 900px) {
+  :where(.workspace, main, [role="main"]) :where(.page-header, .page-head, .toolbar, .filter-row) { flex-wrap: wrap; }
+  :where(.workspace, main, [role="main"]) :where(.page-header, .page-head) > :where(div, section) { min-width: 0; }
+}
+@media (max-width: 600px) {
+  :where(.workspace, main, [role="main"]) :where(.page-header, .page-head) { align-items: stretch; gap: 12px; }
+  :where(.workspace, main, [role="main"]) :where(.toolbar, .filter-row) { align-items: stretch; }
+  :where(.workspace, main, [role="main"]) :where(.toolbar, .filter-row) > :where(button, a, input, select) { max-width: 100%; }
+  :where(.workspace, main, [role="main"]) :where(input, select, textarea) { min-height: 40px; }
+  :where(.workspace, main, [role="main"]) :where(table) { font-size: .92em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

@@ -84,7 +84,7 @@ export function GatewayPage() {
   }, [rows]);
 
   return (
-    <div className="rx-page">
+    <div className="rx-page rx-platform-workspace">
       <div className="rx-page-head">
         <div>
           <div className="rx-eyebrow">PLATFORM / BROADCASTER</div>

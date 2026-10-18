@@ -84,7 +84,7 @@ export function BotMonitorPage({ context }: Props) {
     ["SUPER_ADMIN", "SUPERADMIN"].includes(String(context.role || "").toUpperCase().replace(/[\s-]+/g, "_"));
 
   return (
-    <section className="space-y-6">
+    <section className="space-y-6 rx-platform-workspace">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Platform / Super Admin</p>
