@@ -13,7 +13,7 @@ import { RouteBuilderPage } from "./RouteBuilderPage";
 import { isSensitiveDisplayField, redactForDisplay, safeDisplayJson } from "../lib/displayData";
 import { filterAuditRecords, type AuditFilters } from "../lib/auditFilters.mjs";
 import { maskCustomerField, maskEmail, maskPhone } from "../lib/privacyDisplay.mjs";
-import { LIVE_OPERATIONAL_STATUSES, mergeLiveOperationalBookingBatches } from "../lib/liveOperations.mjs";
+import { LIVE_OPERATIONAL_STATUSES, normalizeLiveOperationalBookings } from "../lib/liveOperations.mjs";
 import { useLanguage } from "../lib/i18n";
 
 type Row = Record<string, any>;
@@ -776,7 +776,7 @@ function CoreOpsBoard({ screen, cfg, data, loading, error, lastLoadedAt, search,
       <div><div className="rx-eyebrow">{cfg.eyebrow}</div><h1>{t(`nav.${screen}`, cfg.title)}</h1><p>{t(`workspace.${screen}.description`, cfg.desc)}</p></div>
       <div className="rx-core-ops-head-actions"><span className="rx-live-chip">{screen === "kyc" ? "REVIEW QUEUE" : "OPERATIONS"}</span><Button variant="secondary" loading={loading} onClick={onRetry} disabled={loading}><RefreshCw size={15}/>{t("common.refresh", "Refresh")}</Button></div>
     </div>
-    <Notice>{screen === "kyc" ? "Verification decisions remain backend-authoritative and auditable." : screen === "live" ? `Live Operations includes active booking statuses only: ${LIVE_OPERATIONAL_STATUSES.join(", ")}. The backend returns at most 200 bookings per status; use this as a recent operational result set, not a complete history count.` : screen === "rides" ? "The backend booking list returns at most 200 recent records. Search and filters apply only to this loaded set; full history/pagination has not been verified." : screen === "customers" ? "The backend customer list returns up to 200 records. Search and filters apply only to this loaded set; customer details may include related bookings and support history." : "Operational scope is enforced by the backend; this workspace never expands the returned dataset."}</Notice>
+    <Notice>{screen === "kyc" ? "Verification decisions remain backend-authoritative and auditable." : screen === "live" ? `Live Operations includes active booking statuses only: ${LIVE_OPERATIONAL_STATUSES.join(", ")}. The backend returns at most 1,400 most-recent active bookings in one combined snapshot; use this as a recent operational result set, not a complete history count.` : screen === "rides" ? "The backend booking list returns at most 200 recent records. Search and filters apply only to this loaded set; full history/pagination has not been verified." : screen === "customers" ? "The backend customer list returns up to 200 records. Search and filters apply only to this loaded set; customer details may include related bookings and support history." : "Operational scope is enforced by the backend; this workspace never expands the returned dataset."}</Notice>
     {screen === "customers" ? <Notice tone="info">Customer mobile/email are masked in summaries. Nested contact, address and location fields are redacted in related detail payloads. Geographic-scope enforcement is required on the backend for State/City Admin access.</Notice> : null}
     {isDriverDetailScreen ? <Notice tone="info">Driver contact fields are masked in the summary/detail display. The reviewed driver-list route has no explicit pagination contract, so search and status filters apply only to the response already loaded. Geographic scope for STATE/CITY Admins must be enforced by the backend before these records are enabled for them.</Notice> : null}
     {error ? <div className="rx-inline-error"><Notice tone="danger">{error}</Notice><Button variant="secondary" onClick={onRetry}>Retry</Button></div> : null}
@@ -1159,8 +1159,8 @@ function GenericWorkspacePage({screen,context,environment,realtime,realtimeEvent
       let result: unknown;
       if (screen === "live") {
         if (!cfg.endpoint) throw new ApiError("Live Operations has no verified booking endpoint.", 501);
-        const batches = await Promise.all(LIVE_OPERATIONAL_STATUSES.map((status) => request<unknown>(withQuery(cfg.endpoint!, { status }))));
-        result = mergeLiveOperationalBookingBatches(batches);
+        const activeBookings = await request<unknown>(withQuery(cfg.endpoint!, { activeOnly: "true" }));
+        result = normalizeLiveOperationalBookings(activeBookings);
       } else {
         const path = screen === "audit"
           ? withQuery(cfg.endpoint || "", {

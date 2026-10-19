@@ -17,6 +17,4 @@ export const LIVE_OPERATIONAL_STATUSES: readonly [
   "AT_RISK"
 ];
 
-export function mergeLiveOperationalBookingBatches(
-  batches: unknown[]
-): LiveOperationalBooking[];
+export declare function normalizeLiveOperationalBookings(result: unknown): Record<string, unknown>[];

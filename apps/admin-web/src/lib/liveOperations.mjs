@@ -12,28 +12,33 @@ export const LIVE_OPERATIONAL_STATUSES = Object.freeze([
   "AT_RISK",
 ]);
 
+const LIVE_OPERATIONAL_STATUS_SET = new Set(LIVE_OPERATIONAL_STATUSES);
+
 /**
- * Merge all status-filtered `/admin/bookings` responses as one complete snapshot.
- * A malformed/missing batch fails closed instead of quietly showing partial data.
+ * Validate, de-duplicate and sort the single combined active-booking response.
+ * Fail closed if the backend returns a non-active or malformed operational record.
  */
-export function mergeLiveOperationalBookingBatches(batches) {
-  if (!Array.isArray(batches) || batches.length !== LIVE_OPERATIONAL_STATUSES.length) {
-    throw new Error("Live Operations did not receive every required active-status result. Refresh before making an operational decision.");
+export function normalizeLiveOperationalBookings(result) {
+  if (!Array.isArray(result)) {
+    throw new Error("Live Operations did not receive a valid active-booking list. Refresh before making an operational decision.");
   }
 
   const byId = new Map();
   const unidentified = [];
-  batches.forEach((batch, batchIndex) => {
-    if (!Array.isArray(batch)) {
-      throw new Error(`The backend returned an invalid booking list for active status ${LIVE_OPERATIONAL_STATUSES[batchIndex]}.`);
+  for (const row of result) {
+    if (!row || typeof row !== "object" || Array.isArray(row)) {
+      throw new Error("The backend returned an invalid booking record for Live Operations.");
     }
-    for (const row of batch) {
-      if (!row || typeof row !== "object" || Array.isArray(row)) continue;
-      const id = String(row.id ?? row.bookingId ?? row.rideId ?? "").trim();
-      if (id) byId.set(id, row);
-      else unidentified.push(row);
+
+    const status = String(row.status ?? "").trim().toUpperCase();
+    if (!LIVE_OPERATIONAL_STATUS_SET.has(status)) {
+      throw new Error(`The backend returned a non-active booking status: ${status || "MISSING"}.`);
     }
-  });
+
+    const id = String(row.id ?? row.bookingId ?? row.rideId ?? "").trim();
+    if (id) byId.set(id, row);
+    else unidentified.push(row);
+  }
 
   return [...byId.values(), ...unidentified].sort((a, b) => {
     const aTime = Date.parse(String(a.createdAt ?? a.updatedAt ?? ""));
