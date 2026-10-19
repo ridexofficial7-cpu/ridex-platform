@@ -1,6 +1,6 @@
-/* RideX public website configuration. Keep destinations blank until officially approved. */
+/* RideX public website configuration. Admin route is configured; store destinations stay blank until approved. */
 window.RIDEX_CONFIG = window.RIDEX_CONFIG || {
-  adminUrl: "",
+  adminUrl: "https://myxride.com/admin",
   androidUrl: "",
   iosUrl: ""
 };

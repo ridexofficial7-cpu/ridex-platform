@@ -163,56 +163,41 @@ export function EventsPanel({ apiRequest, notify, draftNamespace = "current", mu
   }, [loadEvents, loadLocations]);
 
   useEffect(() => {
-    let currentRequest = true;
     const query = placeSearch?.query.trim() ?? "";
-    if (!placeSearch || query.length < 3) return () => { currentRequest = false; };
+    if (!placeSearch || query.length < 3) return;
     const stop = stops.find((item) => item.id === placeSearch.stopId);
-    if (!stop) return () => { currentRequest = false; };
+    if (!stop) return;
 
-    const timer = window.setTimeout(async () => {
-      setGooglePlacesLoading((current) => ({ ...current, [stop.id]: true }));
-      setGooglePlacesErrors((current) => ({ ...current, [stop.id]: "" }));
-      try {
-        const response = await apiRequest<any>(withQuery(RIDEX_API.admin.locationSuggestions, { q: query, city: stop.city.trim(), state: stop.state.trim() }));
-        if (response.success === false) throw new Error(response.message ?? "Google Places search failed");
-        const results = Array.isArray((response.data as any)?.suggestions) ? (response.data as any).suggestions : [];
-        if (!currentRequest) return;
-        setGooglePlaceSuggestions((current) => ({ ...current, [stop.id]: results }));
-        if (!results.length) setGooglePlacesErrors((current) => ({ ...current, [stop.id]: "No Google Places matches. Check the spelling or choose a saved Location Master point." }));
-      } catch (error) {
-        if (!currentRequest) return;
-        setGooglePlaceSuggestions((current) => ({ ...current, [stop.id]: [] }));
-        setGooglePlacesErrors((current) => ({ ...current, [stop.id]: error instanceof Error ? error.message : "Google Places search is unavailable; use Location Master suggestions." }));
-      } finally {
-        if (currentRequest) setGooglePlacesLoading((current) => ({ ...current, [stop.id]: false }));
-      }
-    }, 450);
-    return () => { currentRequest = false; window.clearTimeout(timer); };
-  }, [placeSearch, stops, apiRequest]);
+    // The inspected backend does not expose the previously referenced
+    // /admin/locations/suggestions or /admin/locations/place-details routes.
+    // Do not send requests to nonexistent endpoints or imply that Google Places
+    // integration is available. Keep the entered address editable instead.
+    setGooglePlaceSuggestions((current) => ({ ...current, [stop.id]: [] }));
+    setGooglePlacesLoading((current) => ({ ...current, [stop.id]: false }));
+    setGooglePlacesErrors((current) => ({
+      ...current,
+      [stop.id]: "Address suggestions are not available from the current backend API. Enter the address and coordinates manually, or choose a saved Location Master point.",
+    }));
+  }, [placeSearch, stops]);
 
   const chooseGooglePlace = useCallback(async (stopId: string, suggestion: any) => {
-    try {
-      const response = await apiRequest<any>(withQuery(RIDEX_API.admin.locationPlaceDetails, { placeId: String(suggestion.placeId ?? "") }));
-      if (response.success === false) throw new Error(response.message ?? "Unable to load selected place");
-      const place = response.data as any;
-      setStops((current) => current.map((stop) => stop.id === stopId ? {
-        ...stop,
-        name: String(place?.name || suggestion.mainText || suggestion.description || stop.name),
-        address: String(place?.address || suggestion.description || stop.address),
-        city: String(place?.city || stop.city),
-        state: String(place?.state || stop.state),
-        pincode: String(place?.pincode || stop.pincode),
-        latitude: place?.latitude == null ? stop.latitude : String(place.latitude),
-        longitude: place?.longitude == null ? stop.longitude : String(place.longitude),
-      } : stop));
-      setGooglePlaceSuggestions((current) => ({ ...current, [stopId]: [] }));
-      setGooglePlacesErrors((current) => ({ ...current, [stopId]: "" }));
-      setPlaceSearch(null);
-      notify("success", "Google Places address and coordinates filled. Review the city/state before saving the event.");
-    } catch (error) {
-      notify("error", error instanceof Error ? error.message : "Unable to load selected place");
-    }
-  }, [apiRequest, notify]);
+    // This handler only consumes a suggestion object if a supported provider is
+    // wired in later; it must not call an unverified backend endpoint.
+    setStops((current) => current.map((stop) => stop.id === stopId ? {
+      ...stop,
+      name: String(suggestion?.name || suggestion?.mainText || suggestion?.description || stop.name),
+      address: String(suggestion?.address || suggestion?.description || stop.address),
+      city: String(suggestion?.city || stop.city),
+      state: String(suggestion?.state || stop.state),
+      pincode: String(suggestion?.pincode || stop.pincode),
+      latitude: suggestion?.latitude == null ? stop.latitude : String(suggestion.latitude),
+      longitude: suggestion?.longitude == null ? stop.longitude : String(suggestion.longitude),
+    } : stop));
+    setGooglePlaceSuggestions((current) => ({ ...current, [stopId]: [] }));
+    setGooglePlacesErrors((current) => ({ ...current, [stopId]: "" }));
+    setPlaceSearch(null);
+    notify("success", "Address fields updated. Verify the address and coordinates before saving.");
+  }, [notify, setStops]);
 
   const activeLocations = useMemo(
     () => locations.filter((row) => row.active !== false && row.isActive !== false),
@@ -435,7 +420,7 @@ export function EventsPanel({ apiRequest, notify, draftNamespace = "current", mu
                     <label style={{ gridColumn: '1 / -1' }}><span className="field-label">Local Location / Stop Name</span><input className="text-input" value={stop.name} onChange={(e) => updateStop(stop.id, 'name', e.target.value)} placeholder="Mirchie Bari / Power House Road" autoComplete="off" />
                       {suggestions.length ? <div className="event-location-suggestions">{suggestions.map((location) => <button key={location.id} type="button" onClick={() => selectLocation(stop.id, location)}><strong>{location.name ?? location.address ?? 'Saved location'}</strong><span>{location.address ?? 'No address'} · {location.city ?? ''}{location.state ? `, ${location.state}` : ''}</span></button>)}</div> : null}
                     </label>
-                    <label style={{ gridColumn: '1 / -1' }}><span className="field-label">Address</span><input className="text-input" value={stop.address} onChange={(e) => { const query = e.target.value; updateStop(stop.id, 'address', query); setGooglePlaceSuggestions((current) => ({ ...current, [stop.id]: [] })); setGooglePlacesErrors((current) => ({ ...current, [stop.id]: "" })); setPlaceSearch(query.trim().length >= 3 ? { stopId: stop.id, query } : null); }} placeholder="Type address / landmark for suggestions" autoComplete="off" />{googlePlacesLoading[stop.id] ? <small className="event-place-status">Searching Google Places…</small> : null}{googlePlacesErrors[stop.id] ? <small className="event-place-status error">{googlePlacesErrors[stop.id]}</small> : null}{(googlePlaceSuggestions[stop.id] ?? []).length ? <div className="event-location-suggestions" role="listbox" aria-label={`Google address suggestions for ${stop.name}`}>{(googlePlaceSuggestions[stop.id] ?? []).map((suggestion: any) => <button key={String(suggestion.placeId)} type="button" onClick={() => void chooseGooglePlace(stop.id, suggestion)}><strong>{String(suggestion.mainText ?? suggestion.description)}</strong><span>{String(suggestion.secondaryText ?? suggestion.description ?? "")}</span><small>Google Places</small></button>)}</div> : null}</label>
+                    <label style={{ gridColumn: '1 / -1' }}><span className="field-label">Address</span><input className="text-input" value={stop.address} onChange={(e) => { const query = e.target.value; updateStop(stop.id, 'address', query); setGooglePlaceSuggestions((current) => ({ ...current, [stop.id]: [] })); setGooglePlacesErrors((current) => ({ ...current, [stop.id]: "" })); setPlaceSearch(query.trim().length >= 3 ? { stopId: stop.id, query } : null); }} placeholder="Enter address manually; suggestions unavailable" autoComplete="off" />{googlePlacesLoading[stop.id] ? <small className="event-place-status">Searching Google Places…</small> : null}{googlePlacesErrors[stop.id] ? <small className="event-place-status error">{googlePlacesErrors[stop.id]}</small> : null}{(googlePlaceSuggestions[stop.id] ?? []).length ? <div className="event-location-suggestions" role="listbox" aria-label={`Google address suggestions for ${stop.name}`}>{(googlePlaceSuggestions[stop.id] ?? []).map((suggestion: any) => <button key={String(suggestion.placeId)} type="button" onClick={() => void chooseGooglePlace(stop.id, suggestion)}><strong>{String(suggestion.mainText ?? suggestion.description)}</strong><span>{String(suggestion.secondaryText ?? suggestion.description ?? "")}</span><small>Google Places</small></button>)}</div> : null}</label>
                     <label><span className="field-label">Pincode</span><input className="text-input" value={stop.pincode} onChange={(e) => updateStop(stop.id, 'pincode', e.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" placeholder="854105" /></label>
                     <label><span className="field-label">Latitude</span><input className="text-input" value={stop.latitude} onChange={(e) => updateStop(stop.id, 'latitude', e.target.value)} inputMode="decimal" placeholder="25.539200" /></label>
                     <label><span className="field-label">Longitude</span><input className="text-input" value={stop.longitude} onChange={(e) => updateStop(stop.id, 'longitude', e.target.value)} inputMode="decimal" placeholder="87.571700" /></label>

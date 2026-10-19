@@ -86,48 +86,31 @@ export function LocationRoutePage({ screen, context }: { screen: Screen; context
   const requestSequence = useRef(0);
 
   useEffect(() => {
-    let currentRequest = true;
     const query = placeSearch.trim();
     if (screen !== "locations" || query.length < 3) {
       setPlaceSuggestions([]); setPlacesError(""); setPlacesLoading(false);
-      return () => { currentRequest = false; };
+      return;
     }
-    const timer = window.setTimeout(async () => {
-      setPlacesLoading(true); setPlacesError("");
-      try {
-        const result = await request<any>(withQuery(RIDEX_API.admin.locationSuggestions, { q: query, city: locationDraft.city.trim(), state: locationDraft.state.trim() }));
-        const suggestions = Array.isArray(result?.suggestions) ? result.suggestions : [];
-        if (!currentRequest) return;
-        setPlaceSuggestions(suggestions);
-        if (!suggestions.length) setPlacesError("No Google Places matches. Try a nearby landmark or select a saved location below.");
-      } catch (e) {
-        if (!currentRequest) return;
-        setPlaceSuggestions([]);
-        setPlacesError(e instanceof ApiError ? `${e.message}${e.status ? ` · HTTP ${e.status}` : ""}` : e instanceof Error ? e.message : "Google Places is unavailable; you can enter the verified address manually.");
-      } finally { if (currentRequest) setPlacesLoading(false); }
-    }, 450);
-    return () => { currentRequest = false; window.clearTimeout(timer); };
-  }, [screen, placeSearch, locationDraft.city, locationDraft.state]);
+    // No Google Places proxy endpoints exist in the inspected backend source.
+    // Avoid calling unimplemented routes; allow manual entry and saved locations.
+    setPlaceSuggestions([]);
+    setPlacesLoading(false);
+    setPlacesError("Address suggestions are not available from the current backend API. Enter the address and coordinates manually, or select a saved Location Master point.");
+  }, [screen, placeSearch]);
 
-  const chooseGooglePlace = async (suggestion: any) => {
-    setPlacesError("");
-    try {
-      const place = await request<any>(withQuery(RIDEX_API.admin.locationPlaceDetails, { placeId: String(suggestion.placeId ?? "") }));
-      setLocationDraft((current) => ({
-        ...current,
-        name: String(place.name || suggestion.mainText || current.name),
-        address: String(place.address || suggestion.description || current.address),
-        city: String(place.city || current.city),
-        state: String(place.state || current.state),
-        pincode: String(place.pincode || current.pincode),
-        latitude: place.latitude == null ? current.latitude : String(place.latitude),
-        longitude: place.longitude == null ? current.longitude : String(place.longitude),
-      }));
-      setPlaceSearch(""); setPlaceSuggestions([]);
-      setLocationSaveMessage("Address and coordinates filled from Google Places. Verify State + City against active City Master before saving.");
-    } catch (e) {
-      setPlacesError(e instanceof ApiError ? `${e.message}${e.status ? ` · HTTP ${e.status}` : ""}` : e instanceof Error ? e.message : "Unable to resolve this place.");
-    }
+  const chooseGooglePlace = (suggestion: any) => {
+    setLocationDraft((current) => ({
+      ...current,
+      name: String(suggestion?.name || suggestion?.mainText || current.name),
+      address: String(suggestion?.address || suggestion?.description || current.address),
+      city: String(suggestion?.city || current.city),
+      state: String(suggestion?.state || current.state),
+      pincode: String(suggestion?.pincode || current.pincode),
+      latitude: suggestion?.latitude == null ? current.latitude : String(suggestion.latitude),
+      longitude: suggestion?.longitude == null ? current.longitude : String(suggestion.longitude),
+    }));
+    setPlaceSearch(""); setPlaceSuggestions([]);
+    setLocationSaveMessage("Address fields updated. Verify State + City against active City Master before saving.");
   };
 
   const beginEditLocation = (row: Row) => {

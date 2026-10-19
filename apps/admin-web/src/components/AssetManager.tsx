@@ -77,6 +77,21 @@ function readImageSize(file: File): Promise<{ width: number; height: number }> {
   });
 }
 
+async function matchesImageSignature(file: File): Promise<boolean> {
+  const bytes = new Uint8Array(await file.slice(0, 12).arrayBuffer());
+  const mime = file.type.toLowerCase();
+  if (mime === "image/jpeg") {
+    return bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  }
+  if (mime === "image/png") {
+    return bytes.length >= 8 && bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47 && bytes[4] === 0x0d && bytes[5] === 0x0a && bytes[6] === 0x1a && bytes[7] === 0x0a;
+  }
+  if (mime === "image/webp") {
+    return bytes.length >= 12 && String.fromCharCode(...bytes.slice(0, 4)) === "RIFF" && String.fromCharCode(...bytes.slice(8, 12)) === "WEBP";
+  }
+  return false;
+}
+
 function dataUrlFromFile(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -112,7 +127,7 @@ export function AssetManager() {
   const [selected, setSelected] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
-  const [reason, setReason] = useState("Admin asset update");
+  const [reason, setReason] = useState("");
   const [busy, setBusy] = useState(false);
   const refreshSequence = useRef(0);
 
@@ -168,8 +183,35 @@ export function AssetManager() {
   const upload = async () => {
     if (!ASSET_MUTATIONS_ENABLED) { setError("Asset upload/activation is disabled until the exact backend contract is verified. No mutation request will be sent."); return; }
     if (!selectedSlot || !file) return;
+    const changeReason = reason.trim();
+    if (!changeReason) {
+      setError("Asset upload cancelled: an audit reason is required.");
+      return;
+    }
+    if (changeReason.length > 500) {
+      setError("Audit reason must be 500 characters or fewer.");
+      return;
+    }
+    if (file.size <= 0) {
+      setError("Choose a non-empty image file.");
+      return;
+    }
     if (file.size > MAX_UPLOAD_BYTES) {
       setError("Asset must be 1.25 MB or smaller for the Admin Web upload API.");
+      return;
+    }
+    const allowedMimeTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
+    if (!allowedMimeTypes.has(file.type.toLowerCase())) {
+      setError("Unsupported image format. Choose a JPEG, PNG, or WebP file.");
+      return;
+    }
+    try {
+      if (!(await matchesImageSignature(file))) {
+        setError("The file contents do not match its declared image format. Choose a valid JPEG, PNG, or WebP image.");
+        return;
+      }
+    } catch {
+      setError("Unable to inspect the image file. Choose a valid JPEG, PNG, or WebP image.");
       return;
     }
 
@@ -195,14 +237,14 @@ export function AssetManager() {
           method: "POST",
           body: JSON.stringify({
             file: { fileName: file.name, mimeType: file.type, base64: dataUrl },
-            changeReason: reason,
+            changeReason,
           }),
         });
         await request(`${RIDEX_API.admin.assets}/${encodeURIComponent(current.id)}/activate`, {
           method: "POST",
           body: JSON.stringify({
             version: Number(current.currentVersion) + 1,
-            changeReason: reason,
+            changeReason,
           }),
         });
       } else {
@@ -216,7 +258,7 @@ export function AssetManager() {
             assetKey: `${selectedSlot[0].toLowerCase()}_${selectedSlot[1].toLowerCase()}_${selectedSlot[2].toLowerCase()}`,
             name: selectedSlot[4],
             file: { fileName: file.name, mimeType: file.type, base64: dataUrl },
-            changeReason: reason,
+            changeReason,
           }),
         });
       }
@@ -243,13 +285,22 @@ export function AssetManager() {
       setError("Enter a valid previous asset version.");
       return;
     }
+    const changeReason = window.prompt(`Reason for rolling back ${asset.name} to version ${selectedVersion}`)?.trim();
+    if (!changeReason) {
+      setError("Asset rollback cancelled: an audit reason is required.");
+      return;
+    }
+    if (changeReason.length > 500) {
+      setError("Audit reason must be 500 characters or fewer.");
+      return;
+    }
     setBusy(true);
     setError("");
     setMessage("");
     try {
       await request(`${RIDEX_API.admin.assets}/${encodeURIComponent(asset.id)}/rollback`, {
         method: "POST",
-        body: JSON.stringify({ version: selectedVersion, changeReason: "Admin Web asset rollback" }),
+        body: JSON.stringify({ version: selectedVersion, changeReason }),
       });
       setMessage(`${asset.name} rolled back to version ${selectedVersion}.`);
       await refresh();
@@ -340,7 +391,7 @@ export function AssetManager() {
         </label>
         {file ? <div className="rx-asset-selected-preview-text" role="status"><Eye size={15} /><span>Image preview disabled · {file.name}</span></div> : null}
         {dimensions ? <span className="rx-asset-dimensions">{dimensions.width}×{dimensions.height}px</span> : null}
-        <input value={reason} onChange={(e) => setReason(e.target.value)} placeholder="Change reason" />
+        <input value={reason} onChange={(e) => setReason(e.target.value.slice(0, 500))} maxLength={500} placeholder="Required audit reason for upload / activation" />
         <button className="rx-btn primary" disabled={!ASSET_MUTATIONS_ENABLED || !selectedSlot || !file || busy} onClick={() => void upload()}>{busy ? "Saving…" : "Save & Activate"}</button>
       </div>
 
