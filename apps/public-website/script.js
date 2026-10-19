@@ -1,6 +1,6 @@
 /* RideX public website configuration. Keep destinations blank until officially approved. */
 window.RIDEX_CONFIG = window.RIDEX_CONFIG || {
-  adminUrl: "",
+  adminUrl: "https://ridex-admin-web.onrender.com",
   androidUrl: "",
   iosUrl: ""
 };
