@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Clock3, RefreshCw, ShieldCheck } from "lucide-react";
+import { RefreshCw, ShieldCheck } from "lucide-react";
 import type { AdminContext } from "../types";
 import { ApiError, request } from "../lib/api";
 import { RIDEX_API, resourcePath } from "../lib/apiContract";
@@ -26,21 +26,22 @@ type OtpPurpose = {
   historyVersions?: number;
 };
 type OtpHistory = {
-  version: number;
-  changedAt: string;
+  globalVersion: number;
+  createdAt: string;
   changeType: string;
-  changedFields?: string[];
   sourceVersion?: number | null;
   targetVersion?: number | null;
-  configuration?: OtpConfig | null;
+  purposeCategory?: string;
+  deliveryMethod?: string;
+  expirySeconds?: number;
+  wrongAttemptLimit?: number;
+  resendIntervalSeconds?: number;
+  maximumResends?: number | null;
+  cooldownSeconds?: number;
+  notificationRetryCount?: number;
+  notificationRetryIntervalSeconds?: number;
 };
-type GlobalHistory = {
-  version: number;
-  changedAt: string;
-  operationId?: string;
-  changeType: string;
-  affectedPurposeCodes?: string[];
-};
+
 
 function safeText(value: unknown): string {
   if (value === null || value === undefined || value === "") return "—";
@@ -89,9 +90,7 @@ export function OtpConfigurationWorkspace({
   const [purposeHistory, setPurposeHistory] = useState<OtpHistory[]>([]);
   const [purposeHistoryLoading, setPurposeHistoryLoading] = useState(false);
   const [purposeHistoryError, setPurposeHistoryError] = useState("");
-  const [globalHistory, setGlobalHistory] = useState<GlobalHistory[]>([]);
-  const [globalHistoryLoading, setGlobalHistoryLoading] = useState(false);
-  const [globalHistoryError, setGlobalHistoryError] = useState("");
+
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -99,20 +98,7 @@ export function OtpConfigurationWorkspace({
   }, [purposes, search]);
   const selected = purposes.find((row) => row.purposeCode === selectedCode) ?? null;
 
-  const loadGlobalHistory = useCallback(async () => {
-    setGlobalHistoryLoading(true);
-    setGlobalHistoryError("");
-    try {
-      const result = await request<any>(RIDEX_API.admin.otpGlobalHistory);
-      const history = Array.isArray(result?.history) ? result.history : [];
-      setGlobalHistory(history.filter((row: unknown) => row && typeof row === "object") as GlobalHistory[]);
-    } catch (e) {
-      setGlobalHistoryError(e instanceof ApiError ? `${e.message}${e.status ? ` · HTTP ${e.status}` : ""}` : e instanceof Error ? e.message : "Unable to load global OTP history.");
-      setGlobalHistory([]);
-    } finally {
-      setGlobalHistoryLoading(false);
-    }
-  }, []);
+
 
   const loadPurposeHistory = useCallback(async (purposeCode: string) => {
     if (!purposeCode) {
@@ -133,7 +119,6 @@ export function OtpConfigurationWorkspace({
     }
   }, []);
 
-  useEffect(() => { void loadGlobalHistory(); }, [loadGlobalHistory]);
   useEffect(() => {
     if (!purposes.length) {
       setSelectedCode("");
@@ -147,13 +132,13 @@ export function OtpConfigurationWorkspace({
   useEffect(() => { void loadPurposeHistory(selectedCode); }, [selectedCode, loadPurposeHistory]);
 
   const refreshAll = useCallback(async () => {
-    await Promise.all([Promise.resolve(onRefresh()), loadGlobalHistory()]);
-  }, [onRefresh, loadGlobalHistory]);
+    await Promise.resolve(onRefresh());
+  }, [onRefresh]);
 
   return <div className="rx-page rx-workspace-page rx-otp-configuration">
     <div className="rx-page-head">
       <div><div className="rx-eyebrow">SYSTEM CONFIGURATION · SECURITY</div><h1>OTP Purpose Configuration</h1><p>Review authoritative purpose settings, global configuration versions, and per-purpose history.</p></div>
-      <Button variant="secondary" loading={loading || globalHistoryLoading} onClick={() => void refreshAll()} disabled={loading || globalHistoryLoading}><RefreshCw size={15}/>Refresh configuration</Button>
+      <Button variant="secondary" loading={loading} onClick={() => void refreshAll()} disabled={loading}><RefreshCw size={15}/>Refresh configuration</Button>
     </div>
     <Notice>Current actor: {context.isSuperAdmin ? "Super Admin" : `${context.adminType} · ${context.adminLevel} scope`}. Backend authorization remains authoritative for all OTP reads.</Notice>
     <Notice tone="warning">OTP configuration history is a separate view from security audit logs. Fifth-failure alert delivery, exact audit metadata and global/field version transitions must be verified with backend event evidence; the UI never displays OTP plaintext.</Notice>
@@ -177,15 +162,12 @@ export function OtpConfigurationWorkspace({
         </Card>
         <Card title="Purpose history" eyebrow="VERSION HISTORY · NOT SECURITY AUDIT">
           {purposeHistoryError ? <Notice tone="danger">{purposeHistoryError}</Notice> : null}
-          {purposeHistoryLoading ? <PixelLoader variant="inline" label="Loading purpose history…"/> : purposeHistory.length ? <div className="rx-otp-history-list">{purposeHistory.map((entry, index) => <article className="rx-otp-history-entry" key={`${entry.version}-${entry.changedAt}-${index}`}><div className="rx-otp-history-head"><strong>Version {entry.version}</strong><StatusPill value={entry.changeType}/></div><time>{formatDate(entry.changedAt)}</time><p>Changed fields: {(entry.changedFields ?? []).length ? entry.changedFields!.join(", ") : "Not supplied"}</p>{entry.changeType === "ROLLBACK" ? <small>Source version {safeText(entry.sourceVersion)} → target version {safeText(entry.targetVersion)}</small> : null}</article>)}</div> : !purposeHistoryError ? <EmptyState title="No purpose history" description="No saved versions were returned for the selected purpose."/> : null}
+          {purposeHistoryLoading ? <PixelLoader variant="inline" label="Loading purpose history…"/> : purposeHistory.length ? <div className="rx-otp-history-list">{purposeHistory.map((entry, index) => <article className="rx-otp-history-entry" key={`${entry.globalVersion}-${entry.createdAt}-${index}`}><div className="rx-otp-history-head"><strong>Version {entry.globalVersion}</strong><StatusPill value={entry.changeType}/></div><time>{formatDate(entry.createdAt)}</time><p>Saved configuration snapshot: {safeText(entry.purposeCategory)} · {safeText(entry.deliveryMethod)} · expiry {safeText(entry.expirySeconds)} seconds</p>{entry.changeType === "ROLLBACK" ? <small>Source version {safeText(entry.sourceVersion)} → target version {safeText(entry.targetVersion)}</small> : null}</article>)}</div> : !purposeHistoryError ? <EmptyState title="No purpose history" description="No saved versions were returned for the selected purpose."/> : null}
         </Card>
       </div>
     </div>
-    <Card title="Global OTP configuration history" eyebrow="GLOBAL VERSIONS">
-      <p className="rx-otp-subtext"><Clock3 size={14}/> This history identifies global version transitions and affected purpose codes. It is separate from the full security audit log.</p>
-      {globalHistoryError ? <Notice tone="danger">{globalHistoryError}</Notice> : null}
-      {globalHistoryLoading ? <PixelLoader variant="inline" label="Loading global OTP history…"/> : globalHistory.length ? <div className="rx-otp-global-history">{globalHistory.map((entry, index) => <article className="rx-otp-history-entry" key={`${entry.version}-${entry.operationId ?? index}`}><div className="rx-otp-history-head"><strong>Version {entry.version}</strong><StatusPill value={entry.changeType}/></div><time>{formatDate(entry.changedAt)}</time><p>Affected purpose codes: {(entry.affectedPurposeCodes ?? []).length ? entry.affectedPurposeCodes!.join(", ") : "None listed"}</p><small>Operation ID: {safeText(entry.operationId)}</small></article>)}</div> : !globalHistoryError ? <EmptyState title="No global history" description="The backend returned no global OTP configuration versions."/> : null}
-    </Card>
+    <Notice tone="warning">Global OTP history and global rollback are not exposed by the inspected backend routes. This workspace only displays backend-supported per-purpose history; global history and rollback remain unavailable until the backend provides verified endpoints.</Notice>
+
     <div className="rx-source-note"><ShieldCheck size={15}/> Read-only until change-reason auditing is confirmed. Configuration history is not a substitute for the security audit record.</div>
   </div>;
 }
